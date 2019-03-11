@@ -1,0 +1,448 @@
+main{
+	width: 1200px;
+	margin: 0 auto;
+}
+.form_box{
+	width: 100%;
+	display: flex;
+	justify-content:space-between;
+	margin-bottom: 40px;
+}
+
+.fwqy{
+	background: url(../images/icon/down.png) 516px center no-repeat;
+	background-size: 24px 20px;
+	width: 540px;
+	height: 40px;
+	line-height: 40px;
+	position: relative;
+	border: 1px solid rgba(0,0,0,0.15);
+	border-radius: 2px;
+	padding-left: 12px;
+	font-size: 14px!important;
+	margin-top: 4px;
+}
+.fwqy:hover{
+	border: 1px solid #198CFF;
+}
+.fwqy .active{
+	background: #198CFF;
+	color: #fff;
+}
+.fwqy_select_box{
+	position: absolute;
+	left: -2px;
+	top: 46px;
+	width: 100%;
+	z-index: 999;
+	overflow: hidden;
+	display: none;
+	padding-left: 1px;
+	padding-bottom: 3px;
+}
+.city,.city_two,.county{
+	width: 166px;
+	height: 240px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background: #fff;
+	box-shadow: 0 2px 8px rgba(0,0,0,.08);
+	border-right: 1px solid rgba(0,0,0,0.08);
+	float: left;
+}
+.city_two ul,.county ul{
+	display: none;
+}
+.city_two ul:first-child,.county ul:first-child{
+	display: block;
+}
+
+
+.city::-webkit-scrollbar,.city_two::-webkit-scrollbar,.county::-webkit-scrollbar{width: 4px; height: 10px;}
+.city::-webkit-scrollbar-track,.city_two::-webkit-scrollbar-track,.county::-webkit-scrollbar-track{background-color: #fff;}
+.city::-webkit-scrollbar-thumb,.city_two::-webkit-scrollbar-thumb,.county::-webkit-scrollbar-thumb{background-color: rgba(0,0,0,0.15);}
+
+.city li,.city_two li,.county li{
+	width: 100%!important;
+	height: 32px;
+	line-height: 32px;
+	padding-left: 12px;
+	cursor: pointer;
+	position: relative;
+}
+.city li i,.city_two li i,.county li i{
+	position: absolute;
+	right: 20px;
+}
+.city li:hover,.city_two li:hover,.county li:hover{
+	background: #198CFF;
+	color: #fff;
+}
+
+.gsjd,.rygm,.szhy{
+	background: url(../images/icon/down.png) 328px center no-repeat;
+	background-size: 24px 20px;
+	width: 350px;
+	height: 40px;
+	line-height: 40px;
+	position: relative;
+	border: 1px solid rgba(0,0,0,0.15);
+	border-radius: 2px;
+	padding-left: 12px;
+	font-size: 14px!important;
+	margin-top: 4px;
+}
+.gsjd:hover,.rygm:hover,.szhy:hover{
+	border: 1px solid #198CFF;
+}
+.gsjd_box,.rygm_box,.szhy_box{
+	position: absolute;
+	left: 0px;
+	top: 46px;
+	width: 99%;
+	z-index: 999;
+	overflow: hidden;
+	display: none;
+	padding-left: 1px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background: #fff;
+	border: 1px solid rgba(0,0,0,0.15);
+	border-radius: 2px;
+	box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.gsjd_box li,.rygm_box li,.szhy_box li{
+	padding-left: 12px;
+	cursor: pointer;
+	height: 36px;
+	line-height: 36px;
+}
+.gsjd_box .active,.rygm_box .active,.szhy_box .active{
+	background: #198CFF;
+	color: #fff;
+}
+.gsjd_box li:hover,.rygm_box li:hover,.szhy_box li:hover{
+	background: #198CFF;
+	color: #fff;
+}
+
+/*左边盒子开始*/
+.form_box_l{
+	width: 880px;
+	height: 100%;
+	padding: 24px 0 40px 20px;
+	box-sizing: border-box;
+	background: #fff;
+}
+.fbox_1,.fbox_2,.fbox_3{
+	margin-bottom: 12px;
+}
+.fbox_span{
+	position: relative;
+	color:rgba(0,0,0,.85);
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 12px;
+}
+.fbox_span:after{
+	content: '';
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 40px;
+	border-top: 2px solid #198cff;
+}
+.fbox_div{
+	position: relative;
+	padding-top: 30px;
+}
+.lastsubmit{
+	width: 120px;
+	height: 40px;
+	border-radius: 2px;
+	color: #fff;
+	background: #198cff;
+	text-align: center;
+	line-height: 40px;
+	margin-top: 40px;
+	cursor: pointer;
+	font-size: 18px;
+}
+.fbox_div_text1{
+	color: rgba(0,0,0,.65);
+	font-size: 18px;
+}
+.fbox_div_text2{
+	color: rgba(0,0,0,.45);
+	font-size: 14px;
+}
+.fbox_div_text3{
+	color: rgba(0,0,0,.65);
+	font-size: 18px;
+	margin: 12px 0;
+	padding-top: 12px;
+}
+.property_text{
+	width: 360px;
+	height: 40px;
+	border:1px solid rgba(0,0,0,.09);
+	border-radius: 2px;
+	padding-left: 12px;
+}
+.property_text:hover{
+	border: 1px solid #198cff;
+}
+.layui-upload{
+	margin: 12px 0;
+}
+.layui-upload-img{
+	border:none!important;
+	cursor: pointer;
+}
+.layui-upload-file{
+	display: none!important;
+	position: absolute!important;
+	top: -99999px!important;
+}
+.propert_textarea{
+	width:816px;
+	height:336px;
+	resize: none;
+	border-radius: 2px;
+	padding: 12px;
+	border:1px solid rgba(0,0,0,.09);
+	margin-top: 12px;
+	line-height: 26px;
+}
+.numberbox{
+	width: 108px;
+	height: 28px;
+	text-align: right;
+	position: absolute;
+	right: 30px;
+	bottom: 5px;
+}
+.numberbox span{
+	display: inline-block;
+}
+.fbox_2_ul,.fbox_1_ul{
+	width: 100%;
+}
+.fbox_2_ul > li,.fbox_1_ul>li{
+	width: 50%;
+	float: left;
+}
+.fbox_2_ul > li > p,.fbox_1_ul li >p{
+	color: rgba(0,0,0,.65);
+	font-size: 18px;
+	margin-top: 26px;
+	margin-bottom: 12px;
+}
+.fbox_2_ul > li > input{
+	width: 348px;
+	height: 40px;
+	border-radius: 2px;
+	padding-left: 12px;
+	border: 1px solid rgba(0,0,0,.09);
+}
+.fbox_1_ul li select{
+	width: 348px;
+	height: 40px;
+	padding-left: 12px;
+	border: 1px solid rgba(0,0,0,.09);
+	border-radius: 2px;
+}
+.fbox_2_ul > li > input:hover,f.fbox_1_ul li select:hover{
+	border:1px solid #198cff;
+}
+.qimingzizhennan{
+	position: relative;
+}
+.miniul{
+	position: absolute;
+	width: 360px;
+	height: 400px;
+	overflow: hidden;
+	overflow-y: auto;
+	border:1px solid rgba(0,0,0,.1);
+	background: #fff;
+	z-index: 99999;
+	display: hidden;
+}
+.miniul li,.miniul span{
+	float: left;
+	display: inline-block;
+	width: 350px;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+.miniul li:hover,.miniul span:hover{
+	background: #F5F7FA;	
+}
+.SFZzm>span,.SFZfm>span{
+	font-size: 18px;
+	color: rgba(0,0,0,.65);
+}
+.SFZzm>ul,.SFZfm>ul{
+	margin: 12px 0;
+}
+.SFZzm>p,.SFZfm>p{
+	font-size: 12px;
+	color: rgba(0,0,0,.45);
+}
+.SFZzm ul li,.SFZfm ul li{
+	width: 130px;
+	height: 104px;
+	float: left;
+}
+.SFZzm ul li:nth-of-type(1),.SFZfm ul li:nth-of-type(1){
+	cursor: pointer;
+}
+.SFZzm ul li:nth-of-type(1) img,.SFZfm ul li:nth-of-type(1) img{
+	width: 130px;
+	height: 104px;
+}
+.SFZzm ul li:nth-of-type(2),.SFZfm ul li:nth-of-type(2){
+	margin-left: 12px;
+}
+.SFZfm{
+	margin-top: 24px;
+}
+.fbox_4_box{
+	margin-top: 24px;
+}
+.fbox_4_box span{
+	color: rgba(0,0,0,.65);
+	font-size: 18px;
+	display: inline-block;
+	margin-bottom: 12px;
+}
+.fbox_4_box ul{
+	width: 100%;
+}
+.fbox_4_box ul li{
+	width: 130px;
+	height: 103px;
+	float: left;
+}
+.fbox_4_box ul li img{
+	width: 130px;
+	height: 103px;
+}
+.fbox_4_box ul li:nth-of-type(2){
+	margin-left: 12px;
+}
+.fbox_4_box p{
+	color: rgba(0,0,0,.45);
+	margin: 12px 0;
+}
+.shangchuan1{
+	cursor: pointer;
+}
+.fbox_3_txt{
+	color: rgba(0,0,0,.65);
+	font-size: 18px;
+	margin-bottom: 12px;
+}
+.fbox_3_int{
+	margin-bottom: 12px;
+	width: 348px;
+	height: 40px;
+	border-radius: 2px;
+	padding-left: 12px;
+	border: 1px solid rgba(0,0,0,.09);
+}
+/*左边盒子结束*/
+/*右边盒子开始*/
+.form_box_r{
+	width: 300px;
+}
+/*个人信息*/
+.per_info{
+	position: relative;
+	overflow: hidden;
+	background: #fff;
+	padding-bottom: 40px;
+}
+.compile{
+	position: absolute;
+	right: 12px;
+	top: 12px;
+}
+.compile:hover{
+	color: #198CFF;
+}
+.head-img{
+	width: 60px;
+	height: 60px;
+	margin: 24px auto 12px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.head-img img{
+	width: 100%;
+	height: 100%;
+}
+.approve{
+	margin-top: 8px;
+	box-sizing: border-box;
+	text-align: center;
+	height: 24px;
+	line-height: 24px;
+}
+.approve img{
+	width: 20px;
+	height: 18px;
+	position: relative;
+	top: 3px;
+}
+.post-xq,.myCollect,.myFocus{
+	text-align: center;
+}
+
+
+/*公司或园区名片*/
+.card{
+	margin-top: 24px;
+	width: 100%;
+	height: 168px;
+	box-sizing: border-box;
+	background: #fff;
+	padding: 24px 20px;
+	
+}
+.card img{
+	width: 60px;
+	height: 60px;
+}
+
+
+.look_company,.look_zome,.look_address{
+	display: inline-block;
+	width: 100%;
+	height: 36px;
+	color: #fff;
+	margin-top: 24px;
+	line-height: 36px;
+	text-align: center;
+}
+
+.look_company:hover,.look_zome:hover,.look_address:hover{
+
+	color: #fff;
+}
+.look_company{
+	background: #198CFF;
+}
+.look_zome{
+	background: #FFB31A;
+}
+
+.look_address{
+	background: #22C5AA;
+}
+
+
+/*右边盒子结束*/

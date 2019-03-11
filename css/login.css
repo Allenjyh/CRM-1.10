@@ -1,0 +1,114 @@
+.login_body{
+	background: url(../images/bg/loadingbg.png) no-repeat;
+}
+.color_blue{
+	color: #198CFF!important;
+}
+.loginBox{
+	position: fixed;
+	top: 48%;
+	left: 50%;
+	width: 420px;
+	height: 560px;
+	margin-left: -210px;
+	margin-top: -280px;
+	background: #fff;
+	border-radius: 8px;
+	padding: 24px;
+	box-sizing: border-box;
+}
+.login_type_btn{
+	display: flex; 
+	justify-content: space-around; 
+	font-size: 18px;
+	padding: 0 36px; 
+	color: rgba(0,0,0,0.45);
+	margin-bottom: 12px;
+}
+.login_type_btn>span{
+	cursor: pointer;
+}
+.login_type_btn .colorBlue{
+	color: #198DFF!important;
+}
+.slid_out{
+	margin-top: 0;
+	position: relative; 
+	height: 2px; 
+	background: rgba(0,0,0,0.15);
+}
+.slid_in{
+	width: 70px; 
+	height: 2px; 
+	position: absolute;
+	background: #198DFF;
+	top: 0;
+	left: 76px;
+	/*left: 227px;*/
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+#pwd_login input,#sms_login input{
+	width: 100%;
+	height: 46px;
+	border-radius: 2px;
+	outline: 0;
+	border: 1px solid rgba(0,0,0,0.15);
+	padding-left: 40px;
+	box-sizing: border-box;
+}
+.phoneinputBox,.pwdinputBox,.smsinputBox{
+	position: relative;
+	margin: 30px 0;
+}
+.phoneinputBox i,.pwdinputBox i,.smsinputBox i{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 20px;
+	color: rgba(0,0,0,0.45);
+}
+#checkPhone *,#checkSms *{
+	color: rgba(0,0,0,0.45);
+}
+#checkPhone,#checkSms{
+	margin-bottom: 30px!important;
+}
+#checkSms .verify-bar-area{
+	width: 100%!important;
+}
+.pwd_login_btn,.sms_login_btn{
+	display: block;
+	margin-top: 14px;
+	text-align: center;
+	width: 100%;
+	height: 46px;
+	line-height: 46px;
+	border-radius: 2px;
+	background: #198DFF;
+	color: #fff;
+	cursor: pointer;
+}
+.sendYZM{
+	position: absolute; 
+	top: 14px; 
+	right: 12px; 
+	text-decoration: none; 
+	color: #198CFF; 
+	font-size: 14px;
+	cursor: pointer;
+}
+.error_info{
+	color: #FF4040;
+	margin-top: 26px;
+	font-size: 14px;
+	display: none;
+}

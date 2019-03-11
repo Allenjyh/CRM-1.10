@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>找回密码</title>
+		<link rel="stylesheet" href="css/login.css" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_865677_3rv2t5n676a.css">
+		<link rel="stylesheet" href="css/verify.css" />
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script type="text/javascript" src="js/find-pwd.js" ></script>
+		<script type="text/javascript" src="js/verify.min.js" ></script>
+	</head>
+	
+	<body class="login_body">
+		<div style="position: fixed; left: 60px; top: 60px; z-index: 1;">
+			<img src="images/logo/crmLogo2.png"/>
+		</div>
+		
+		<div class="loginBox findpwd_box">
+			<p style="color: #198DFF; font-size: 24px; text-align: center; margin-bottom: 30px;">找回密码</p>
+			<form id="pwd_login" action="" method="post">
+				<div class="phoneinputBox">
+					<input type="number" class="telphone" placeholder="手机号"/>
+					<i class="iconfont icon-login_shouji"></i>
+				</div>
+				<div id="checkPhone" data-status=""></div>
+				<p class="error_info"></p>
+				<span class="pwd_login_btn next_btn">下一步</span>
+				<input type="submit" value="" style="display: none;"/>
+			</form>
+			<p style="text-align: center; color: rgba(0,0,0,0.85); font-size: 14px;">如无法通过手机找回密码请联系客服：400-886-6391</p>
+		</div>
+		
+		<div class="loginBox resetpwd_box" style="display: none;">
+			<p style="color: #198DFF; font-size: 24px; text-align: center; margin-bottom: 30px;">重置密码</p>
+			<form id="sms_login" action="" method="post">
+				<div class="pwdinputBox">
+					<input type="password" class="pwd" placeholder="密码（至少6位）"/>
+					<i class="iconfont icon-shoujiyanzheng"></i>
+				</div>
+				<div class="pwdinputBox">
+					<input type="password" class="confirm_pwd" placeholder="确认密码"/>
+					<i class="iconfont icon-shoujiyanzheng"></i>
+				</div>
+				<div class="smsinputBox">
+					<input type="tel" class="yzm" placeholder="6位验证码"/>
+					<i class="iconfont icon-shoujiyanzheng"></i>
+					<span class="sendYZM">获取验证码</span>
+				</div>
+				<p class="error_info"></p>
+				<span class="pwd_login_btn qrxg_btn">确认修改</span>
+				<input type="submit" value="" style="display: none;"/>
+			</form>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		$('#checkPhone').slideVerify({
+	        type : 1,		//类型
+	        vOffset : 5,	//误差量，根据需求自行调整
+	        barSize : {
+	            width : '100%',
+	            height : '40px',
+	        },
+	        ready : function() {
+	        },
+	        success : function() {
+	        	$('#checkPhone').attr('data-status','200');
+	        	errorInfo('pwd_login',2,'');
+	        },
+	        error : function() {
+	        }
+	
+	    });
+	    
+	</script>
+</html>

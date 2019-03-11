@@ -1,0 +1,191 @@
+main{
+	width: 1200px;
+	margin: 0 auto;
+}
+.form_box{
+	width: 100%;
+	display: flex;
+	justify-content:space-between;
+	margin-bottom: 40px;
+}
+/*左边盒子开始*/
+.form_box_l{
+	width: 880px;
+	height: 100%;
+	padding: 24px 0 40px 20px;
+	box-sizing: border-box;
+	background: #fff;
+}
+.fbox_1,.fbox_2{
+	margin-bottom: 12px;
+}
+.fbox_span{
+	position: relative;
+	color:rgba(0,0,0,.85);
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 12px;
+}
+.fbox_span:after{
+	content: '';
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 40px;
+	border-top: 2px solid #198cff;
+}
+.fbox_div{
+	position: relative;
+	padding-top: 24px;
+}
+.lastsubmit{
+	width: 120px;
+	height: 40px;
+	border-radius: 2px;
+	color: #fff;
+	background: #198cff;
+	text-align: center;
+	line-height: 40px;
+	margin-top: 40px;
+	cursor: pointer;
+}
+.fbox_div_text1{
+	color: rgba(0,0,0,.65);
+	font-size: 18px;
+}
+.fbox_div_text2{
+	color: rgba(0,0,0,.45);
+	font-size: 14px;
+}
+.fbox_div_text3{
+	color: rgba(0,0,0,.65);
+	font-size: 18px;
+	margin: 12px 0;
+}
+.property_text{
+	width: 360px;
+	height: 40px;
+	border:1px solid rgba(0,0,0,.09);
+	border-radius: 2px;
+	padding-left: 12px;
+}
+.property_text:hover{
+	border: 1px solid #198cff;
+}
+.layui-upload{
+	margin: 12px 0;
+}
+.layui-upload-img{
+	border:none!important;
+	cursor: pointer;
+}
+.layui-upload-file{
+	display: none!important;
+	position: absolute!important;
+	top: -99999px!important;
+}
+.propert_textarea{
+	width:816px;
+	height:336px;
+	resize: none;
+	border-radius: 2px;
+	padding: 12px;
+	border:1px solid rgba(0,0,0,.09);
+	margin-top: 12px;
+	line-height: 26px;
+}
+.numberbox{
+	width: 108px;
+	height: 28px;
+	text-align: right;
+	position: absolute;
+	right: 30px;
+	bottom: 5px;
+}
+.numberbox span{
+	display: inline-block;
+}
+/*左边盒子结束*/
+/*右边盒子开始*/
+.form_box_r{
+	width: 300px;
+}
+/*个人信息*/
+.per_info{
+	position: relative;
+	overflow: hidden;
+	background: #fff;
+	padding-bottom: 40px;
+}
+.compile{
+	position: absolute;
+	right: 12px;
+	top: 12px;
+}
+.compile:hover{
+	color: #198CFF;
+}
+.head-img{
+	width: 60px;
+	height: 60px;
+	margin: 24px auto 12px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.head-img img{
+	width: 100%;
+	height: 100%;
+}
+.approve{
+	margin-top: 8px;
+	box-sizing: border-box;
+	text-align: center;
+	height: 24px;
+	line-height: 24px;
+}
+.approve img{
+	width: 20px;
+	height: 18px;
+	position: relative;
+	top: 3px;
+}
+.post-xq,.myCollect,.myFocus{
+	text-align: center;
+}
+
+
+/*公司或园区名片*/
+.card{
+	margin-top: 24px;
+	width: 100%;
+	height: 168px;
+	box-sizing: border-box;
+	background: #fff;
+	padding: 24px 20px;
+	
+}
+.card img{
+	width: 60px;
+	height: 60px;
+}
+
+.look_company,.look_zome{
+	display: inline-block;
+	width: 100%;
+	height: 36px;
+	color: #fff;
+	margin-top: 24px;
+	line-height: 36px;
+	text-align: center;
+}
+.look_company:hover,.look_zome:hover{
+	color: #fff;
+}
+.look_company{
+	background: #198CFF;
+}
+.look_zome{
+	background: #FFB31A;
+}
+
+/*右边盒子结束*/

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>需求大厅-需求</title>
+		<link rel="stylesheet" type="text/css" href="css/crm_style.css">
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+		<link rel="stylesheet" href="css/need-off.css" />
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script type="text/javascript" src="js/crm-style.js" ></script>
+		<script type="text/javascript" src="js/need-off.js" ></script>
+	</head>
+	
+	<body style="background: #F5F7FA;">
+		<header>
+			<!--蒙层-->
+			<div class="temp"></div>
+			
+			<div class="header-1">
+				<div class="header-1-ct">
+					<div class="header-1-l" style="display: flex;">
+						<i class="iconfont icon-weizhi" style="font-size: 14px;"></i>
+						<span>广州</span>
+						<div class="gzyz">
+							<p style="text-align: center;">广州乙租 
+								<i class="iconfont icon-Group-" style="position: relative; top: 2px; left: 3px;"></i>
+							</p>
+							<div>
+								<ul>
+									<li><a href="">账号设置</a></li>
+									<li><a href="">系统通知</a></li>
+									<li><a href="">用户信息</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<ul class="user_inform clear">
+							<li><a href="">我的信息</a><i>56</i></li>
+							<li><a href="">系统通知</a><i>1</i></li>
+							<li><a href="">账号设置</a><i>99+</i></li>
+							<li><a href="about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<!--未登录-->
+					<!--<div class="header-1-r">
+						<a href="index.html">登录</a>
+						<i class="block45"> |</i>
+						<a href="login.html">注册</a>
+					</div>-->
+					<!--已登录-->
+					<div class="logged" style="position: relative; cursor: pointer;">
+						<div style="display: flex;">
+							<p class="hours">
+								<span>早上好，</span>
+								<span>中午好，</span>
+								<span>下午好，</span>
+								<span>晚上好，</span>
+								李先生
+							</p>
+							<img src="images/logo/qiyeLogo.png" width="20px" height="20px" style="margin: 0 5px; position: relative; top: 8px;"/>
+							<i class="iconfont icon-Group-" style="color: #979797;"></i>
+						</div>
+						
+						<div class="isLogin" style="display: none;">
+							<div class="head-img">
+								<img src="images/icon/logo_1.png"/>
+							</div>
+							<p class="hours1" style="text-align: center;">
+								<span>早上好</span>
+								<span>中午好</span>
+								<span>下午好</span>
+								<span>晚上好</span>
+								&nbsp;&nbsp;李先生
+							</p>
+							
+							<div class="approve">
+								<!--<img src="images/icon/logo_1.png"/>
+								<a href="">身份认证</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;-->
+								<img src="images/logo/qiyeLogo.png"/>
+								<a href="">企业认证</a>
+							</div>
+							<!--<p class="isJoin" style="text-align: center;">
+								<img src="images/icon/logo_1.png"/>
+								已入驻平台
+							</p>-->
+							
+							<div style="display: flex; margin-top: 20px; justify-content: space-around;">
+								<div class="post-xq">
+									<p class="fsize32 nnb" style="color: #FFB31A;">23</p>
+									<p class="block45">发布需求</p>
+								</div>
+								<div class="myFocus">
+									<p class="fsize32 nnb" style="color: #FFB31A;">49</p>
+									<p class="block45">我的关注</p>
+								</div>
+								<div class="myCollect">
+									<p class="fsize32 nnb" style="color: #FFB31A;">49</p>
+									<p class="block45">我的收藏</p>
+								</div>
+							</div>
+							<a href="" class="grzx-href">个人中心</a>
+							<!--公告-->
+							<div class="affiche-index">
+								<div class="swiper-container affiche-content">
+				                    <ul class="swiper-wrapper">
+				                        <li class="swiper-slide"><a href="">这里是公告内容这里是公告内容这里是公告内容</a></li>
+				                        <li class="swiper-slide"><a href="">这里是公告内容</a></li>
+				                        <li class="swiper-slide"><a href="">这里是公告内容</a></li>
+				                        <li class="swiper-slide"><a href="">这里是公告内容这里是公告内容这里是公告内容</a></li>
+				                        <li class="swiper-slide"><a href="">这里是公告内容</a></li>
+				                        <li class="swiper-slide"><a href="">这里是公告内容这里是公告内容这里是公告内容</a></li>
+				                        <li class="swiper-slide"><a href="">这里是公告内容这里是公告内容这里是公告内容</a></li>
+				                    </ul>
+				                </div>
+							</div>
+							
+							<div class="acc_operation">
+								<a href="">切换账号</a><i style="margin: 0 20px;">|</i><a href="">退出登录</a>
+							</div>
+						</div>
+					</div>
+					<!--已登录结束-->
+					
+				</div>
+			</div>
+			
+			<div class="header-2">
+				<div class="header-2-ct">
+					<div class="header-2-l">
+						<div style="float: left; height: 100%; overflow: hidden; padding-top: 10px;">
+							<img src="images/logo/crmLogo.png" />
+						</div>
+						<ul style="float: left; margin-left: 50px;">
+							<li class="active"><a href="">首页</a></li>
+							<li><a href="need-off.html">需求大厅</a></li>
+							<li><a href="need-off.html">提供大厅</a></li>
+							<li><a href="company_property.html">物业社区</a></li>
+							<li><a href="need-off.html">放声社区</a></li>
+						</ul>
+					</div>
+					
+					<div class="header-2-r">
+						<input type="" name="" id="" value="" placeholder="请输入商圈、名称、区域" />
+						<span class="sousuo"><i class="iconfont icon-fangdajing" style="font-size: 30px;"></i></span>
+						<button class="fabu-bt">发布需求</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		
+		<main>
+			<!--筛选-->
+			<div class="screen-box">
+				<div class="scr-hy clear">
+					<span class="showMore-hy">更多<i class="fsize18 iconfont icon-Group-"></i></span>
+					<span style="float: left; width: 8%;">所属行业:</span>
+					<div style="float: left; width: 85%;">
+						<div>
+							<ul class="scr-hy-title clear">
+								<li>全部</li>
+								<li>互联网IT</li>
+								<li>企业服务</li>
+								<li>生活服务</li>
+								<li>金融/保险</li>
+								<li>教育/培训</li>
+								<li>电子商务</li>
+								<li>文化娱乐</li>
+								<li>咨询服务</li>
+								<li>医疗健康</li>
+							</ul>
+							
+							<ul class="scr-hy-all clear" style="display: none;">
+								<li>水电费</li>
+								<li>电风扇</li>
+								<li>反倒是</li>
+								<li>生活服务</li>
+								<li>金融/保险</li>
+								<li>教育/培训</li>
+								<li>电子商务</li>
+								<li>文化娱乐</li>
+								<li>咨询服务</li>
+								<li>医疗健康</li>
+								<li>文化娱乐</li>
+								<li>咨询服务</li>
+								<li>医疗健康</li>
+							</ul>
+						</div>
+						
+						<!--每一个行业-->
+						<div class="scr-hy-info">
+							<ul>
+								<li>
+									<div class="scr-hy-once">
+										<ul class="clear">
+											<!--选全部的时候，没有东西出来，保留整个li-->
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="scr-hy-once">
+										<ul class="clear">
+											<li>2水电费</li>
+											<li>电风扇</li>
+											<li>反倒是</li>
+											<li>生活服务</li>
+											<li>金融/保险</li>
+											<li>教育/培训</li>
+											<li>电子商务</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="scr-hy-once">
+										<ul class="clear">
+											<li>3水电费</li>
+											<li>电风扇</li>
+											<li>反倒是</li>
+											<li>生活服务</li>
+											<li>金融/保险</li>
+											<li>教育/培训</li>
+											<li>电子商务</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+						
+						<!--更多的。。-->
+						<div class="scr-hy-info-all">
+							<ul class="clear">
+								<li>
+									<div class="scr-hy-once">
+										<ul class="clear">
+											<li>a水电费</li>
+											<li>电风扇</li>
+											<li>反倒是</li>
+											<li>生活服务</li>
+											<li>金融/保险</li>
+											<li>教育/培训</li>
+											<li>电子商务</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="scr-hy-once">
+										<ul class="clear">
+											<li>b水电费</li>
+											<li>电风扇</li>
+											<li>反倒是</li>
+											<li>生活服务</li>
+											<li>金融/保险</li>
+											<li>教育/培训</li>
+											<li>电子商务</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="scr-hy-once">
+										<ul class="clear">
+											<li>c水电费</li>
+											<li>电风扇</li>
+											<li>反倒是</li>
+											<li>生活服务</li>
+											<li>金融/保险</li>
+											<li>教育/培训</li>
+											<li>电子商务</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+											<li>文化娱乐</li>
+											<li>咨询服务</li>
+											<li>医疗健康</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<!--地区-->
+				<div class="scr-area clear">
+					<span style="float: left; width: 8%;">所在地区:</span>
+					<ul style="float: left; width: 92%;">
+						<li>全部</li>
+						<li>天河</li>
+						<li>越秀</li>
+						<li>海珠</li>
+						<li>荔湾</li>
+						<li>白云</li>
+						<li>番禺</li>
+						<li>黄埔</li>
+					</ul>
+				</div>
+			</div>
+			<!--筛选结束-->
+			
+            <!--左和右-->
+            <div class="main-l-r">
+            	<!--左-->
+            	<div class="main-l">
+            		<!--列表-->
+					<div class="list-box">
+						<ul>
+							<li>
+								<div class="list-each">
+									<div class="list-xq-l">
+										<a href="company.html">
+											<div class="touxiang">
+												<img src="images/icon/logo_1.png"/>
+											</div>
+										</a>
+									</div>
+									
+									<div class="list-xq-m">
+										<p class="fsize18 title-list onehide">
+											<a href="need-detail.html">
+												【小米之家】高质量高转化高进量靠谱贷超乙方，寻靠谱甲方现金贷产品，转化说话
+											</a>
+										</p>
+										<p class="detail-each">
+											<span>行业：综合服务</span>
+											<span>公司地址：C轮</span>
+											<span>已沟通：<span class="nnb">100</span>人</span>
+										</p>
+										<p class="label-each">
+											<span>软件SaaS</span>
+											<span>移动开发</span>
+											<span>网站建设</span>
+											<span>软件开发</span>
+											<span>费用支持</span>
+											<span>资源置换</span>
+										</p>
+									</div>
+									<div class="list-xq-r">
+										<p>李先生 | CEO</p>
+										<p style="margin-top: 12px;">2018-01-01</p>
+										<p class="list-xq-r-p">已入驻</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="list-each">
+									<div class="list-xq-l">
+										<a href="company.html">
+											<div class="touxiang">
+												<img src="images/icon/logo_1.png"/>
+											</div>
+										</a>
+									</div>
+									
+									<div class="list-xq-m">
+										<p class="fsize18 title-list onehide">
+											<a href="need-detail.html">
+												【小米之家】高质量高转化高进量靠谱贷超乙方，寻靠谱甲方现金贷产品，转化说话
+												高质量高转化高进量靠谱贷超乙方，寻靠谱甲方现金贷产品，
+												高质量高转化高进量靠谱贷超乙方，寻靠谱甲方现金贷产品，
+											</a>
+										</p>
+										<p class="detail-each">
+											<span>行业：综合服务</span>
+											<span>公司地址：C轮</span>
+											<span>已沟通：<span class="nnb">100</span>人</span>
+										</p>
+										<p class="label-each">
+											<span>软件SaaS</span>
+											<span>移动开发</span>
+											<span>网站建设</span>
+											<span>软件开发</span>
+											<span>费用支持</span>
+											<span>资源置换</span>
+										</p>
+									</div>
+									<div class="list-xq-r">
+										<p>李先生 | CEO</p>
+										<p style="margin-top: 12px;">2018-01-01</p>
+										<p class="list-xq-r-p">已入驻</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="list-each">
+									<div class="list-xq-l">
+										<a href="company.html">
+											<div class="touxiang">
+												<img src="images/icon/logo_1.png"/>
+											</div>
+										</a>
+									</div>
+									
+									<div class="list-xq-m">
+										<p class="fsize18 title-list onehide">
+											<a href="need-detail.html">
+												【小米之家】高质量高转化高进量靠谱贷超乙方
+											</a>
+										</p>
+										<p class="detail-each">
+											<span>行业：综合服务</span>
+											<span>公司地址：C轮</span>
+											<span>已沟通：<span class="nnb">100</span>人</span>
+										</p>
+										<p class="label-each">
+											<span>软件SaaS</span>
+											<span>移动开发</span>
+											<span>网站建设</span>
+											<span>软件开发</span>
+											<span>费用支持</span>
+											<span>资源置换</span>
+										</p>
+									</div>
+									<div class="list-xq-r">
+										<p>李先生 | CEO</p>
+										<p style="margin-top: 12px;">2018-01-01</p>
+										<p class="list-xq-r-p">已入驻</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+            	</div>
+            	
+            	<!--右-->
+            	<div class="main-r">
+            		<div class="saoma-box">
+            			<img src="images/qrcode/qrcode.png" width="160px" height="160px"/>
+            			<p class="fsize18" style="text-align: center; margin-top: 8px;">扫码进入小程序</p>
+            		</div>
+            		<div class="img-box">
+            			<img src="images/banner/banner_3.jpg"/>
+            			<img src="images/banner/banner_3.jpg"/>
+            		</div>
+            	</div>
+            </div>
+		</main>
+		
+		<footer class="pc">
+	        <div style="width: 1200px; margin: 0 auto;">
+	           <div class="footer_title">广州乙租信息科技有限公司</div>
+	           <div class="footer_conter">
+	               <div class="footer_conter1">
+	                   <span>关于乙租</span>
+	                   <ul class="pad">
+	                       <li><a href="{:U('AboutUs/index')}?tag=1">联系我们</a></li>
+	                       <li><a href="{:U('AboutUs/index')}?tag=2">商务合作</a></li>
+	                        <!--<li><a href="{:U('AboutUs/index')}?tag=3">网站地图</a></li>-->
+	                        <li><a href="{:U('AboutUs/index')}?tag=3">常见问题</a></li>
+	                        <li><a href="{:U('AboutUs/index')}?tag=4">用户协议</a></li>
+	                        <li><a href="{:U('AboutUs/index')}?tag=5">隐私条款</a></li>
+	                   </ul>
+	               </div>
+	               <div class="footer_conter2">
+	                   <span>友情链接</span>
+	                   <ul class="pad">
+	                       <li><a href="{$vo.link_url}">今日头条</a></li>
+	                       <li><a href="{$vo.link_url}">知乎</a></li>
+	                       <li><a href="{$vo.link_url}">腾讯网</a></li>
+	                       <li><a href="{$vo.link_url}">搜狐</a></li>
+	                       <li><a href="{$vo.link_url}">UC头条</a></li>
+	                       <li><a href="{$vo.link_url}">网易</a></li>
+	                       <li><a href="{$vo.link_url}">新浪网</a></li>
+	                       <li><a href="{$vo.link_url}">南方财富网</a></li>
+	                   </ul>
+	               </div>
+	               <div class="footer_conter3">
+	                   <span>电话</span>
+	                   <h2 class="conter3_h2">400-886-6391</h2>
+	                   <span>地址</span>
+	                   <p style="color: rgba(255,255,255,.65);font-size: 14px;margin-bottom: 24px;">广州市白云大道北广贸商务中心C栋401</p>
+	                   <span>邮箱</span>
+	                   <p style="color:rgba(255,255,255,.65);font-size: 14px;">epassrent@163.com</p>
+	               </div>
+	               <div class="footer_conter4">
+	                    <span><img src="images/qrcode/qrcode_1.jpg"></span>
+	                    <span class="gzgzh">关注公众号</span>
+	               </div>
+	           </div>
+	        </div>
+	        <!-- 最底下 备案 -->
+	        <div class="foot_t_box">
+	            <div class="foot_t">
+	                <span>
+	                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011102002056">
+	                        <img src="images/GABA.png" />
+	                        粤公网安备 44011102002056号
+	                    </a>
+	                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                </span>
+	                <span>&nbsp;&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/"style="color:#fff">Copyright &#169 2017 广州乙租信息科技有限公司 粤ICP备18097655号</a></span>
+	            </div>
+	        </div>
+		</footer>
+	</body>
+	
+</html>

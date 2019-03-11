@@ -1,0 +1,25 @@
+body{
+	margin: 0;
+	padding:0; 
+}
+img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.bigbox{
+	position: relative;
+	display: block;
+}
+.thisbtn{
+	display:block;
+	position: absolute;
+	bottom: 50px;
+}
+.thisbtn{
+	padding: 0 20px;
+}
+.thisbtn img{
+	width: 100%;
+	height: 100%;
+}

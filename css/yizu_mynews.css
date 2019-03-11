@@ -1,0 +1,15 @@
+.text-center{background: #fff; height: 80px; line-height: 80px; width: 75rem; margin: 0 auto; color: rgba(0,0,0,0.85);}
+.my_news{width: 75rem; height: auto; background: #fff; padding-bottom: 3rem;}
+.my_news ul{text-decoration: none; padding-left: 0; margin-bottom: 0;}
+.my_news ul li{padding-left: 22px; padding-right: 22px;}
+.my_news ul li:hover{background: #F5F5F5;}
+.news_box{width: 100%; height: auto; padding-top: 1rem; padding-bottom: 5px; border-bottom: 2px solid rgba(0,0,0,0.04);}
+.explain{padding-right: 9rem; line-height: 25px;}
+.news_box p{color: rgba(0,0,0,0.65); margin-bottom: 5px;}
+.news_box p:first-child{height: 30px; line-height: 30px; color: rgba(0,0,0,0.85);}
+.new_title{padding-left: 30px; background: url(../images/icon/disport.png) 0px center no-repeat; background-size: 20px 20px;}
+.new_time{float: right; color: rgba(0,0,0,0.5);}
+
+/*为空*/
+.myNews_none{background: #fff; width: 62.5%; height: 98rem; margin: 0 auto; text-align: center; padding-top: 15%; display: none;}
+.myNews_none img{width: 200px; height: 186px; margin: 0;}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>登录</title>
+		<link rel="stylesheet" href="css/login.css" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_865677_3rv2t5n676a.css">
+		<link rel="stylesheet" href="css/verify.css" />
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script type="text/javascript" src="js/login.js" ></script>
+		<script type="text/javascript" src="js/verify.min.js" ></script>
+	</head>
+	
+	<body class="login_body">
+		<div style="position: fixed; left: 60px; top: 60px; z-index: 1;">
+			<img src="images/logo/crmLogo2.png"/>
+		</div>
+		
+		<div class="loginBox">
+			<p style="color: #198DFF; font-size: 24px; text-align: center; margin-bottom: 30px;">创客桥</p>
+			<p class="login_type_btn">
+				<span class="colorBlue">密码登录</span><span class="">短信登录</span>
+			</p>
+			<p class="slid_out"><span class="slid_in"></span></p>
+			
+			<!--密码登录-->
+			<form id="pwd_login" action="" method="post">
+				<div class="phoneinputBox">
+					<input type="number" class="telphone" placeholder="手机号"/>
+					<i class="iconfont icon-login_shouji"></i>
+				</div>
+				<div class="pwdinputBox">
+					<input type="password" class="pwd" placeholder="密码（至少6位）"/>
+					<i class="iconfont icon-shoujiyanzheng"></i>
+					<a href="" style="position: absolute; top: 14px; right: 12px; text-decoration: none; color: #198CFF; font-size: 14px;">忘记密码？</a>
+				</div>
+				<div id="checkPhone" data-status=""></div>
+				<p class="error_info"></p>
+				<span class="pwd_login_btn">登 录</span>
+				<input type="submit" value="" style="display: none;"/>
+			</form>
+			
+			<!--短信登录-->
+			<form id="sms_login" action="" method="post" style="display: none;">
+				<div class="phoneinputBox">
+					<input type="number" class="telphone" placeholder="手机号"/>
+					<i class="iconfont icon-login_shouji"></i>
+				</div>
+				<div id="checkSms" data-status=""></div>
+				<div class="smsinputBox">
+					<input type="password" class="yzm" placeholder="6位验证码"/>
+					<i class="iconfont icon-shoujiyanzheng"></i>
+					<span class="sendYZM">发送验证码</span>
+				</div>
+				<p class="error_info"></p>
+				<span class="sms_login_btn">登 录</span>
+				<input type="submit" value="" style="display: none;"/>
+			</form>
+			<p style="text-align: right; color: rgba(0,0,0,0.45); font-size: 14px;">没有账号？&nbsp;<a href="" style="text-decoration: none; color: #198DFF;">立即注册</a></p>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		$('#checkPhone').slideVerify({
+	        type : 1,		//类型
+	        vOffset : 5,	//误差量，根据需求自行调整
+	        barSize : {
+	            width : '100%',
+	            height : '40px',
+	        },
+	        ready : function() {
+	        },
+	        success : function() {
+	        	$('#checkPhone').attr('data-status','200');
+	        	errorInfo('pwd_login',2,'');
+	        },
+	        error : function() {
+	        }
+	
+	    });
+	    
+	    $('#checkSms').slideVerify({
+	        type : 1,		//类型
+	        vOffset : 5,	//误差量，根据需求自行调整
+	        barSize : {
+	            width : '100%',
+	            height : '40px',
+	        },
+	        ready : function() {
+	        },
+	        success : function() {
+	        	$('#checkSms').attr('data-status','200');
+	        	errorInfo('sms_login',2,'');
+	        },
+	        error : function() {
+	        }
+	
+	    });
+	</script>
+</html>

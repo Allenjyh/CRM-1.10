@@ -1,0 +1,295 @@
+/*main里面的内容开始*/
+main{
+	width: 1200px;
+	margin: 0 auto;
+}
+.main_content{
+	width: 100%;
+	display: flex;
+	justify-content:space-between;
+}
+/* 左边 */
+.main_content_l{
+	width: 73.33%;
+	background: #fff;
+    margin-top: 24px;
+}
+/*合作客户开始 */
+/* 消息头msg */
+.msg_head{
+	padding:24px;
+}
+.msg_head ul {
+	height:40px;
+	border-bottom: 2px #198CFFFF solid;
+	box-sizing: border-box;
+}
+.msg_head ul li{
+	float: left;
+	width:104px;
+	height:40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 14px;
+	color: rgba(0,0,0,.65);
+	cursor: pointer;
+}
+.msg_head ul li:hover{
+	color: #198CFF
+}
+.msg_head ul li.Active{
+	background:#198CFF;
+	color: #FFFFFF;
+}
+/* 第一盒子 */
+.main_content_l_1{
+	/* background: #fff; */
+	padding:24px 21px 12px 21px;;
+	position: relative;
+	height:70px;
+}
+.cont_img{
+	width: 60px;
+	height: 60px;
+	/* position: relative; */
+}
+.cont_img img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.cont_text{
+	position: absolute;
+	top: 25px;
+	left: 100px;
+	padding:2px 0;
+}
+.cont_text span{
+	font-size: 18px;
+	font-weight: 600;	
+}
+/* 关注按钮 */
+.cont_type{
+	display: inline-block;
+	position: absolute;
+    top: 64px;
+    left: 98px;
+}
+.cont_type li{
+	float: left;
+	width: 98px;
+	height: 28px;
+	text-align: center;
+	line-height: 28px;
+	border-radius: 2px;
+	margin-right: 20px;
+	color: #fff;
+	font-weight:400;
+	cursor: pointer;
+	background: linear-gradient(270deg,rgba(255,201,25,1) 0%,rgba(255,179,26,1) 100%);
+}
+.cont_type li a{
+	color: #fff;
+}
+
+.cont_type .cont_typelastli{
+	background-color: #A6A6A6;
+	background-image: none;
+}
+/* 第一盒子结束 */
+/* 第二盒子 */
+.main_content_l_2{
+	margin: 0 2.3%;
+	padding-bottom: 24px;
+	border-bottom: 1px #00000017 solid;
+
+}
+.main_content_l_2 li{
+	width: 33.3%;
+	float: left;
+	text-align: left;
+	margin-top: 12px;
+	color: rgba(0,0,0,.65);
+	/* font-size: 14px; */
+	padding:2px 0 ;
+}
+/*右边盒子开始*/
+.main_r{
+	width: 25%;
+	height: auto;
+    margin-top: 24px;
+}
+/* 第一个卡片 */
+.f_card{
+	margin-top: 24px;
+	width: 100%;
+	height:120px;
+	box-sizing: border-box;
+	background: #FFFFFF;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column; 
+	cursor: pointer;
+}
+.f_card ul li{
+	padding: 0 20px;
+	margin: 8px 0 ;
+	color:rgba(0,0,0,0.65);
+	line-height:24px; 
+	height: 24px;	
+}
+.f_card ul li:nth-child(1),.f_card ul li:nth-child(2){
+	margin-bottom: 16px ;
+}
+.f_card ul li:hover{
+	color: #1A8CFFFF;
+	/* cursor: pointer; */
+}
+.f_card_active{
+	border-left:2px solid rgba(26,140,255,1);
+	color: #1A8CFFFF!important;
+}
+.look_zome{
+	background: #22C5AA!important;
+}
+.look_pdf{
+	background:linear-gradient(135deg,rgba(255,171,171,1) 0%,rgba(255,115,115,1) 100%)!important;
+}
+/*右边盒子结束*/
+
+/*  发布信息开始*/
+.mycollect_list{
+    padding: 0 20px;	
+	margin-top: 0px!important;
+}
+.mycollect_list ul li{
+	height: 130px;
+	box-sizing: border-box;
+	margin-bottom: 0px!important;
+}
+.list-each{
+	height: 130px;
+}
+.list-xq-r,.list-info-r {
+    padding-right: 8px!important;
+}
+.detail-each>span {
+    margin-right: 50px!important;
+}
+/* 通知-系统通知开始 */
+/* 标题 */
+.topUrl {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 12px 0 0 0!important;
+}
+.main_content_l {
+    margin-top: 12px;
+}
+.block45 {
+    color: rgba(0,0,0,0.45);
+}
+/* 标题结束 */
+/* 系统通知null */
+.msg_null img{
+height: 229px;
+   margin-top: 84px;
+}
+.msg_null{
+	 text-align: center;
+}
+.main_r {
+    margin-top: 12px;
+}
+.list-info-l{
+	width: 8%;
+}
+.list-info-m{
+	width:74.5%;
+	padding-top: 20px;
+	font-weight:400;
+}
+.list-info-m .detail-each span{
+    font-weight:400;
+	height:20px;
+	line-height:20px;
+	padding-left: 3px;
+}
+.list-info-m .detail-each{
+   width:118%;
+   /* color: rgba(0,0,0,0.45)!important; */
+}
+/* .list-info-m .detail-each p{
+	display: block;
+	color: rgba(0,0,0,0.45)!important; 
+ }*/
+.list-info-r{
+	width:15.5%;
+	margin-top: 25px;
+	font-weight:400;
+	height:20px;
+	line-height:20px;
+	color: rgba(0,0,0,0.65);
+}
+/* 通知-系统通知结束 */
+/* 弹框消息开始 */
+.popout_msg{
+   position:fixed;
+   top: 159px;
+   right: 2px;
+   width:340px;
+}
+.popout_msg ul li{
+	width: 100%;	
+	height:120px;
+	background:rgba(255,255,255,1);
+	box-shadow:0px 2px 8px 0px rgba(0,0,0,0.2);
+	margin-bottom: 24px;
+	padding-left: 16px;
+	position: relative;
+	/* display: none; */
+}
+.popout_msg ul li .title_msg{
+	padding-top: 16px ; 
+	height:20px;
+	font-weight:400;
+	color:rgba(26,140,255,1);
+	line-height:20px;
+	margin-bottom: 15px;
+}
+.thisclose {
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	top: 12%;
+	right: 9%;
+}
+.thisclose img {
+	width: 100%;
+	height: 100%;
+}
+.popout_msg ul li .detail_msg{
+	display: block;
+	font-size:12px;
+	font-weight:400;
+	color:rgba(0,0,0,0.45);
+	line-height:20px;
+	width: 87%;
+}
+/* 消息右侧滑动进入 */
+@keyframes bounceInRight {
+	from, 60%, 75%, 90%, to {animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);}
+	0% {opacity: 0;transform: translate3d(3000px, 0, 0);}
+	60% {opacity: 1;transform: translate3d(-25px, 0, 0);}
+	75% {transform: translate3d(10px, 0, 0);}
+	90% {transform: translate3d(-5px, 0, 0);}
+	100% {opacity: 1;transform: none;}
+}
+.popout_msg ul li{
+	/* left: 50%; */
+	opacity: 0;
+}
+.popout_msg ul .popout_msg_active {
+	animation: bounceInRight 1.9s 0.55s linear forwards;
+}
+/* 弹框消息结束 */

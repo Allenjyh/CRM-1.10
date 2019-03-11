@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/crm_style.css">
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="css/bootpage.css">
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/bootpage.js"></script>
+	<!-- 新增clamp.js -->
+	<script type="text/javascript" src="js/clamp.js" ></script>
+	<script type="text/javascript" src="js/crm-style.js" ></script>
+</head>
+<!-- 三个步骤分成了三个页面 跳转流程：bootpage.html => bootpage_2.html => bootpage_1.html -->
+<body style="background: rgba(0,0,0,.04)">
+	<header>
+			<!--蒙层-->
+			<div class="temp"></div>
+			
+			<div class="header-1">
+				<div class="header-1-ct">
+					<div class="header-1-l" style="display: flex;">
+						<!--<i class="iconfont icon-weizhi" style="font-size: 14px;"></i>
+						<span>广州</span>
+						-->
+						
+						<ul class="user_inform clear">
+							<li><a href="">我的信息</a><i>56</i></li>
+							<li><a href="">系统通知</a><i>1</i></li>
+							<li><a href="">账号设置</a><i>99+</i></li>
+							<li><a href="about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<!--未登录-->
+					<div class="header-1-r">
+						<a href="index.html">登录</a>
+						<i class="block45"> |</i>
+						<a href="login.html">注册</a>
+					</div>
+					<!--已登录-->
+					<div class="logged" style="position: relative; cursor: pointer;">
+						<div style="display: flex;">
+							<p class="hours">
+								<span>早上好，</span>
+								<span>中午好，</span>
+								<span>下午好，</span>
+								<span>晚上好，</span>
+								李先生
+							</p>
+							<img src="images/logo/qiyeLogo.png" width="20px" height="20px" style="margin: 0 5px; position: relative; top: 8px;"/>
+							<i class="iconfont icon-Group-" style="color: #979797;"></i>
+						</div>
+						
+						<div class="isLogin" style="display: none;">
+							<div class="head-img">
+								<img src="images/icon/logo_1.png"/>
+							</div>
+							<p class="hours1" style="text-align: center;">
+								<span>早上好</span>
+								<span>中午好</span>
+								<span>下午好</span>
+								<span>晚上好</span>
+								&nbsp;&nbsp;李先生
+							</p>
+							
+							<div class="approve">
+								<a href="" style="display: block; width: 78px; height: 24px; color: #fff; background: #FFB31A; margin: 0 auto; border-radius: 2px;">点击认证</a>
+								<img src="images/logo/qiyeLogo.png"/><img src="images/logo/wuyeLogo.png"/>
+								<span style="color: rgba(0,0,0,0.45);">企业认证</span>
+							</div>
+							<!--<p class="isJoin" style="text-align: center;">
+								<img src="images/icon/logo_1.png"/>
+								已入驻平台
+							</p>-->
+							
+							<div style="display: flex; margin-top: 20px; justify-content: space-around;">
+								<div class="post-xq">
+									<p class="fsize32 nnb" style="color: #FFB31A;">23</p>
+									<p class="block45">我的需求</p>
+								</div>
+								<div class="myFocus">
+									<p class="fsize32 nnb" style="color: #FFB31A;">49</p>
+									<p class="block45">我的关注</p>
+								</div>
+								<div class="myCollect">
+									<p class="fsize32 nnb" style="color: #FFB31A;">49</p>
+									<p class="block45">我的收藏</p>
+								</div>
+							</div>
+							<a href="" class="grzx-href">个人中心</a>
+							<!--公告-->
+							<!--<div class="affiche-index">
+								<div class="swiper-container affiche-content">
+				                    <ul class="swiper-wrapper">
+				                        <li class="swiper-slide"><a href="">这里是公告内容这里是公告内容这里是公告内容</a></li>
+				                    </ul>
+				                </div>
+							</div>-->
+							
+							<div class="acc_operation">
+								<!--<a href="">切换账号</a><i style="margin: 0 20px;">|</i>-->
+								<a href="">退出登录</a>
+							</div>
+						</div>
+					</div>
+					<!--已登录结束-->
+					
+				</div>
+			</div>
+			
+			<div class="header-2">
+				<div class="header-2-ct">
+					<div class="header-2-l">
+						<div style="float: left; height: 100%; overflow: hidden; padding-top: 10px;">
+							<img src="images/logo/crmLogo.png" />
+						</div>
+						<ul style="float: left; margin-left: 50px;">
+							<li class="active"><a href="">首页</a></li>
+							<li><a href="need-off.html">需求大厅</a></li>
+							<li><a href="need-off.html">提供大厅</a></li>
+							<li><a href="company_property.html">物业社区</a></li>
+							<li><a href="need-off.html">放声社区</a></li>
+						</ul>
+					</div>
+					
+					<div class="header-2-r">
+						<div class="select_box">
+							<div class="select_bt" style="padding: 0 8px; cursor: pointer;">
+								<span class="select_cont">需求</span>
+								<i class="iconfont icon-xiala"></i>
+							</div>
+							<i style="display: inline-block; height: 22px; width: 1px; background: rgba(0,0,0,0.35); position: absolute; right: 0; top: 10px;"></i>
+							<ul class="select_info">
+								<li>需求</li>
+								<li>提供</li>
+							</ul>
+						</div>
+						<input type="" name="" id="" value="" placeholder="请输入商圈、名称、区域" />
+						<span class="sousuo"><i class="iconfont icon-fangdajing" style="font-size: 30px;"></i></span>
+						<button class="fabu-bt">发布需求</button>
+					</div>
+				</div>
+			</div>
+			
+			<!--/*右边固定导航栏*/-->
+			<div class="right_box">
+			    <ul class="right_icon">
+			        <li class="clickKF">
+			            <p><img src="images/icon/custom.png"></p>
+			            <p class="fsize18">客服</p>
+			        </li>
+			        <li class="clickSM">
+			        	<img class="tishiyu" style="position: absolute;top:80px;right:100%;z-index: 999999;" src="images/gugao/tishiyu.png"/>
+			            <img class="thisSM" style="display: none;position: absolute;top:80px;left:-120px;z-index: 999999;" src="images/qrcode/qrcode.png">
+			            <p><img src="images/icon/scan.png"></p>
+			            <p class="fsize18">扫码</p>
+			        </li>
+			        <li class="fankui">
+			            <p><img src="images/icon/feedback.png"></p>
+			            <p class="fsize18">反馈</p>
+			        </li>
+			        <li class="gototop" title="回到顶部">
+			            <p><img src="images/icon/arrow_top.png"></p>
+			        </li>
+			    </ul>
+			</div>
+	</header>
+	<main>
+		<p class="toptitle">需求大厅 > 资料填写</p>
+		<div class="bigboxpage">
+			<div class="boxpage2">
+				<!-- 身份认证 -->
+				<div class="fbox_3">
+					<span class="fbox_span">法人身份认证</span>
+					<div class="fbox_div clear">
+						<!-- 身份证正面 -->
+						<div class="SFZzm">
+							<span><i class="redStars">* </i>上传身份证正面</span>
+							<ul class="clear">
+								<input class="filesfz1" type="file" accept="image/*" name="" style="display: none;position: absolute;top: -9999px;">
+								<textarea class="sfzbase1" style="display: none;position: absolute;top: -9999px;"></textarea>
+								<li><img class="shangchuan1" src="images/icon/Group1.png"></li>
+								<li><img src="images/icon/ID_positive1.png"></li>
+							</ul>
+							<p>最大文件不超过2Mb，只支持.jpg .png 格式。</p>
+						</div>
+						<!-- 身份证反面 -->
+						<div class="SFZfm">
+							<span><i class="redStars">* </i>上传身份证反面</span>
+							<ul class="clear">
+								<input class="filesfz2" type="file" accept="image/*" name="" style="display: none;position: absolute;top: -9999px;">
+								<textarea class="sfzbase2" style="display: none;position: absolute;top: -9999px;"></textarea>
+								<li><img class="shangchuan2" src="images/icon/Group1.png"></li>
+								<li><img src="images/icon/ID_opposite1.png"></li>
+							</ul>
+							<p>最大文件不超过2Mb，只支持.jpg .png 格式。</p>
+						</div>
+					</div>
+				</div>
+				<!-- 后添加新盒子  base64格式的图片在textarea里面-->
+				<div class="fbox_4">
+					<span class="fbox_span">企业认证</span>
+					<div class="fbox_4_box">
+						<span><i class="redStars">* </i>上传营业执照</span>
+    					<ul class="clear">
+							<input class="filesfz3" type="file" accept="image/*" name="" style="display: none;position: absolute;top: -9999px;">
+							<textarea class="sfzbase3" style="display: none;position: absolute;top: -9999px;"></textarea>
+							<li><img class="shangchuan3" src="images/icon/Group2.png"></li>
+							<li><img src="images/icon/ID_license.png"></li>
+						</ul>
+						<p>最大文件不超过2Mb，只支持.jpg .png 格式。</p>
+					</div>
+				</div>
+				<div class="fbox_3_txt"><i class="redStars">* </i>公司全称</div>
+				<input class="fbox_3_int" type="text" name="" placeholder="不需要填写，上传证件后显示">
+			</div>
+			<div class="boxpage3">
+				<form>
+					<div class="fbox_1">
+    					<span class="fbox_span">基本信息</span>
+    					<div class="fbox_div">
+    						<span class="fbox_div_text1"><i class="redStars">* </i>公司LOGO</span>
+    						<div class="layui-upload">
+			                    <button type="button" class="layui-btn" id="test1" style="display:none">上传图片</button>
+			                    <div class="layui-upload-list">
+			                        <img class="layui-upload-img" id="demo1" style="border: 2px dashed rgba(0,0,0,.15);width:130px;height: 104px;"
+			                             src="images/icon/Group.png">
+			                        <p id="demoText"></p>
+			                        <textarea class="slt" style="display:none;" name="fengmian_img" id="fengmian_img"></textarea>
+			                    </div>
+			                </div>
+			                <span class="fbox_div_text2">最大文件不超过2Mb，只支持.jpg .png 格式。</span>
+			                <ul class="fbox_1_ul clear">
+			                	<li>
+			                		<p><i class="redStars">* </i>公司属性</p>
+									<select id="volvo1">
+			                			<option value="国有企业">国有企业</option>
+										<option value="集体企业">集体企业</option>
+										<option value="联营企业">联营企业</option>
+										<option value="股份合作制">股份合作制</option>
+										<option value="个体户">个体户</option>
+										<option value="中外合作企业">中外合作企业</option>
+										<option value="中外合资企业">中外合资企业</option>
+										<option value="外商独资企业">外商独资企业</option>
+										<option value="私营企业">私营企业</option>
+										<option value="其他企业">其他企业</option>
+			                		</select>
+			                	</li>
+			                	<li>
+			                		<p><i class="redStars">* </i>公司规模</p>
+			                		<select id="volvo2">
+			                			<option value="不限">不限</option>
+			                			<option value="0-20人">0-20人</option>
+			                			<option value="20-99人">20-99人</option>
+			                			<option value="100-499人">100-499人</option>
+										<option value="500-999人">500-999人</option>
+			                			<option value="1000-9999人">1000-9999人</option>
+			                			<option value="10000人以上">10000人以上</option>
+			                		</select>
+			                	</li>
+			                	<li>
+			                		<p><i class="redStars">* </i>所在区域</p>
+			                		<select>
+			                			<option value="volvo1">Volvo1</option>
+			                			<option value="volvo2">Volvo2</option>
+			                			<option value="volvo3">Volvo3</option>
+			                			<option value="volvo4">Volvo4</option>
+			                		</select>
+			                	</li>
+			                	<li>
+			                		<p><i class="redStars">* </i>所在行业</p>
+			                		<select>
+			                			<option value="volvo1">Volvo1</option>
+			                			<option value="volvo2">Volvo2</option>
+			                			<option value="volvo3">Volvo3</option>
+			                			<option value="volvo4">Volvo4</option>
+			                		</select>
+			                	</li>
+			                </ul>
+			                <p class="fbox_div_text3"><i class="redStars">* </i>公司简称</p>
+			                <input class="property_text" type="text" name="" maxlength="10" placeholder="建议在四个字内，创建后不可修改">
+			                <span class="styleradio">
+			                	<input type="radio" name="thsitype" value="enterprise" checked><i class="clikradio">园区企业</i>
+								<input type="radio" name="thsitype" value="property"><i>园区物业</i>
+							</span>
+    					</div>
+    					<span class="nextpage3">完成</span><span class="skip3">跳过</span>
+    				</div>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+<script type="text/javascript" src="js/layui.js"></script>
+<script type="text/javascript">
+    
+    layui.use('upload', function () {
+        var $ = layui.jquery, upload = layui.upload;
+
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            , url: '{:U("Release/upload_pic1/")}'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                    $('#demo1').css({'border': '1px solid rgba(0,0,0,.25)'});
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                $(".slt").html(res['k']);
+                // alert(res['k']);
+                if (res.code > 0) {
+                    return layer.msg(res);
+                }
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span>');
+            }
+        });
+    });
+
+</script>
+<!-- <script type="text/javascript">
+	$(function(){
+		$('.miniul').hide();
+		$('.tips').hide();
+		//当输入时miniul显示
+		$('.yuanqubtn').click(function(){
+			$('.miniul').show();
+			var yuanqutext = $('.yuanqu').val();
+			$.ajax({
+				url: '',
+				type: 'POST',
+				dataType: 'json',
+				data: {param1: yuanqutext},
+			})
+			.done(function() {//正确
+				textcolor();
+			})
+			.fail(function() {//错误
+				
+			})
+			.always(function() {//对错都有返回结果
+				
+			});
+		})
+		function textcolor(){
+			// 搜索结果变色
+			let tijiao = $('.yuanqu').val();
+			let thisli = $('.miniul li').length;
+			for(let a = 0;a<thisli;a++){
+				var thistext = $('.miniul li:eq('+a+')').text();
+				var newtext = thistext.split(tijiao);
+				var alsdkfj =  newtext.join('<i style="color:#198cff;">'+tijiao+'</i>');
+				$('.miniul li:eq('+a+')').html(alsdkfj);
+			}
+		}
+		//点击li把值传到输入框内
+		$('.miniul').on('click','li',function(){
+			let i = $(this).text();
+			$('.yuanqu').val(i);
+			$('.miniul').hide();
+		})
+		//没有可选园区点击之后
+		$('.miniulspan').click(function(){
+			$('.yuanqu').val('');
+			$('.miniul').hide();
+			$('.tips').show();
+			$('.yuanqu').attr("disabled","disabled");//禁用输入框
+			$('.yuanqu').attr("placeholder","没有所属的园区");
+		})
+		$('.tips').click(function(){
+			$('.tips').hide();
+			$('.yuanqu').removeAttr("disabled");
+		})
+	})
+</script> -->
+<script type="text/javascript">
+	// $(function(){
+	// 	var Selection = '';
+	// 	$('.nextpage3').click(function(){
+	//     	let i = $('.slt').val().length;
+	//     	let j = $('.property_text').val().length;
+	//     	// if(i == 0 || j == 0){
+	//     	// 	return false;
+	//     	// }else if(i != 0 && j != 0){
+	//     	// 	return true;
+	//     		$('.boxpage1').hide();
+	//     		$('.boxpage2').hide();
+	//             $('.boxpage3').hide();
+	//             $('.boxpage4').show();
+	//     	// }
+	//     })
+	// 	$('.zomes-box').on('click','.zome',function(){
+	// 		var ii = $(this).index();
+	// 		Selection = $('.zomes-box .zome').eq(ii).attr('id');
+	// 		$('.zome').css({'border':'1px solid rgba(0,0,0,.09)'});
+	// 		$(this).css({'border':'1px solid #198cff'});
+	// 	})
+
+	// 	$('.nextpage4').click(function(){
+	// 		if(Selection == '' && $('.beizu').val() == ''){
+	// 			if(Selection == ''){
+	// 				$('.datap7').show();
+	// 				$('.datap7').text('请选择园区')
+	// 			}
+	// 		}else{
+	// 			$('.datap7').hide();$('.datap8').hide();
+	// 		}
+	// 	})
+	// })
+</script>
+</html>

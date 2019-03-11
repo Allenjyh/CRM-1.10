@@ -1,0 +1,204 @@
+.main_personal{
+	width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	padding: 40px 0;
+	padding-top: 10px;
+}
+.topUrl{
+	width: 1200px; margin: 0 auto; padding-top: 10px;
+}
+.topUrl a{
+	color: rgba(0,0,0,0.45);
+}
+.topUrl a:hover{
+	color: #198CFF;
+}
+
+
+/*左*/
+.main_l{
+	box-sizing: border-box;
+	width: 880px;
+	height: auto;
+	background: #fff;
+	padding: 24px 20px;
+}
+.shxq_title,.fbxq_title{
+	position: relative;
+}
+.shxq_title:after,.fbxq_title:after{
+	width: 40px;
+	height: 2px;
+    content: '';
+    background: #198CFF;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+}
+
+/*发布需求*/
+.content_3_ul{
+	width: 860px;
+	margin-top: 30px;
+}
+.content_3_ul li{
+	width: 266px;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 24px;
+}
+.content_3_li{
+	height: 85px;
+	padding: 20px 12px;
+	border: 1px solid rgba(0,0,0,.09);
+}
+.content_3_li p{
+	height: 45px;
+	overflow:hidden;
+	position: relative; 
+	font-size: 16px;
+	color: rgba(0,0,0,.85);
+}
+.title{
+	line-height: 24px;
+}
+.li_mintext{
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	margin-top: 15px;
+}
+.li_mintext li{
+	margin: 0;
+	float: left;
+	width: 68px;
+	height: 22px;
+	padding: 0 2px;
+	text-align: center;
+	line-height: 22px;
+	background: rgb(242,242,242);
+	color: rgba(0,0,0,.25);
+	font-size: 12px;
+	margin-right: 8px;
+	overflow: hidden;
+	white-space:nowrap;/*不显示的地方用省略号...代替*/
+	text-overflow:ellipsis;/* 支持 IE */
+    -o-text-overflow: ellipsis;    /* 支持 Opera */
+}
+.zome-logo-xq{
+	visibility: hidden;
+	padding: 0px 4px; 
+	color: #fff; 
+	background:linear-gradient(270deg,rgba(255,201,25,1) 0%,rgba(255,179,26,1) 100%);
+	border-radius:2px;
+}
+
+.content_3_ul li,.content_3_li > a > p{transition: all 0.8s;}
+.content_3_ul li:hover .content_3_li > a > p{color: #198CFF;}
+.content_3_ul li .content_3_li ul li:nth-of-type(1){background: #FFF7E6; color: #FFB319;}
+.content_3_ul li .content_3_li ul li:nth-of-type(2){background: #FFEEEB; color: #FF8066;}
+.content_3_ul li .content_3_li ul li:nth-of-type(3){background:rgba(25,140,255,0.2); color: #4CA6FF;}
+
+.shou_more{
+	width: 100%;
+	height: 25PX;
+	line-height: 25PX;
+	text-align: center;
+}
+.shou_more a{
+	width: 56px;
+	height: 20px;
+	display: inline-block;
+	color: rgba(0,0,0,.45);
+}
+.shou_more a:hover{
+	color: #198CFF;
+}
+/*发布需求结束*/
+
+
+/*右*/
+.main_r{
+	width: 300px;
+	height: auto;
+}
+
+/*个人信息*/
+.per_info{
+	position: relative;
+	overflow: hidden;
+	background: #fff;
+	padding-bottom: 40px;
+}
+.compile{
+	position: absolute;
+	right: 12px;
+	top: 12px;
+}
+.compile:hover{
+	color: #198CFF;
+}
+.head-img{
+	width: 60px;
+	height: 60px;
+	margin: 24px auto 12px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.head-img img{
+	width: 100%;
+	height: 100%;
+}
+.approve{
+	margin-top: 8px;
+	box-sizing: border-box;
+	text-align: center;
+	height: 24px;
+	line-height: 24px;
+}
+.approve img{
+	width: 20px;
+	height: 18px;
+	position: relative;
+	top: 3px;
+}
+.post-xq,.myCollect,.myFocus{
+	text-align: center;
+}
+
+
+/*公司或园区名片*/
+.card{
+	margin-top: 24px;
+	width: 100%;
+	height: 168px;
+	box-sizing: border-box;
+	background: #fff;
+	padding: 24px 20px;
+	
+}
+.card img{
+	width: 60px;
+	height: 60px;
+}
+
+.look_company,.look_zome{
+	display: inline-block;
+	width: 100%;
+	height: 36px;
+	color: #fff;
+	margin-top: 24px;
+	line-height: 36px;
+	text-align: center;
+}
+.look_company:hover,.look_zome:hover{
+	color: #fff;
+}
+.look_company{
+	background: #198CFF;
+}
+.look_zome{
+	background: #FFB31A;
+}

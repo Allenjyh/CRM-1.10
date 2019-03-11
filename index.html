@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="css/crm_style.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" href="css/swiper-4.3.3.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script type="text/javascript" src="js/index.js" ></script>
+		<script type="text/javascript" src="js/swiper-4.3.3.min.js" ></script>
+		<script type="text/javascript" src="js/clamp.js" ></script>
+		<script type="text/javascript" src="js/crm-style.js" ></script>
+	</head>
+	
+	
+	<body style="background: #F5F7FA;">
+		<header>
+			<!--蒙层-->
+			<div class="temp"></div>
+			<!-- 消息确认弹框 -->
+		    <div class="newsconfirmbox">
+		        <p class="newsconfirmp1 clear">
+		            <span class="newsconfirmtext"><!-- 请出园区 --></span>
+		            <span class="iconfont icon-cuo1 newsconfirmicon"></span>
+		        </p>
+		        <p class="newsconfirmp2"><!-- 此操作无法恢复，是否继续？ --></p>
+		        <p class="newsconfirmp3 clear">
+		            <span class="newsconfirmbtnquxiao">取消</span>
+		            <span class="newsconfirmbtnqding">确定</span>
+		        </p>
+		    </div>
+		    <!-- notice 通知 -->
+		    <div class="noticebigbox"></div>
+		    <!-- tipsPopup 1 -->
+		    <div class="tipsPopupbigbox"></div>
+
+			<div class="header-1">
+				<div class="header-1-ct">
+					<div class="header-1-l" style="display: flex;">
+						<!--<i class="iconfont icon-weizhi" style="font-size: 14px;"></i>
+						<span>广州</span>
+						-->
+						
+						<ul class="user_inform clear">
+							<li><a href="">我的信息</a><i>56</i></li>
+							<li><a href="">系统通知</a><i>1</i></li>
+							<li><a href="">账号设置</a><i>99+</i></li>
+							<li><a href="about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<!--未登录-->
+					<div class="header-1-r">
+						<a href="index.html">登录</a>
+						<i class="block45"> |</i>
+						<a href="login.html">注册</a>
+					</div>
+					<!--已登录-->
+					<div class="logged" style="position: relative; cursor: pointer;">
+						<div style="display: flex;">
+							<p class="hours">
+								<span>早上好，</span>
+								<span>中午好，</span>
+								<span>下午好，</span>
+								<span>晚上好，</span>
+								李先生
+							</p>
+							<img src="images/logo/qiyeLogo.png" width="20px" height="20px" style="margin: 0 5px; position: relative; top: 8px;"/>
+							<i class="iconfont icon-Group-" style="color: #979797;"></i>
+						</div>
+						
+						<div class="isLogin" style="display: none;">
+							<div class="head-img">
+								<img src="images/icon/logo_1.png"/>
+							</div>
+							<p class="hours1" style="text-align: center;">
+								<span>早上好</span>
+								<span>中午好</span>
+								<span>下午好</span>
+								<span>晚上好</span>
+								&nbsp;&nbsp;李先生
+							</p>
+							
+							<div class="approve">
+								<a href="" style="display: block; width: 78px; height: 24px; color: #fff; background: #FFB31A; margin: 0 auto; border-radius: 2px;">点击认证</a>
+								<img src="images/logo/qiyeLogo.png"/><img src="images/logo/wuyeLogo.png"/>
+								<span style="color: rgba(0,0,0,0.45);">企业认证</span>
+							</div>
+							<!--<p class="isJoin" style="text-align: center;">
+								<img src="images/icon/logo_1.png"/>
+								已入驻平台
+							</p>-->
+							
+							<div style="display: flex; margin-top: 20px; justify-content: space-around;">
+								<div class="post-xq">
+									<p class="fsize32 nnb" style="color: #FFB31A;">23</p>
+									<p class="block45">我的需求</p>
+								</div>
+								<div class="myFocus">
+									<p class="fsize32 nnb" style="color: #FFB31A;">49</p>
+									<p class="block45">我的关注</p>
+								</div>
+								<div class="myCollect">
+									<p class="fsize32 nnb" style="color: #FFB31A;">49</p>
+									<p class="block45">我的收藏</p>
+								</div>
+							</div>
+							<a href="" class="grzx-href">个人中心</a>
+							<!--公告-->
+							<!--<div class="affiche-index">
+								<div class="swiper-container affiche-content">
+				                    <ul class="swiper-wrapper">
+				                        <li class="swiper-slide"><a href="">这里是公告内容这里是公告内容这里是公告内容</a></li>
+				                    </ul>
+				                </div>
+							</div>-->
+							
+							<div class="acc_operation">
+								<!--<a href="">切换账号</a><i style="margin: 0 20px;">|</i>-->
+								<a href="">退出登录</a>
+							</div>
+						</div>
+					</div>
+					<!--已登录结束-->
+					
+				</div>
+			</div>
+			
+			<div class="header-2">
+				<div class="header-2-ct">
+					<div class="header-2-l">
+						<div style="float: left; height: 100%; overflow: hidden; padding-top: 10px;">
+							<img src="images/logo/crmLogo.png" />
+						</div>
+						<ul style="float: left; margin-left: 50px;">
+							<li class="active"><a href="">首页</a></li>
+							<li><a href="need-off.html">需求大厅</a></li>
+							<li><a href="need-off.html">提供大厅</a></li>
+							<li><a href="company_property.html">物业社区</a></li>
+							<li><a href="need-off.html">放声社区</a></li>
+						</ul>
+					</div>
+					
+					<div class="header-2-r">
+						<div class="select_box">
+							<div class="select_bt" style="padding: 0 8px; cursor: pointer;">
+								<span class="select_cont">需求</span>
+								<i class="iconfont icon-xiala"></i>
+							</div>
+							<i style="display: inline-block; height: 22px; width: 1px; background: rgba(0,0,0,0.35); position: absolute; right: 0; top: 10px;"></i>
+							<ul class="select_info">
+								<li>需求</li>
+								<li>提供</li>
+							</ul>
+						</div>
+						<input type="" name="" id="" value="" placeholder="请输入商圈、名称、区域" />
+						<span class="sousuo"><i class="iconfont icon-fangdajing" style="font-size: 30px;"></i></span>
+						<button class="fabu-bt">发布需求</button>
+					</div>
+				</div>
+			</div>
+			
+			<!--/*右边固定导航栏*/-->
+			<div class="right_box">
+			    <ul class="right_icon">
+			        <li class="clickKF">
+			            <p><img src="images/icon/custom.png"></p>
+			            <p class="fsize18">客服</p>
+			        </li>
+			        <li class="clickSM">
+			        	<img class="tishiyu" style="position: absolute;top:80px;right:100%;z-index: 999999;" src="images/gugao/tishiyu.png"/>
+			            <img class="thisSM" style="display: none;position: absolute;top:80px;left:-120px;z-index: 999999;" src="images/qrcode/qrcode.png">
+			            <p><img src="images/icon/scan.png"></p>
+			            <p class="fsize18">扫码</p>
+			        </li>
+			        <li class="fankui">
+			            <p><img src="images/icon/feedback.png"></p>
+			            <p class="fsize18">反馈</p>
+			        </li>
+			        <li class="gototop" title="回到顶部">
+			            <p><img src="images/icon/arrow_top.png"></p>
+			        </li>
+			    </ul>
+			</div>
+		</header>
+		
+		<main class="main-index">
+			<!--选择账号-->
+			<div class="sele_user">
+				<p class="fsize18">请选择一个账号</p>
+				<ul>
+					<li>小猪佩奇</li>
+					<li>小奇佩猪</li>
+					<li>小猪猪</li>
+				</ul>
+				<span class="sele_user_ok">确定</span>
+			</div>
+			
+			<!--中部的头部-->
+			<div class="main-top-index">
+				<!--左-->
+				<div class="main-top-l-index">
+					<div class="hangye-biaoti-box">
+						<ul class="hangye-biaoti">
+							<li>互联网IT <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>金融 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>房地产/建筑 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>贸易/零售/物流 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>教育/传媒/广告 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>服务业 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>市场/销售 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>人事/财务/行政 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>房地产/建筑 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>贸易/零售/物流 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>教育/传媒/广告 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+						
+						<!--全部行业-->
+						<ul class="hy-all">
+							<li>互联网IT <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>金融 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>房地产/建筑 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>贸易/零售/物流 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>教育/传媒/广告 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>服务业 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>市场/销售 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li><li>餐饮业</li><li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+							<li>人事/财务/行政 <i class="iconfont icon-xiayiyeqianjinchakangengduo-copy"></i>
+								<div class="hy-menu">
+									<ul class="clear">
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+										<li>餐饮业</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<span class="showAll">显示全部分类</span>
+				</div>
+				<!--中（轮播）-->
+				<div class="main-top-m-index">
+					<div class="swiper-container main-top-lunbo">
+						<div class="swiper-wrapper">
+		                    <div class="swiper-slide">
+		                        <a href=""><img src="images/about/about_yz1.png"/></a>
+		                    </div>
+		                    <div class="swiper-slide">
+		                        <a href=""><img src="images/about/about_yz2.png"/></a>
+		                    </div>
+		                    <div class="swiper-slide">
+		                        <a href=""><img src="images/about/swhz1.png"/></a>
+		                    </div>
+						</div>
+						<!--轮播小圆点-->
+				        <div class="swiper-pagination">
+				            &nbsp;
+				        </div>
+								
+						<div class="swiper-button-prev hide">
+							&nbsp;
+						</div>
+						<div class="swiper-button-next hide">
+							&nbsp;
+						</div>
+		          </div>
+				</div>
+			</div>
+			
+			<!--需求大厅-->
+			<div class="xqdt">
+				<p class="fsize24 title-xqdt">
+					需求大厅
+					<span style="position: absolute; right: 0; bottom: 0;">
+						<a href="" style="color: rgba(0,0,0,0.45);">查看更多</a>
+					</span>
+				</p>
+				<!--列表-->
+				<div class="list-box">
+					<ul>
+						<li>
+							<div class="list-each">
+								<div class="list-xq-l">
+									<a href="company.html">
+										<div class="touxiang">
+											<img src="images/icon/logo_1.png"/>
+										</div>
+									</a>
+								</div>
+								
+								<div class="list-xq-m">
+									<p class="fsize18 title-list onehide">
+										<a href="need-detail.html">
+										【小米之家】高质量高转化高进量靠谱贷超乙方，寻靠谱甲方现金贷产品，转化说话 
+										</a>
+									</p>
+									<p class="detail-each">
+										<span>服务区域：白云区</span>
+										<span>浏览量：<span class="nnb">100</span></span>
+										<span>已沟通：<span class="nnb">100</span></span>
+									</p>
+									<p class="label-each">
+										<span>软件SaaS</span>
+										<span>移动开发</span>
+										<span>网站建设</span>
+										<span>软件开发</span>
+										<span>费用支持</span>
+										<span>资源置换</span>
+									</p>
+								</div>
+								<div class="list-xq-r">
+									<p>李先生 | CEO</p>
+									<p style="margin-top: 12px;">2018-01-01</p>
+									<!--<p class="yrzLogo"><span>已入驻</span></p>-->
+								</div>
+							</div>
+						</li>
+						<li>
+							<a href="">
+								<div class="list-each">
+									<div class="list-xq-l">
+										<a href="company.html">
+											<div class="touxiang">
+												<img src="images/icon/logo_1.png"/>
+											</div>
+										</a>
+									</div>
+									
+									<div class="list-xq-m">
+										<p class="fsize18 title-list onehide">
+											<a href="need-detail.html">
+											【小米之家】高质量高转化高进量靠谱贷超乙方，寻靠谱甲方现金贷产品，转化说话  
+											【小米之家】高质量高转化高进量靠谱贷超乙方，寻靠谱甲方现金贷产品，转化说话  
+											【小米之家】高质量高转化高进量靠谱贷超乙方，寻靠谱甲方现金贷产品，转化说话  
+											</a>
+										</p>
+										<p class="detail-each">
+											<span>服务区域：白云区</span>
+											<span>浏览量：<span class="nnb">100</span></span>
+											<span>已沟通：<span class="nnb">100</span></span>
+										</p>
+										<p class="label-each">
+											<span>软件SaaS</span>
+											<span>移动开发</span>
+											<span>网站建设</span>
+											<span>软件开发</span>
+											<span>费用支持</span>
+											<span>资源置换</span>
+										</p>
+									</div>
+									<div class="list-xq-r">
+										<p>李先生 | CEO</p>
+										<p style="margin-top: 12px;">2018-01-01</p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list-each">
+									<div class="list-xq-l">
+										<a href="company.html">
+											<div class="touxiang">
+												<img src="images/icon/logo_1.png"/>
+											</div>
+										</a>
+									</div>
+									
+									<div class="list-xq-m">
+										<p class="fsize18 title-list onehide">
+											<a href="need-detail.html">
+											【小米之家】高质量高转化高进量靠谱贷超乙方
+											</a>
+										</p>
+										<p class="detail-each">
+											<span>服务区域：白云区</span>
+											<span>浏览量：<span class="nnb">100</span></span>
+											<span>已沟通：<span class="nnb">100</span></span>
+										</p>
+										<p class="label-each">
+											<span>软件SaaS</span>
+											<span>移动开发</span>
+											<span>网站建设</span>
+											<span>软件开发</span>
+											<span>费用支持</span>
+											<span>资源置换</span>
+										</p>
+									</div>
+									<div class="list-xq-r">
+										<p>李先生 | CEO</p>
+										<p style="margin-top: 12px;">2018-01-01</p>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--需求大厅结束-->
+			
+			<!--提供大厅-->
+			<div class="tgdt">
+				<p class="fsize24 title-tgdt">
+					提供大厅
+					<span style="position: absolute; right: 0; bottom: 0;">
+						<a href="" style="color: rgba(0,0,0,0.45);">查看更多</a>
+					</span>
+				</p>
+				
+				<div class="offer_listBox">
+					<ul>
+						<li>
+							<div class="offer_once">
+								<div class="offer_once_top">
+									<a href=""><img src="images/icon/logo_1.png"/></a>
+									<a href=""><p class="offer_once_title twohide">【华为科技】市场最全！直签15家银行信用卡渠道！ 广发、平安、招商可返脱敏！中信150！市场最全！直签15家银行信用卡渠道！ 广发、平安、招商可返脱敏！中信150！</p></a>
+								</div>
+								<div class="offer_once_bottom">
+									<div class="offer_once_bottom_l">
+										<p class="offer_detail_each">
+											<span>服务区域：白云区</span>
+											<span>浏览量：<span class="nnb">100</span></span>
+											<span>已沟通：<span class="nnb">100</span></span>
+										</p>
+										<p class="offer_label_each">
+											<span>软件SaaS</span>
+											<span>移动开发</span>
+											<span>网站建设</span>
+											<span>软件开发</span>
+											<span>费用支持</span>
+											<span>资源置换</span>
+										</p>
+									</div>
+									<div class="offer_once_bottom_r">
+										<p>李先生 | CEO</p>
+										<p style="margin-top: 16px;">2018-01-01</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="offer_once">
+								<div class="offer_once_top">
+									<a href=""><img src="images/icon/logo_1.png"/></a>
+									<a href=""><p class="offer_once_title twohide">【华为科技】市场最全！直签15家银行信用卡渠道！ 广发、平安、招商可返脱敏！中信150！市场最全！直签15家银行信用卡渠道！ 广发、平安、招商可返脱敏！中信150！</p></a>
+								</div>
+								<div class="offer_once_bottom">
+									<div class="offer_once_bottom_l">
+										<p class="offer_detail_each">
+											<span>服务区域：白云区</span>
+											<span>浏览量：<span class="nnb">100</span></span>
+											<span>已沟通：<span class="nnb">100</span></span>
+										</p>
+										<p class="offer_label_each">
+											<span>软件SaaS</span>
+											<span>移动开发</span>
+											<span>网站建设</span>
+											<span>软件开发</span>
+											<span>费用支持</span>
+											<span>资源置换</span>
+										</p>
+									</div>
+									<div class="offer_once_bottom_r">
+										<p>李先生 | CEO</p>
+										<p style="margin-top: 16px;">2018-01-01</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="offer_once">
+								<div class="offer_once_top">
+									<a href=""><img src="images/icon/logo_1.png"/></a>
+									<a href=""><p class="offer_once_title twohide">【华为科技】市场最全！直签15家银行信用卡渠道！ 广发、平安、招商可返脱敏！中信150！市场最全！直签15家银行信用卡渠道！ 广发、平安、招商可返脱敏！中信150！</p></a>
+								</div>
+								<div class="offer_once_bottom">
+									<div class="offer_once_bottom_l">
+										<p class="offer_detail_each">
+											<span>服务区域：白云区</span>
+											<span>浏览量：<span class="nnb">100</span></span>
+											<span>已沟通：<span class="nnb">100</span></span>
+										</p>
+										<p class="offer_label_each">
+											<span>软件SaaS</span>
+											<span>移动开发</span>
+											<span>网站建设</span>
+											<span>软件开发</span>
+											<span>费用支持</span>
+											<span>资源置换</span>
+										</p>
+									</div>
+									<div class="offer_once_bottom_r">
+										<p>李先生 | CEO</p>
+										<p style="margin-top: 16px;">2018-01-01</p>
+										<!--<p class="yrzLogo"><span>已入驻</span></p>-->
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--提供大厅结束-->
+			
+			<!--物业社区-->
+			<div class="wysq">
+				<p class="fsize24 title-xqdt">
+					物业社区
+					<span style="position: absolute; right: 0; bottom: 0;">
+						<a href="" style="color: rgba(0,0,0,0.45);">查看更多</a>
+					</span>
+				</p>
+				<div class="zomes-box">
+					<ul>
+						<li>
+							<a href="company.html">
+								<div class="zome">
+									<div class="zome-top">
+										<div class="zome-img">
+											<img src="images/icon/logo_1.png" />
+										</div>
+				
+										<div class="zome-info">
+											<p class="fsize18">广州乙租</p>
+											<p class="block65 zome-introduce">
+												富力地产与加州大学洛地方第三方杉矶分校医疗中心（ 以下简称UCLA Health）携手打造的新型国际医院——广州富力国际医院•UCLA附
+											</p>
+										</div>
+									</div>
+									<p style="display: flex;justify-content: space-between; margin-top: 12px; color: #000000;">
+										<span>已入驻<span class="nnb">26</span>家</span>
+										<span>园区属性：IT/金融</span>
+									</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="company.html">
+								<div class="zome">
+									<div class="zome-top">
+										<div class="zome-img">
+											<img src="images/icon/logo_1.png" />
+										</div>
+				
+										<div class="zome-info">
+											<p class="fsize18">广州乙租</p>
+											<p class="block65 zome-introduce">
+												富力地产与加州大学洛地方第三方杉矶分校医疗中心（ 以下简称UCLA Health）携手打造的新型国际医院——广州富力国际医院•UCLA附
+											</p>
+										</div>
+									</div>
+									<p style="display: flex;justify-content: space-between; margin-top: 12px; color: #000000;">
+										<span>已入驻<span class="nnb">26</span>家</span>
+										<span>园区属性：IT/金融</span>
+									</p>
+								</div>
+							</a>
+						</li>
+						
+						<li>
+							<a href="company.html">
+								<div class="zome">
+									<div class="zome-top">
+										<div class="zome-img">
+											<img src="images/icon/logo_1.png" />
+										</div>
+				
+										<div class="zome-info">
+											<p class="fsize18">广州乙租</p>
+											<p class="block65 zome-introduce">
+												富力地产与加州大学洛地方第三方杉矶分校医疗中心（ 以下简称UCLA Health）携手打造的新型国际医院——广州富力国际医院•UCLA附
+											</p>
+										</div>
+									</div>
+									<p style="display: flex;justify-content: space-between; margin-top: 12px; color: #000000;">
+										<span>已入驻<span class="nnb">26</span>家</span>
+										<span>园区属性：IT/金融</span>
+									</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="company.html">
+								<div class="zome">
+									<div class="zome-top">
+										<div class="zome-img">
+											<img src="images/icon/logo_1.png" />
+										</div>
+				
+										<div class="zome-info">
+											<p class="fsize18">广州乙租</p>
+											<p class="block65 zome-introduce">
+												富力地产与加州大学洛地方第三方杉矶分校医疗中心（ 以下简称UCLA Health）携手打造的新型国际医院——广州富力国际医院•UCLA附
+											</p>
+										</div>
+									</div>
+									<p style="display: flex;justify-content: space-between; margin-top: 12px; color: #000000;">
+										<span>已入驻<span class="nnb">26</span>家</span>
+										<span>园区属性：IT/金融</span>
+									</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="company.html">
+								<div class="zome">
+				
+									<div class="zome-top">
+										<div class="zome-img">
+											<img src="images/icon/logo_1.png" />
+										</div>
+				
+										<div class="zome-info">
+											<p class="fsize18">广州乙租</p>
+											<p class="block65 zome-introduce">
+												富力地产与加州大学洛地方第三方杉矶分校医疗中心（ 以下简称UCLA Health）携手打造的新型国际医院——广州富力国际医院•UCLA附
+											</p>
+										</div>
+									</div>
+									<p style="display: flex;justify-content: space-between; margin-top: 12px; color: #000000;">
+										<span>已入驻<span class="nnb">26</span>家</span>
+										<span>园区属性：IT/金融</span>
+									</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--物业社区结束-->
+			<!--广告-->
+			<div class="gugao">
+				<img src="images/gugao/1.png"/>
+				<a href=""><span class="fabu-gugao">发布房源</span></a>
+			</div>
+		</main>
+		
+		<footer class="pc">
+	        <div style="width: 1200px; margin: 0 auto;">
+	           <div class="footer_title">广州乙租信息科技有限公司</div>
+	           <div class="footer_conter">
+	               <div class="footer_conter1">
+	                   <span>关于乙租</span>
+	                   <ul class="pad">
+	                       <li><a href="{:U('AboutUs/index')}?tag=1">联系我们</a></li>
+	                       <li><a href="{:U('AboutUs/index')}?tag=2">商务合作</a></li>
+	                        <!--<li><a href="{:U('AboutUs/index')}?tag=3">网站地图</a></li>-->
+	                        <li><a href="{:U('AboutUs/index')}?tag=3">常见问题</a></li>
+	                        <li><a href="{:U('AboutUs/index')}?tag=4">用户协议</a></li>
+	                        <li><a href="{:U('AboutUs/index')}?tag=5">隐私条款</a></li>
+	                   </ul>
+	               </div>
+	               <div class="footer_conter2">
+	                   <span>友情链接</span>
+	                   <ul class="pad">
+	                       <li><a href="{$vo.link_url}">今日头条</a></li>
+	                       <li><a href="{$vo.link_url}">知乎</a></li>
+	                       <li><a href="{$vo.link_url}">腾讯网</a></li>
+	                       <li><a href="{$vo.link_url}">搜狐</a></li>
+	                       <li><a href="{$vo.link_url}">UC头条</a></li>
+	                       <li><a href="{$vo.link_url}">网易</a></li>
+	                       <li><a href="{$vo.link_url}">新浪网</a></li>
+	                       <li><a href="{$vo.link_url}">南方财富网</a></li>
+	                   </ul>
+	               </div>
+	               <div class="footer_conter3">
+	                   <span>电话</span>
+	                   <h2 class="conter3_h2">400-886-6391</h2>
+	                   <span>地址</span>
+	                   <p style="color: rgba(255,255,255,.65);font-size: 14px;margin-bottom: 24px;">广州市白云大道北广贸商务中心C栋401</p>
+	                   <span>邮箱</span>
+	                   <p style="color:rgba(255,255,255,.65);font-size: 14px;">epassrent@163.com</p>
+	               </div>
+	               <div class="footer_conter4">
+	                    <span><img src="images/qrcode/qrcode_1.jpg"></span>
+	                    <span class="gzgzh">关注公众号</span>
+	               </div>
+	           </div>
+	        </div>
+	        <!-- 最底下 备案 -->
+	        <div class="foot_t_box">
+	            <div class="foot_t">
+	                <span>
+	                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011102002056">
+	                        <img src="images/GABA.png" />
+	                        粤公网安备 44011102002056号
+	                    </a>
+	                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                </span>
+	                <span>&nbsp;&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/"style="color:#fff">Copyright &#169 2017 广州乙租信息科技有限公司 粤ICP备18097655号</a></span>
+	            </div>
+	        </div>
+		</footer>
+	</body>
+	
+<script type="text/javascript">
+	var mySwiper = new Swiper('.main-top-lunbo',{
+		loop:true,
+		speed: 800, /*滑动时间*/
+		autoplay: {
+	        delay: 4000,
+	        disableOnInteraction: false,/*触碰后不停止切换*/
+	    },
+ 	navigation: {
+	    nextEl: '.swiper-button-next',
+	    prevEl: '.swiper-button-prev',
+    },
+   	pagination: {
+	    el: '.swiper-pagination', /*监听小圆点*/
+		},
+	})
+	mySwiper.el.onmouseover=function(){
+	  mySwiper.navigation.$nextEl.removeClass('hide');
+	  mySwiper.navigation.$prevEl.removeClass('hide');
+	}
+	mySwiper.el.onmouseout=function(){
+	  mySwiper.navigation.$nextEl.addClass('hide');
+	  mySwiper.navigation.$prevEl.addClass('hide');
+	}	
+	
+	
+	/*公告内容*/
+	var mySwiper1 = new Swiper('.affiche-content', {
+        direction: 'vertical', //竖向切换
+        height: 68,
+        slidesPerView: 2,
+        slidesPerGroup : 2,/*一次滚动多少个*/
+        loop:true,
+        autoplay: {
+	        delay: 4000,
+	        disableOnInteraction: false,/*触碰后不停止切换*/
+	    },
+    })
+</script>
+</html>
