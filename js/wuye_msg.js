@@ -51,4 +51,5 @@ $(function(){
 		var msg_company_id = $(this).index()
 		console.log(msg_company_id)
 	})
+	
 });
