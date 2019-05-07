@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>03-身份选择</title>
+	<link rel="stylesheet" type="text/css" href="css/wechat_style.css">
+	<link rel="stylesheet" type="text/css" href="css/phone_qiye_enter.css">
+	<!-- <link rel="stylesheet" type="text/css" href="lib/mui/css/icons-extra.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="lib/mui/css/mui.css"> -->
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+</head>
+ <body >
+	<div class="topbox top_box">
+		<div class="sf_ul">
+			<label >
+			<div class="sf_img " data-id='1'>
+				<img src="./images/enter/wuye.png" alt="">
+				<div class="mui-input-row mui-radio mui-left clickradio">
+					<p >我是企业</p>
+					<!-- <input name="radio1" type="radio" value="1"> -->
+				</div> 
+			</div>
+		 </label>
+	     <label>
+			<div class="sf_img " data-id='2'>
+				<img src="./images/enter/qiye.png" alt="">
+				<div class="mui-input-row mui-radio mui-left ">
+					<p >我是物业</p>
+					<!-- <input name="radio1" type="radio" value="2"> -->
+				</div> 
+			</div>
+		</label>
+		</div>
+		
+				
+	</div>
+	 <!-- <script src="lib/mui/js/mui.js" charset="utf-8"></script>  -->
+	<script type="text/javascript">
+	  $('.sf_img').click(function(){
+		//   $(this).addClass('click_shadow').siblings().removeClass('click_shadow');
+		$(this).addClass('click_shadow').parents().siblings().children('.sf_img').removeClass('click_shadow');
+
+		  var appsd=$(this).attr('data-id');
+		  console.log(appsd)
+	  })
+	  
+	</script>
+</body>
+</html>

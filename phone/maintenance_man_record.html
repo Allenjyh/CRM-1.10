@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>维修人员录入</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
+        <link href="home/phone/css/fast_repairs.css" rel="stylesheet" />
+        <script src="home/phone/js/jquery-3.3.1.min.js"></script>
+        <link href="home/phone/css/alert.css" rel="stylesheet" />
+        <script src="home/phone/js/alert.js"></script>
+		<style type="text/css">
+		</style>
+	</head>
+
+	<body>
+	    <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i> 姓名 (如:李工)</span>
+                    <input id='maintain_man' type="text" maxlength="5" class=" maintain_address repairs_address" placeholder="请输入">		
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+                <div class=" addParkName-bar">
+                        <span><i style="color: #F52230;">* </i>工种</span>
+                         <input type="text" class="repairs_type" maxlength="18" value="水电工、木工" ><!-- 请选择readonly="readonly"-->
+                        <b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" > 〉 </b>
+                </div>
+            </div>
+        
+		 <div style="margin-top: calc(100vh - 173px); " id="fast_repairs_btn" onclick="submit()" class="submit_btn fast_repairs_btn">提交</div>
+		 <div   style="display: none;"class="display_btn auditing">物业审核中...</div>
+
+	</body>
+	<script>
+        // 弹框
+        function submit(){
+        var alert = alertObj.oAlert({
+            style:'wap',
+            title:'撤销',
+            content : "是否确认成为XXXXXX物业的维修人员",
+            buttons :{
+                '取消' : function(){
+                    alert.close();
+                },
+                '确定' : function(){
+                    $('.fast_repairs_btn').hide();
+                    $('.auditing').show();
+                    $('.repairs_type,#maintain_man').attr('disabled','disabled');
+
+                    alert.close();
+                    // var d  = $('.maintain_address').val();
+                 // var dd = $('.repairs_type').attr('data-id');
+                }
+            }
+        })
+    }
+	</script>
+</html>

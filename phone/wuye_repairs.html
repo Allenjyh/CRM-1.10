@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>快捷报修</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
+        <link href="home/phone/css/fast_repairs.css" rel="stylesheet" />
+        <script src="home/phone/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="wechat/js/loading.js"></script>
+        <!-- 添加七牛云 -->
+        <script type="text/javascript" src="home/js/qiniu/qiniu.min.js"></script>
+        <script type="text/javascript" src="home/js/qiniu/upload_new.js"></script>
+		<style type="text/css">
+			.index-nav li{
+                width:33.3333333%;
+                float: left;
+            }
+		</style>
+	</head>
+
+	<body>
+        <div class="top_box ">
+            <ul class="index-nav">
+                <li class="Active"><a href="#"><span>快捷报修</span></a></li>
+                <li ><a href="#"><span>报修记录</span></a></li>
+                <li ><a href="wuye_service_record.html"><span>维修员录入</span></a></li>
+            </ul>
+        </div>
+		<div class="addParkName-box" style="margin-bottom: 0px;">
+			<div class=" addParkName-bar">
+                    <span ><i style="color: #F52230;">* </i>报修类型</span>
+					 <input type="text" class="repairs_type com_type"  readonly="readonly" value="1" > <!--readonly="readonly"请选择 -->
+					<b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" > 〉 </b>
+			</div>
+		</div>
+		<div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+			<div class=" addParkName-bar">
+					<span><i style="color: #F52230;">* </i>报修地址</span>
+					<input id='repairs_address' type="text" class=" repairs_address" maxlength="17" placeholder="请输入">		
+			</div>
+		</div>
+		<div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i>故障类型</span>
+                    <input type="text" class="repairs_type fault_id" readonly="readonly" value="3" ><!--readonly="readonly"请选择 -->
+                    <b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" > 〉 </b>
+            </div>
+        </div>
+	    <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i>报修人</span>
+                    <input id='repairs_man' type="text" class=" repairs_address" maxlength="4" placeholder="请输入">		
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i>联系电话</span>
+                    <input id='phone-tel'  class=" phone-tel repairs_address"  oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);" autocomplete="off" type="tel" placeholder="请输入" >
+            </div>
+        </div>
+        <div class='divider'></div> 
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i> 预约起始时间</span>
+                    <input id='start_time' type="text" class=" repairs_address" placeholder="2019-04-28 10:30" readonly="readonly" value="2019-04-28 10:30">	<!--readonly="readonly"请选择 -->	
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i> 预约结束时间</span>
+                    <input id='end_time' type="text" class=" repairs_address" placeholder="2019-04-28 14:30" readonly="readonly" value="2019-04-28 14:30">	<!--readonly="readonly" -->	
+            </div>
+        </div>
+        <div class='divider'></div>
+        <div class="form_box3" >
+                <p >备注（100字以内）</p>
+                <textarea name="" rows="" cols="" class="textArea" maxlength="100" placeholder="请输入" ></textarea>
+        </div>
+        <div class='divider'></div>
+        <div class="form_box4 clear" >
+            <p >图片</p>
+            <ul>
+                <li class="class1"> <img id="shangchuan1"  alt="" > </li>
+                <li> <img id="shangchuan2"  alt="" > </li>
+                <li> <img id="shangchuan3"  alt="" > </li>
+                <li> <img id="shangchuan4"  alt="" > </li>
+                <li> <img id="shangchuan5"  alt="" > </li>
+                <li> <img id="shangchuan6"  alt="" > </li>
+                <li class="class7">
+                     <input id="filesfz" type="file" accept="image/*" name="" style="display: none;position: absolute;top: -9999px;">
+                    <img id="shangchuan" src="home/phone/images/repair/shangchuan.png" alt="" >
+                </li>
+                
+            </ul>
+        </div>
+        <div class='divider'></div>
+		 <div id="fast_repairs_btn" class="submit_btn fast_repairs_btn">提交</div>
+	</body>
+	<script>
+    </script>
+        <script src="home/phone/js/fast_repairs.js"></script>    
+</html>

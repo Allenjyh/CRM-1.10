@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>公司信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<link href="css/company_imformation.css" rel="stylesheet" />
+	<link href="css/wechat_style.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/company_imformation.js"></script>
+</head>
+<body style="background:#fff;">
+	<div class="addParkName-box" style="margin-bottom: 5px;">
+		<div class="search addParkName-bar">
+			<form>
+				<span>物业名称</span>
+				<input type="text" maxlength="14" class="park-name" placeholder="请输入" >
+			</form>
+		</div>
+	</div>
+	<div class="addParkName-box" style="margin-top: 0px;margin-bottom: 5px;">
+		<div class="search addParkName-bar">
+			<form>
+				<span>联系人姓名</span>
+				<input type="text"  maxlength="4" class="contact-name" placeholder="请输入" >		 
+			</form>
+		</div>
+	</div>
+	<div class="addParkName-box" style="margin-top: 0px;">
+		<div class="search addParkName-bar">
+			<form>
+				<span>联系电话</span>
+				<input  class=" phone-tel"  oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);" autocomplete="off" type="tel" placeholder="请输入" 
+				onkeyup="if(this.value != ''){document.querySelector('.display_btn').style.background='linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%)'}else{document.querySelector('.display_btn').style.background='rgba(0,0,0,0.25)'}">
+			</form>
+		</div>
+	</div>
+	<div id="company_imformation-btn" class="company_imformation-btn display_btn">
+		确 定
+	</div>
+
+</body>
+<script type="text/javascript">
+</script>
+</html>

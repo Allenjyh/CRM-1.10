@@ -1,0 +1,49 @@
+*{
+    color:rgba(0,0,0,0.65);      
+}
+.top_box{
+    margin-top: 20px;
+}
+/* 身份选择开始 */
+.topbox  .sf_ul{
+    padding-left:50px;
+    box-sizing: border-box;
+}
+.topbox .sf_img{
+    width:37.8%;
+    height:152px;
+    background:r#fff;
+    border-radius:4px;
+    text-align: center;
+    background:#fff;
+    box-sizing: border-box;
+    border:1px solid rgba(207,207,207,1);  
+    float: left;
+    margin-right: 29px;
+}
+.topbox .sf_img.click_shadow{
+    border:1px solid rgba(10,136,236,1)!important;
+    box-shadow:0px 8px 16px 0px rgba(10,136,236,0.45)!important;
+}
+.topbox .sf_img img{
+    width:51.6%;
+    height:70px;
+    margin-top: 23px;
+}
+.sf_img div p{
+    height:16px;
+    font-size:13px;
+    color:rgba(0,0,0,0.65);
+    line-height:16px;
+    /* padding:8px  0px 0 12px!important; */
+    margin-top: 12px;
+    text-align: center;
+}
+/* 身份选择结束 */
+/* 入驻情况start */
+.rz_box{
+  margin: 0 4%;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  height: 44px; 
+}
+/* 入驻情况end */

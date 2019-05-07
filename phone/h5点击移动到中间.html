@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <style type="text/css">
+        header {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            overflow-x: scroll;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: blue;
+
+        }
+        header::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav {
+            display: inline-block;
+            margin-left: 15px;
+            margin-right: 10px;
+            height: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .con{
+            width: 100%;
+            height: 100px;
+            padding-top: 50px;
+        }
+        .active{
+            color: red;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+<header>
+    <a class="nav active" href="#con1">
+        基本信息
+    </a>
+    <a class="nav" href="#con2">
+        今借到
+    </a>
+    <a class="nav" href="#con3">
+        多头借贷
+    </a>
+    <a class="nav" href="#con4">
+        运营商
+    </a>
+    <a class="nav" href="#con5">
+        央行征信信息
+    </a>
+    <a class="nav" href="#con6">
+        支付宝信息
+    </a>
+    <a class="nav" href="#con7">
+        法院失信名单
+    </a>
+    <a class="nav" href="#con8">
+        学历信息
+    </a>
+    <a class="nav" href="#con9">
+        社保信息
+    </a>
+    <a class="nav" href="#con10">
+        公积金信息
+    </a>
+</header>
+<div class="content">
+    <div class="con" id="con1">
+        基本信息
+    </div>
+    <div class="con" id="con2">
+        今借到
+    </div>
+    <div class="con" id="con3">
+        多头借贷
+    </div>
+    <div class="con" id="con4">
+        运营商
+    </div>
+    <div class="con" id="con5">
+        央行征信信息
+    </div>
+    <div class="con" id="con6">
+        支付宝信息
+    </div>
+    <div class="con" id="con7">
+        法院失信名单
+    </div>
+    <div class="con" id="con8">
+        学历信息
+    </div>
+    <div class="con" id="con9">
+        社保信息
+    </div>
+    <div class="con" id="con10">
+        公积金信息
+    </div>
+
+</div>
+<script type="text/javascript">
+
+//    滚动导航栏字体颜色变化
+    var $navs = $('.nav'),          // 导航
+            $sections = $('.con'),       // 模块
+            $window = $(window),
+            navLength = $navs.length - 1;
+
+    $window.on('scroll', function() {
+        var scrollTop = $window.scrollTop(),
+                len = navLength;
+
+        for (; len > -1; len--) {
+            var that = $sections.eq(len);
+            if (scrollTop >= that.offset().top) {
+                $navs.removeClass('active').eq(len).addClass('active');
+                break;
+            }
+        }
+    });
+
+//    点击导航栏字体颜色变化
+    $(function(){
+        $(".nav").on("click",function(ev){
+                        //定位在每个块左边左边的坐标    父元素滑动的距离
+            var moveX = $(this).position().left+$(this).parent().scrollLeft();
+            var pageX = document.documentElement.clientWidth;//设备的宽度
+            var blockWidth = $(this).width();//每一块文字的宽度
+            console.log(moveX)
+            console.log('设备的宽度 '+pageX);
+            console.log('每一块文字的宽度 '+blockWidth);
+            var left = moveX-(pageX/2)+(blockWidth/2);
+            console.log('中间显示需要移动的距离'+left);
+            $(this).addClass("active").siblings().removeClass("active");
+            $("header").scrollLeft(left);//ul
+
+        })
+    });
+</script>
+</body>
+</html>

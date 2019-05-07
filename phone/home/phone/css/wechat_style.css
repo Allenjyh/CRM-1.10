@@ -46,19 +46,6 @@ a[title="站长统计"]{display: none!important;}
 	bottom: calc(100vh * 0.008);
 	left: calc(100vw * 0.107 / 2);
 }
-.display_submit_btn{
-	width: calc(100vw * 0.893);
-	height: 54px;
-	background: rgba(0,0,0,0.25);
-	margin: 20px auto 31px auto;
-	/* margin-top: calc(100vh - 310px); */
-	text-align: center;
-	color: #FFFFFF;
-	line-height: 54px;
-	font-size: 20px;
-	bottom: calc(100vh * 0.008);
-	left: calc(100vw * 0.107 / 2);
-}
 .confirm_btn{
 	background:linear-gradient(180deg,rgba(24,189,247,1) 0%,rgba(10,136,236,1) 100%);
 	width:89.3%;
@@ -87,6 +74,4 @@ a[title="站长统计"]{display: none!important;}
 	line-height: 55px;
 	margin: 0 5.3%;
 	left:2px;
-	z-index: -1;
-
 }

@@ -1,0 +1,40 @@
+html,body {
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+i{
+  font-style:normal
+}
+ul,ol,li{
+	padding: 0;
+	margin: 0;
+  	list-style: none;
+}
+p{
+	margin: 0;
+}
+.clear:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+a{
+	text-decoration: none;
+	color: rgba(0,0,0,0.65);
+}
+.property-btn {
+	width: calc(100vw * 0.893);
+	height: 55px;
+	margin: 20px auto;
+	text-align: center;
+	color: #FFFFFF;
+	line-height: 55px;
+	font-size: 24px;
+	bottom: calc(100vh * 0.008);
+	left: calc(100vw * 0.107 / 2);
+	background: linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%);
+}

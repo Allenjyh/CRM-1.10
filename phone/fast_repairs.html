@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>快捷报修</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
+        <link href="home/phone/css/fast_repairs.css" rel="stylesheet" />
+        <script src="home/phone/js/jquery-3.3.1.min.js"></script>
+        <!-- <script src="home/phone/js/fast_repairs.js"></script> -->
+		<style type="text/css">
+			 .form_box4 li i {
+                    font-size: 18px!important;
+                    position: absolute;
+                    background: rgba(255, 55, 88, 1);
+                    color: #fff;
+                    height: 24px;
+                    min-width: 24px;
+                    left: 58px;
+                    top: -11px;
+                    padding: 3px 6px;
+                    line-height: 16px;
+                    border-radius: 50%;
+                }
+             .form_box4 li {
+                position: relative;
+                /* float: left;
+                margin-right: 30px;
+                width: 80px;
+                text-align: center; */
+            }
+		</style>
+	</head>
+
+	<body>
+        <div class="top_box ">
+            <ul class="index-nav">
+                <li class="Active"><a href="#"><span>快捷报修</span></a></li>
+                <li ><a href="records.html"><span>报修记录</span></a></li>
+            </ul>
+        </div>
+		<div class="addParkName-box" style="margin-bottom: 0px;">
+			<div class=" addParkName-bar">
+                    <span ><i style="color: #F52230;">* </i>报修类型</span>
+					<input type="text" class="repairs_type" value="请选择" readonly="readonly">
+					<b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" > 〉 </b>
+			</div>
+		</div>
+		<div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+			<div class=" addParkName-bar">
+					<span><i style="color: #F52230;">* </i>报修地址</span>
+					<input id='repairs_address' type="text" class=" repairs_address" placeholder="请输入"readonly="readonly">		
+			</div>
+		</div>
+		<div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i>故障类型</span>
+                    <input type="text" class="repairs_type" value="请选择" readonly="readonly">
+                    <b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" > 〉 </b>
+            </div>
+        </div>
+	    <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i>报修人</span>
+                    <input id='repairs_address' type="text" class=" repairs_address" placeholder="请输入"readonly="readonly">		
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i>联系电话</span>
+                    <input id='repairs_address' type="text" class=" repairs_address" placeholder="请输入"readonly="readonly">		
+            </div>
+        </div>
+        <div class='divider'></div> 
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i> 预约起始时间</span>
+                    <input id='repairs_address' type="text" class=" repairs_address" placeholder="请选择"readonly="readonly">		
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                    <span><i style="color: #F52230;">* </i> 预约结束时间</span>
+                    <input id='repairs_address' type="text" class=" repairs_address" placeholder="请选择"readonly="readonly">		
+            </div>
+        </div>
+        <div class='divider'></div>
+        
+        <div class="form_box3" >
+                <p >备注（100字以内）</p>
+                <textarea name="" rows="" cols="" class="textArea" maxlength="100" placeholder="请输入" ></textarea>
+        </div>
+        <div class='divider'></div>
+        <div class="form_box4 clear" >
+                <p >图片</p>
+                <!-- <ul class="clear">
+            
+                <img  src="/home/images/icon/Group1.png" onerror="this.src='/home/images/icon/Group1.png'">
+            </li>
+            <li><img src="/home/images/icon/ID_positive1.png"></li>
+           
+        </ul> -->
+               <ul>
+                   <li>
+                        <input id="filesfz1" type="file" accept="image/*" name="" style="display: none;position: absolute;top: -9999px;">
+                        <img id="shangchuan1" src="home/phone/images/repair/shangchuan.png" alt="">
+                        <span id="id_card_first" style="display:none;"></span>
+                        <i>X</i>
+                   </li>
+                   <li>
+                        <img src="home/phone/images/repair/shangchuan.png" alt="">
+                   </li>
+                   <li>
+                        <img src="home/phone/images/repair/shangchuan.png" alt="">
+                   </li>
+                   <li>
+                        <img src="home/phone/images/repair/shangchuan.png" alt="">
+                   </li>
+                   <li>
+                        <img src="home/phone/images/repair/shangchuan.png" alt="">
+                   </li>
+                   <li>
+                        <img src="home/phone/images/repair/shangchuan.png" alt="">
+                   </li>
+               </ul>
+        </div>
+        <div class='divider'></div>
+		 <div id=" fast_repairs_btn" class="submit_btn fast_repairs_btn">提交</div>
+
+	</body>
+	<script>
+		</script>
+</html>

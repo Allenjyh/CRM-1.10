@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>维修员信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
+        <link href="home/phone/css/fast_repairs.css" rel="stylesheet" />
+        <script src="home/phone/js/jquery-3.3.1.min.js"></script>
+        <script src="home/phone/js/refresh.js" type="text/javascript" charset="utf-8"></script>
+        <!-- <script src="home/phone/js/records.js"type="text/javascript" charset="utf-8"></script>         -->
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+            <div class="top_box ">
+                    <ul class="index-nav">
+                        <li class="Active"><a href="maintenance_man_data.html"><span>带审核</span></a></li>
+                        <li ><a href="maintenance_man_data.1.html"><span>已审核</span></a></li>
+                    </ul>
+                </div>
+        <!--下拉刷新容器-->
+        <div  id="park_data_scroll" style="height: calc(100vh); overflow-y: auto" class="roomLevel3-ul mui-table-view mui-table-view-chevron">
+                <div class="loading">
+                    <div id="refreshLoading"></div>
+                </div>
+                <div id="maintenance_man_data">
+                    <div class="records_box" >
+                            <ul>
+                                <li>
+                                    <div>
+                                        <p class="card_one">
+                                            <span >姓名-供电设施</span>
+                                            <span>状态:审核中</span>
+                                        </p>
+                                        <p class="card_two">工种:水电工、木工</p>
+                                        <p class="card_three">联系电话：133 3333 3333</p>
+                                        <p class="card_four">
+                                            <span>查看详情</span>
+                                            <span>解除关系</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="records_box" >
+                            <ul>
+                                <li>
+                                    <div>
+                                        <p class="card_one">
+                                            <span >姓名-供电设施</span>
+                                            <span>状态:审核中</span>
+                                        </p>
+                                        <p class="card_two">工种:水电工、木工</p>
+                                        <p class="card_three">联系电话：133 3333 3333</p>
+                                        <p class="card_four">
+                                            <span>查看详情</span>
+                                            <span>解除关系</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="loading" style="height: 35px;">
+                    <div id="refreshLoadingEnd"></div>
+                </div>
+        </div>
+    
+    <!--下拉刷新容器-->
+	</body>
+	
+	<script>
+         topRefresh({
+            container: "#park_data_scroll",
+            scrollContainer:"park_data_scroll",
+            next: function(e) {
+                //执行ajax请求数据
+                alert(0)
+                var that = this;
+                //var len = document.querySelectorAll('.addPark-add-box').length;
+                // search_park(2, max_park_id,that);
+                //getAjax(that,2,document.querySelectorAll('.addPark-add-box')[0].dataset.id)
+            },
+            slide:function(e){
+                //执行ajax请求数据
+                var that = this;
+                alert(1)
+
+                // search_park(1, min_park_id,that)
+            }
+        });
+	</script>
+</html>

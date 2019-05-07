@@ -1,0 +1,255 @@
+
+    *{
+        font-family:PingFang-SC-Regular;
+        color:rgba(0,0,0,0.85);
+    }
+    input,
+    span {
+        border: none;
+        outline: none;
+    }
+    /*功能1 ：通用分割块*/
+    .divider{
+        height: 10px;
+        background: #f1f1f1
+    }
+    /* 快捷报修页面开始*/
+    /* 下划线开始 */
+    .index-nav{
+        width:100%;
+        background: #0A88EC;
+        height: 44px;
+        
+        line-height:16px;
+        text-align: center;
+        padding-top: 12px;
+    }
+    .index-nav li{
+        width:50%;
+        float: left;
+        
+    }
+    .index-nav li a span{
+        color: #FFFFFF;
+        font-family:PingFang-SC-Medium;
+    }
+    .top_box > ul li.Active {
+        position: relative;
+    }
+    .top_box > ul li.Active:after {
+        content: '';
+        position: absolute;
+        left: 39%;
+        top: auto;
+        bottom: -6px;
+        right: auto;
+        height: 2px;
+        width: 21%;
+        background-color: #fff;
+        border-radius: 3px;
+    }
+    .repairs_type,.repairs_address ,.phone-enterprie{
+        display: inline-block;
+        width: calc(100vw - 106px);
+        background: transparent;
+        top: 0;
+        text-indent: calc(100% - 120px);
+        float: right;
+        height: 42px;
+        color:rgba(0, 0, 0, 0.65)
+    }
+    .repairs_type::-ms-input-placeholder{text-indent: calc(100% - 120px);}
+    .repairs_type::-webkit-input-placeholder{text-indent: calc(100% - 88px);}
+    .repairs_address::-ms-input-placeholder{text-indent: calc(100% - 88px);}
+    .repairs_address::-webkit-input-placeholder{text-indent: calc(100% - 88x);}
+    .repairs_address{
+        text-indent: calc(100% - 61px);
+    }
+    .repairs_type{
+        text-align: right;
+        padding-right: 25px;
+    }
+    .repairs_address{
+        text-indent: 0;
+        text-align: right;
+    }
+    .addParkName-bar span {
+        height: 42px;
+        width: 42px;
+        cursor: pointer;
+        position: absolute;
+        line-height: 42px;
+    }
+    .addParkName-box {
+        border-bottom: 1px solid rgb(241, 238, 238);
+        position: relative;
+        width: calc(100vw - 60px);
+        height: 44px;
+        background: rgba(255, 255, 255, 1);
+        margin: 0px auto;
+    }
+    .addParkName-bar span ,.phone-roomDate{
+        display: inline-block;
+        background: transparent;
+        font-size: 13px;
+        width: 96px;
+        top: 0;
+        text-align: left;
+    }
+    .form_box3,.form_box4{
+        margin:    3.73333% 5.3%  3.73333% 5.3%;
+    }
+    .form_box3 p,.form_box4 p{
+        margin-bottom: 13px;
+    }
+    .form_box3 textarea{
+        width: calc(100vw - 60px);
+        height:84px;
+        border: #FFFFFF;
+    }
+    .form_box4 ul{
+        display: flex;
+        flex-wrap:wrap;
+        /* justify-content: space-between; */
+        width: 100%;
+    }
+    .form_box4 ul>li{
+       margin: 0 2.93%  5.3333% 0;
+       width: 21.975%;    
+       height: 75px;
+    }
+    .form_box4 ul>li:nth-child(4){
+        margin-right: 0px;
+    }
+   .form_box4 ul>li img{
+       width:100%;
+       height: 100%;
+       
+   }
+   /* 快捷报修end */
+   /* 报修记录 */
+   .records_box{
+     margin: 5.333% 4% 4% 4%;
+     box-shadow: #CBE5F9 1px 1px 30px 1px;
+    border-radius:4px;
+   }
+   .records_box ul li{
+       /* background: #0A88EC; */
+       width: calc(100vh -30px);
+       padding: 5.3% 5.3% 2.9333% 5.333%;
+    }
+    .records_box ul li .card_one span:first-child{
+        height:20px;
+        font-size:16px;
+        font-family:PingFang-SC-Medium;
+        font-weight:500;
+        line-height:20px;
+        margin-bottom: 8px;
+    }
+    .records_box ul li .card_one span:last-child{
+       float: right;
+    }
+    .records_box ul li .card_two {
+        /* display: block; */
+       margin: 8px 0 4px 0;
+    }
+    .records_box ul li .card_three{
+        padding-bottom:  8px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        margin-bottom: 8px;
+     }
+     .records_box ul li .card_one span:last-child,.card_four span{
+       color: rgba(0, 0, 0, 0.65)
+     }
+     .card_four{
+        margin-top: 8px ;
+        display: flex;
+        flex-direction:row-reverse;
+     }
+     .card_four span{
+        margin-left:3.2%; 
+        padding: 5px 3.46%;
+        border: 1px solid rgba(151, 151, 151, 1);
+        display: inline;
+     }
+     .card_four span.used_day{
+         border: none;
+         margin: 0;
+         color: rgba(26, 140, 255, 1);
+         padding-left:  0  ; 
+         padding-right: 20%;
+
+     }
+     svg {
+        top:30%;
+        left:44%;
+        /* left: calc((100vw-100vw*0.1125)/2); */
+        /* top: calc((100vh-100vw*0.135)/2); */
+    }
+    /* 红x */
+    .form_box4 li i {
+            position: absolute;
+            right: -11%;
+            top: -13%;
+            width:25%;
+            height:25%;
+        }
+     .form_box4 li {
+        position: relative;
+    }
+    .display_none{
+        display:none!important;
+    }
+    .form_box4 ul li {
+         display:none;
+    }
+    .form_box4 ul li.class7 {
+         display:block;
+         margin: 0 0 5.3333% 0!important;
+    }
+   /* 报修记录end */
+     /* 上下拉样式 */
+        /* .mui-pull-caption{
+        display: none;
+        }*/
+        @keyframes refreshLoading { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @-webkit-keyframes refreshLoading { from { -webkit-transform: rotate(0deg); } to { -webkit-transform: rotate(360deg); } }
+        @keyframes refreshLoadingEnd { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @-webkit-keyframes refreshLoadingEnd { from { -webkit-transform: rotate(0deg); } to { -webkit-transform: rotate(360deg); } }
+        /* #park_data {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btnBox{
+            position: relative;
+            height: calc(100vh - (100vh - 187px) - 92px) !important;
+            background: #FFFFFF;
+        }  */
+    /* 上下拉样式end */
+    /* 时间控件 */
+    /* .date-controller {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        text-align: center;
+        font-size: 14px;
+        background-color: rgba(37, 38, 45, .4);
+    }
+
+     .date-controller-all {
+        position: absolute;
+        z-index: 600;
+        bottom: 0;
+        width: 100%;
+        height: 338px;
+        background: #fff;
+    }
+    .phone-roomDate{
+        width: calc(100vw - 106px)!important;
+        color: rgba(0, 0, 0, 0.65)!important;
+    } */
+    /* 时间 */

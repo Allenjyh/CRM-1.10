@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>维修结果</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
+    <link href="home/phone/css/fast_repairs.css" rel="stylesheet" />
+    <script src="home/phone/js/jquery-3.3.1.min.js"></script>
+    <!-- 添加七牛云 -->
+    <script type="text/javascript" src="home/js/qiniu/qiniu.min.js"></script>
+    <script type="text/javascript" src="home/js/qiniu/upload_new.js"></script>
+    <!-- <script src="home/phone/js/fast_repairs.js"></script> -->
+</head>
+<body>
+    <div class="form_box4 clear">
+        <p><i style="color: #F52230;">* </i>图片(维修完成的图片)</p>
+        <figure>
+            <ul>
+                <li class="class1"><img id="result1" alt="#" >
+                    
+                </li>
+                <li><img id="result2" alt=""></li>
+                <li><img id="result3" alt=""></li>
+                <li><img id="result4" alt=""></li>
+                <li><img id="result5" alt=""></li>
+                <li><img id="result6" alt=""></li>
+                <li class="class7">
+                    <input id="filesfz" type="file" accept="image/*" name=""
+                        style="display: none;position: absolute;top: -9999px;">
+                    <img id="shangchuan" src="home/phone/images/repair/shangchuan.png" alt="">
+                    <i class="close_png"  data-code="1"><img  src="home/phone/images/repair/close.png" alt="" ></i>
+                </li>
+            </ul>
+        </figure>
+    </div>
+    <div id="fast_repairs_btn" class="confirm_btn fast_repairs_btn">提交</div>
+</body>
+<script>
+  $(function(){
+    // 1.七牛云上传照片
+    $('#shangchuan').click(function () {
+        $('#filesfz').click();
+    })
+    //上传的数组
+    var ii ,repair_photos='';
+    var image_ids = ['result1','result2','result3','result4','result5','result6'];
+    var uploaderid = ['filesfz'];
+    var parameter = {'select_type':1,'files':image_ids,'file_type_name':'repair'};
+    parameter['uptoken_url'] = '/qiniu/';
+    parameter['bucket'] = 'PICS_BUCKET';
+    var upload = new Uploader(uploaderid,parameter);
+    upload.bind('complete',function(res,id){
+        // console.log(res.key);
+        // console.log(upload.getFileKeys());
+        var jsontext = upload.getFileKeys()
+        repair_photos= jsontext.join(',')
+        // console.log(repair_photos)
+        ii=upload.getFileKeys().length-1;
+        $('.form_box4 ul li').eq(ii).show();
+        var _i = $('<i class="close_png"  data-code="'+ii+'"><img  src="/home/phone/images/repair/close.png" alt="" ></i>');
+        _i.click(function(){
+            $('.class7').show();
+            var index = $(this).attr('data-code');
+            console.log(index)
+            var rsp = upload.deleteFile(index);
+            if (rsp['error_code'] == 200){
+                for (var i = 0;i < 6; ++i){
+                    if ($('#' + image_ids[i]).attr('src') == ""){
+                        $('#' + image_ids[i]).parent('li').hide();   
+                    } 
+                }
+            }
+        })
+        $('.form_box4 ul li').eq(ii).append(_i)
+        if( ii == 5){
+            $('.class7').hide();
+        }else{
+            $('.class7').show();
+        }
+    });
+    upload.bind('add',function(res,file_key){
+        //  console.log(res.key);
+        for (var i = 0;i < image_ids.length; ++i){
+            if ($('#' + image_ids[i]).attr('src') != "")
+                $('#' + image_ids[i]).show();
+        }
+    });
+  })
+</script>
+</html>

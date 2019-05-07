@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>请输入园区名称</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<script src="js/picker/mui.js"></script>
+			<!--<link rel="stylesheet" href="css/loading.css" />-->
+		<style type="text/css">
+		
+			
+			form {
+				position: relative;
+				width: 100%;
+				margin: 0 auto;
+			}
+			
+			input,
+			span,button {
+				border: none;
+				outline: none;
+			}
+			
+
+			/*input::-ms-input-placeholder{text-align: right;}
+			input::-webkit-input-placeholder{text-align: right;}*/
+			
+			span {
+				height: 42px;
+				width: 42px;
+				cursor: pointer;
+				position: absolute;
+				line-height: 42px;
+			}
+			
+			.addParkName-box {
+				position: relative;
+				width: calc(100vw - 60px);
+				height: 46px;
+				background: rgba(255, 255, 255, 1);
+				margin: 20px auto 20px auto;
+			}
+			
+			.addParkName-bar input {
+				display: inline-block;
+				width: calc(100vw / 2);
+				background: transparent;
+				top: 0;
+				right: 0;
+				float: right;
+			}
+			
+			.addParkName-bar span {
+				display: inline-block;
+				background: transparent;
+				font-size: 13px;
+				width: calc(100vw / 2);
+				top: 0;
+				left: 0;
+				text-align: left;
+			}
+			
+			.addStructure-add {
+				background-repeat: no-repeat;
+				background-position: 50%;
+				width: 30px;
+				height: 30px;
+				display: inline-block;
+				position: relative;
+				top: 8px;
+			}
+			
+			.addStructure-add-icon {
+				background-image: url(images/add.png);
+				background-size: 30px 30px;
+			}
+			
+			.roomLevel3-ul {
+				width: 100vw;
+				margin: 0 auto;
+				max-height: calc(100vh - 197px);
+				/*overflow: auto;*/
+				overflow-y: auto;
+			}
+			
+			.roomLevel3-ul::-webkit-scrollbar {
+				width: 4px;
+				height: 1px;
+			}
+			
+			.roomLevel3-ul::-webkit-scrollbar-thumb {
+				border-radius: 4px;
+				-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+				background: rgba(24, 189, 247, 1);
+			}
+			
+			.roomLevel3-ul::-webkit-scrollbar-track {
+				-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+				border-radius: 4px;
+				background: #CBE5F9;
+			}
+			
+			.roomLevel3-ul table {
+				position: relative;
+				margin: 0;
+				padding: 0;
+				width: calc(100vw - 60px);
+				margin: 0 auto;
+			}
+			
+			.roomLevel3-ul table tr td {
+				/*height: calc(100vh * 0.073);
+				line-height: calc(100vh * 0.073);*/
+				padding: 10px 0;
+				border-bottom: 1px solid #F3F3F3;
+				height:16px;
+				font-size:13px;
+				color:rgba(0,0,0,0.65);
+				line-height:16px;
+			}
+			/*搜索框2*/
+			
+			body {
+				margin: 0;
+				padding: 0;
+				font-weight: 500;
+				font-family: "Microsoft YaHei", "宋体", "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+			}
+			
+			form {
+				position: relative;
+				width: calc(100vw - 60px);
+				/*marginl: 0 auto;*/
+				border-radius: 4px;
+				border: 2px solid rgba(0, 0, 0, 0.09);
+				padding: 4px 0;
+			}
+			
+			
+			
+			input {
+				/*width: 100%;*/
+				height: 42px;
+				padding-left: 13px;
+			}
+			
+			button {
+				height: 42px;
+				width: 42px;
+				cursor: pointer;
+				position: absolute;
+			}
+			/*搜索框3*/
+			/*.bar3 {background: #F9F0DA;}*/
+			/*.bar3 form {background: #A3D0C3;}*/
+			
+			.bar3 input,
+			.bar3 button {
+				background: transparent;
+			}
+			
+			.bar3 button {
+				top: 0;
+				right: 0;
+				border-left: 1px solid rgba(0, 0, 0, 0.09);
+				margin-top: 4px;
+			}
+			
+			.bar3 button:before {
+				content: "\f002";
+				font-family: FontAwesome;
+				font-size: 16px;
+				color: #979797;
+			}
+			
+			.addParkName-btn {
+				/*position: absolute;*/
+				width: calc(100vw * 0.893);
+				height: 54px;
+				background: linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%);
+				margin: 20px auto 0 auto;
+				text-align: center;
+				color: #FFFFFF;
+				line-height: 54px;
+				font-size: 20px;
+				/*background: rgba(0, 0, 0, 0.25);*/
+				bottom: calc(100vh * 0.008);
+				left: calc(100vw * 0.107 / 2);
+			}
+			/**radio样式**/
+			
+			.radio {
+				margin: 0.5rem;
+			}
+			
+			.radio input[type="radio"] {
+				position: absolute;
+				opacity: 0;
+			}
+			
+			.radio input[type="radio"]+.radio-label:before {
+				content: '';
+				background: #b4b4b4;
+				border-radius: 100%;
+				border: 1px solid #f4f4f4;
+				display: inline-block;
+				width: 1em;
+				height: 1em;
+				position: relative;
+				top: 0.2em;
+				/*margin-right: 1em;*/
+				vertical-align: top;
+				cursor: pointer;
+				text-align: center;
+				-webkit-transition: all 250ms ease;
+				transition: all 250ms ease;
+			}
+			
+			.radio input[type="radio"]:checked+.radio-label:before {
+				background-color: #f4f4f4;
+				box-shadow: inset 0 0 0 5px #3197EE;
+			}
+			
+			.radio input[type="radio"]:focus+.radio-label:before {
+				outline: none;
+				border-color: #3197EE;
+			}
+			
+			.radio input[type="radio"]:disabled+.radio-label:before {
+				box-shadow: inset 0 0 0 4px #f4f4f4;
+				border-color: #b4b4b4;
+				background: #b4b4b4;
+			}
+			
+			.radio input[type="radio"]+.radio-label:empty:before {
+				margin-right: 0;
+			}
+			/* genggai */
+			.roomLevel3-ul table{
+				height:60px;
+			}
+			.roomLevel3-ul table tr td p:first-of-type{
+				margin:0 10px 4px 0; 
+			}
+			.roomLevel3-ul table tr td p{
+			   margin:0 10px 0px 0; 
+			   /* display: inline-block;*/
+			   overflow: hidden;
+			   /* display: -webkit-box;  */
+				width: calc(100vw - 110px);
+			}
+			/* 省略号 */
+			.onehide{
+				text-overflow: ellipsis;/*不显示的地方用省略号...代替*/
+				white-space:nowrap;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="addParkName-box">
+			<div class="search bar3">
+				<form>
+					<input type="text" placeholder="请输入园区名称">
+					<button type="submit"></button>
+				</form>
+			</div>
+		</div>
+		<div style="width: 100%; height: 16px;background: #F3F3F3;"></div>
+		<div class="roomLevel3-ul">
+			<table>
+					<tr>
+						<td>没有找到相关项</td>
+						<td style="text-align:right;color: rgba(26, 140, 255, 0.85)">提交反馈	</td>
+					</tr>
+
+			 </table>
+
+			 <label>
+				 <table>
+						<tr>
+							<td>
+								<p class="onehide" > 园区名：广贸商务中心好多好多字字好多字好多字心好多好多字字好字心好多好多字好...</p>
+								<p class="onehide"> 地址：中国广东省广州市好多字的街道的好多字心好多好多字字好字心好多好多字好...</p>
+							</td>
+							<td><div class="radio"><input id="radio-16" name="radio" type="radio" value="7">
+								<label for="radio-16" class="radio-label"></label></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</label>
+			 <label>
+				 <table>
+						<tr>
+							<td>
+								<p class="onehide"> 园区名：广贸商务中心好多好多字字好多字好多字心好多好多字字好多字好...</p>
+								<p class="onehide"> 地址：中国广东省广州市好多字的街道的好多字心好多好多字字好多字好...</p>
+							</td>
+							<td><div class="radio"><input id="radio-16" name="radio" type="radio" value="7">
+								<label for="radio-15" class="radio-label"></label></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</label>
+			 <label>
+				 <table>
+						<tr>
+							<td>恒大地产园区（创客桥用户）</td>
+							<td>
+								<div class="radio">
+									<input id="radio-16" name="radio" type="radio" value="7">
+									<label for="radio-14" class="radio-label"></label>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</label>
+			<!--<label>
+				<table>
+					<tr>
+						<td>广贸商务</td>
+						<td>
+							<div class="radio">
+								<input id="radio-1" name="radio" type="radio" checked>
+								<label for="radio-1" class="radio-label"></label>
+							</div>
+						</td>
+					</tr>
+				<table>
+			</label>
+			<label>
+				<table>
+					<tr>
+						<td>广贸商务</td>
+						<td>
+							<div class="radio">
+								<input id="radio-2" name="radio" type="radio" checked>
+								<label for="radio-2" class="radio-label"></label>
+							</div>
+						</td>
+					</tr>
+				<table>
+			</label>
+			<label>
+				<table>
+					<tr>
+						<td>广贸商务</td>
+						<td>
+							<div class="radio">
+								<input id="radio-3" name="radio" type="radio" checked>
+								<label for="radio-3" class="radio-label"></label>
+							</div>
+						</td>
+					</tr>
+				<table>
+			</label> -->
+				
+			
+		</div>
+		<div class="addParkName-btn">
+			确 定
+		</div>
+	</body>
+
+</html>
