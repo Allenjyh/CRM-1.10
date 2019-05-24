@@ -1,5 +1,6 @@
 *{
     color:rgba(0,0,0,0.65);      
+    font-family:PingFang-SC-Medium;
 }
 .top_box{
     height: 44px;
@@ -29,7 +30,7 @@ display: inline-block;
     padding-left: 4%;
 }
 /* 下划线开始 */
-.top_box > ul li.Active {
+.top_box > ul li.Active ,.top_box > ul li.active{
     font-size: 13px;
     position: relative;
 }
@@ -45,36 +46,28 @@ display: inline-block;
     background-color: #fff;
     border-radius:3px;
 }
-.top_box > ul li.active  { 
-     font-size: 13px;
-    position: relative;
-}
-.top_box > ul li.active:after {
+/* .top_box > ul li.active:after {
     content: '';
     position: absolute;
-    left:27%;
     top: auto;
     bottom: 1px;
     right: auto;
     height: 2px;
+    left:27%;
     width: 40%;
     background-color: #fff;
     border-radius:3px;
-}
+} */
 .top_box > ul::-webkit-scrollbar{  /*  //去除滚动条 */
 	width: 0;
 	height: 0;
 	display: none;
 }
-.ative_li{
-    left: -76px;
-}
 /* 下划线end */
  .box1 .ptitle,.box2 .ptitle,.box3 .ptitle{
-    padding: 20px 0 10px 0;
+    margin: 20px 0 10px 0;
     height:20px;
     font-size:16px;
-    font-family:PingFang-SC-Medium;
     font-weight:700;
     color:rgba(0,0,0,0.65);
     line-height:20px;
@@ -101,10 +94,16 @@ display: inline-block;
 }
 .box2 ul li span{
     font-size: 20px;
-    font-family:PingFang-SC-Medium;
     font-weight:500;
     color:rgba(0,0,0,0.85);
     line-height:24px;
+    padding-left: 19%;
+}
+.box2 ul li p{
+    font-size:16px;
+    font-weight:500;
+    color:rgba(0,0,0,0.85);
+    line-height:20px;
     padding-left: 19%;
 }
 .box2 .dqsj{
@@ -116,7 +115,7 @@ display: inline-block;
     line-height:16px;
     padding:0.7% 0 0 19%;
 }
-/* 待审核跳转 */
+/* 待审核跳转,编辑房间 */
 .box2 .ptitle .dsh_a,.box1 .ptitle .dsh_a{
     line-height:16px;
     height: 16px;
@@ -140,13 +139,26 @@ display: inline-block;
     border-bottom: 1px solid #0000001F;
 
 }
-.box3 .list_each .list_qb_l{
+/* .box3 .list_each .list_qb_l{
     width: 10.6%;
-}
-.box3 .list_each .list_qb_l img{
+} */
+.box3 .list_each .list_qb_l1,.box3 .list_each .list_qb_l2 {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    background: rgba(10, 136, 236, 1);
+}
+.box3 .list_each .list_qb_l2{
+    background:rgba(255, 55, 88, 1);
+}
+.list_each .list_qb_l2 span,.list_each .list_qb_l1 span{
+    height:16px;
+    font-size:12px;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:40px;
+    display: block;
+    text-align: center;
 }
 .box3 .list_each .list_qb_r{
     width: 85.4%;
@@ -192,7 +204,7 @@ display: inline-block;
 }
 /* 待审核页面end */
 /* 待审核处理start */
-.fixebox_ul{
+/* .fixebox_ul{
     width: 100%;
     height: 49px;
     position: fixed;
@@ -209,11 +221,9 @@ display: inline-block;
 .fixebox_ul li:nth-of-type(1){
     background: #fff;
     color: #1A8CFF;
-    /* border: 1px solid rgb(247, 250, 250); */
-    /* box-sizing: border-box; */
 }
 .fixebox_ul li:nth-of-type(2){
     background:linear-gradient(180deg,rgba(24,189,247,1) 0%,rgba(10,136,236,1) 100%);
     color: #fff;
-}
+} */
 /* 待审核处理end */
