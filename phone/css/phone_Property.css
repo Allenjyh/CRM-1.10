@@ -16,7 +16,7 @@
 .top_box ul.index-nav1 li {
     display: inline-block;
     padding: 12px 0 9px 0;
-    height: 14px;
+    height: 35px;
     line-height: 14px;
     color: rgba(255,255,255,0.85)!important;
     font-size: 11px;
@@ -33,6 +33,7 @@ display: inline-block;
 .top_box > ul li.Active ,.top_box > ul li.active{
     font-size: 13px;
     position: relative;
+    font-family:PingFang-SC-Medium;
 }
 .top_box > ul li.Active:after {
     content: '';

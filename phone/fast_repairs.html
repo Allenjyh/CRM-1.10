@@ -8,6 +8,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
         <link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
         <link href="home/phone/css/fast_repairs.css" rel="stylesheet" />
+        <link href="home/phone/css/pickerStyle.css" rel="stylesheet"/>
         <script src="home/phone/js/jquery-3.3.1.min.js"></script>
         <!-- <script src="home/phone/js/fast_repairs.js"></script> -->
 		<style type="text/css">
@@ -31,10 +32,16 @@
                 width: 80px;
                 text-align: center; */
             }
+            .index-nav li{
+                width:50%;
+                float: left;
+                
+            }
 		</style>
 	</head>
 
 	<body>
+        <!-- <input hidden id="repair_faults" value={防盗设施1,防盗设施2,防盗设施3,防盗设施4}> -->
         <div class="top_box ">
             <ul class="index-nav">
                 <li class="Active"><a href="#"><span>快捷报修</span></a></li>
@@ -44,8 +51,8 @@
 		<div class="addParkName-box" style="margin-bottom: 0px;">
 			<div class=" addParkName-bar">
                     <span ><i style="color: #F52230;">* </i>报修类型</span>
-					<input type="text" class="repairs_type" value="请选择" readonly="readonly">
-					<b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" > 〉 </b>
+                    <input type="text" id="repType" class="repairs_type com_type" readonly="readonly" placeholder="请选择">
+					<b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
 			</div>
 		</div>
 		<div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
@@ -57,8 +64,9 @@
 		<div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
             <div class=" addParkName-bar">
                     <span><i style="color: #F52230;">* </i>故障类型</span>
-                    <input type="text" class="repairs_type" value="请选择" readonly="readonly">
-                    <b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" > 〉 </b>
+                    <!-- <input type="text" class="repairs_type" value="请选择" readonly="readonly"> -->
+                    <input type="text" id="faultType" class="repairs_type fault_id" readonly="readonly" placeholder="请选择">
+                    <b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
             </div>
         </div>
 	    <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
@@ -77,13 +85,13 @@
         <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
             <div class=" addParkName-bar">
                     <span><i style="color: #F52230;">* </i> 预约起始时间</span>
-                    <input id='repairs_address' type="text" class=" repairs_address" placeholder="请选择"readonly="readonly">		
+                    <input id='start_time' type="text" class=" repairs_address" placeholder="请选择"readonly="readonly">		
             </div>
         </div>
         <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
             <div class=" addParkName-bar">
                     <span><i style="color: #F52230;">* </i> 预约结束时间</span>
-                    <input id='repairs_address' type="text" class=" repairs_address" placeholder="请选择"readonly="readonly">		
+                    <input id='end_time' type="text" class=" repairs_address" placeholder="请选择"readonly="readonly">		
             </div>
         </div>
         <div class='divider'></div>
@@ -128,8 +136,111 @@
         </div>
         <div class='divider'></div>
 		 <div id=" fast_repairs_btn" class="submit_btn fast_repairs_btn">提交</div>
-
-	</body>
+    <!--选择报修类型-->
+    <div id="room-controller" class="room-controller" style="display: none;">
+        <div class="room-controller-all">
+            <div class="select-room-btnbox" style="border-bottom: 1px solid #ebebeb;">
+                <table>
+                    <tr>
+                        <td id="roomClose" style="color: #A7A7A7;">取消</td>
+                        <td id="repTitle">报修类型</td>
+                        <td id="roomSure" style="color: #1A8CFF;">确定</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="select-cross"></div>
+            <div class="room-controller-content">
+                <div class="room-package-top border-bottom"></div>
+                <div class="room-package-bottom border-top"></div>
+                <div class="room-package" id="boxId">
+                    <!--<div class="room">
+                        <ul class="room-list">
+                        </ul>
+                    </div>-->
+                </div>
+            </div>
+            <div class="room-controller-bottom"></div>
+        </div>
+    </div>
+    </body>
+    
+    <script src="home/phone/js/picker.js"></script><!--报修类型，故障类型-->
+    <script src="home/phone/js/timePicker.js"></script><!--时间alert选择-->
 	<script>
-		</script>
+
+        //   时间判定
+    picker(["#start_time", "#end_time"], function () {
+        var start_time = $('#start_time').val();//开始时间1
+        start_time = Date.parse(new Date(start_time)) / 1000;
+        var end_time = $('#end_time').val();//结束时间1
+        end_time = Date.parse(new Date(end_time)) / 1000;
+        if (start_time >= end_time) {
+            alert("结束时间应大于开始时间");
+            $('#end_time').val('');
+            return false;
+        }
+    });
+
+
+
+
+    var repTypes = {
+        levelItem: [//报修类型
+            {id:1,name:"公共报修"},
+            {id:2,name:"公司报修"}
+        ]
+    },
+    faultTypes = {//故障类型
+        levelItem: []
+    };
+
+    // var repair_faults = $("#repair_faults").val() ? JSON.parse($("#repair_faults").val()) : [];
+    // repair_faults.forEach(function(index){
+        //     faultTypes.levelItem.push({id:index.fault_id,name: eval("'" + index."fault_name" + "'") })
+        // });
+    var repair_faults = [{"fault_id":1,"fault_name":"防盗设施1"},{"fault_id":2,"fault_name":"防盗设施2"},{"fault_id":3,"fault_name":"防盗设施3"},{"fault_id":4,"fault_name":"防盗设施4"}];
+    // console.log(repair_faults)
+repair_faults.forEach(function(index){
+    faultTypes.levelItem.push({id:index.fault_id,name: eval("'" + index.fault_name + "'") })
+});
+
+
+$("#repType").on("click",function(){
+    $('body').css('overflow','hidden');//浮层出现时窗口不能滚动设置
+    $("#repTitle").text("报修类型");
+    document.getElementById("room-controller").style.display = "block";
+    var repTypePicker = new roomPicker({
+        data:repTypes,
+        id:"boxId"
+    });
+    repTypePicker.init("repType",function(){
+        if($("#repTitle").text() == "报修类型"){
+            document.getElementById("repType").value = getRoomItem.level1.name;
+            document.getElementById("repType").dataset.id = getRoomItem.level1.id;
+            $('body').css('overflow','auto');// 浮层关闭时滚动设置
+        }
+    })
+})
+
+$("#faultType").on("click",function(){
+    $('body').css('overflow','hidden');//浮层出现时窗口不能滚动设置
+    $("#repTitle").text("故障类型");
+    document.getElementById("room-controller").style.display = "block";
+    var repTypePicker = new roomPicker({
+        data:faultTypes,
+        id:"boxId"
+    });
+    repTypePicker.init("faultType",function(){
+        if($("#repTitle").text() == "故障类型"){
+            document.getElementById("faultType").value = getRoomItem.level1.name;
+            document.getElementById("faultType").dataset.id = getRoomItem.level1.id;
+            $('body').css('overflow','auto');// 浮层关闭时滚动设置
+        }
+    })
+})
+
+$(".rep-close").on("click",function(){
+    $(this).parent().parent().remove();
+})
+	</script>
 </html>

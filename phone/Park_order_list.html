@@ -10,6 +10,8 @@
         <link href="home/phone/css/fast_repairs.css" rel="stylesheet" />
         <script src="home/phone/js/jquery-3.3.1.min.js"></script>
         <script src="home/phone/js/refresh.js" type="text/javascript" charset="utf-8"></script>
+        <script src="wechat/js/tool/yizuSilding.js" type="text/javascript" charset="utf-8"></script>
+        <script src="wechat/rentalInfo/tool/timePicker.js" type="text/javascript" charset="utf-8"></script>
         <style type="text/css">
            p,.card_three span{
             color: rgba(0,0,0,0.65);
@@ -86,7 +88,7 @@
                     <li class="_img">
                      <p>
                         <a href=""><span> <img src="wechat/images/enter/label7.png" alt=""></span></a>
-                        <a href=""><span class="select"><img src="wechat/images/enter/label6.png" alt=""></span></a>
+                        <span class="select"><img src="wechat/images/enter/label6.png" alt=""></span>
                       </p> 
                     </li>
                 </ul>
@@ -148,6 +150,74 @@
                         </ul>
                     </div>
                 </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">总计：1456.16元
+                                            <span class="_card_three2">确认收款</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">总计：1456.16元
+                                            <span class="_card_three2">确认收款</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">总计：1456.16元
+                                            <span class="_card_three2">确认收款</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">总计：1456.16元
+                                            <span class="_card_three2">确认收款</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="loading" style="height: 35px;">
                     <div id="refreshLoadingEnd"></div>
                 </div>
@@ -163,11 +233,17 @@
 	</body>
 	
 	<script>
+
          $('.index-nav li').click(function(){
          _index = $(this).index()
         console.log(_index)
-        $(this).addClass('Active').siblings().removeClass('Active');
+        // $(this).addClass('Active').siblings().removeClass('Active');
+        if(_index < 3){//2.修改
+            $(this).addClass('Active').siblings().removeClass('Active');
+        }
          })
+
+
          topRefresh({
             container: "#park_data_scroll",
             scrollContainer:"park_data_scroll",
@@ -183,5 +259,28 @@
 
             }
         });
+
+
+        // 筛选点击side
+        yizuSide({ele:".select",width:"287"},function(star,end,fn){
+
+        if(new Date(star).getTime() > new Date(end).getTime()){
+            alert("开始时间不能大于结束时间",function(){
+                $("#ending-time").val();
+            })
+            return;
+        }
+
+        fn();
+
+        let _star = Date.parse(star)/1000 - 28800;
+        let _end = Date.parse(end)/1000 +57599;
+        // if(_star && _end)
+        // getAjax("",0,0,park_id,_star,_end)
+        });
+        picker(["#starting-time","#ending-time"],function(a){//时间选择器
+
+        },4)
+
 	</script>
 </html>

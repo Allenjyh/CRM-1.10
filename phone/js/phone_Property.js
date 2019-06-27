@@ -23,10 +23,10 @@ $(function(){
     var occupancy;//入驻率
     var data = [{
            "name": "未入驻",
-           "value":0
+           "value":0,
        }, {
            "name": "已入驻",
-           "value": '0'//(lease_yes_count == "" ? 0 : lease_yes_count)
+           "value": 0 == 0 ? '': 0,
        }, {
            "name": "总间数",
            "value": ''

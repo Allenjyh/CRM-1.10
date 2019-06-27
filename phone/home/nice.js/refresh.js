@@ -353,4 +353,48 @@ var Toast = {
 };
 
 
+/*
+ * 用法
+ */
+// 1.1HTML
+// <!--下拉刷新容器-注意高度设置-->
+// <div  id="park_data_scroll" style="height: calc(100vh); overflow-y: auto ;padding-top:42px;" class="roomLevel3-ul mui-table-view mui-table-view-chevron">
+//         <div class="loading">
+//             <div id="refreshLoading"></div>
+//         </div>
+//         <div id="data_0" >
+//           页面内容
+//         </div>        
+//         <div class="loading" style="height: 35px;">
+//             <div id="refreshLoadingEnd"></div>
+//         </div>
+//  </div>
+// <!--下拉刷新容器-->
 
+// 2.1js
+// topRefresh({
+//     container: "#park_data_scroll",
+//     scrollContainer:"park_data_scroll",
+//     next: function(e) {
+//         var selector_all = document.querySelectorAll('#data_0 .records_box');
+//         var up_down_sliding = 0;
+//             getAjax.isShow = true;
+//         var id = 0;
+//         if (selector_all.length > 0){
+//             id = selector_all[0].dataset.id;
+//             up_down_sliding = 2;
+//         }
+//         //执行ajax请求数据  下拉
+//         getAjax(this,up_down_sliding,id,_type,park_id)
+//     },
+//     slide:function(e){
+//         //执行ajax请求数据
+//         var selector_all = document.querySelectorAll('#data_0 .records_box');
+//         getAjax(this,1,selector_all[selector_all.length - 1].dataset.id,_type,park_id)
+//     }
+// });
+// 2.2 ajax-请求
+    // complete:function(){
+    //     if(this != '' )
+    //     this.back.call()
+    // }

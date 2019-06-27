@@ -8,7 +8,12 @@
         border: none;
         outline: none;
     }
-    /*功能1 ：通用分割块*/
+    .top_box{
+        position: fixed;
+        width: 100vw;
+        z-index: 9;
+    }
+        /*功能1 ：通用分割块*/
     .divider{
         height: 10px;
         background: #f1f1f1
@@ -25,16 +30,15 @@
         padding-top: 12px;
     }
     .index-nav li{
-        width:50%;
         float: left;
         
     }
     .index-nav li a span{
         color: #FFFFFF;
-        font-family:PingFang-SC-Medium;
     }
     .top_box > ul li.Active {
         position: relative;
+        font-family:PingFang-SC-Medium;
     }
     .top_box > ul li.Active:after {
         content: '';
@@ -53,7 +57,7 @@
         width: calc(100vw - 106px);
         background: transparent;
         top: 0;
-        text-indent: calc(100% - 120px);
+        text-indent: calc(100% - 130px);
         float: right;
         height: 42px;
         color:rgba(0, 0, 0, 0.65)
@@ -97,7 +101,7 @@
         text-align: left;
     }
     .form_box3,.form_box4{
-        margin:    3.73333% 5.3%  3.73333% 5.3%;
+        margin:    3.73333% 5.3%  0% 5.3%;
     }
     .form_box3 p,.form_box4 p{
         margin-bottom: 13px;
@@ -115,8 +119,9 @@
     }
     .form_box4 ul>li{
        margin: 0 2.93%  5.3333% 0;
-       width: 21.975%;    
-       height: 75px;
+       width: calc((100vw - 100vw * 0.1939)/4);  
+       /* width: 21.975%;     */
+       height: calc((100vw - 100vw * 0.1939)/4);
     }
     .form_box4 ul>li:nth-child(4){
         margin-right: 0px;
@@ -129,6 +134,7 @@
    /* 快捷报修end */
    /* 报修记录 */
    .records_box{
+       position: relative;
      margin: 5.333% 4% 4% 4%;
      box-shadow: #CBE5F9 1px 1px 30px 1px;
     border-radius:4px;
@@ -146,7 +152,7 @@
         line-height:20px;
         margin-bottom: 8px;
     }
-    .records_box ul li .card_one span:last-child{
+    .records_box ul li .card_one span:last-child,.records_box ul li .card_three span:last-child{
        float: right;
     }
     .records_box ul li .card_two {
@@ -167,10 +173,11 @@
         flex-direction:row-reverse;
      }
      .card_four span{
-        margin-left:3.2%; 
-        padding: 5px 3.46%;
-        border: 1px solid rgba(151, 151, 151, 1);
-        display: inline;
+         margin-left: 3.2%;
+         padding: 5px 3.46%;
+         border: 1px solid #979797;
+         display: inline;
+         border-radius: 4px;
      }
      .card_four span.used_day{
          border: none;
@@ -180,13 +187,8 @@
          padding-right: 20%;
 
      }
-     svg {
-        top:30%;
-        left:44%;
-        /* left: calc((100vw-100vw*0.1125)/2); */
-        /* top: calc((100vh-100vw*0.135)/2); */
-    }
-    /* 红x */
+    
+    /* 红 close */
     .form_box4 li i {
             position: absolute;
             right: -11%;
@@ -206,6 +208,34 @@
     .form_box4 ul li.class7 {
          display:block;
          margin: 0 0 5.3333% 0!important;
+    }
+    .rep-arrow{
+        width: 24px;
+        height: 24px;
+        background-image: url("../../../images/repair/arrow.png");
+        background-size: 24px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        margin-top: -2px;
+    }
+    .rep-close{
+        width: 24px;
+        height: 24px;
+        background-image: url("home/images/repair/closeMsg.png");
+        background-size: 10px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        margin-top: -2px;
+    }
+    
+    /* loading */
+    svg {
+        top:30%;
+        left:44%;
+        /* left: calc((100vw-100vw*0.1125)/2); */
+        /* top: calc((100vh-100vw*0.135)/2); */
     }
    /* 报修记录end */
      /* 上下拉样式 */

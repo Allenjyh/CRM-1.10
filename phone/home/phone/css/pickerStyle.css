@@ -1,0 +1,164 @@
+.select-room-btnbox {
+			height: 44px;
+			line-height: 44px;
+		}
+.select-room-btnbox table {
+			width: 100%;
+			text-align: center;
+			font-size: 13px;
+			font-family: PingFang-SC-Regular;
+			font-weight: 200;
+		}
+.room-controller {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	text-align: center;
+	font-size: 14px;
+	background-color: rgba(37, 38, 45, .4);
+}
+
+.room-controller .room-controller-all {
+	position: absolute;
+	z-index: 600;
+	bottom: 0;
+	width: 100%;
+	height: 258px;
+	background: #fff;
+}
+
+.room-controller .room-controller-all .room-controller-choice {
+	position: relative;
+	height: 44px;
+	line-height: 44px;
+	color: #999;
+}
+
+.room-controller .room-controller-all .room-controller-content {
+	position: relative;
+	top: 20px;
+	height: 173px;
+	width: calc(100vw - 30px);
+	margin-left: 15px;
+}
+
+.border-bottom,
+.border-top {
+	position: relative;
+}
+
+.border-bottom:after,
+.border-bottom:before,
+.border-top:after,
+.border-top:before {
+	content: "";
+	display: block;
+	position: absolute;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+}
+
+.border-bottom:after {
+	border-bottom: 1px solid #ebebeb;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	-webkit-transform-origin: 0 bottom;
+	transform-origin: 0 bottom;
+}
+
+.room-controller .room-controller-all .room-controller-choice .cancel {
+	left: 0;
+}
+
+.room-controller .room-controller-all .room-controller-choice .sure {
+	right: 0;
+	color: #1A8CFF;
+}
+
+.room-controller .room-controller-all .room-controller-choice .room-controller-top {
+	margin: 0;
+	line-height: 60px;
+	font-weight: 400;
+	text-align: center;
+	font-size: 18px;
+	color: #333;
+}
+
+.room-controller .room-controller-all .room-controller-choice .cancel,
+.room-controller .room-controller-all .room-controller-choice .sure {
+	position: absolute;
+	top: 6px;
+	padding: 16px;
+	font-size: 14px;
+}
+
+.room-controller .room-controller-all .room-controller-content .room-package-top {
+	position: absolute;
+	top: 0;
+	background: -webkit-linear-gradient(bottom, hsla(0, 0%, 100%, .4), hsla(0, 0%, 100%, .8));
+	background: linear-gradient(bottom, hsla(0, 0%, 100%, .4), hsla(0, 0%, 100%, .8));
+}
+
+.room-controller .room-controller-all .room-controller-content .room-package-bottom {
+	position: absolute;
+	bottom: 1px;
+	background: -webkit-linear-gradient(top, hsla(0, 0%, 100%, .4), hsla(0, 0%, 100%, .8));
+	background: linear-gradient(top, hsla(0, 0%, 100%, .4), hsla(0, 0%, 100%, .8));
+}
+
+.room-controller .room-controller-all .room-controller-content .room-package-bottom,
+.room-controller .room-controller-all .room-controller-content .room-package-top {
+	z-index: 10;
+	width: 100%;
+	height: 68px;
+	pointer-events: none;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+.border-top:before {
+	border-top: 1px solid #ebebeb;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+
+.room-controller .room-controller-all .room-package {
+	display: -webkit-box;
+	display: flex;
+	padding: 0;
+}
+
+.room-controller .room-controller-all .room-package .room {
+	flex: 1;
+	flex-basis: 1e-9px;
+	width: 1%;
+	height: 173px;
+	overflow: hidden;
+}
+
+.room-controller .room-controller-all .room-package .room .room-list {
+	padding: 0;
+	margin-top: 68px;
+	line-height: 36px;
+	list-style: none;
+	transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+	font-size: 13px;
+}
+
+.room-list {
+	/*width: calc(100vw / 4);*/
+}
+
+.room-controller .room-controller-all .room-package .room {
+	transition-duration: 150ms;
+}
+
+.room-controller .room-controller-all .room-package .room .room-list .room-list-item {
+	transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}

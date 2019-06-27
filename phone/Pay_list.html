@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>代缴名单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
+        <link href="home/phone/css/fast_repairs.css" rel="stylesheet" />
+        <script src="home/phone/js/jquery-3.3.1.min.js"></script>
+        <script src="home/phone/js/refresh.js" type="text/javascript" charset="utf-8"></script>
+        <script src="home/phone/js/loading.js" type="text/javascript" charset="utf-8"></script>
+        <style type="text/css">
+           p,.card_three span{
+            color: rgba(0,0,0,0.65);
+           }
+           .top_box{
+            display: flex;
+            background: #0A88EC;
+           }
+           .top_box_one {
+               width:75%;
+            }
+            ._img{
+                width:25%;
+                padding-top: 12px;
+            }
+            .index-nav {
+                overflow: auto;
+                white-space: nowrap;
+            }
+           .index-nav li{
+              /* width:33.333%; */
+              box-sizing: border-box;
+              display: inline-block;
+              float: none;
+           }
+           .index-nav   li span{
+            color: #FFFFFF;
+            display: inline-block;
+            margin: 0 12px;
+           }
+             ._img p img{
+             width:21%;
+             height: 21%;
+           }
+             ._img p {
+               text-align: left;
+               padding-left: 10.75%;
+           }
+            ._img p .select{
+                padding-left: 21.5%;
+           }
+             .list_qb_l1 {
+                width: 58px;
+                height: 58px;
+                border-radius: 50%;
+                background: #198CFF;
+                position: fixed;
+                bottom:5.33%;
+                right:6.666%;
+            }
+            .list_qb_l1 p{
+                color: rgba(255,255,255,0.85);
+                font-size: 12px;
+                text-align: center;
+            }
+            .list_qb_l1 p:first-of-type{
+                padding-top: 10px;
+            }
+            /* 下划线开始 */
+            .top_box_one > ul li.Active ,.top_box_one > ul li.active{
+                font-size: 13px;
+                position: relative;
+                font-family:PingFang-SC-Medium;                
+            }
+            .top_box_one > ul li.Active:after {
+                content: '';
+                position: absolute;
+                left: 27%;
+                top: auto;
+                bottom: -6px;
+                right: auto;
+                height: 2px;
+                width: 45%;
+                background-color: #fff;
+                border-radius:3px;
+            }
+            .top_box_one > ul::-webkit-scrollbar{  /*  //去除滚动条 */
+                width: 0;
+                height: 0;
+                display: none;
+            }
+            /* 下划线end */
+		</style>
+	</head>
+	<body>
+        <div class="top_box ">
+            <div  class="top_box_one ">
+                <ul class="index-nav">
+                    <a href="#"><li class="Active"> <span>广贸商务中心1</span></li></a>
+                    <a href="#"></li> <li ><span>广贸商务中心2</span></li></a>
+                    <a href="#"></li><li > <span>广贸商务中心3</span></li></a>
+                    <a href="#"></li> <li ><span>广贸商务中心4</span></li></a>
+                    <a href="#"></li><li > <span>广贸商务中心5</span></li></a>
+                </ul>
+            </div>
+            <div class="_img">
+                <p>
+                <a href=""><span> <img src="wechat/images/enter/label7.png" alt=""></span></a>
+                <a href=""><span class="select"><img src="wechat/images/enter/label6.png" alt=""></span></a>
+                </p> 
+            </div>
+        </div>
+        <!--下拉刷新容器-->
+        <div  id="park_data_scroll" style="height: calc(100vh); overflow-y: auto" class="roomLevel3-ul mui-table-view mui-table-view-chevron">
+                <div class="loading">
+                    <div id="refreshLoading"></div>
+                </div>
+                <div id="maintenance_man_data">
+                    
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">联系电话：133333333</p>
+                                    <p class="card_four">
+                                        <span>查看详情</span>
+                                    </p>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">联系电话：133333333</p>
+                                    <p class="card_four">
+                                        <span>查看详情</span>
+                                    </p>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">联系电话：133333333</p>
+                                    <p class="card_four">
+                                        <span>查看详情</span>
+                                    </p>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">联系电话：133333333</p>
+                                    <p class="card_four">
+                                        <span>查看详情</span>
+                                    </p>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">联系电话：133333333</p>
+                                    <p class="card_four">
+                                        <span>查看详情</span>
+                                    </p>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">联系电话：133333333</p>
+                                    <p class="card_four">
+                                        <span>查看详情</span>
+                                    </p>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="records_box" >
+                        <ul>
+                            <li>
+                                <div class="_display">
+                                    <p class="card_one">
+                                        <span >广州乙租信息科技有限公司</span>
+                                        <span></span>
+                                    </p>
+                                    <p class="card_two">房号：A区1栋401</p>
+                                    <p class="card_three">联系电话：133333333</p>
+                                    <p class="card_four">
+                                        <span>查看详情</span>
+                                    </p>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="loading" style="height: 35px;">
+                    <div id="refreshLoadingEnd"></div>
+                </div>
+        </div>
+        <a href="">
+            <div class="list_qb_l1">
+                <p>查看</p>
+                <p>订单列表</p>
+            </div>
+        </a>
+    
+    <!--下拉刷新容器-->
+	</body>
+	
+	<script>
+         $('.index-nav li').click(function(){
+        var _index = $(this).index()
+        console.log(_index)
+        $(this).addClass('Active').parent('a').siblings().children('li').removeClass('Active');
+        
+         })
+         topRefresh({
+            container: "#park_data_scroll",
+            scrollContainer:"park_data_scroll",
+            next: function(e) {
+                //执行ajax请求数据
+                alert(0)
+                var that = this;
+
+            // var selector_all = document.querySelectorAll('#data_0 .records_box');
+            // var up_down_sliding = 0;
+            //     getAjax.isShow = true;
+            // var id = 0;
+            // if (selector_all.length > 0){
+            //     id = selector_all[0].dataset.id;
+            //     up_down_sliding = 2;
+            // }
+            //执行ajax请求数据  下拉
+            // getAjax(this,up_down_sliding,id,_type,park_id)
+            },
+            slide:function(e){
+                //执行ajax请求数据
+                var that = this;
+                alert(1)
+            //     //执行ajax请求数据
+            // var selector_all = document.querySelectorAll('#data_0 .records_box');
+            // getAjax(this,1,selector_all[selector_all.length - 1].dataset.id,_type,park_id)
+
+            }
+        });
+
+
+
+
+
+        var getAjax = function(_that,up_down_sliding,id,_type,park_id,star,end){
+    var augrs = arguments;
+    
+
+    // $loading.init({
+    //     next:function(e){
+    //     let that = e;
+            $.ajax({
+                type:"get",
+                url: '/lease/order/list/'+_type+'/?park_id='+park_id,
+                data: {
+                    start_time:(star?star:""),
+                    end_time:(end?end:""),
+                    up_down_sliding:up_down_sliding,
+                    id:id,
+                },
+                dataType: 'json',
+                contentType: "application/x-www-form-urlencoded",
+                success: function(res){
+                    console.log(res)
+                    
+                    if(res.error_code == 200){
+                        var html = "";
+                        var bLoadEnd = false;
+                        if( res.data.length > 0){
+                
+                            for(var i =0;i<res.data.length;i++){
+                                if(_type == 3){
+                                 html += '<div class="records_box" data-id="'+res.data[i].pay_time+'">';
+                                }else{
+                                 html += '<div class="records_box" data-id="'+res.data[i].id+'">';
+                                }
+                                html += '<ul><li><div>'+
+                                            '<p class="card_one">'+
+                                                '<span >'+res.data[i].user_fullname+'</span>';
+                                                if(parseInt(res.data[i].state)  == 2){
+                                html += ' <span class="card_state">状态: 编辑中</span>';
+                                                }else{
+                                html += ' <span class="card_state"></span>';
+                                                }
+                                html +=     '</p>'+
+                                            '<p class="card_two">房号: '+res.data[i].room_fullname+'</p>'+
+                                            '<p class="card_three" ><span>总计: '+res.data[i].pay_money+'元</span><span>'+res.data[i].create_time+'账单</span> </p>'+
+                                            '<p class="card_four clear">';
+                                            if(parseInt(res.data[i].state)  == 0){
+                                                html +=' <span onclick="_detail('+res.data[i].id+')">查看详情</span>'+
+                                                      '<span onclick="amend('+res.data[i].id+')">修改</span>';
+                                            }else if(parseInt(res.data[i].state)  == 1){
+                                                html +='<span onclick="_detail('+res.data[i].id+')">查看详情</span>'+
+                                                        '<span onclick="rentPay(this,2)">确认收款</span>';
+                                            }else if(parseInt(res.data[i].state)  == 2){
+                                                html +='<span onclick="amend('+res.data[i].id+')">继续修改</span>';
+                                            }else{
+                                                html +='<span onclick="_detail('+res.data[i].id+')">查看详情</span>';
+                                            }
+                                html +=    '</p>'+
+                                        '</div></li></ul>'+
+                                        '</div>';
+                            }
+                            if(up_down_sliding == 1 || up_down_sliding == "1"){
+                                $("#data_0").append(html);
+                                if(getAjax.pageNum != res.data.length){
+                                    bLoadEnd = true;
+                                }
+                            }else if(up_down_sliding == 2 || up_down_sliding == "2"){
+                                $("#data_0").prepend(html);
+                            }else {
+                                $("#data_0").html(html)
+                            }
+                            if(res.data.length > 0 && res.data.length < getAjax.pageNum )
+                                bLoadEnd = true;
+                        } else {
+                            html = '<div class="addPark-item-img">'+
+                                '<img src="/home/phone/images/repair/records.png">'+
+                                ' <span class="addPark-item-span0">还没有账单哦</span>'+
+                                ' </div>';
+                            if(up_down_sliding == 1 || up_down_sliding == "1"){
+                                bLoadEnd = true;
+                                Toast.show('没有更多的数据', 'bottom', 1000);
+                            }else if(up_down_sliding == 2 || up_down_sliding == "2" || ( getAjax.isShow && up_down_sliding == "0")){
+                                    Toast.show('没有新的数据', 'top', 1000);
+                                    if( getAjax.isShow && up_down_sliding == "0")
+                                    $("#data_0").html(html)
+                            }else {
+                                $("#data_0").html(html);
+                                $(".loading").hide();
+                            }
+                            
+                        }
+                        if (bLoadEnd){
+                            $(".loading").show();
+                            $("#refreshLoadingEnd").parent().append("<span>———— 到底咯 ————</span>")
+                            $("#refreshLoadingEnd").remove();
+                        }
+                    }
+                }, complete:function(){
+                    // that.close()
+                    if(_that != '' )//上下拉样式撤回
+                    _that.back.call()
+                }
+            });
+    //     }
+    // })
+}
+// function _detail(id){
+//    window.location.href="/lease/order/detail/"+id;
+// }
+// function amend(id){//跳转账单修改
+//    window.location.href="/updateOrder/"+id;
+// }
+	</script>
+</html>
