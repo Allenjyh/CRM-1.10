@@ -10,8 +10,10 @@
             margin: 0;
         }
         .main{
-            height: 500px;
-            width: 100%;
+            width:585px;
+            height:312px;
+            /* width:21cm;
+            height:10cm; */
         }
  
         body{
@@ -44,11 +46,11 @@
         }
     </style>
 </head>
-<body id="test">
+<body >
  
-<div class="main" style="background:red">
-<div class="test1" >测试</div>
-<div class="test1" >测试</div>
+<div class="main" id="test"  style="background:red;">
+<div class="test1" >测试585px*312px</div>
+<div class="test1" >测试585px*312px</div>
 <div class="test1" >测试</div>
 <!--<div class="test1" id="test1">测试</div>-->
 </div>
@@ -57,25 +59,31 @@
 <div><a class="down2" href="" download="downImg">下载2</a></div>
 <script>
     //直接选择要截图的dom，就能截图，但是因为canvas的原因，生成的图片模糊
-    //html2canvas(document.querySelector('div')).then(function(canvas) {
+    // html2canvas(document.querySelector('div')).then(function(canvas) {
     //    document.body.appendChild(canvas);
-    //});
+    // });
     //创建一个新的canvas
     var canvas2 = document.createElement("canvas");
-    let
-        _canvas = document.querySelector('#test');
+    let _canvas = document.querySelector('#test');
     var w = parseInt(window.getComputedStyle(_canvas).width);
     var h = parseInt(window.getComputedStyle(_canvas).height);
     //将canvas画布放大若干倍，然后盛放在较小的容器内，就显得不模糊了
-    canvas2.width = w * 2;
-    canvas2.height = h * 2;
+    // 1倍
+    canvas2.width = w ;
+    canvas2.height = h ;
+    // 2倍
+    // canvas2.width = w * 2;
+    // canvas2.height = h * 2;
     canvas2.style.width = w + "px";
     canvas2.style.height = h + "px";
     //可以按照自己的需求，对context的参数修改,translate指的是偏移量
     //  var context = canvas.getContext("2d");
     //  context.translate(0,0);
     var context = canvas2.getContext("2d");
-    context.scale(2, 2);
+    // 1倍
+    context.scale(1, 1);
+    //  2倍
+    // context.scale(2, 2);
     html2canvas(document.querySelector('#test'), { canvas: canvas2 }).then(function(canvas) {
         //document.body.appendChild(canvas);
         //canvas转换成url，然后利用a标签的download属性，直接下载，绕过上传服务器再下载
