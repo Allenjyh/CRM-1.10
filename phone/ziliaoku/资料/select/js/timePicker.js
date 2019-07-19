@@ -1,6 +1,16 @@
 'use strict'
+var noLoadingX = 0;
+window.onload = function () {
+    var scrollContainer = document.getElementById("or_rent");//滚动容器
+    scrollContainer.onscroll = function () {
 
-const picker = function (arry,fn) {
+        noLoadingX = scrollContainer.scrollTop;
+    }
+
+}
+const picker = function (arry,fn,oldYear) {
+
+
 
 
     let setInit = new Promise(function (resolve, reject) {
@@ -14,18 +24,19 @@ const picker = function (arry,fn) {
 
         let div = document.createElement("div");
 
-        let box = '<div class="time-controller"><div class="time-controller-all"><div class="time-controller-choice border-bottom"><span class="cancel" style="color: #A7A7A7;">取消</span><span class="sure">确定</span><h1 class="time-controller-top">选择时间</h1></div><div class="time-controller-content"><div class="time-package-top border-bottom"></div><div class="time-package-bottom border-top"></div><div class="time-package"><div class="time"><ul class="time-list diff"></ul></div><div class="time"><ul class="time-list"></ul></div><div class="time"><ul class="time-list"></ul></div></div></div><div class="time-controller-bottom"></div></div></div>';
+        let box = '<div class="time-controller"><div class="time-controller-all"><div class="time-controller-choice border-bottom"><span class="cancel">取消</span><span class="sure">确定</span><h1 class="time-controller-top">选择时间</h1></div><div class="time-controller-content"><div class="time-package-top border-bottom"></div><div class="time-package-bottom border-top"></div><div class="time-package"><div class="time"><ul class="time-list diff"></ul></div><div class="time"><ul class="time-list"></ul></div><div class="time"><ul class="time-list"></ul></div></div></div><div class="time-controller-bottom"></div></div></div>';
         div.innerHTML = box;
         document.body.appendChild(div);
 
         resolve(fn);
     }).then(function onFulfilled(that) {
         datePicker({
-            appointDays: 120, //默认可以预约未来7天
-            preTime: 20, //默认只能预约10分钟之后,如果两个小时就填120
+            appointDays: 1, //默认可以预约未来X年
+            preTime: 40, //默认只能预约10分钟之后,如果两个小时就填120
             disMinute: 1, //分钟的间隔，默认一分钟
             valueArry: arry,
-            callback:that
+            callback:that,
+            oldYear:oldYear
         })
 
 
@@ -34,12 +45,10 @@ const picker = function (arry,fn) {
             document.querySelector(index).addEventListener("click", function (e) {
 
                 valueArry.forEach(function (index) {
-
-
                     if ("#" + e.target.id == index) {
+                        document.body.style.overflow = 'hidden';//浮层出现时窗口不能滚动设置
                         document.querySelector(index).dataset.active = 'true';
                         document.querySelector(".time-controller").style.display = "block"
-                        document.body.style.overflow = 'hidden';
                     } else {
                         document.querySelector(index).dataset.active = 'false';
                     }
@@ -54,7 +63,7 @@ const picker = function (arry,fn) {
 function datePicker(options = {}) {
     //默认设置
     const DEFAULT_OPTIONS = {
-        appointDays: 120, //设置可以预约未来7天
+        appointDays: 30, //设置可以预约未来x年
         preTime: 20, //设置只能预约20分钟之后,如果两个小时就填120
         disMinute: 10 //分钟的间隔，设置十分钟
     }
@@ -98,62 +107,52 @@ function datePicker(options = {}) {
             remainDay = DayNumOfMonth - currentDay,
             timeStamp = Date.now()
 
-        for (let i = 0; i < app; i++) {
+        for (let i = (CHOICE_OPTIONS.oldYear ? -(CHOICE_OPTIONS.oldYear) : 0); i < app; i++) {
             let preStamp = timeStamp + 24 * 60 * 60 * 1000 * i,
                 date = new Date(preStamp),
-                preYear = date.getFullYear(),
-                preMonth = date.getMonth() + 1,
-                preDay = date.getDate()
+
+                preYear = date.getFullYear() + i,
+                preMonth = date.getMonth() + 1 + i,
+                preDay = date.getDate();
+
             switch (i) {
                 default:
-                    daysArr.push(`${preMonth}月${preDay}日`)
+                    daysArr.push(`${preYear}`) //`${preMonth}月${preDay}日`
                     break
             }
         }
 
+        for(let i=currentMonth;i<13;i++){
+            hoursArr.push(i);
+        }
+        for(let i = currentDay ; i<32;i++){
+            minutesArr.push(i)
+        }
+
         //如果是今天的23:30以后,那么今天的就不能选择
-        if (currentHours == 23 && currentMinutes >= 60 - pre_min) {
-            daysArr.shift()
+        // if (currentHours == 23 && currentMinutes >= 60 - pre_min) {
+        //     daysArr.shift()
+        // }
+        for (let i = 0; i < 12; i++) {
+            //hoursArr.push(i+1)
+            initHourArr.push(i+1)
         }
 
-        for (let i = currentHours; i < 24; i++) {
-            hoursArr.push(i)
-            initHourArr.push(i)
-        }
 
-        //如果当前的分钟超过pre_min(假设pre_min=30),则小时只能从下一个小时选择,当前时间3:40=>4:10
-        if (currentMinutes + pre_min > 60 - dism) {
-            hoursArr.shift()
-            initHourArr.shift()
-        }
 
-        //如果hoursArr没有数据,说明今天已经不能预约,明天任何小时都可以预约
-        if (!hoursArr.length) {
-            for (let h = 0; h < 24; h++) {
-                hoursArr.push(h)
-                initHourArr.push(h)
-            }
-        }
-
-        for (let j = Math.ceil(currentMinutes / dism) * dism + pre_min; j < 60; j += dism) {
-            minutesArr.push(j)
-            initMinuteArr.push(j)
-        }
-
-        //如果分钟没有满足条件的,说明现在已经30分以后,小时会自动加1
-        if (!minutesArr.length) {
-            for (let k = Math.ceil((currentMinutes + pre_min - 60) / dism) * dism; k < 60; k += dism) {
-                minutesArr.push(k)
-                initMinuteArr.push(k)
-            }
+        for (let j = 0; j < 31; j ++) {
+            //minutesArr.push(j)
+            initMinuteArr.push(j+1)
         }
     })()
 
     //初始化数据
     const initData = (f => {
         selectedDay = daysArr[0]
-        selectedHour = initHour = initHourArr[0]
-        selectedMinute = initMinute = initMinuteArr[0]
+        selectedHour = currentMonth
+        initHour = initHourArr[0]
+        selectedMinute =  currentDay
+        initMinute = initMinuteArr[0]
     })()
 
     let time = document.querySelectorAll('.time-list'),
@@ -172,11 +171,11 @@ function datePicker(options = {}) {
         })
 
         hoursArr.forEach(ele => {
-            timeHourHtml += `<li class="time-list-item">${ele}点</li>`
+            timeHourHtml += `<li class="time-list-item">${ele}月</li>` //点
         })
 
         minutesArr.forEach(ele => {
-            timeMinuteHtml += `<li class="time-list-item">${ele}分</li>`
+            timeMinuteHtml += `<li class="time-list-item">${ele}日</li>` //分
         })
 
         timeDay.innerHTML = timeDayHtml
@@ -229,14 +228,18 @@ function datePicker(options = {}) {
                 e.stopPropagation()
                 clearInterval(timer)
                 iStartPageY = e.changedTouches[0].clientY
-                prevPoint = iStartPageY
+                prevPoint = iStartPageY - noLoadingX
             }
             const touchmove = e => {
+
+
                 e.preventDefault()
                 e.stopPropagation()
-                let iDisY = (e.changedTouches[0].pageY - iStartPageY)
+                let iDisY = (e.changedTouches[0].pageY - iStartPageY )
                 speed = (e.changedTouches[0].pageY - prevPoint)
                 prevPoint = e.changedTouches[0].pageY
+
+
                 //已滑动在头部或尾部,但是用户还想往上或下滑,这是给一种越往上或下滑越难拖动的体验
                 if ((this.index == 0 && iDisY > 0) || (this.index == -length && iDisY < 0)) {
                     step = 1 - Math.abs(iDisY) / selector.clientWidth //根据超出长度计算系数大小，超出的越到 系数越小
@@ -293,28 +296,53 @@ function datePicker(options = {}) {
     new datePicker(timeDay, 0, indexDay => {
         let timeHourHtml = '',
             timeMinuteHtml = ''
+
         //没有逗号，这个selectedDay是全局变量。。。
-        selectedDay = daysArr[indexDay]
+
+        //console.log(daysArr[indexDay])
+
+        selectedDay = daysArr[indexDay];
+
         //今天
         if (indexDay == 0) {
             isToday = true
             //用户选择今天,但是此时的小时已不满足要求,小于当前时间,需要重置初始化小时选项
-            hoursArr = initHourArr
+            hoursArr = [];
+            hoursArr = (function(currentMonth){
+                let _hoursArr = [];
+                for(let i = currentMonth ; i < 13;i++){
+                    _hoursArr.push(i)
+                }
+                return _hoursArr;
+            })(currentMonth)
+
+            
+
             hoursArr.forEach(ele => {
-                timeHourHtml += `<li class="time-list-item">${ele}点</li>`
+                timeHourHtml += `<li class="time-list-item">${ele}月</li>`
             })
             timeHour.innerHTML = timeHourHtml
             let hindex = selectedHour < initHour ? 0 : hoursArr.indexOf(selectedHour)
             //重置当前选择的时间,从明天滑回选择今天需要重置selectedHour
             selectedHour = hoursArr[hindex]
             new datePicker(timeHour, hindex, indexHour => {
-                selectedHour = hoursArr[indexHour]
+                
+                selectedHour = hoursArr[indexHour];
+                indexHour = "";
             })
             //用户选择今天,但是此时的分钟已不满足要求,小于当前时间,需要重置初始化分钟选项
-            if (hindex === 0) {
-                minutesArr = initMinuteArr
+            //console.log(indexHour)//currentDay
+            if (hindex === 0 || hindex === -1) {
+                minutesArr = (function(currentDay){
+                    let _hoursArr = [];
+                    for(let i = currentDay ; i < 32;i++){
+                        _hoursArr.push(i)
+                    }
+                    return _hoursArr;
+                })(currentDay)//initMinuteArr
+
                 minutesArr.forEach(ele => {
-                    timeMinuteHtml += `<li class="time-list-item">${ele}分</li>`
+                    timeMinuteHtml += `<li class="time-list-item">${ele}日</li>`
                 });
                 timeMinute.innerHTML = timeMinuteHtml
                 let mindex = selectedMinute < initMinute ? 0 : minutesArr.indexOf(selectedMinute)
@@ -328,13 +356,14 @@ function datePicker(options = {}) {
         } else {
             //天数选择影响小时
             isToday = false
+            
             hoursArr = []
-            for (let h = 0; h < 24; h++) {
-                hoursArr.push(h)
+            for (let h = 0; h < 12; h++) {
+                hoursArr.push(h+1)
             }
             let hindex = hoursArr.indexOf(selectedHour)
             hoursArr.forEach((ele) => {
-                timeHourHtml += `<li class="time-list-item">${ele}点</li>`
+                timeHourHtml += `<li class="time-list-item">${ele}月</li>`
             })
             timeHour.innerHTML = timeHourHtml
 
@@ -343,13 +372,13 @@ function datePicker(options = {}) {
             })
             //天数选择影响分钟
             minutesArr = [];
-            for (let m = 0; m < 60; m += dism) {
-                minutesArr.push(m)
+            for (let m = 0; m < 31; m ++) {
+                minutesArr.push(m+1)
             }
             let mindex = minutesArr.indexOf(selectedMinute)
             timeMinuteHtml = ''
             minutesArr.forEach((ele) => {
-                timeMinuteHtml += `<li class="time-list-item">${ele}分</li>`;
+                timeMinuteHtml += `<li class="time-list-item">${ele}日</li>`;
             })
             timeMinute.innerHTML = timeMinuteHtml
             new datePicker(timeMinute, mindex, indexMinute => {
@@ -359,40 +388,66 @@ function datePicker(options = {}) {
     })
 
     new datePicker(timeHour, 0, indexHour => {
-        let timeMinuteHtml = ''
-        selectedHour = hoursArr[indexHour]
+
+        let timeMinuteHtml = '',
+            indexSelectMonth = "";
+        selectedHour = hoursArr[indexHour];
+
+        let arrays = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+            function contains(arrays, obj) {
+                var i = arrays.length;
+                while (i--) {
+                    if (arrays[i] === obj) {
+                        return i;
+                    }
+                }
+                return false;
+            }
+
+
         //滑到头部,这是要处理分钟是否小于当前时间
-        if (indexHour == 0 && isToday) {
-            minutesArr = initMinuteArr
-            minutesArr.forEach(ele => {
-                timeMinuteHtml += `<li class="time-list-item">${ele}分</li>`
-            });
-            timeMinute.innerHTML = timeMinuteHtml
-            let mindex = selectedMinute < initMinute ? 0 : minutesArr.indexOf(selectedMinute)
-            //重置当前选择的时间,从明天滑回选择今天需要重置selectedMinute
-            selectedMinute = minutesArr[mindex]
-            new datePicker(timeMinute, mindex, indexMinute => {
-                selectedMinute = minutesArr[indexMinute]
-            })
+        if (isToday && (indexHour+parseInt(contains(arrays,parseInt(hoursArr[0])))+1) ==  currentMonth) { 
+                minutesArr = (function(currentDay){
+                    let _hoursArr = [];
+                    for(let i = currentDay ; i < 32;i++){
+                        _hoursArr.push(i)
+                    }
+                    return _hoursArr;
+                })(currentDay)
+    
+                minutesArr.forEach(ele => {
+                    timeMinuteHtml += `<li class="time-list-item">${ele}日</li>`
+                });
+                timeMinute.innerHTML = timeMinuteHtml
+                let mindex = selectedMinute < initMinute ? 0 : minutesArr.indexOf(selectedMinute)
+                //重置当前选择的时间,从明天滑回选择今天需要重置selectedMinute
+                selectedMinute = minutesArr[mindex]
+                new datePicker(timeMinute, mindex, indexMinute => {
+                    selectedMinute = minutesArr[indexMinute]
+                })
+            
         } else {
             minutesArr = []
-            for (let m = 0; m < 60; m += dism) {
-                minutesArr.push(m)
+            for (let m = 0; m < 31; m ++) {
+                minutesArr.push(m+1)
             }
             let mindex = minutesArr.indexOf(selectedMinute)
             minutesArr.forEach(ele => {
-                timeMinuteHtml += `<li class="time-list-item">${ele}分</li>`
+                timeMinuteHtml += `<li class="time-list-item">${ele}日</li>`
             });
             timeMinute.innerHTML = timeMinuteHtml
             new datePicker(timeMinute, mindex, indexMinute => {
                 selectedMinute = minutesArr[indexMinute]
             })
         }
+        
     })
 
     new datePicker(timeMinute, 0, indexMinute => {
         selectedMinute = minutesArr[indexMinute]
     })
+    
 
     //获得最后选择的日期
     const sureTime = e => {
@@ -401,9 +456,12 @@ function datePicker(options = {}) {
 
         const minute = selectedMinute,
             hour = selectedHour,
-            day = parseInt(selectedDay.split('月')[1]),
-            month = parseInt(selectedDay.split('月')[0].slice(-1)),
-            year = (month == 1 && day < app) ? currentYear + 1 : currentYear
+            day = parseInt(selectedHour?selectedMinute:currentDay),
+            month = parseInt(selectedHour?selectedHour:currentMonth),
+            year = (month == 1 && day < app) ? currentYear + 1 : currentYear;
+
+
+
         //IOS版本浏览器不兼容new Date('2017-04-11')这种格式化，故用new Date('2017/04/11')
         let timeStamp = new Date(`${year}/${month}/${day} ${hour}:${minute}`).getTime(),
             timeStr = `${selectedDay} ${hour}点${minute}分`
@@ -411,17 +469,16 @@ function datePicker(options = {}) {
         sessionStorage.setItem('timeStamp', timeStamp)
         sessionStorage.setItem('timeStr', timeStr)
 
-        //$(".time-box input").val(year + "-" + ( month<10?"0"+month:month) + "-" + day + "  " + hour + " : " + minute);
-
         CHOICE_OPTIONS.valueArry.forEach(function (index) {
             if (document.querySelector(index).dataset.active == 'true') {
-                document.querySelector(index).value = (year + "." + (month < 10 ? "0" + month : month) + "." + (day < 10 ? "0" + day : day) + "  " + hour + ":" + (minute == 0 ? "00" : minute));
+                document.querySelector(index).value = (selectedDay + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day));
             }
-        })
-        CHOICE_OPTIONS.callback();
+        });
 
-        document.querySelector('.time-controller').style.display = 'none';
-        document.body.style.overflow = 'auto';
+
+        CHOICE_OPTIONS.callback()
+        document.querySelector('.time-controller').style.display = 'none'
+        document.body.style.overflow = 'auto';// 浮层关闭时滚动设置
 
     }
 
@@ -429,23 +486,16 @@ function datePicker(options = {}) {
     const toggle = e => {
         e.preventDefault()
         e.stopPropagation()
-        document.querySelector('.time-controller').style.display = 'none';
-        document.body.style.overflow = 'auto';
+        document.querySelector('.time-controller').style.display = 'none'
+        document.body.style.overflow = 'auto';// 浮层关闭时滚动设置
     }
     document.querySelector('.sure').addEventListener('touchend', sureTime, false)
     document.querySelector('.cancel').addEventListener('touchend', toggle, false)
 
-    document.querySelector('.time-controller').style.display = 'none';
-    document.body.style.overflow = 'auto';
+    document.querySelector('.time-controller').style.display = 'none'
 }
 
-
-//HTML页面上的ID 
 // picker(["#time","#time1"])
-// picker(["#starting-time","#ending-time"],function(a){
-
-// },4)
-
 
 
 

@@ -1,0 +1,171 @@
+*{
+    color:rgba(0,0,0,0.85);
+    font-family:PingFang-SC-Regular;
+}
+.or-centen{
+        width: 100%;
+}
+.or-table{
+        width: 92%;
+        border-collapse:separate;
+        border-spacing:0px;
+        margin: 0 auto;
+}
+.or-table tr td,.or-table tr td a {
+        padding: 13px 0;
+        color:rgba(255,255,255,0.85);
+}
+.or-table-padding tr td{
+        padding: 0px 23px 0px 0;
+        font-size: 13px;
+        
+}
+.or-table tr td:nth-child(2){
+        text-align: right;
+}
+.img_ img{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:-1;
+    width: 100vw;
+    height: 90px;
+}
+.or-Lookup{
+font-size:20px;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+    color:rgba(255,255,255,0.85);
+line-height:24px;
+text-align: left;
+padding-bottom: 7px;
+}
+.rep-arrow{
+    width: 24px;
+    height: 24px;
+    background-image: url("../../wechat/images/arrow.png");
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    margin-top: -2px;
+    } 
+.arrow_white{
+    background-image: url("../../wechat/images/arrow_white.png");
+    } 
+.user_icon{
+    background-image: url("../../wechat/images/user/user_icon.png");
+    } 
+.p-title{
+    font-size:16px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    line-height:40px;
+    border-bottom: 1px solid rgb(241, 238, 238)
+}	
+.list_each{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 58px;
+    padding: 2.7% 0 0 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #0000001F;
+    }
+.list_qb_l img{
+    width: 40px;
+    height: 40px;
+}
+.list_each .list_qb_r {
+width: 85.4%;
+}
+.list_qb_r span{
+    font-size: 12px;
+    display: block;
+    margin-top: 6px;
+    color:rgba(0,0,0,0.45);
+}
+/* 企业个人中心end */
+/* 物业个人中心start */
+.user_info_card{
+	background:#fff;width:calc(100vw - 30px);
+	height:104px;margin:18px 15px 0px;
+	border-radius: 8px;
+	box-shadow: 2px 7px 14px 1px rgba(25,140,255,0.25);
+padding: 20px 0 0 20px;
+}
+.user_info_card p:first-of-type{
+	font-size:16px;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	width: 71.5%;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.user_info_card p:nth-child(2){
+	margin: 8px 0 4px 0;
+}
+/* 物业个人中心end */
+/* 公司设置 */
+.addParkName-box {
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    width: calc(100vw - 30px);
+    height: 46px;
+    background: rgba(255, 255, 255, 1);
+    margin: 40px auto;
+}
+.addParkName-bar span {
+    height: 44px;
+    width: 44px;
+    cursor: pointer;
+    position: absolute;
+    line-height: 44px;
+}
+.addParkName-bar span {
+    display: inline-block;
+    background: transparent;
+    font-size: 13px;
+    width: 96px;
+    top: 0;
+    left: 0;
+    text-align: left;
+}
+input {
+    width: 100%;
+    height: 44px;
+	padding-left: 13px;
+	border: none;
+    outline: none;
+}
+.addParkName-bar input {
+    display: inline-block;
+    width: calc(100% - 96px);
+    background: transparent;
+    top: 0;
+    right: 0;    
+    float: right;
+    text-align: right;
+}
+/* 公司设置end */
+/* 手机号修改 */
+.thisYZM1 {
+    width: 94px;
+    height: 50px;
+    line-height: 50px;
+    color: #198cff;
+    text-align: center;
+    position: absolute;
+    right: -15px;
+    top: 0px;
+    cursor: pointer;
+}
+.thisYZM1:after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -5px;
+    height: 20px;
+    border-left: 1px solid rgba(0,0,0,0.15);
+}

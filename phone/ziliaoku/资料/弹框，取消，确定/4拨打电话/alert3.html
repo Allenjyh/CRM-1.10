@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>公司信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<!-- <link href="css/company_imformation.css" rel="stylesheet" /> -->
+	<link href="alert.css" rel="stylesheet" />
+	<!-- <script type="text/javascript" src="js/jquery-alert.min.js"></script>1.alert('asd') -->
+	<script type="text/javascript" src="alert.js"></script>
+	<!-- <script type="text/javascript" src="ziliaoku/winAlert.js"></script> -->
+	<script type="text/javascript" src="../../../../js/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+     /* ._input>tr>td{
+         display: inline;
+        margin: 0 0 10px 10px;
+     } */
+
+
+/*  */
+   
+    /* alert样式 */
+    .alert-title{
+        width: 64px; /*修改1*/
+    }
+    .alert-content{
+        height: 253px; /*修改2*/
+    }
+    /* alert样式end */
+
+</style>
+<body style="background:#fff;">
+	<div class="addParkName-box" style="margin-bottom: 5px;">
+		<div class="search addParkName-bar">
+			<form>
+				<span onclick="rentPay()">物业名称</span>
+				<input type="text" maxlength="14" class="park-name" placeholder="请输入" >
+			</form>
+		</div>
+    </div>
+   
+<!--         
+    <form action="get" >
+        <table >
+        <tr>
+			<td class="_input"><input type="radio"name="money" value="0">现金</td>
+        </tr>
+        <tr>
+			<td class="_input"><input type="radio"name="money" value="1">微信</td>
+        </tr>
+        <tr>
+			<td class="_input"><input type="radio"name="money" value="2">支付宝</td>
+        </tr>
+        <tr>
+			<td class="_input"><input type="radio"name="money" value="3">支票</td>
+        </tr>
+    </table>
+    </form> -->
+        <!-- <label>
+            <table>
+                   <tr>
+                       <td><div class="radio"><input id="radio-16" name="radio" type="radio" value="0" >
+                           <label for="radio-1" class="radio-label"></label></div>
+                       </td>
+                       <td><div >现金</div> </td>
+                   </tr>
+               </tbody>
+           </table>
+       </label>
+        <label>
+            <table>
+                   <tr>
+                       <td><div class="radio"><input id="radio-16" name="radio" type="radio" value="1" >
+                           <label for="radio-2" class="radio-label"></label></div>
+                       </td>
+                       <td><div >微信</div> </td>
+                   </tr>
+               </tbody>
+           </table>
+       </label>
+        <label>
+            <table>
+                   <tr>
+                       <td><div class="radio"><input id="radio-16" name="radio" type="radio" value="2">
+                           <label for="radio-1" class="radio-label"></label></div>
+                       </td>
+                       <td><div >支付宝</div> </td>
+                   </tr>
+               </tbody>
+           </table>
+       </label>
+        <label>
+            <table>
+                   <tr>
+                       <td><div class="radio"><input id="radio-16" name="radio" type="radio" value="3">
+                           <label for="radio-2" class="radio-label"></label></div>
+                       </td>
+                       <td><div >支票</div> </td>
+                   </tr>
+               </tbody>
+           </table>
+       </label> -->
+
+</body>
+<script type="text/javascript">
+
+function rentPay(_this,state,order_id){
+      var _content = `  <label>
+            <table>
+                   <tr>
+                       <td><div class="radio"><input id="radio-16" name="radio" type="radio" value="0"  checked >
+                           <label for="radio-1" class="radio-label"></label></div>
+                       </td>
+                       <td><div >现金</div> </td>
+                   </tr>
+               </tbody>
+           </table>
+       </label>
+        <label>
+            <table>
+                   <tr>
+                       <td><div class="radio"><input id="radio-16" name="radio" type="radio" value="1">
+                           <label for="radio-2" class="radio-label"></label></div>
+                       </td>
+                       <td><div >微信</div> </td>
+                   </tr>
+               </tbody>
+           </table>
+       </label>
+        <label>
+            <table>
+                   <tr>
+                       <td><div class="radio"><input id="radio-16" name="radio" type="radio" value="2">
+                           <label for="radio-1" class="radio-label"></label></div>
+                       </td>
+                       <td><div >支付宝</div> </td>
+                   </tr>
+               </tbody>
+           </table>
+       </label>
+        <label>
+            <table>
+                   <tr>
+                       <td><div class="radio"><input id="radio-16" name="radio" type="radio" value="3">
+                           <label for="radio-2" class="radio-label"></label></div>
+                       </td>
+                       <td><div >支票</div> </td>
+                   </tr>
+               </tbody>
+           </table>
+       </label>`;
+
+    var recor = alertObj.oAlert({
+        style:'wap',
+        title:'支付方式',
+        content : _content,
+        buttons :{
+            '取消' : function(){
+                recor.close();
+            },
+            '确定' : function(e){
+                // console.log($('input[name="radio" ]').length)
+
+                $('input[name="radio"]').each(function(){
+                    if($(this).is(":checked")){
+
+                        console.log($(this).val())
+                    }
+                })
+                // $loading.init({
+                //     next: function (e) {
+                //         var _that = e;
+                        $.ajax({
+                            
+                        })
+                    // }
+                // })
+            }
+        }
+    },function(){
+        // var time = setInterval(function(){
+        //     if($('input[name="radio" ]').length > 0){
+        //         $('input[name="radio" ]').click(function(){
+        //             var type = $(this).val();
+        //             console.log(type)
+        //         })
+        //         clearInterval(time)
+        //     }
+        // });
+
+    })
+}
+</script>
+</html>

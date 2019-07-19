@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>公司资料</title>
+	<link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
+	<link href="wechat/css/user.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<!-- <script type="text/javascript" src="{{url('/wechat/js/lib/jquery.js')}}"></script> -->
+
+	<style>
+	.list_qb_l img{
+		width: 24px;
+		height: 24px;
+	}
+	.list_each{
+		height: 44px;
+	}
+	.list_each p{
+		color: rgba(0, 0, 0, 0.65);
+		line-height: 25px;
+	}
+	.addParkName-bar span,.addParkName-bar input {
+		color: rgba(0,0,0,0.65);
+	}
+	</style>
+<body style="background:#fff">
+	<!-- 公司资料 -->
+	<div class="information" style="padding: 0 15px;">
+		<p class="p-title" >修改内容</p>
+		<ul >
+			<li style="position:relative;" class="company_set">
+				<div class="list_each">
+					<div class="list_qb_l" >
+						<img src="wechat/images/user/bank.png"  alt="">
+					</div>
+					<div class="list_qb_r">
+						<p>公司设置</p>
+						<b class="list_qb_r_div" style="position: absolute;right: 0;top: 11px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
+					</div>
+				</div>
+			</li>
+			<a href="set_bank_accounts.html">
+			<li style="position:relative;">
+				<div class="list_each">
+					<div class="list_qb_l" >
+						<img src="wechat/images/user/compan.png"  alt="">
+					</div>
+					<div class="list_qb_r">
+						<p>银行账户</p>
+						<b class="list_qb_r_div" style="position: absolute;right: 0;top: 11px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
+					</div>
+				</div>
+			</li>
+			</a>
+		</ul>
+	</div>
+	<!-- 公司设置 -->
+	<div class="set_information" style="padding: 0 15px;display:none">
+		<div id='set_contacts' class="addParkName-box" style="margin-top:0px;margin-bottom:0px;">
+			<div class="search addParkName-bar">
+				<span>联系人</span>
+				<input  type="text" style="width: calc(100% - 60px);padding-right: 33px;" value=" 超级稳" maxlength="4" onchange="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')"  readonly>
+				<b class="list_qb_r_div" style="position: absolute;right: 0;top: 13px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>		
+			</div>
+		</div>
+		<div id='set_phone_num' class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+			<div class=" addParkName-bar">
+				<span>联系电话</span>
+				<input  type="text" class=" repairs_address phone-tel"  value=" 133 333 333 33" style="width: calc(100% - 60px);padding-right: 33px;"
+					oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);"
+					autocomplete="off">
+				<b class="list_qb_r_div" style="position: absolute;right: 0;top: 13px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>		
+            </div> 
+		</div>
+	</div>
+	<!-- 更换联系人 -->
+	<div class="change_contacts" style="padding: 0 15px;display:none">
+		<div class="addParkName-box" style="margin-top:0px;margin-bottom:0px;">
+			<div class="search addParkName-bar">
+				<span>公司联系人</span>
+				<input id='contacts' type="text" name="contacts" style="width: calc(100% - 60px);color: rgba(0,0,0,0.45);" placeholder="请输入公司联系人姓名" maxlength="4" onchange="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" 
+				onkeyup="if(this.value != ''){document.querySelector('.display_btn').style.background='linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%)'}else{document.querySelector('.display_btn').style.background='rgba(0,0,0,0.25)'}">
+			</div>
+			<div id="contacts_submit" class="display_btn">确认</div>
+		</div>
+	</div>
+	<!-- 更换联系电话 -->
+	<div class="change_phone" style="padding: 0 15px;display:none">
+		<div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+			<div class=" addParkName-bar">
+				<span>新手机号</span>
+				<input id='phone_num' type="text" class=" repairs_address phone-tel"  value="请输入新手机号" style="width: calc(100% - 60px);color: rgba(0,0,0,0.45);"
+					oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);"
+					autocomplete="off" >
+			</div> 
+		</div>
+		<div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+			<div class="addParkName-bar">
+				<span>验证码</span>
+				<input class="register_input9" autocomplete="off" oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>6) this.value=this.value.substring(0,6);" type="number" name="" placeholder="6位验证码" style="color: rgba(0,0,0,0.45);padding-right: 100px;">
+				<div class="thisYZM1 cursor">获取验证码</div>
+			</div> 
+		</div>
+		<div id="phone_submit" class="display_btn phone_submit">确认</div>
+	</div>
+</body>
+<script>
+	$(".company_set").on("click",function(){//点击公司设置
+		$('.information').hide()
+		$(document).attr("title","公司设置");//修改title值
+		$('.set_information').show()			
+	})
+	$("#set_contacts").on("click",function(){//点击联系人设置
+		$('.set_information').hide()
+		$(document).attr("title","更换联系人");
+		$('.change_contacts').show()			
+	})
+	$("#set_phone_num").on("click",function(){//点击联系电话设置
+		$('.set_information').hide()
+		$(document).attr("title","更换联系电话");
+		$('.change_phone').show()			
+	})
+	
+	function checkParkBtn() {
+        if($(".register_input9").val() != '' && $("#phone_num").val() != '' ){
+            document.querySelector('.phone_submit').style.background='linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%)';
+        }else{
+            document.querySelector('.phone_submit').style.background='rgba(0,0,0,0.25)';
+        }
+    }
+	checkParkBtn();
+
+    $(".register_input9,#phone_num").on("input",function(){
+        checkParkBtn();
+    });
+</script>
+</html>

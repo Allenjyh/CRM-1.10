@@ -32,6 +32,11 @@ ul,ol,li{
 list-style: none;
 }
 a[title="站长统计"]{display: none!important;}
+/*功能1 ：通用分割块*/
+.divider{
+	height: 10px;
+	background: rgba(0, 0, 0, 0.02);
+}
 /* 提交按钮 */
 .submit_btn{
 	width: calc(100vw * 0.893);

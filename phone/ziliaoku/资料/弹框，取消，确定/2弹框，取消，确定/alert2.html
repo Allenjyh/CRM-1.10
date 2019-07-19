@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>公司信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<!-- <link href="css/company_imformation.css" rel="stylesheet" /> -->
+	<link href="alert.css" rel="stylesheet" />
+	<!-- <script type="text/javascript" src="js/jquery-alert.min.js"></script>1.alert('asd') -->
+	<script type="text/javascript" src="alert.js"></script>
+	<!-- <script type="text/javascript" src="ziliaoku/winAlert.js"></script> -->
+	<script type="text/javascript" src="../../../../js/jquery-3.3.1.min.js"></script>
+</head>
+<body style="background:#fff;">
+	<div class="addParkName-box" style="margin-bottom: 5px;">
+		<div class="search addParkName-bar">
+			<form>
+				<span onclick="rentPay()">物业名称</span>
+				<input type="text" maxlength="14" class="park-name" placeholder="请输入" >
+			</form>
+		</div>
+	</div>
+	
+
+</body>
+<script type="text/javascript">
+// 1.alert样式
+// 1.1
+// alerts._show('asd')
+//1.2
+// alert('123',function(){
+//     document.location = "phone_enterprises.html";
+// })
+function rentPay(_this,state,order_id){
+               
+    var recor = alertObj.oAlert({
+        style:'wap',
+        title:(state == 0 ? '付款' : '收款' ),
+        content : (state == 0 ? '是否确认已付款？' : "是否确认收款？" ),
+        buttons :{
+            '取消' : function(){
+                recor.close();
+            },
+            '确定' : function(){
+				console.log(0)
+                // $loading.init({
+                //     next: function (e) {
+                //         var _that = e;
+                        $.ajax({
+                            
+                        })
+                    // }
+                // })
+            }
+        }
+    })
+}
+</script>
+</html>

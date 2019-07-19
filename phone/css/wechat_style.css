@@ -116,3 +116,8 @@ a[title="站长统计"]{display: none!important;}
 	color: #fff;
 }
 /* 拒绝，同意end */
+	/*功能1 ：通用分割块*/
+	.divider{
+	height: 10px;
+	background: #f1f1f1
+}
