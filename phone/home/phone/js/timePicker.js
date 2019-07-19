@@ -1,4 +1,3 @@
-@@ -1,453 +0,0 @@
 'use strict'
 
 const picker = function (arry,fn) {
@@ -446,6 +445,7 @@ function datePicker(options = {}) {
 // picker(["#starting-time","#ending-time"],function(a){
 
 // },4)
+
 
 
 
