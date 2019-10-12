@@ -9,7 +9,7 @@
         outline: none;
     }
     .top_box{
-        position: fixed;
+        /* position: fixed; */
         width: 100vw;
         z-index: 9;
     }

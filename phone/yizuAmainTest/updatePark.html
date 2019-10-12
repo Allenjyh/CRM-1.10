@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改园区</title>
+    <link rel="stylesheet" href="css/layui.css">
+</head>
+<style>
+    .layui-card-header{
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .layui-form-pane .layui-form-label {
+
+        border-style: none;
+
+    }
+    .yizu-table td{
+        width: 33.33%;
+        padding: 5px;
+    }
+</style>
+<body>
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 100%;text-align: left;text-indent: 20px;">修改园区信息</label>
+    </div>
+
+    <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">园区信息</div>
+                    <div class="layui-card-body test-loading">
+
+                        <table class="yizu-table">
+                            <tr>
+                                <td>物业绑定手机号/用户id</td>
+                                <td>园区名/园区id</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select id="update_phone_number_select" name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="0" selected="">绑定手机</option>
+                                                    <option value="1">绑定id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input id="update_phone_number" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="0" selected="">园区名</option>
+                                                    <option value="1">园区id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input id="update_park_number" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                            <legend style="font-size: 16px;">需要修改的内容</legend>
+                        </fieldset>
+
+                        <table class="yizu-table" style="margin: 10px 0">
+                            <tr>
+                                <td>园区名称</td>
+                                <td>园区id</td>
+                                <td>联系人</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>联系电话</td>
+                                <td>园区地址</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <table class="yizu-table">
+                            <tr>
+                                <td>交租期</td>
+                                <td>损耗</td>
+                                <td>水费单价</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <select type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;display: block">
+                                            <option value="01,01" selected>1日</option>
+                                            <option value="01,02">1日-2日</option>
+                                            <option value="01,03">1日-3日</option>
+                                            <option value="01,04">1日-4日</option>
+                                            <option value="01,05">1日-5日</option>
+                                            <option value="01,06">1日-6日</option>
+                                            <option value="01,07">1日-7日</option>
+                                            <option value="01,08">1日-8日</option>
+                                            <option value="01,09">1日-9日</option>
+                                            <option value="01,10">1日-10日</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>电费单价</td>
+                                <td>园区总间数</td>
+                                <td>入驻间数</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" class="layui-btn layui-btn-normal save-park">保存园区信息</button>
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">更换园区归属</div>
+                    <div class="layui-card-body">
+                        <table class="yizu-table">
+                            <tr>
+                                <td>物业绑定手机号/用户id</td>
+                                <td>园区名/园区id</td>
+                                <td>目标物业名称/用户id</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="0" selected="">绑定手机</option>
+                                                    <option value="1">用户id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="0" selected="">园区名</option>
+                                                    <option value="1">园区id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="0" selected="">物业名称</option>
+                                                    <option value="1">用户id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" class="layui-btn layui-btn-normal">保存园区归属</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">提醒日推送</div>
+                    <div class="layui-card-body">
+                        <table class="yizu-table">
+                            <tr>
+                                <td>物业绑定手机号/用户id</td>
+                                <td>园区名/园区id</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="0" selected="">绑定手机</option>
+                                                    <option value="1">用户id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="0" selected="">园区名</option>
+                                                    <option value="1">园区id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" class="layui-btn layui-btn-normal">提醒日推送信息</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</form>
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/yizuAjax.js"></script>
+<script>
+    //ajax
+    yizuAjax.tsSubmit({
+        url : "",
+        type : "",
+        ele : '.save-park',
+        data : "",
+        callback : "",
+        beforeCall : function(){
+            //数据
+            let phoneNumber = $("#update_phone_number").val(),
+                parkNumber = $("#update_park_number").val(),
+                _val = $("#update_phone_number_select").val();
+
+            if(phoneNumber == "" && parkNumber == ""){
+                return {status:true,msg:"请选择一个修改条件，‘物业绑定手机号/用户id’或‘园区名/园区id’"}
+            }else {
+                if(phoneNumber){
+                    if(parseInt(_val) == 0){
+                        return yizuAjax.validatePhone(phoneNumber)
+                    }
+                }
+
+
+            }
+
+        }
+
+    })
+</script>
+</html>

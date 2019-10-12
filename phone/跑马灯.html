@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!-- <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script> -->
+		<script type="text/javascript" src="js/vue.js"></script>
+		<title>跑马灯效果</title>
+		<style>
+			span {
+				display: block;
+				width: 500px;
+				font-size: 46px;
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" align="center">
+			<div ></div>
+			<span @mouseout="start" v-on:mouseover="stop">{{ text }}</span>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+				el: '#app',
+				data: {
+					text: "跑马灯效果展示~",
+					ID: null,
+				},
+
+				methods: {
+					// 开始滚动
+					start() {
+						this.ID = setInterval(() => {
+							// 截取首个字符
+							var head = this.text.substring(0, 1);
+							// 截取除首个字符外的所有字符
+							var foot = this.text.substring(1);
+							// 拼接后重新渲染text属性值
+							this.text = foot + head;
+						}, 300);
+						
+					},
+					// 停止滚动
+					stop(){
+						// 清除定时器
+						clearInterval(this.ID);
+					}
+				},
+			})
+	</script>
+</html>

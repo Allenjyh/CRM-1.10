@@ -51,15 +51,15 @@ var GenerateCss = function () {
     });
 
     $("#mb_tit").css({
-        display: 'block', fontSize: '14px', color: '#444', padding: '10px 15px',
+        display: 'inline-table', fontSize: '16px', color: '#444', padding: '10px 0px',
         backgroundColor: '#FFFFFF', borderRadius: '8px 8px 0 0',
         borderBottom: '3px solid #009BFE', fontWeight: 'bold',
-        width: "85px", marginLeft: "10px"
+        width: "auto", marginLeft: "20px"
     });
 
     $("#mb_msg").css({
-        padding: '25px 15px', lineHeight: '20px',
-        borderBottom: '1px solid #DDD', fontSize: '13px'
+        padding: '25px 20px', lineHeight: '20px',
+        borderBottom: '1px solid #DDD', fontSize: '13px',color:'#555'
     });
 
     $("#mb_ico").css({
@@ -107,8 +107,3 @@ var GenerateCss = function () {
 
 
 // window.alert = alerts._show
-//使用
-//  1.alerts._show("已提交 等待审核！",function(){
-//     window.location.href= '/settled/status';
-// })
-// 2.alerts._show("已提交 等待审核！")

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>通知公告</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="wechat/js/releaseNotice.js"></script>
+		<link href="wechat/css/releaseNotice.css" rel="stylesheet" />   
+		<style type="text/css">
+		* { color: rgba(0,0,0,0.45);
+		}
+		.address,.address span,.onehide{
+			
+			color:rgba(0,0,0,0.65);
+			line-height:43px;	
+			border-bottom: 1px solid rgba(0, 0, 0, 0.02);	
+
+		}
+		.address{
+			padding-left: 15px;
+		}
+		</style>
+	</head>
+	<body  style="background:#fff;">
+		<div class="roomLevel3-ul">
+			 <label>
+				<table >
+					<tr >
+						<td >
+							<span class="onehide"> 标题</span>
+							<input class="title-input" type="text" name="username" lay-verify="required" placeholder="请输入标题" autocomplete="off"  
+							maxlength="30" >
+						</td>
+					</tr>
+				</table>
+			</label>
+			<!-- <div style="width: 100%; height: 10px;background: #F3F3F3;"></div> -->
+			 <label>
+				<table >
+					<tr >
+						<td >
+							<p style="padding-bottom:12px;">公告内容（200字以内）</p>
+							<textarea class="textArea" id="content-input" datatype="required" isheightauto="true" placeholder="请输入公告内容" msg="必填项" name="grxygzjh" onfocus='autoTextarea(this)'
+							style="font-family: PingFang-SC-Medium;width:99%; font-size: 13px; border-style: none ;height: 56px; background: transparent; text-align:left;	color: rgba(0,0,0,0.85);"	 
+							type="text" ></textarea>
+							<p style="float:right;padding-top: 5px;color: rgba(0,0,0,0.45);">( <span class="textNum" style="padding-right:0px;color: rgba(0,0,0,0.45);" >0</span><span style="color: rgba(0,0,0,0.45);"> / 200 )</span><p> 
+						</td>
+					</tr>
+				</table>
+			</label>
+			<div style="width: 100%; height: 10px;background: #F3F3F3;"></div>	
+		</div>
+		<p class="address" >地点：<span> 广贸商务中心</span></p>	
+		<div class="addParkName-btn submit_btn">
+			发 布
+		</div>
+	</body>
+<script>
+	
+
+
+    // 提交按钮
+    var submitArry = [".title-input","#content-input"];
+    submitArrySet();
+    submitArry.forEach(function(index){
+        $(index).on("input",function(){
+            submitArrySet()
+        })
+    })
+    function submitArrySet(){
+        var _status = true;
+        submitArry.forEach(function(ele){
+            if($(ele).val() == ""){
+                _status = false;
+            }
+	})
+		
+	if(_status){
+	document.querySelector('.addParkName-btn').style.background = 'linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%)';
+	} else {
+		document.querySelector('.addParkName-btn').style.background = 'rgba(0,0,0,0.25)';
+	} 
+	
+    }
+   // 提交按钮end
+
+	/*1.文本域的字数控制*/
+	$('.textArea').on("keyup", function () {
+		$('.textNum').text($('.textArea').val().length);//这句是在键盘按下时，实时的显示字数
+		if ($('.textArea').val().length > 200) {
+		$('.textNum').text(200);//长度大于100时0处显示的也只是100
+		$('.textArea').val($('.textArea').val().substring(0, 200));//长度大于100时截取钱100个字符
+		}
+	});
+	// 2.textarea自动换行，且文本框根据输入内容自适应高度
+	var autoTextarea = function (elem, extra, maxHeight) {
+        extra = extra || 0;
+        var isFirefox = !!document.getBoxObjectFor || 'mozInnerScreenX' in window,
+        isOpera = !!window.opera && !!window.opera.toString().indexOf('Opera'),
+                addEvent = function (type, callback) {
+                        elem.addEventListener ?
+                                elem.addEventListener(type, callback, false) :
+                                elem.attachEvent('on' + type, callback);
+                },
+                getStyle = elem.currentStyle ? function (name) {
+                        var val = elem.currentStyle[name];
+
+                        if (name === 'height' && val.search(/px/i) !== 1) {
+                                var rect = elem.getBoundingClientRect();
+                                return rect.bottom - rect.top -
+                                        parseFloat(getStyle('paddingTop')) -
+                                        parseFloat(getStyle('paddingBottom')) + 'px';        
+                        };
+
+                        return val;
+                } : function (name) {
+                                return getComputedStyle(elem, null)[name];
+                },
+                minHeight = parseFloat(getStyle('height'));
+
+        elem.style.resize = 'none';
+
+        var change = function () {
+                var scrollTop, height,
+                        padding = 0,
+                        style = elem.style;
+
+                if (elem._length === elem.value.length) return;
+                elem._length = elem.value.length;
+
+                if (!isFirefox && !isOpera) {
+                        padding = parseInt(getStyle('paddingTop')) + parseInt(getStyle('paddingBottom'));
+                };
+                scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+                elem.style.height = minHeight + 'px';
+                if (elem.scrollHeight > minHeight) {
+                        if (maxHeight && elem.scrollHeight > maxHeight) {
+                                height = maxHeight;
+                                style.overflowY = 'auto';
+                        } else {
+                                height = elem.scrollHeight;
+                                style.overflowY = 'hidden';
+                        };
+                        style.height = height + extra + 'px';
+                        // scrollTop += parseInt(style.height) - elem.currHeight;
+                        // document.body.scrollTop = scrollTop;
+                        // document.documentElement.scrollTop = scrollTop;
+                        elem.currHeight = parseInt(style.height);
+                };
+        };
+
+        addEvent('propertychange', change);
+        addEvent('input', change);
+        addEvent('focus', change);
+        change();
+};
+
+	$(document).ready(function() {
+		$("table tbody td").each(function() {
+			if ($(this).find("[datatype='required']").length > 0||$(this).find("[datatype='number']").length > 0) {
+				$(this).css("position", "relative");
+			}
+		})
+	})
+
+
+</script>
+</html>

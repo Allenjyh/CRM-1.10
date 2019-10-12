@@ -457,21 +457,23 @@ $("#faultType").on("click",function(){
 
                 //2.1选择租金单提醒日  每月15-28日提醒
             document.querySelector("#billRemind").addEventListener("click",function(){
-                document.getElementById("room-controller").style.display = "block";
-                document.body.style.overflow = 'hidden';//浮层出现时窗口不能滚动设置
-                document.querySelector("#repTitle").textContent = "租金单提醒日";
-                var billRemindPicker = new roomPicker({
-                    data:billRemind,
-                    id:"boxId"
-                });
-                billRemindPicker.init("billRemind",function(){
-                    if(document.querySelector("#repTitle").textContent == "租金单提醒日"){
-                        document.getElementById("billRemind").value = getRoomItem.level1.name;
-                        document.getElementById("billRemind").dataset.value = getRoomItem.level1.id;
-                        document.body.style.overflow = 'auto';// 浮层关闭时滚动设置
-                    }
-                })
+                if (billRemindPicker == null){
 
+                    document.getElementById("room-controller").style.display = "block";
+                    document.body.style.overflow = 'hidden';//浮层出现时窗口不能滚动设置
+                    document.querySelector("#repTitle").textContent = "租金单提醒日";
+                    var billRemindPicker = new roomPicker({
+                        data:billRemind,
+                        id:"boxId"
+                    });
+                    billRemindPicker.init("billRemind",function(){
+                        if(document.querySelector("#repTitle").textContent == "租金单提醒日"){
+                            document.getElementById("billRemind").value = getRoomItem.level1.name;
+                            document.getElementById("billRemind").dataset.value = getRoomItem.level1.id;
+                            document.body.style.overflow = 'auto';// 浮层关闭时滚动设置
+                        }
+                    })
+                }
             },false)
 
             //2.2租赁期限

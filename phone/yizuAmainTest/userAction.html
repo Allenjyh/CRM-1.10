@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/layui.css">
+
+</head>
+<style>
+    .layui-card-header{
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .layui-form-pane .layui-form-label {
+
+        border-style: none;
+
+    }
+</style>
+<body>
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 100%;text-align: left;text-indent: 20px;">增加/删除用户</label>
+    </div>
+
+    <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">绑定用户</div>
+                    <div class="layui-card-body">
+
+                        <table class="yizu-table">
+                            <tr>
+                                <td>绑定手机号</td>
+                                <td>身份选择</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-input-inline">
+                                        <div class="rep-checkDef">
+                                            <input id="enterprise" class="check-level" value="2001" name="checkbox" type="radio">
+                                            <label for="enterprise" class="rep-checkbox-label1 check-finally"></label>企业
+                                        </div>
+                                        <div class="rep-checkDef">
+                                            <input id="property" class="check-level" value="2001" name="checkbox"  type="radio">
+                                            <label for="property" class="rep-checkbox-label1 check-finally"></label>物业
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" class="layui-btn layui-btn-danger">清  除</button>
+                                    <button type="button" class="layui-btn layui-btn-normal">绑  定</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">删除用户</div>
+                    <div class="layui-card-body">
+                        <table class="yizu-table">
+                            <tr>
+                                <td>物业绑定手机号/用户id</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="">请选择</option>
+                                                    <option value="0" selected="">绑定手机</option>
+                                                    <option value="1">绑定id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" class="layui-btn layui-btn-danger is_notCheck">删  除</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/layer.js"></script>
+<script>
+    //删除用户
+    $(".is_notCheck").on("click",function(){
+        layer.confirm('删除', {
+            title : "删除",
+            btn: ['提交'], //按钮
+            content : '是否确定删除xxxxxx？',
+            area: '380px',
+        }, function(){
+            layer.msg('删除成功', {icon: 1});
+            console.log(111)
+        }, function(){
+        });
+
+    })
+    $('.rep-checkDef').on('click',function(){
+        // $(this).children('.rep-checkbox-label1').click()
+        console.log(123) 
+    })
+
+</script>
+</html>

@@ -4,6 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>收据</title>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.jqprint-0.3.js"></script>
 <style type="text/css">
 * {
     box-sizing: border-box;
@@ -27,12 +29,19 @@ ul,ol,li{
 	margin: 0;
 	  list-style: none;
 }
+.pro-editRoom-content{
+  width:585px;
+  height:312px;
+	margin: 20px 0 43px 15px;
+	box-shadow:8px 0px 16px 0px rgba(0,90,180,0.25);
+
+}
 .form{
 	width:585px;
 	height:312px; 
 	margin-left:15px  ;
-	margin-top:calc((100vh - 312px)/2)  ;
-	box-shadow:8px 0px 16px 0px rgba(0,90,180,0.25);
+	/* margin-top:calc((100vh - 312px)/2)  ; */
+	/* box-shadow:8px 0px 16px 0px rgba(0,90,180,0.25); */
 }
 .div_title1{
 	text-align: center;
@@ -51,7 +60,7 @@ ul,ol,li{
 	text-align: center;
 }
 .border_tb  td,.border_tb{
-	border-left:2px solid #000;
+	border-top:2px solid #000;
 	border-right:2px solid #000;
 	text-align: center;
 
@@ -96,7 +105,7 @@ ul,ol,li{
 </style>
 </head>
 <body>
-<div class="form">
+<div class="form" id="form">
   <div style="position: relative;">
     <div class="div_title1">广州市拓盈物业管理有限公司四联收据</div>
     <div style="text-align: center;line-height:16px;">2018年6月1日</div>
@@ -105,9 +114,9 @@ ul,ol,li{
   </div>
    <div class="bd clear">
     <div class="bdbottom">
-			<table  style="border-collapse:collapse">
-				<tr class="add_border"style="display: block;line-height:16px;">
-					<td  width="60px">兹收到 </td>
+			<table  style="border-collapse:collapse;border:2px solid #000;"   cellpadding="0" cellspacing="0">
+				<tr style="display: block;line-height:16px;">
+					<td  width="60px"style="border-right:2px solid #000;padding-left: 10px ;">兹收到 </td>
 					<td width="470px" style="text-align:left;padding-left: 10px"><span> C401</span> <span style="padding-left: 10px">小马哥</span></td>
 				</tr>
 				<tr   style="display: block;position: relative;">
@@ -123,7 +132,7 @@ ul,ol,li{
 						</table> 
 						<p class="detail_order"style="position: absolute;bottom:2px;right:10px"><span >租金由2018年6月1日-30日</span></p>	 
 					</td>
-					<td class="border_tb" width="194px" class="money_td">
+					<td class="border_tb money_td" width="198px"  style="border-right:none">
 						<table width=100% cellpadding="0" cellspacing="0" style="border-collapse:collapse">
 							<tr ><p style="line-height:32px;">金  额</p></tr>	
 							<tr class="add_border " style="line-height:22px;" >
@@ -151,8 +160,8 @@ ul,ol,li{
 						</table>
 					</td>
 				</tr>
-				<tr class="border" style="display: block;border-bottom: none;">
-					<td width="128px"style="line-height:32px;"> 合计人民币（大写）</td>
+				<tr style="display: block;border-top:2px solid #000;">
+					<td width="128px"style="line-height:32px;padding-left: 10px;"> 合计人民币（大写）</td>
 					<td ><table width=100% cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 						<tr class="lq_tr" style="height:32px;">
 							<td class="lq_tr1"><input type="text" class="txt"    autocomplete="off" /></td><td style="padding:2px;height:30px">百万</td>
@@ -169,17 +178,26 @@ ul,ol,li{
 					</table>
 					</td>
 				</tr>
-				<tr class="border" style="display: block;width: 530px;">
+				<tr   style="display: block;width: 530px;border-top:2px solid #000;">
 						<td   style="text-align:left;padding-left: 10px;line-height: 26px;">附注 :</td>
 				</tr>
 			</table>
     </div>
   </div>
-  <div class="foot" style="background:#fff; padding: 0px 0 0 87px ">
+  <div class="foot" style="background:#fff; padding: 0px 0 0 80px ">
     <span>单位盖章：<input type="text" name="tt" style="border:none; background:#fff; width:87px" /></span>
     <span>会计：<input type="text" name="tt" style="border:none; background:#fff; width:33px" />赵永豪<input type="text" name="tt" style="border:none; background:#fff; width:86px" /></span>
     <span>出纳：<input type="text" name="tt" style="border:none; background:#fff; width:33px" />李海因<input type="text" name="tt" style="border:none; background:#fff; width:40px" /></span>
   </div>
 </div>
+<input type="button" onclick="aa()" value="打印"/>
+<script>
+
+</script>
+<script>
+		function aa(){
+			$("#form").jqprint();
+		}
+</script>
 </body>
 </html>

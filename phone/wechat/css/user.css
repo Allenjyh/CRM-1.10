@@ -92,7 +92,7 @@ width: 85.4%;
 	height:104px;margin:18px 15px 0px;
 	border-radius: 8px;
 	box-shadow: 2px 7px 14px 1px rgba(25,140,255,0.25);
-padding: 20px 0 0 20px;
+    padding: 20px 0 0 20px;
 }
 .user_info_card p:first-of-type{
 	font-size:16px;

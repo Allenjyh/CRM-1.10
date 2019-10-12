@@ -5,19 +5,24 @@
     <title>htmltopic</title>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script><!-- 引入 ECharts 文件 -->
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <style media="print"></style>
+    <!-- <link media="print"> -->
     <style>
         * {
             margin: 0;
         }
         .main{
+            /* margin-left:50px;  */
             width:585px;
             height:312px;
             /* width:21cm;
             height:10cm; */
+            border: 1px solid red;
+            box-sizing: border-box;
         }
  
         body{
-            background-color: #2e6da4;
+            /* background-color: #2e6da4; */
         }
         .test1 {
             width: 100%;
@@ -48,14 +53,13 @@
 </head>
 <body >
  
-<div class="main" id="test"  style="background:red;">
+<div class="main" id="test"  style="background:dark">
 <div class="test1" >测试585px*312px</div>
 <div class="test1" >测试585px*312px</div>
 <div class="test1" >测试</div>
 <!--<div class="test1" id="test1">测试</div>-->
 </div>
-<div><a class="down" href="" download="downImg">下载</a>
-</div>
+<div><a class="down" href="" download="downImg">下载</a></div>
 <div><a class="down2" href="" download="downImg">下载2</a></div>
 <script>
     //直接选择要截图的dom，就能截图，但是因为canvas的原因，生成的图片模糊
@@ -78,8 +82,8 @@
     canvas2.style.height = h + "px";
     //可以按照自己的需求，对context的参数修改,translate指的是偏移量
     //  var context = canvas.getContext("2d");
-    //  context.translate(0,0);
     var context = canvas2.getContext("2d");
+    // context.translate(30,30);
     // 1倍
     context.scale(1, 1);
     //  2倍

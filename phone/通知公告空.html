@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>通知公告</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="wechat/css/releaseNotice.css" rel="stylesheet" />   
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script src="home/phone/js/refresh.js" type="text/javascript" charset="utf-8"></script>
+        <style type="text/css">
+             .addPark-item-img {
+                position: absolute;
+                text-align: center;
+                margin-left: calc(100vw * 0.5266 / 2);
+                margin-top: calc(100vw * 0.287);
+            }
+            .addPark-item-img img {
+                display: block;
+                width: calc(100vw * 0.5266);
+                height: calc(100vw * 0.4986);
+            }
+            .addPark-item-span0 {
+                display: block;
+                margin-top: calc(100vw * 0.08);
+                color: #8A8A8A;
+                font-size: calc(100vw * 0.0347);
+            }
+         
+		</style>
+	</head>
+	<body style="background:#fff;">
+        <!--下拉刷新容器-->
+      <div  id="park_data_scroll" style="height: calc(100vh); overflow-y: auto" class="roomLevel3-ul mui-table-view mui-table-view-chevron">
+        <div class="loading">
+            <div id="refreshLoading"></div>
+        </div>
+        <div id="maintenance_man_data">
+            <!-- <div class="records_box" >
+                    <ul>
+                        <li>
+                            <div>
+                                <p class="card_one">
+                                    <span class="onehide" >物业管理通知的标题1物业管理通知的标题1...</span>
+                                    <span class="date">2019.08.04</span>
+                                </p>
+                                <p class="card_two onehide">发布地点：广贸商务中心</p>
+                                <p class="card_three onehide">这里是公告内容，明天没水没电，这里是公告内容，明天没水没电，大家提前备好水.....</p>
+                                <p class="card_four">
+                                    <span>查看详情</span>
+                                    <span> 删 除 </span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+            </div> -->
+            <div class="addPark-item-img">
+                    <img src="home/phone/images/repair/records.png">
+                    <span class="addPark-item-span0">还没有公告哦</span>
+                    <!-- <span class="addPark-item-span1">点击按钮发布公告</span> -->
+                </div>
+        
+        </div>
+        <div class="loading" style="height: 35px;">
+            <div id="refreshLoadingEnd"></div>
+        </div>
+    </div>
+    <!--下拉刷新容器-->
+    <div class="addParkName-btn">发布公告</div>
+	</body>
+	
+<script>
+// <!--下拉刷新容器-->
+
+     topRefresh({
+        container: "#park_data_scroll",
+        scrollContainer:"park_data_scroll",
+        next: function(e) {
+            //执行ajax请求数据
+            alert(0)
+            var that = this;
+            //var len = document.querySelectorAll('.addPark-add-box').length;
+            // search_park(2, max_park_id,that);
+            //getAjax(that,2,document.querySelectorAll('.addPark-add-box')[0].dataset.id)
+        },
+        slide:function(e){
+            //执行ajax请求数据
+            var that = this;
+            alert(1)
+
+            // search_park(1, min_park_id,that)
+        }
+    });
+
+    // 1.公告列表
+var getAjax = function(_that,up_down_sliding,notice_id,park_id){
+	var augrs = arguments;
+	console.log(augrs)
+	$.ajax({
+		type:"get",
+		url:"/noticeList/"+park_id,
+		data: {
+			up_down_sliding:up_down_sliding,
+			id:notice_id,
+		},
+		dataType: 'json',
+		contentType: "application/x-www-form-urlencoded",
+		success: function(res){
+			console.log(res)
+			if(res.error_code == 200){
+				var html = "";
+				
+				if(res.data && res.data.length > 0){
+					for(var i =0;i<res.data.length;i++){
+						
+						  html += '<div class="records_box" data-id="'+res.data[i].notice_id+'" >'
+								+ '<ul>'
+								+   '<li >'
+								+   '<div>'
+								+   	'<p class="card_one">'
+								+   		'<span class="onehide" >'+res.data[i].notice_title+'</span>'
+								+			'<span class="date">'+res.data[i].create_time+'</span>'
+								+		'</p>'
+								+		'<p class="card_two onehide">发布地点：'+$('body').attr("park_name")+'</p>'
+								+			'<p class="card_three onehide">'+res.data[i].notice_content+'</p>'
+								+			'<p class="card_four">'
+								+				'<span onclick="_detail('+res.data[i].notice_id+','+park_id+')">查看详情</span>'
+								+				'<span onclick="_delete(this,'+res.data[i].notice_id+','+park_id+')"> 删 除 </span>'
+								+		'</p>'
+								+	'</div>'
+								+   '</li>'
+								+  '</ul>'
+								+ '</div>';
+								
+					}
+					if(up_down_sliding == 1 || up_down_sliding == "1"){
+						$("#maintenance_man_data").append(html);
+					}else if(up_down_sliding == 2 || up_down_sliding == "2"){
+						$("#maintenance_man_data").prepend(html);
+					}
+				}else {
+					if(up_down_sliding == 1 || up_down_sliding == "1"){
+						Toast.show('没有更多的数据', 'bottom', 1000);
+						$("#refreshLoadingEnd").parent().append("<span>———— 到底咯 ————</span>")
+						$("#refreshLoadingEnd").remove();
+					}else if(up_down_sliding == 2 || up_down_sliding == "2"){
+						Toast.show('没有新的数据', 'top', 1000);
+					}
+				}
+			}else if(res.error_code == 2021){
+				document.location = res.data;
+			}
+		},
+		complete:function(){
+			_that.back.call()
+		}
+	});
+}
+</script>
+</html>

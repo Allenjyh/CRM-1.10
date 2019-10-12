@@ -6,16 +6,31 @@
 	<title>个人中心</title>
 	<link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
 	<link href="wechat/css/user.css" rel="stylesheet" />
+	<link href="home/phone/css/alert.css" rel="stylesheet" />
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="home/phone/js/alert.js"></script>
 	<!-- <script type="text/javascript" src="{{url('/wechat/js/lib/jquery.js')}}"></script> -->
 
 	<style>
+		.alert-btn-p:last-child,.alert-btn-p:last-child a {
+        background: linear-gradient(rgb(24, 189, 247) 0%, rgb(10, 136, 236) 100%);
+        color: rgb(255, 255, 255);
+        display:inline-block;
+        width: 150px;
+    }
 	</style>
 <body style="background:#fff">
-	<div class="img_">
-		<img style="height:116px;" src="wechat/images/bg1_header.png" alt="#">
+	<div id="close_tips">
+		<p  style="font-size:11px;height:33px;padding:0 15px;line-height:33px;color:rgba(255, 125, 26, 1);">该园区付费服务还有
+			<span style="font-size:17px;color:rgba(255, 125, 26, 1)">30</span>天到期，请
+			<span id="service" style="color:rgba(25, 140, 255, 1)">联系客服</span>进行续费  
+			<i id="_close" style="position: absolute;right:15px;top:2px;color:rgba(255, 125, 26, 1);">X </i>
+		</p>
 	</div>
-	<div class="or-centen" style="padding: 20px 0px 0;">
+	<div class="or-centen" style="padding: 20px 0px 0;position: relative;">
+		<div class="img_">
+			<img style="height:116px;" src="wechat/images/bg1_header.png" alt="#">
+		</div>
 		<table class="or-table or-table-padding">
 			<tbody>
 				<tr>
@@ -120,4 +135,24 @@
 		</ul>
 	</div>
 </body>
+<script>
+	$('#service').click(function () {
+            var win_alert = alertObj.oAlert({
+                style:'wap',
+                title:'联系方式',
+                content : `<a class='telPhone' href="tel:020-3258-8259">电话：020-3258-8259</a>`,
+                buttons :{
+                    '取消' : function(){
+                        win_alert.close();
+                    },
+                    "<a href='tel:020-3258-8259'>拨打电话</a>": function(){
+                    }
+                }
+            })
+        });
+ $('#_close').click(function (e) {
+            e.preventDefault();
+            $("#close_tips").remove();
+        });
+</script>
 </html>

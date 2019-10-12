@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>账单收据</title>
+	<style media="print">
+			@page {
+			  size: auto;  /* auto is the initial value */
+			  margin: 0mm; /* 去除页眉页脚 */
+			}
+		</style>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+
+	<body style="background:#fff">
+		
+		<div id="div_print0">
+			<h1 style="Color:Red">这是要被打印的内容0</h1>
+		</div>
+		<div id="div_print1">
+			<h1 style="Color:Red">这是要被打印的内容1</h1>
+		</div>
+		<div style="Color:Red">欢迎您</div>
+		<input name="print" type="button" id="bt"  onclick="printdiv()" value="点击打印" />
+	</body>
+
+
+   <script language="javascript">
+			function printdiv(printpage) {
+				console.log(document.getElementById("div_print1").innerHTML)
+			for(let i=0;i<2;i++){
+
+				var newstr = document.getElementById("div_print"+i).innerHTML;
+				var oldstr = document.body.innerHTML;
+				document.body.innerHTML = newstr;
+				window.print();
+				document.body.innerHTML = oldstr;
+
+			}
+				return false;
+			}
+		
+
+
+		//一.实现原理:
+		// 在js代码中使用document.body.innerHTML =newstr，动态原来body中的内容替换为要打印的内容，在打印过后，在将原来的内容还原，原理就是这么简单，具体可以参阅代码注释。
+
+		// 二.代码注释:
+		// 1.function printdiv(printpage){},声明一个控制打印的函数，参数是一个对象，这个对象中的内容将要被打印。
+		// 2.var newstr = printpage.innerHTML; ，获取要打印的内容。
+		// 3.var oldstr = document.body.innerHTML，原来body中的内容。
+		// 4. document.body.innerHTML =newstr，用将要打印的内容替换原来body中的内容。
+		// 5.window.print()，开始打印。
+		// 6.document.body.innerHTML=oldstr，再将原来body中的内容还原
+</script>
+</html>

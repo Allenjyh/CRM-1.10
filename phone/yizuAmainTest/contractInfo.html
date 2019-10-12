@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/layui.css">
+</head>
+<style>
+    .layui-card-header{
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .layui-form-pane .layui-form-label {
+
+        border-style: none;
+
+    }
+</style>
+<body>
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 100%;text-align: left;text-indent: 20px;">合同信息</label>
+    </div>
+
+    <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">退租</div>
+                    <div class="layui-card-body test-loading">
+
+                        <table class="yizu-table">
+                            <tr>
+                                <td>园区名/园区id</td>
+                                <td>房间号/房间id</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="">请选择</option>
+                                                    <option value="0" selected="">园区名</option>
+                                                    <option value="1">园区id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input id="out_park" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item" style="margin-bottom:0px;">
+                                            <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                <select name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                    <option value="">请选择</option>
+                                                    <option value="0" selected="">房间号</option>
+                                                    <option value="1">房间id</option>
+                                                </select>
+                                            </label>
+                                            <div class="layui-input-inline">
+                                                <input id="out_room" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" class="layui-btn layui-btn-danger out-rent">确定退租</button>
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</form>
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/yizuAjax.js"></script>
+<script>
+    //ajax
+    yizuAjax.tsSubmit({
+        url : "",
+        type : "",
+        ele : '.out-rent',
+        data : "",
+        callback : "",
+        beforeCall : function(){
+            //数据
+            let outPark = $("#out_park").val(),
+                outRoom = $("#out_room").val();
+
+            if(outPark == "" && outRoom == ""){
+                return {status:true,msg:"什么都没填，还想退退退......租，做梦！！！"}
+            }else {
+
+                if(outPark == ""){
+                    return {status:true,msg:"包租婆想知道你个哪园区的"}
+                }
+
+                if(outRoom == ""){
+                    return {status:true,msg:"包租婆想知道你个房间的"}
+                }
+
+
+            }
+
+        }
+
+    })
+</script>
+</html>

@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+html,body{
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+}
+.or-proReceive{
+    width:100%;
+    height:200px;
+}
+.or-proIcpay{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 30px auto 14px auto;
+}
+.or-proReceive-table{
+    width: 92%;
+    border-collapse:separate;
+    border-spacing:0px;
+    margin: 0 auto;
+    color: #262626;
+}
+.or-proReceive-table tbody tr td{
+    height: 40px;
+    line-height: 40px;
+}
+.or-proReceive-table tbody tr td:nth-child(1){
+    width: 85px;
+}
+.or-proReceive-btn{
+    display: block;
+    width:130px;
+    height:42px;
+    line-height: 42px;
+    text-align: center;
+    border-radius:42px;
+    border:2px solid rgba(10,136,236,0.45);
+    margin: 0 auto;
+    font-size: 13px;
+    color: #1A8CFF;
+}

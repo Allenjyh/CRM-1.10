@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户信息</title>
+    <link rel="stylesheet" href="css/layui.css">
+</head>
+<style>
+     .layui-card-header{
+        font-weight: 700;
+        font-size: 18px;
+    }
+   .layui-form-pane .layui-form-label {
+
+        border-style: none;
+
+    }
+    .yizu-table td{
+        width: 33.33%;
+        padding: 5px;
+    }
+</style>
+<body>
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100%;text-align: left;text-indent: 20px;">修改用户信息</label>
+        </div>
+        <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">用户信息</div>
+                        <div class="layui-card-body test-loading">
+    
+                            <table class="yizu-table">
+                                <tr>
+                                    <td>绑定手机号/用户id</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <form class="layui-form layui-form-pane" action="">
+                                            <div class="layui-form-item" style="margin-bottom:0px;">
+                                                <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                    <select id="update_phone_number_select" name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                        <option value="0" selected="">绑定手机</option>
+                                                        <option value="1">绑定id</option>
+                                                    </select>
+                                                </label>
+                                                <div class="layui-input-inline">
+                                                    <input id="update_phone_number" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="border-left: 0px;border-radius: 0px"
+                                                    oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                <legend style="font-size: 16px;">需要修改的内容</legend>
+                            </fieldset>
+                            <table class="yizu-table" style="margin: 10px 0">
+                                <tr>
+                                    <td>公司名称</td>
+                                    <td>绑定手机号</td>
+                                    <td>用户类型切换</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;"
+                                            oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <div class="rep-checkDef user_type1">
+                                                <input id="ckq_user" class="check-level" value="1" name="checkbox1"
+                                                       type="radio">
+                                                <label for="ckq_user" class="rep-checkbox-label1 check-finally"></label>创客桥用户
+                                            </div>
+                                            <div class="rep-checkDef user_type1">
+                                                <input id="wuye_user" class="check-level" value="2" name="checkbox1"
+                                                       type="radio">
+                                                <label for="wuye_user" class="rep-checkbox-label1 check-finally"></label>物业管理用户
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>联系人</td>
+                                    <td>联系电话</td>
+                                    <td>身份选择</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;"
+                                            maxlength="4" onchange="this.value=this.value.replace(/[^\u4e00-\u9fa5]/ig,'')">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;"
+                                            oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <div class="rep-checkDef user_type2">
+                                                <input id="enterprise" class="check-level" value="1" name="checkbox" type="radio">
+                                                <label for="enterprise" class="rep-checkbox-label1 check-finally"></label>企业
+                                            </div>
+                                            <div class="rep-checkDef user_type2">
+                                                <input id="property" class="check-level" value="2" name="checkbox"  type="radio">
+                                                <label for="property" class="rep-checkbox-label1 check-finally"></label>物业
+                                            </div>
+                                            <div class="rep-checkDef user_type2">
+                                                <input id="other" class="check-level" value="3" name="checkbox" type="radio">
+                                                <label for="other" class="rep-checkbox-label1 check-finally"></label>其他
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="yizu-table">
+                                <tr>
+                                    <td>银行名称</td>
+                                    <td>银行账号</td>
+                                    <td>收款人</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <input id="bank_name" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;"
+                                            maxlength="20" onchange="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <input id="bank_account" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;"
+                                            oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>19) this.value=this.value.substring(0,19);">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <input id="payee" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 240px;"
+                                            maxlength="4" onchange="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>用户登录密码</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="username" lay-verify="required" placeholder="密码（6-12位）" autocomplete="new-password" class="layui-input" style="width: 240px;"
+                                            oninput="javascript:value=this.value.replace(/\s+/g,'');if(this.value.length>12) this.value=this.value.substring(0,12);">
+                                            <!-- <input type="password" class="pwd" oninput="javascript:value=this.value.replace(/\s+/g,'');if(this.value.length>12) this.value=this.value.substring(0,12);" autocomplete="new-password" placeholder="密码（6-12位）"/> -->
+                                        
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <button type="button" class="layui-btn layui-btn-normal save-park">保存园区信息</button></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">物业取消园区id</div>
+                        <div class="layui-card-body">
+                            <table class="yizu-table">
+                                <tr>
+                                    <td>物业绑定手机号/用户id</td>
+                                    <td>是否取消物业当前园区id</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <form class="layui-form layui-form-pane" action="">
+                                            <div class="layui-form-item" style="margin-bottom:0px;">
+                                                <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                    <select id="typeId" name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                        <option value="0" selected="">绑定手机</option>
+                                                        <option value="1">用户id</option>
+                                                    </select>
+                                                </label>
+                                                <div class="layui-input-inline">
+                                                    <input  class="layui-input cancel_phone" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" style="border-left: 0px;border-radius: 0px"
+                                                    oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline">
+                                            <div class="rep-checkDef">
+                                                <input id="_yes" class="check-level" value="1" name="checkbox3" type="radio" checked>
+                                                <label for="_yes" class="rep-checkbox-label1 check-finally"></label>是
+                                            </div>
+                                            <div class="rep-checkDef">
+                                                <input id="_no" class="check-level" value="0" name="checkbox3" type="radio">
+                                                <label for="_no" class="rep-checkbox-label1 check-finally"></label>否
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="layui-btn layui-btn-normal cancel">保存物业取消园区的id</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">物业切换园区</div>
+                        <div class="layui-card-body">
+                            <table class="yizu-table">
+                                <tr>
+                                    <td>物业绑定手机号/用户id</td>
+                                    <td>园区名/园区id</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <form class="layui-form layui-form-pane" action="">
+                                            <div class="layui-form-item" style="margin-bottom:0px;">
+                                                <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                    <select id="turnPhoneId" name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                        <option value="0" selected="">绑定手机</option>
+                                                        <option value="1">用户id</option>
+                                                    </select>
+                                                </label>
+                                                <div class="layui-input-inline">
+                                                    <input  class="layui-input turn_phone" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" style="border-left: 0px;border-radius: 0px"
+                                                    oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form class="layui-form layui-form-pane" action="">
+                                            <div class="layui-form-item" style="margin-bottom:0px;">
+                                                <label class="layui-form-label" style="padding: 0;width: 95px;">
+                                                    <select id="turnParkId" name="quiz1" style="height: 38px;border-right: 0;border-color: #e6e6e6;display: block;width: 100%;">
+                                                        <option value="0" selected="">园区名</option>
+                                                        <option value="1">园区id</option>
+                                                    </select>
+                                                </label>
+                                                <div class="layui-input-inline">
+                                                    <input class="layui-input turn_park" type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off"  style="border-left: 0px;border-radius: 0px">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="layui-btn layui-btn-normal turn">物业切换园区</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/yizuAjax.js"></script>
+<script>
+    //ajax
+    yizuAjax.tsSubmit({
+        url : "",
+        type : "",
+        ele : '.save-park',
+        data : "",
+        callback : "",
+        beforeCall : function(){
+            //数据
+            let phoneNumber = $("#update_phone_number").val(),
+                parkNumber = $("#update_park_number").val(),
+                _val = $("#update_phone_number_select").val();
+
+            if(phoneNumber == "" && parkNumber == ""){
+                return {status:true,msg:"请选择一个修改条件，‘物业绑定手机号/用户id’或‘园区名/园区id’"}
+            }else {
+                if(phoneNumber){
+                    if(parseInt(_val) == 0){
+                        return yizuAjax.validatePhone(phoneNumber)
+                    }
+                }
+
+
+            }
+
+        }
+
+    })
+</script>
+</html>
