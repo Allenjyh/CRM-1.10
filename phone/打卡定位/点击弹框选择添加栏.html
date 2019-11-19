@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>线路分配</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link href="wechat/css/punch_card_location.css" rel="stylesheet" />
+        <script src="wechat/js/jquery-3.3.1.min.js"></script>
+        <!-- <script type="text/javascript" src="{{url('/wechat/js/lib/jquery.js')}}"></script> -->
+
+        <style type="text/css">
+        
+        
+        /* 弹框 */
+       #alert_box .list_each {
+            border-bottom: 1px solid rgba(216, 216, 216, 0.2);
+            height: 45px;
+            position:relative;
+        }
+        #alert_box {
+            position: fixed;
+            left: 0;
+            top:0;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(37, 38, 45, .4);
+            display: none;
+        }
+        #alert_box .top_box{
+            position: fixed;
+            left: 0;
+            bottom:0px;
+            z-index: 101;
+            width: 100%;
+            max-height: calc(100vh ) ;
+            overflow-y: auto;
+            font-size: 14px;
+            background-color: #fff;
+        }
+        #alert_box .content_box{
+            max-height:calc(100vh - 44px) ;
+            overflow-y: auto;
+        }
+        .select-room-btnbox {
+			height: 44px;
+			line-height: 44px;
+		}
+        .select-room-btnbox table {
+			width: 100%;
+			text-align: center;
+			font-size: 13px;
+			font-family: PingFang-SC-Regular;
+			font-weight: 200;
+        }
+        #repTitle{
+            font-size:16px;
+            font-weight:bold;
+            line-height:45px;
+            font-family:PingFang-SC-Bold,PingFang-SC;
+        }
+        #close_box,#sure_box{
+            font-size:14px;
+            font-weight:bold;
+            color: #198CFF;
+            line-height:45px;
+            font-family:PingFang-SC-Bold,PingFang-SC;
+        }
+          /* 弹框 end*/        
+		</style>
+	</head>
+	<body>
+   
+      
+        <ul>
+            <li class="mail_add" data-plan_id="1">
+                <div class="list_each small_line">
+                    <div class="list_qb_l"style="padding-left:20px;" >
+                        <img  src="wechat/images/punch_card/add.png" alt="">
+                    </div>
+                    <div class="list_qb_r add_member" style="border-bottom: 1px solid #0000001F;"><!-- addLi -->
+                        <p class="fontsize15 " >添加成员加入</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+       
+
+
+
+        <!-- 弹框 -->
+        <div id="alert_box" class="alert_box">
+            
+            <div class="top_box">
+                <div class="select-room-btnbox" style="border-bottom: 1px solid #ebebeb;">
+                    <table>
+                        <tbody><tr>
+                            <td id="close_box" style="color: #198CFF;">取消</td>
+                            <td id="repTitle">选择线路</td>
+                            <td id="sure_box" style="color: #198CFF;">确定</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div class="content_box">
+
+                    <div class="list_each alert_each" data-user_id="3">
+                        <div class="list_qb_l" style="padding-left: 10px;" >
+                            <img style="width: 25px; height: 25px;" src="wechat/images/punch_card/mail_list1.png" alt="">
+                        </div>
+                        <div class="list_qb_r" style="width: 85.4%;">
+                            <p class="fontsize16 add_title">小红1</p>
+                                <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)"> 
+                                    <i class=""></i> </b><!-- class="rep-select" -->
+                            </div>
+                    </div>
+                    <div class="list_each alert_each" data-user_id="4">
+                        <div class="list_qb_l" style="padding-left: 10px;" >
+                            <img style="width: 25px; height: 25px;" src="wechat/images/punch_card/mail_list1.png" alt="">
+                        </div>
+                        <div class="list_qb_r" style="width: 85.4%;">
+                            <p class="fontsize16 add_title">小红2</p>
+                                <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)"> 
+                                    <i  class=""></i> </b>
+                            </div>
+                    </div>
+                    <div class="list_each alert_each" data-user_id="5">
+                        <div class="list_qb_l" style="padding-left: 10px;" >
+                            <img style="width: 25px; height: 25px;" src="wechat/images/punch_card/mail_list1.png" alt="">
+                        </div>
+                        <div class="list_qb_r" style="width: 85.4%;">
+                            <p class="fontsize16 add_title">小红3</p>
+                                <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)">
+                                     <i  class=""></i> </b>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</body>
+	<script>
+
+        $('#alert_box .alert_each').click(function(){//添加勾
+            $(this).find('i').addClass('rep-select').parents('.list_each').siblings().find('i').removeClass('rep-select');
+        })
+        $('.add_member').click(function(){//点击添加
+            $(this).addClass('addLi').parents('.line_li').siblings().find('.add_member').removeClass('addLi');
+            $("#alert_box").show()
+        })
+        $('#close_box').click(function(){
+            $("#alert_box").hide()
+        })
+
+    $('#sure_box').click(function(){//点击确定
+        var add_id = $(".rep-select").parents(".alert_each").attr('data-user_id');
+        console.log(add_id)
+        var add_title = $(".rep-select").parents(".list_qb_r").children(".add_title").text();
+        var plan_id = $(".addLi").parents('.mail_add').attr('data-plan_id');
+    
+  
+        $("#alert_box").hide()
+            $(".addLi").parents('.mail_add').before(`<li class="mail_list" data-user_id="${add_id}">
+                <div class="list_each small_line">
+                    <div class="list_qb_l" style="padding-left:20px;" >
+                        <img  src="wechat/images/punch_card/mail_list1.png" alt="">
+                    </div>
+                    <div class="list_qb_r" style="border-bottom: 1px solid #0000001F;">
+                        <p class="fontsize15" >${add_title}
+                        <span class="list_qb_r_span"  onclick="_submit(this,${add_id},${plan_id})">删除</span>
+                        </p>
+                    </div>
+                </div>
+            </li>`);
+    })
+    </script>
+</html>

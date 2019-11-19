@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>线路分配</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <script src="jquery-3.3.1.min.js"></script>
+
+        <style type="text/css">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        /* 弹框 */
+        #alert_box {
+            position: fixed;
+            left: 0;
+            top:0;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(37, 38, 45, .4);
+            display: none;
+        }
+        #alert_box .top_box{
+            position: fixed;
+            left: 0;
+            bottom:0px;
+            z-index: 101;
+            width: 100%;
+            max-height: calc(100vh ) ;
+            overflow-y: auto;
+            font-size: 14px;
+            background-color: #fff;
+        }
+        .select-room-btnbox {
+			height: 44px;
+			line-height: 44px;
+		}
+        .select-room-btnbox table {
+			width: 100%;
+			text-align: center;
+			font-size: 13px;
+			font-family: PingFang-SC-Regular;
+			font-weight: 200;
+        }
+        #repTitle{
+            font-size:16px;
+            font-weight:bold;
+            line-height:45px;
+            font-family:PingFang-SC-Bold,PingFang-SC;
+        }
+        #close_box,#sure_box{
+            font-size:14px;
+            font-weight:bold;
+            color: #198CFF;
+            line-height:45px;
+            font-family:PingFang-SC-Bold,PingFang-SC;
+        }
+
+        
+        /* 内容 */
+        #alert_box .content_box{
+            max-height:calc(100vh - 44px) ;
+            overflow-y: auto;
+        }
+        #alert_box .list_each {
+            border-bottom: 1px solid rgba(216, 216, 216, 0.2);
+            height: 45px;
+            position:relative;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 0 0 0;
+            box-sizing: border-box;
+        }
+        .add_title {
+            line-height: 23px;
+            padding-left: 10px;
+            color:rgba(0, 0, 0, 0.65);
+        }
+        .fontsize16 {
+            font-size: 16px;
+        }
+        .rep-select {
+            width: 24px;
+            height: 24px;
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+            margin-top: -2px;
+            background-image: url(select.png);
+        } 
+        .select_style{
+            color:rgba(0,0,0,0.85);
+            font-weight:bold;
+        }
+         /* 弹框 end*/ 
+		</style>
+	</head>
+	<body>
+
+            <div class="add_member">
+                <p  style="font-size:15px;" >添加成员加入</p>
+            </div>
+       
+        <!-- 弹框 -->
+        <div id="alert_box" class="alert_box">
+            <div class="top_box">
+                <div class="select-room-btnbox" style="border-bottom: 1px solid #ebebeb;">
+                    <table>
+                        <tbody><tr>
+                            <td id="close_box" >取消</td>
+                            <td id="repTitle">选择线路</td>
+                            <td id="sure_box" >确定</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div class="content_box">
+
+                    <div class="list_each alert_each" data-user_id="1">
+                     
+                        <div class="list_qb_r" style="width: 85.4%;">
+                            <p class="fontsize16 add_title">线路一</p>
+                                <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)"> 
+                                    <i class=""></i> </b><!-- class="rep-select" -->
+                            </div>
+                    </div>
+                    <div class="list_each alert_each" data-user_id="2">
+                        <div class="list_qb_r" style="width: 85.4%;">
+                            <p class="fontsize16 add_title">线路二</p>
+                                <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)"> 
+                                    <i  class=""></i> </b>
+                            </div>
+                    </div>
+                    <div class="list_each alert_each" data-user_id="3">
+                        <div class="list_qb_r" style="width: 85.4%;">
+                            <p class="fontsize16 add_title">线路三</p>
+                                <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)">
+                                     <i  class=""></i> </b>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</body>
+	<script>
+
+        $('#alert_box .alert_each').click(function(){//添加勾
+            $(this).find('i').addClass('rep-select').parents('.list_each').siblings().find('i').removeClass('rep-select');
+            $(this).find('p').addClass('select_style').parents('.list_each').siblings().find('p').removeClass('select_style');
+        })
+        $('.add_member').click(function(){//点击添加
+            $("#alert_box").show()
+        })
+        $('#close_box').click(function(){
+            $("#alert_box").hide()
+        })
+
+        $('#sure_box').click(function(){//点击确定
+            var add_id = $(".rep-select").parents(".alert_each").attr('data-user_id');
+            console.log(add_id)
+            var add_title = $(".rep-select").parents(".list_qb_r").children(".add_title").text();
+            
+            $(".add_member").html(`<p data-user_id="${add_id}" style="font-size:15px;" >${add_title}</p>`);
+
+            $("#alert_box").hide()
+        })
+    </script>
+</html>

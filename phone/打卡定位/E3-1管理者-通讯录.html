@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>保安巡逻</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="wechat/css/punch_card_location.css" rel="stylesheet" />
+        <script src="wechat/js/jquery-3.3.1.min.js"></script>
+        <style type="text/css">
+        
+		</style>
+	</head>
+
+	<body>
+        <div class="top_box ">
+            <ul class="index-nav">
+                <li ><a href="#"><span>巡逻记录</span></a></li>
+                <li ><a href="E2-20管理者-路线规划设置.html"><span>线路规划</span></a></li>
+                <li class="Active"><a href="#"><span>通讯录</span></a></li>
+            </ul>
+        </div>
+        <div class="divider"></div>
+        <div class="mid_mox">
+            <ul>
+                <li style="position:relative;">
+                    <div class="list_each">
+                        <div class="list_qb_l" >
+                                <img style="width:35px;height:35px;" src="wechat/images/punch_card/controller.png" alt="">
+                        </div>
+                        <div class="list_qb_r" style="border-bottom: 1px solid #0000001F;">
+                                <p class="fontsize16" style="color:rgba(0, 0, 0, 1)">广州乙租信息科技有限公司</p>
+                                <span>陈奕迅</span>
+                                <a href="E3-2管理者-邀请.html">
+                                    <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 21px;width: 55px;">
+                                        <i class="rep-arrow rep-invitation" style="width: 15px;height: 15px;"></i> <b>邀请</b>
+                                    </b>
+                                </a>
+                         </div>
+                    </div>
+                </li>
+                <li >
+                    <div class="list_each small_line">
+                        <div class="list_qb_l" >
+                                <img  src="wechat/images/punch_card/way.png" alt="">
+                        </div>
+                        <div class="list_qb_r">
+                            <a href="E3-7管理者-分配.html">
+                                <p class="fontsize16" >路线分配</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 无数据时显示 -->
+                    <div class="distribution" style="margin:8px 0 27px 0;text-align:center">
+                           <div>
+                               <p class="title1">您还没有分配保安</p>
+                               <a href="E3-7管理者-分配.html">
+                               <button >去分配</button>
+                            </a>
+                            </div>
+                    </div>
+                    <!-- 有数据时显示 -->
+                    <ul>
+                        <li onclick="location.href='#'">
+                            <div class="list_each small_line">
+                                <div class="list_qb_l"style="padding-left:30px;" >
+                                        <img  src="wechat/images/punch_card/route.png" alt="">
+                                </div>
+                                <div class="list_qb_r" style="width: 83.4%;">
+                                        <p class="fontsize16" >路线1</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li onclick="location.href='#'">
+                            <div class="list_each small_line">
+                                <div class="list_qb_l"style="padding-left:30px;" >
+                                        <img  src="wechat/images/punch_card/route.png" alt="">
+                                </div>
+                                <div class="list_qb_r" style="width: 83.4%;">
+                                        <p class="fontsize16" >路线2</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="divider"></div>
+            <ul>
+                <li  style="position:relative;">
+                    <div class="list_each small_line" >
+                        <div class="list_qb_l" >
+                                <img  src="wechat/images/punch_card/apply.png" alt="">
+                        </div>
+                        <div class="list_qb_r" >
+                            <a href="E3-6新保安申请.html">
+                            <p class="fontsize16">新保安申请</p>
+                                    <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)"> <i class="rep-arrow"></i> </b>
+                                    <b class="audit_count" style="position: absolute;right:42px;top: 12px;">1  </b>
+                                </a>
+                            </div>
+                    </div>
+                </li>
+           </ul>
+           
+        </div>
+        <div class="divider"></div>
+
+        <div class="last_box">
+            <div class="list_each small_line" >
+                <div class="list_qb_l" >
+                        <img  src="wechat/images/punch_card/mail_list.png" alt="">
+                </div>
+                <div class="list_qb_r">
+                        <p class="fontsize16" >通讯录</p>
+                </div>
+            </div>
+            <!-- 无数据时显示 -->
+            <!-- <div class="distribution" style="margin:8px 0 27px 0;text-align:center">
+                <div>
+                    <div style="margin: 0 auto 10px;width:200px;height:200px;">
+                        <img style="width:200px;height:200px;" src="wechat/images/punch_card/no_mail.png" >
+                    </div>
+                    <p class="title1">暂无内容，您可以邀请保安加入</p>
+                    <button >邀请</button>
+                </div>
+            </div> -->
+             <ul>
+                 <li class="mail_list"onclick="location.href='#'">
+                     <div class="list_each small_line">
+                         <div class="list_qb_l"style="padding-left:20px;" >
+                                 <img  src="wechat/images/punch_card/mail_list1.png" alt="">
+                         </div>
+                         <div class="list_qb_r" style="width: 85.4%; box-shadow: 0 1px 1px -1px rgba(151, 151, 151, 0.8); -webkit-box-shadow: 0 1px 1px -1px rgba(151, 151, 151, 0.8);">
+                                <p class="fontsize15" >小红
+                                   <span class="list_qb_r_span" >删除</span>
+                                </p>
+                        </div>
+                     </div>
+                 </li>
+                 <li onclick="location.href='#'">
+                     <div class="list_each small_line">
+                         <div class="list_qb_l"style="padding-left:20px;" >
+                                 <img  src="wechat/images/punch_card/mail_list1.png" alt="">
+                         </div>
+                         <div class="list_qb_r" style="width: 85.4%;border-bottom: 1px solid #0000001F;">
+                                 <p class="fontsize15" >小红
+                                    <span class="list_qb_r_span" >删除</span>
+                                 </p>
+                         </div>
+                     </div>
+                 </li>
+             </ul>
+        </div>
+        
+	</body>
+	<script>
+
+        $('.top_box .index-nav li').click(function(){
+            $(this).addClass("Active").siblings().removeClass("Active");
+            // let data_type = $(this).attr("data-type");
+            // $('.data_'+data_type).show().siblings('.mid_mox').hide();
+        })
+
+        //  console.log($("#date").val())
+    </script>
+</html>

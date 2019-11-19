@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>保安巡逻</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <!-- <script src="wechat/js/jquery-3.3.1.min.js"></script> -->
+        <style type="text/css">
+        * {
+            box-sizing: border-box;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            color: rgba(0,0,0,0.85);
+            font-family:PingFang-SC-Medium,PingFang-SC;
+            }
+        .box1{
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            background-image: url('wechat/images/punch_card/review.png');
+            background-size: 75px ;
+            background-repeat: no-repeat;
+            background-position: center;top: 56px; left: calc((100vw - 75px)/2 );
+        }
+        .box2{
+            position: absolute;
+            top: 286px; 
+            left: calc((100vw - 286px)/2 );
+            text-align: center;
+        }
+        .box2 p:first-of-type{
+            height:42px;
+            font-size:30px;
+            color:rgba(0,0,0,1);
+            line-height:42px;
+        }
+        .box2 p:last-of-type{
+            height:20px;
+            font-size:14px;
+            color:rgba(0,0,0,0.65);
+            line-height:20px;
+            margin: 20px auto 40px;
+        }
+        .box3{
+            display: block;
+            width: 286px;
+            height: 53px;
+            background-image: url('wechat/images/punch_card/review_bg2.png');
+            background-size: 286px  53px;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-size:16px;
+            font-family:PingFang-SC-Bold,PingFang-SC;
+            font-weight:bold;
+            color:rgba(255,255,255,1);
+            line-height:53px;
+            letter-spacing:5px;
+        }
+		</style>
+	</head>
+
+	<body style=" position: relative;">
+        <div class="bg_box"  style="height:100vh;width:100vw;background-image: url('wechat/images/punch_card/review_bg.png');background-size: 100vw 72vh;color: #FFF;background-repeat: no-repeat;">
+            <div class="box1"></div>
+            <div class="box2">
+                <p>审核中</p>
+                <p>您的申请正在审核中，请耐心等候</p>
+                    <span class="box3">撤销审核</span>
+            </div>
+        </div>
+	</body>
+	<script>
+
+    </script>
+</html>

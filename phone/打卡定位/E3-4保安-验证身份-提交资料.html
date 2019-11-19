@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>保安巡逻</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="wechat/css/iconfont.css">
+	    <link href="wechat/css/security.css" rel="stylesheet" />
+	    <link href="wechat/css/iconfont.css" rel="stylesheet" />
+        <script src="wechat/js/jquery-3.3.1.min.js"></script>
+		<script src="wechat/js/security.js"></script>
+
+
+        <style type="text/css">
+           
+		</style>
+	</head>
+
+	<body style="background: #198CFF;">
+        <!--  -->
+         <!-- 用户协议弹窗框 -->
+	<div class="curtain"></div>
+	<div class="nav_box">
+		<!--左-->
+		<div class="main_l">
+			<!--用户协议-->
+			<div class="main_l_tab user_xy">
+				<p class="fsize18">用户协议</p>
+				<p></p>
+				<!-- 删除icon -->
+				<i class="thisclose cursor"><img src="wechat/images/punch_card/close.png"></i>
+				<div class="yhxy_text"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 小弹窗 -->
+	<div class="phonebox"></div>
+	
+	<!-- 顶部背景图 -->
+	
+
+    <!-- 注册页面开始 -->
+     <div class="register_img">
+         <i class="rep_img"></i>
+     </div>
+	<div class="register_box">
+		<div class="register_top"><span class="current">账号认证</span></div>
+		<ul class="register_ul">
+			<li>
+               <input class='contacts' name="contacts" maxlength="15" onkeyup="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" type="text"  placeholder="输入姓名">
+               
+			   <input class="register_input8" oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);" autocomplete="off" type="tel" name="" placeholder="手机号">
+				<div class="thisisyzm">
+					<input class="register_input9" autocomplete="off" oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>6) this.value=this.value.substring(0,6);" type="number" name="" placeholder="6位验证码">
+					<div class="thisYZM1 cursor">获取验证码</div>
+				</div>
+				<input class="thisbox1" type="checkbox" name="chenckbox2" style="display: none;position: absolute;">
+				<div>
+				<p class="xuanzhekuang">
+					<span class="xuanzhe"><i class="iconfont icon-icon- thischeckbox1 thisicon"></i>用户同意并已阅读</span><a href="#" class="service"> 《CRM服务协议》</a>
+				</p>
+				<p class="thisp1 " style="color:red;margin:0;margin-top:5px;">&nbsp;</p>
+				<p class="thisp2 " style="color:red;margin:0;margin-top:5px;display:none">&nbsp;</p>
+				</div>
+				<span class="submit" >提&nbsp;交&nbsp;资&nbsp;料</span>
+				<a href="E4-11保安-验证身份-等待审核.html">
+				<span class="submit" >提&nbsp;交&nbsp;资&nbsp;料</span>
+			  </a>
+			</li>
+		</ul>
+	</div>
+        
+	</body>
+	<script>
+    </script>
+</html>

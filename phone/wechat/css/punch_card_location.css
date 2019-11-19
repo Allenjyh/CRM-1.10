@@ -1,0 +1,249 @@
+* {
+    box-sizing: border-box;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+* {
+    /* font-family: PingFang-SC-Regular; */
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    color: rgba(0,0,0,0.85);
+}
+/* 一行、多行省略号... */
+.onehide{
+    white-space:nowrap;/*不显示的地方用省略号...代替*/
+    overflow: hidden;
+	text-overflow:ellipsis;/* 支持 IE */
+   -o-text-overflow: ellipsis;    /* 支持 Opera */
+}
+.twohide{
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+/* 下边框1px设置 */
+.box_1px{
+    box-shadow: 0 1px 1px -1px rgba(151, 151, 151, 0.8); 
+    -webkit-box-shadow: 0 1px 1px -1px rgba(151, 151, 151, 0.8); 
+}
+input, span {
+    border: none;
+    outline: none;
+}
+ul, ol, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    
+}
+.fontsize16{
+    font-size: 16px;
+}
+.fontsize15{
+    font-size: 15px;
+}
+.divider {
+    height: 10px;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+
+.top_box {
+    
+    width: 100vw;
+    z-index: 9;
+    position:static;
+}
+.index-nav {
+    width: 100%;
+    height: 44px;
+    line-height: 16px;
+    text-align: center;
+    padding-top: 12px;
+    background: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.index-nav li{
+    width:33.3333333%;
+    float: left;
+    
+
+}
+.top_box > ul li.Active {
+    position: relative;
+    /* font-family: PingFang-SC-Medium; */
+}
+.top_box  ul li.Active:after {
+    content: '';
+    position: absolute;
+    left: 39%;
+    top: auto;
+    bottom: -6px;
+    right: auto;
+    height: 3px;
+    width: 21%;
+    background-color: #fff;
+    border-radius: 3px;
+}
+.index-nav li a span {
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 16px;
+}
+.top_box  ul li.Active a span  {
+    color: rgba(0, 0,0, 1)!important;
+    font-weight:bold;
+}
+.top_box  ul li.Active:after {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+
+ .list_each {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    padding: 2.7% 0 0 0;
+    box-sizing: border-box;
+}
+.list_qb_l{
+    padding-left: 10px;
+}
+.list_qb_l img {
+    width:25px;
+    height: 25px;
+}
+.list_each .list_qb_r {
+    width: 85.4%;
+    /* border-bottom: 1px solid #0000001F; */
+
+}
+.list_qb_r span {
+    font-size: 12px;
+    display: block;
+    margin-top: 3px;
+    color: rgba(0,0,0,0.65);
+}
+.list_qb_r p{
+    line-height: 23px;
+}
+/* 图片 */
+.rep-arrow{
+    width: 24px;
+    height: 24px;
+    background-image: url("../../wechat/images/arrow.png");
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    margin-top: -2px;
+    } 
+.rep-invitation{
+    background-image: url("../../wechat/images/punch_card/Invitation.png");
+    width: 15px;
+    height: 15px;
+    background-size: 15px;
+
+}
+
+ /* 通讯录end */        
+ .small_line {
+    height: 45px;
+    padding: 3% 0 0 0;
+}
+.distribution .title1{
+    /* padding: 8px auto 10px; */
+    font-size:14px;
+    font-weight:500;
+    color:rgba(0,0,0,0.65);
+    line-height:23px;
+}
+.distribution button{
+    width: 83px;
+    height:30px;
+    background: #198CFF;
+    color: #fff;
+    border: none;
+    border-radius:4px;
+    margin-top: 10px;
+}
+.list_qb_r_span{
+    font-size:14px!important;
+    color:rgba(255,80,79,0.85)!important;
+    line-height:20px;
+    float: right;
+    padding-right: 12px;
+    margin-top:0!important;
+}
+/* 通讯录end */
+
+/* 新保安申请 star*/
+.apply_box .list_qb_l{
+    padding:7px 0 0 15px  ;
+}
+.apply_box .list_qb_r{
+    width: 84.1%;
+}
+.apply_box button{
+    width:60px;
+    height:30px;
+    background:rgba(255,255,255,1);
+    border-radius:4px;
+    border:1px solid rgba(255,81,81,1);
+    color: #FF2727;
+}
+.apply_box .agree_button{
+    background:#198CFF;
+     border: none;
+    color: #fff;
+    margin-left: 10px;
+}
+.apply_box .list_each {
+    padding: 1.9% 0 0 0;
+}
+/* 新保安申请 end*/
+/* 保安通知消息 */
+.message_box{
+    width:94.6vw;
+    height:80px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 0px 8px 0px rgba(183,183,183,1);
+    border-radius:4px;
+    margin: 10px auto 0px;
+   }
+   .fontsize13{
+       font-size: 13px;
+   }
+   .message_box  .notice{
+    height:23px;
+    font-size:16px;
+    font-weight:bold;
+    color:rgba(25,140,255,1);
+    line-height:23px;
+    padding: 10px 10px 1px;
+   }
+   .message_box .notice span{
+    float: right;
+   }
+   .message_box .list_qb_l{
+        padding-left:10px;
+    }
+   @media screen and (max-width: 320px) {
+        .fontsize13{
+            font-size: 12px;
+        }
+        .message_box,.small_line{
+            height:auto;
+        }
+        .message_box .list_qb_l{
+            padding-left:5px;
+        }
+    }
+/* 保安通知消息end */

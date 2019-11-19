@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>个人中心</title>
+	<link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
+	<link href="wechat/css/user.css" rel="stylesheet" />
+	<link href="home/phone/css/alert.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="home/phone/js/alert.js"></script>
+	<!-- <script type="text/javascript" src="{{url('/wechat/js/lib/jquery.js')}}"></script> -->
+
+	<style>
+		.alert-btn-p:last-child,.alert-btn-p:last-child a {
+        background: linear-gradient(rgb(24, 189, 247) 0%, rgb(10, 136, 236) 100%);
+        color: rgb(255, 255, 255);
+        display:inline-block;
+        width: 150px;
+    }
+	</style>
+<body style="background:#fff">
+	<div id="close_tips">
+		<p  style="font-size:11px;height:33px;padding:0 15px;line-height:33px;color:rgba(255, 125, 26, 1);">该园区付费服务还有
+			<span style="font-size:17px;color:rgba(255, 125, 26, 1)">30</span>天到期，请
+			<span id="service" style="color:rgba(25, 140, 255, 1)">联系客服</span>进行续费  
+			<i id="_close" style="position: absolute;right:15px;top:2px;color:rgba(255, 125, 26, 1);">X </i>
+		</p>
+	</div>
+	<div class="or-centen" style="padding: 20px 0px 0;position: relative;">
+		<div class="img_">
+			<img style="height:116px;" src="wechat/images/bg1_header.png" alt="#">
+		</div>
+		<table class="or-table or-table-padding">
+			<tbody>
+				<tr>
+					<td style="padding-left:38px;">
+						<a href="#">园区列表
+							<b class="list_qb_r_div" style="position: absolute;left: 15px;top: 20px;width: 20px;height: 20px;"><i class="rep-arrow user_icon" style="width: 20px;height: 20px;"></i> </b>
+						</a>
+					</td>
+					<td>
+						<a href="set_information.html">查看公司资料
+							<b class="list_qb_r_div" style="position: absolute;right: 11px;top: 20px;" ><i class="rep-arrow arrow_white" ></i> </b>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div class="user_info_card" >
+			<p>广贸商务中心广贸商务中心广广贸商务中心广</p>
+			<p>联系人：一环</p>
+			<p>联系电话：133 3333 3333</p>
+		</div>
+	</div>
+	<div style="padding: 0 15px;margin-top: 6px;" >
+		<ul >
+			<a href="#">
+				<li style="position:relative;">
+					<div class="list_each">
+						<div class="list_qb_l" >
+								<img src="wechat/images/user/park_detail.png" alt="">
+						</div>
+						<div class="list_qb_r">
+								<p>园区详情</p>
+								<span>实时跟踪园区信息</span>
+								<b class="list_qb_r_div" style="position: absolute;right: 0;top: 17px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
+						</div>
+					</div>
+				</li>
+			</a>
+			<a href="#">
+				<li style="position:relative;">
+					<div class="list_each">
+						<div class="list_qb_l" >
+								<img src="wechat/images/user/park_set.png" alt="">
+						</div>
+						<div class="list_qb_r">
+								<p>园区设置</p>
+								<span>园区配置管理</span>
+									<b class="list_qb_r_div" style="position: absolute;right: 0;top: 17px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
+						</div>
+					</div>
+				</li>
+			</a>
+		</ul>
+		<div class='divider'></div> 
+		<ul >
+			<a href="#">
+				<li style="position:relative;">
+					<div class="list_each">
+						<div class="list_qb_l" >
+								<img src="wechat/images/user/pay.png" alt="">
+						</div>
+						<div class="list_qb_r">
+								<p>账单缴费</p>
+								<span>每月缴费账单推送</span>
+									<b class="list_qb_r_div" style="position: absolute;right: 0;top: 17px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
+						</div>
+					</div>
+				</li>
+			</a>
+			<a href="#">
+				<li style="position:relative;">
+					<div class="list_each">
+						<div class="list_qb_l" >
+								<img src="wechat/images/user/bill.png" alt="">
+						</div>
+						<div class="list_qb_r">
+								<p>历史账单</p>
+								<span>查看记录、账单详情</span>
+									<b class="list_qb_r_div" style="position: absolute;right: 0;top: 17px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
+						</div>
+					</div>
+				</li>
+			</a>
+		</ul>
+		<div class='divider'></div> 
+		<ul >
+			<a href="business_user.html">
+				<li style="position:relative;">
+					<div class="list_each">
+						<div class="list_qb_l" >
+								<img src="wechat/images/user/phone.png" alt="">
+						</div>
+						<div class="list_qb_r">
+								<p>客服电话</p>
+								<span>7*24小时客服解答</span>
+								<b class="list_qb_r_div" style="position: absolute;right: 0;top: 17px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
+						</div>
+					</div>
+				</li>
+			</a>
+		</ul>
+	</div>
+</body>
+<script>
+	$('#service').click(function () {
+            var win_alert = alertObj.oAlert({
+                style:'wap',
+                title:'联系方式',
+                content : `<a class='telPhone' href="tel:020-3258-8259">电话：020-3258-8259</a>`,
+                buttons :{
+                    '取消' : function(){
+                        win_alert.close();
+                    },
+                    "<a href='tel:020-3258-8259'>拨打电话</a>": function(){
+                    }
+                }
+            })
+        });
+ $('#_close').click(function (e) {
+            e.preventDefault();
+            $("#close_tips").remove();
+        });
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>保安巡逻</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="wechat/css/punch_card_location.css" rel="stylesheet" />
+        <script src="wechat/js/jquery-3.3.1.min.js"></script>
+        <style type="text/css">
+            * {
+                color: rgba(0,0,0,0.65);
+            }
+		</style>
+	</head>
+
+	<body style="background: #F5F5F5;">
+        <div class="top_box ">
+            <ul class="index-nav">
+                <li ><a href="E4-1保安-巡逻路线.html"><span>巡逻线路</span></a></li>
+                <li ><a href="#"><span>巡逻记录</span></a></li>
+                <li class="Active"><a href="#"><span>通知信息</span></a></li>
+            </ul>
+        </div>
+       <p id="message_date">
+           <div class="message_box" >
+               <p class="notice">巡逻通知<span>今天</span></p>
+               <div class="list_each small_line">
+                    <div class="list_qb_l" >
+                            <img style="width:23px; height:23px;" src="wechat/images/punch_card/time.png" alt="">
+                    </div>
+                    <div class="list_qb_r" style="width: 90.7%;">
+                            <p class="fontsize13" style="margin-bottom: 15px;">
+                                巡逻时间: 18月15日 00:00 -  18月16日 01:30 
+                                开始巡逻
+                            </p>
+                        </div>
+                </div>
+           </div>
+           <!-- 审核通过消息 -->
+           <div class="message_box" >
+               <p class="notice">审核通过<span>2019-03-15</span></p>
+               <div class="list_each small_line" style="padding-left:10px;">
+                    <p style="margin-bottom: 15px;line-height:23px;">入驻园区，审核通过。</p>
+                </div>
+           </div>
+       </div>
+        
+	</body>
+	<script>
+        $('.top_box .index-nav li').click(function(){
+            $(this).addClass("Active").siblings().removeClass("Active");
+        })
+    </script>
+</html>

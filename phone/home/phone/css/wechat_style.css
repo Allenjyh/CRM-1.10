@@ -42,7 +42,8 @@ a[title="站长统计"]{display: none!important;}
 .onehide{
 	white-space:nowrap;/*不显示的地方用省略号...代替*/
 	text-overflow:ellipsis;/* 支持 IE */
-  -o-text-overflow: ellipsis;    /* 支持 Opera */
+	-o-text-overflow: ellipsis;    /* 支持 Opera */
+  overflow: hidden;
 }
 .twohide{
 	 text-overflow: -o-ellipsis-lastline;

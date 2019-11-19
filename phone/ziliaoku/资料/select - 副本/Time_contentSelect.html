@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>时间选择，弹框选择</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="../../../home/phone/css/wechat_style.css" rel="stylesheet" />        
+        <link href="../../../home/phone/css/fast_repairs.css" rel="stylesheet" />
+        <!-- <link href="css/pickerStyle.css" rel="stylesheet"/> -->
+	<script type="text/javascript" src="../../jquery-3.3.1.min.js"></script>
+        <!-- <script src="home/phone/js/fast_repairs.js"></script> -->
+		<style type="text/css">
+		.list_each {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 60px;
+            padding: 2.7% 0 0 0;
+            box-sizing: border-box;
+            height: 45px;
+            border-bottom: 1px solid rgba(216, 216, 216, 0.2);
+        }
+        .list_qb_r p {
+            line-height: 23px;
+        }
+        /* 选择线路弹框 */
+            .alert_box .list_each {
+                border-bottom: 1px solid rgba(216, 216, 216, 0.2);
+                height: 45px;
+                position:relative;
+            }
+            .alert_box {
+                position: fixed;
+                left: 0;
+                top:0;
+                z-index: 100;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background-color: rgba(37, 38, 45, .4);
+                display: none;
+            }
+            .alert_box .top_box{
+                position: fixed;
+                left: 0;
+                bottom:0px;
+                z-index: 101;
+                width: 100%;
+                max-height: calc(100vh ) ;
+                min-height: calc(30vh ) ;
+                overflow-y: auto;
+                font-size: 14px;
+                background-color: #fff;
+            }
+             .alert_box .content_box{
+                max-height:calc(100vh - 44px) ;
+                overflow-y: auto;
+            }
+            .select-room-btnbox {
+                height: 44px;
+                line-height: 44px;
+            }
+            .select-room-btnbox table {
+                width: 100%;
+                text-align: center;
+                font-size: 13px;
+                font-family: PingFang-SC-Regular;
+                font-weight: 200;
+            }
+            #rep_title{
+                font-size:16px;
+                font-weight:bold;
+                line-height:45px;
+                font-family:PingFang-SC-Bold,PingFang-SC;
+            }
+            #close_box,#sure_box{
+                font-size:14px;
+                font-weight:bold;
+                color: #198CFF;
+                line-height:45px;
+                font-family:PingFang-SC-Bold,PingFang-SC;
+            }
+          /* 选择线路弹框 end*/ 
+          .rep-select{
+                width: 24px;
+                height: 24px;
+                background-size: 24px;
+                background-repeat: no-repeat;
+                background-position: center;
+                display: inline-block;
+                margin-top: -2px;
+                background-image: url("../select - 副本/select.png");
+
+            }
+		</style>
+	</head>
+
+	<body>
+      
+		
+       
+        <div class="addParkName-box" style="margin-bottom: 0px;">
+                <div class=" addParkName-bar">
+                        <span ><i style="color: #F52230;">* </i>1.2起租时间</span>
+                        <input type="text" id="or_starDate" class="repairs_type com_type" readonly="readonly" placeholder="请选择">
+                        <b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
+                </div>
+        </div>
+        <div class="addParkName-box" style="margin-bottom: 0px;">
+                <div class=" addParkName-bar">
+                       
+                    <p style="height: 50px;">
+                            <!-- <a href="/searchLeaseOrders/{{$park_id}}/{{$type}}"><span> <img src="/wechat/images/enter/label7.png" alt=""></span></!--> 
+                                <span class="select" style="font-size:16px;">1.3时间筛选</span>
+                    </p>
+                </div>
+        </div>
+        <div class="addParkName-box" style="margin-bottom: 0px;">
+                <div class=" addParkName-bar">
+                        <span ><i style="color: #F52230;">* </i>2.1租金单提</span>
+                        <input type="text" id="billRemind" class="repairs_type com_type" readonly="readonly" placeholder="请选择">
+                        <b style="position: absolute;right: 0;top: 12px;color: rgba(0, 0, 0, 0.45)" ><i class="rep-arrow"></i> </b>
+                </div>
+        </div>
+       
+       
+
+
+        <div class='divider'></div>
+         
+        <div  style="position:relative;">
+            <div class="list_each " >
+                <div class="list_qb_l" style="padding-left: 10px;" >
+                        <img style="width: 25px; height: 25px;" src="../../../打卡定位/wechat/images/punch_card/mail_list1.png" alt="">
+                </div>
+                <div class="list_qb_r" style="width: 85.4%;">
+                    <p class="fontsize16">小红</p>
+                        <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)"> <i class="rep-arrow"></i> </b>
+                    </div>
+            </div>
+        </div>
+
+
+
+    <!--选择报修类型START-->
+    <!-- <div id="room-controller" class="room-controller" style="display: none;">
+        <div class="room-controller-all">
+            <div class="select-room-btnbox" style="border-bottom: 1px solid #ebebeb;">
+                <table>
+                    <tr>
+                        <td id="roomClose" style="color: #A7A7A7;">取消</td>
+                        <td id="repTitle">报修类型</td>
+                        <td id="roomSure" style="color: #1A8CFF;">确定</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="select-cross"></div>
+            <div class="room-controller-content">
+                <div class="room-package-top border-bottom"></div>
+                <div class="room-package-bottom border-top"></div>
+                <div class="room-package" id="boxId">
+                    <div class="room">
+                        <ul class="room-list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="room-controller-bottom"></div>
+        </div>
+    </div> -->
+    <!--选择报修类型END-->
+
+
+
+     <!-- 弹框 -->
+     <div id="room-controller" class="alert_box">
+            <div class="top_box">
+                <div class="select-room-btnbox" style="border-bottom: 1px solid #ebebeb;">
+                    <table>
+                        <tbody><tr>
+                            <td id="roomClose" style="color: #198CFF;">取消</td>
+                            <td id="repTitle">选择线路</td>
+                            <td id="roomSure" style="color: #198CFF;">确定</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div class="content_box" id="boxId">
+                    <!-- <div class="list_each" >
+                        <div class="list_qb_l" style="padding-left: 10px;" >
+                            <img style="width: 25px; height: 25px;" src="../../../打卡定位/wechat/images/punch_card/mail_list1.png" alt="">
+                        </div>
+                        <div class="list_qb_r" style="width: 85.4%;">
+                            <p class="fontsize16">小红</p>
+                                <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)"> 
+                                    <i class=""></i> </b>
+                            </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+    <script src="picker.js"></script>
+	<script>
+
+//1.2时间：起租期开始时间(只能填以前，最晚是当天) //1.3.yizuSilding.js  时间筛选 
+// 2.内容 2.1租金单提醒日(每月15-28日提醒) //2.2租赁期限 (6个月-19年11月)//2.3交租期 (每月1日- 10日)
+
+
+
+
+
+
+           
+
+            //2.2租赁期限 6个月-19年11月
+            var MonthArry = [],
+                yearArry = [],
+                fristMonthArry = [];
+            for(var y=0;y<=19;y++){
+                //半期起租
+                if(y>=6 && y<=11){
+                    fristMonthArry.push({id:y,name:y+"个月"})
+                }
+                if(y <= 11){
+                    MonthArry.push({id:y,name:y+"个月"})
+                }
+                if(y == 0){
+                    yearArry.push({id:y,name:y+"年",children:fristMonthArry})
+                }else {
+                    yearArry.push({id:y,name:y+"年",children:MonthArry})
+                }
+
+            }
+            //2.2租赁期限 6个月-19年11月
+            var TimeLimit = {
+                    levelItem: yearArry
+                }
+
+            // TheLease = {//2.1选择租金单提醒日
+            //     levelItem: [
+            //         {id:0,name:"每月",children:[
+            //                 {id:"01,01",name:"1日"},
+            //                 {id:"01,02",name:"1日-2日"},
+            //                 {id:"01,03",name:"1日-3日"},
+            //                 {id:"01,04",name:"1日-4日"},
+            //                 {id:"01,05",name:"1日-5日"},
+            //                 {id:"01,06",name:"1日-6日"},
+            //                 {id:"01,07",name:"1日-7日"},
+            //                 {id:"01,08",name:"1日-8日"},
+            //                 {id:"01,09",name:"1日-9日"},
+            //                 {id:"01,10",name:"1日-10日"},
+            //             ]}
+            //     ]
+            // },
+            var billRemind = {//2.1选择租金单提醒日 
+                levelItem: [
+                // {id:0,name:"每月",children:[
+                            // {id:"01,01",name:"1日"},
+                            // {id:"01,02",name:"1日-2日"},
+                            // {id:"01,03",name:"1日-3日"},
+                            // {id:"01,04",name:"1日-4日"},
+                            // {id:"01,05",name:"1日-5日"},
+                            // {id:"01,06",name:"1日-6日"},
+                            // {id:"01,07",name:"1日-7日"},
+                            // {id:"01,08",name:"1日-8日"},
+                            // {id:"01,09",name:"1日-9日"},
+                            // {id:"01,10",name:"1日-10日"},
+                        // ]}
+                ]
+            };
+
+            for(var i = 20;i<=28;i++){
+                //每月15日提醒
+                billRemind.levelItem.push({
+                    id:i,
+                    name:"每月"+i+"日提醒",
+                })
+            }
+
+            // faultTypes = {
+            //         levelItem: []
+            //     };
+            // console.log($("#repair_faults").val())
+            var repair_faults = $("#repair_faults").val() ? JSON.parse($("#repair_faults").val()) : [];
+
+            repair_faults.forEach(function(index){
+                faultTypes.levelItem.push({id:index.fault_id,name: eval("'" + index.fault_name + "'") })
+            });
+
+                //2.1选择租金单提醒日  每月15-28日提醒
+            document.querySelector("#billRemind").addEventListener("click",function(){
+                if (billRemindPicker == null){
+
+                    document.getElementById("room-controller").style.display = "block";
+                    document.body.style.overflow = 'hidden';//浮层出现时窗口不能滚动设置
+                    document.querySelector("#repTitle").textContent = "选择线路";
+                    var billRemindPicker = new roomPicker({
+                        data:billRemind,
+                        id:"boxId"
+                    });
+                    billRemindPicker.init("billRemind",function(){
+                        if(document.querySelector("#repTitle").textContent == "选择线路"){
+                            document.getElementById("billRemind").value = getRoomItem.level1.name;
+                            document.getElementById("billRemind").dataset.value = getRoomItem.level1.id;
+                            document.body.style.overflow = 'auto';// 浮层关闭时滚动设置
+                        }
+                    })
+                }
+            },false)
+
+          
+
+
+
+
+   
+
+
+	</script>
+</html>

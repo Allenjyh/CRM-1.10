@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>账号切换</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="home/phone/css/wechat_style.css" rel="stylesheet" />        
+        <link href="home/phone/css/fast_repairs.css" rel="stylesheet" />
+        <script src="home/phone/js/jquery-3.3.1.min.js"></script>
+        <style type="text/css">
+            /* * {
+                box-sizing: border-box;
+                font-size: 13px;
+                margin: 0;
+                padding: 0;
+            }
+            * {
+                font-family: PingFang-SC-Regular;
+                color: rgba(0,0,0,0.85);
+            }
+            input, span {
+                border: none;
+                outline: none;
+            }
+            ul, ol, li {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+            a {
+                text-decoration: none;
+                
+            } */
+            /* .top_box {
+                
+                width: 100vw;
+                z-index: 9;
+            }
+            .index-nav {
+                width: 100%;
+                background: #0A88EC;
+                height: 44px;
+                line-height: 16px;
+                text-align: center;
+                padding-top: 12px;
+            }
+			
+            .top_box > ul li.Active {
+                position: relative;
+                font-family: PingFang-SC-Medium;
+            }
+            .top_box  ul li.Active:after {
+                content: '';
+                position: absolute;
+                left: 39%;
+                top: auto;
+                bottom: -6px;
+                right: auto;
+                height: 2px;
+                width: 21%;
+                background-color: #fff;
+                border-radius: 3px;
+            }
+            .index-nav li a span {
+                color: #FFFFFF;
+            } */
+            .top_box {
+                position:static;
+            }
+            .index-nav li{
+                width:33.3333333%;
+                float: left;
+            }
+            .index-nav {
+                background: rgba(255, 255, 255, 1);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            }
+            .index-nav li a span {
+                color: rgba(0, 0, 0, 0.65);
+            }
+            .top_box > ul li.active {
+                position: relative;
+                font-family: PingFang-SC-Medium;
+                color: rgba(26, 140, 255, 0.85)
+            }
+            .top_box  ul li.Active a span  {
+                color: rgba(26, 140, 255, 0.85)!important;
+            }
+            .top_box  ul li.Active:after {
+                background-color: rgba(26, 140, 255, 0.85);
+            }
+            .confirm_btn {
+                /* width: 89.3%;
+                height: 55px;
+                position: fixed;
+                bottom: 31px;
+                font-size: 20px;
+                text-align: center;
+                line-height: 55px;
+                margin: 0 5.3%;
+                left: 2px;
+                z-index: -1; */
+                color: rgba(26,140,255,0.85);
+                border: 1px solid rgba(25, 140, 255, 1);
+                font-family: PingFang-SC-Medium;
+                background: #fff;
+            }
+
+            .mid_mox ul {
+                padding: 0 4%;
+            }
+            .mid_mox ul li{
+                position: relative;
+                height: 60px;
+                padding-left: 4%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            }
+            .mid_mox ul li p {
+                font-size:15px;
+                padding: 9px 0 4px 0;
+                width: calc(60vw);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            .mid_mox ul li span {
+                color: rgba(0,0,0,0.45);
+            }
+
+            
+		</style>
+	</head>
+
+	<body>
+        <div class="top_box ">
+            <ul class="index-nav">
+                <li ><a href="wuye_repairs.html"><span>物业</span></a></li>
+                <li ><a href="#"><span>企业</span></a></li>
+                <li class="Active"><a href="#"><span>个体户</span></a></li>
+            </ul>
+        </div>
+        <div class="mid_mox">
+            <ul>
+                <a href="wuye_repairs.html">
+                    <li>
+                        <p >这里是公司名称这里是公司这里是公司名称</p>
+                        <span>身份：物业</span>
+                        <b class="list_qb_r_div" style="position: absolute;right: 0;top: 17px;color: rgba(0, 0, 0, 0.45)"><i class="rep-arrow"></i> </b>
+                    </li>
+                </a>
+                <a href="wuye_repairs.html">
+                    <li>
+                        <p >这里是公司名称这里是公司这里是公司名称</p>
+                        <span>身份：物业</span>
+                        <b class="list_qb_r_div" style="position: absolute;right: 0;top: 17px;color: rgba(0, 0, 0, 0.45)"><i class="rep-arrow"></i> </b>
+                    </li>
+                </a>
+                <a href="wuye_repairs.html">
+                    <li>
+                        <p >这里是公司名称这里是公司这里是公司名称</p>
+                        <span>身份：物业</span>
+                        <b class="list_qb_r_div" style="position: absolute;right: 0;top: 17px;color: rgba(0, 0, 0, 0.45)"><i class="rep-arrow"></i> </b>
+                    </li>
+                </a>
+                <a href="wuye_repairs.html">
+                    <li>
+                        <p >这里是公司名称这里是公司这里是公司名称</p>
+                        <span>身份：物业</span>
+                        <b class="list_qb_r_div" style="position: absolute;right: 0;top: 17px;color: rgba(0, 0, 0, 0.45)"><i class="rep-arrow"></i> </b>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        
+        <div id="creator_btn " class="confirm_btn creator_btn">创建新账号</div>
+	</body>
+	<script>
+        $('.creator_btn').click(function(){
+            
+        })
+
+        $('.top_box .index-nav li').click(function(){
+            $(this).addClass("Active").siblings().removeClass("Active");
+            let data_type = $(this).attr("data-type");
+            $('.data_'+data_type).show().siblings('.mid_mox').hide();
+        })
+
+         console.log($("#date").val())
+    </script>
+</html>

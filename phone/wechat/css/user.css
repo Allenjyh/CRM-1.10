@@ -20,9 +20,9 @@
         font-size: 13px;
         
 }
-.or-table tr td:nth-child(2){
+/* .or-table tr td:nth-child(2){
         text-align: right;
-}
+} *//* 账号切换修改1 */
 .img_ img{
     position:absolute;
     left:0px;
@@ -38,7 +38,7 @@ font-weight:500;
     color:rgba(255,255,255,0.85);
 line-height:24px;
 text-align: left;
-padding-bottom: 7px;
+padding-bottom: 14px;/* 修改1 */
 }
 .rep-arrow{
     width: 24px;
@@ -50,11 +50,18 @@ padding-bottom: 7px;
     display: inline-block;
     margin-top: -2px;
     } 
-.arrow_white{
-    background-image: url("../../wechat/images/arrow_white.png");
-    } 
+.view_information{/* 账号切换修改1 */
+    background-image: url("../../wechat/images/user/view_information.png");
+    
+} 
+
 .user_icon{
     background-image: url("../../wechat/images/user/user_icon.png");
+    background-size: 15px;/* 账号切换修改1 */
+    } 
+.park_list{
+    background-image: url("../../wechat/images/user/park_list.png");
+    background-size: 22px;/* 账号切换修改1 */
     } 
 .p-title{
     font-size:16px;
@@ -98,7 +105,7 @@ width: 85.4%;
 	font-size:16px;
 	font-family:PingFang-SC-Medium;
 	font-weight:500;
-	width: 71.5%;
+	width: 68.5%;/* 账号切换修改1 */
 	text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -169,3 +176,4 @@ input {
     height: 20px;
     border-left: 1px solid rgba(0,0,0,0.15);
 }
+/* 手机号修改 end*/

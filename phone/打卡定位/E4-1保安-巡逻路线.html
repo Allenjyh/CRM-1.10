@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>保安巡逻</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="wechat/css/punch_card_location.css" rel="stylesheet" />
+        <script src="wechat/js/jquery-3.3.1.min.js"></script>
+        <style type="text/css">
+            * {
+                color: rgba(0,0,0,0.65);
+            }
+            .patrol_route{
+                height: 115px;
+            }
+            .patrol_route span{
+                color: #198CFF;
+            }
+            .patrol_route .small_line {
+                height: auto;
+            }
+            .patrol_route .list_qb_r p {
+                line-height: 20px;
+            }
+		</style>
+	</head>
+
+	<body style="background: #F5F5F5;">
+        <div class="top_box ">
+            <ul class="index-nav">
+                <li class="Active"><a href="#"><span>巡逻线路</span></a></li>
+                <li ><a href="#"><span>巡逻记录</span></a></li>
+                <li ><a href="E6-1保安-通知信息.html"><span>通知信息</span></a></li>
+            </ul>
+        </div>
+       <div id="patrol_route_date">
+           <div class="message_box patrol_route" >
+               <p class="notice">规划线路1<span>待开始</span></p>
+               <div class="list_each small_line">
+                    <div class="list_qb_l" >
+                            <img style="width:20px; height:20px;" src="wechat/images/punch_card/time.png" alt="">
+                    </div>
+                    <div class="list_qb_r" style="width: 90.7%;">
+                            <p class="fontsize13" >
+                                巡逻时间: 18月15日 00:00 -  18月16日 01:30 
+                            </p>
+                        </div>
+                </div>
+               <div class="list_each small_line" style="padding-top: 8px;">
+                    <div class="list_qb_l" >
+                            <img style="width:20px; height:20px;" src="wechat/images/punch_card/patrol_team.png" alt="">
+                    </div>
+                    <div class="list_qb_r" style="width: 90.7%;">
+                            <p class="fontsize13 onehide" style="width: 96%;">
+                                巡逻小队：小红（小李、小张、小芳、小章、小明...）
+                            </p>
+                        </div>
+                </div>
+           </div>
+           
+       </div>
+        
+	</body>
+	<script>
+        $('.top_box .index-nav li').click(function(){
+            $(this).addClass("Active").siblings().removeClass("Active");
+        })
+    </script>
+</html>

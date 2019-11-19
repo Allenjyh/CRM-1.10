@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>规划设置</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="wechat/css/punch_card_location.css" rel="stylesheet" />
+        <script src="wechat/js/jquery-3.3.1.min.js"></script>
+        <style type="text/css">
+            .list_each .list_qb_r {
+                width: 88.4%;
+            }
+            .distribution button {
+                width: 125px;
+                height: 45px;
+            }
+
+           /* 规划设置 */
+            .message_box .notice span,.fontsize13 {
+                color:rgba(0,0,0,0.65);
+                line-height:19px;
+            }
+            .message_box{
+                height: 100px;
+                position: relative;
+            }
+            .message_box .list_each p{
+                padding-left: 10px;
+               
+            }
+            .message_box .small_line {
+                height: auto;
+            }
+            /* .message_box .list_qb_r p {
+                line-height: 20px;
+            } */
+         
+		</style>
+	</head>
+
+	<body>
+        <div class="top_box ">
+            <ul class="index-nav">
+                <li ><a href="#"><span>巡逻记录</span></a></li>
+                <li class="Active"><a href="#"><span>线路规划</span></a></li>
+                <li ><a href="E3-1管理者-通讯录.html"><span>通讯录</span></a></li>
+            </ul>
+        </div>
+        <div class="divider"></div>
+        <div class="mid_mox">
+          
+            <div class="list_each small_line" style="position:relative;">
+                <div class="list_qb_l" >
+                        <img  src="wechat/images/punch_card/route.png" alt="">
+                </div>
+                <div class="list_qb_r" >
+                    <p class="fontsize16">节点设置</p>
+                    <a href="">
+                        <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)"><i class="rep-arrow"></i> </b>
+                    </a>
+                </div>
+            </div>
+             <!-- 节点设置无数据时显示 -->
+             <!-- <div class="distribution" style="margin:8px 0 27px 0;text-align:center">
+                <div>
+                    <div style="margin: 0 auto 10px;width:200px;height:200px;">
+                        <img style="width:200px;height:200px;" src="wechat/images/punch_card/no_mail.png" >
+                    </div>
+                    <p class="title1">暂无内容，您可以添加节点</p>
+                    <button >添加</button>
+                </div>
+            </div> -->
+
+            <div class="divider"></div>
+            <div class="list_each small_line" style="position:relative;">
+                <div class="list_qb_l" >
+                        <img  src="wechat/images/punch_card/route.png" alt="">
+                </div>
+                <div class="list_qb_r" >
+                    <a href="E2-18管理者-添加线路.html">
+                    <p class="fontsize16">线路设置</p>
+                        <b class="list_qb_r_div" style="position: absolute;right: 12px;top: 12px;color: rgba(0, 0, 0, 0.45)"><i class="rep-arrow"></i> </b>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- 线路设置无数据时显示 -->
+        <!-- <div class="distribution" style="margin:8px 0 27px 0;text-align:center">
+            <div>
+                <div style="margin: 0 auto 10px;width:200px;height:200px;">
+                    <img style="width:200px;height:200px;" src="wechat/images/punch_card/no_mail.png" >
+                </div>
+                <p class="title1">暂无设置线路，您可以添加线路</p>
+                <button >添加</button>
+            </div>
+        </!--> 
+
+        <div class="last_box">
+            <div class="divider"></div>
+            <div class="list_each small_line" >
+                <div class="list_qb_l" >
+                    <img  src="wechat/images/punch_card/mail_list.png" alt="">
+                </div>
+                <div class="list_qb_r">
+                    <p class="fontsize16" >规划设置</p>
+                </div>
+            </div>
+            <!-- 规划设置无数据时显示 edit-->
+            <!-- <div class="distribution" style="margin:8px 0 27px 0;text-align:center">
+                <div>
+                    <div style="margin: 0 auto 10px;width:200px;height:200px;">
+                        <img style="width:200px;height:200px;" src="wechat/images/punch_card/no_mail.png" >
+                    </div>
+                    <p class="title1">选择线路和巡逻规划，即可完成设置</p>
+                    <button >添加</button>
+                </div>
+            </div> -->
+            <div id="plan_set">
+                    <div class="message_box" >
+                        <p class="notice">规划线路1
+                            <span>修改设置</span>
+                            <b class="list_qb_r_div" style="position: absolute;right: 70px;top: 9px;color: rgba(0, 0, 0, 0.45)"> 
+                                <i class="rep-edit_set"></i> </b>
+                        </p>
+                        <div class="list_each small_line">
+                             <p class="fontsize13  onehide" style="width: 96%;" >10月14日23:00 - 10月15日01:30</p>    
+                               
+                         </div>
+                        <div class="list_each small_line" style="padding-top: 7px;">
+                                     <p class="fontsize13 onehide" style="width: 96%;"> 每周重复、1个小时前 </p>
+                         </div>
+                    </div>
+                    <div style=" width: 100%;height:80px; background: #fff; position: fixed;bottom: 0;">
+                        <div id="add_plan" class="submit_btn" style="bottom:13px;">添加规划</div>
+                    </div>
+            </div>
+        </div>
+        
+	</body>
+	<script>
+$('.top_box .index-nav li').click(function(){
+            $(this).addClass("Active").siblings().removeClass("Active");
+        })
+    </script>
+</html>

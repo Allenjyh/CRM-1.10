@@ -368,6 +368,21 @@
 			// 		$loadMore.click();  //加载数据
 			// 	}
 			// });
+			var c=document.createElement("canvas");
+var ctx=c.getContext("2d");
+
+ctx.font="20px Georgia";
+ctx.fillText("Hello World!",10,50);
+
+ctx.font="30px Verdana";
+// 创建渐变
+var gradient=ctx.createLinearGradient(0,0,c.width,0);
+gradient.addColorStop("0","magenta");
+gradient.addColorStop("0.5","blue");
+gradient.addColorStop("1.0","red");
+// 用渐变填色
+ctx.fillStyle=gradient;
+ctx.fillText("w3school.com.cn",10,90);
 		</script>
 	</body>
 
