@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BrowsersyncExample</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- <script src="../home/phone/js/jquery-3.3.1.min.js"></script> -->
+        <script src="jquery-3.3.1.min.js"></script>
+
+</head>
+<style>
+.mask_box2{
+    color:cornflowerblue
+}
+            .anim_transition {
+                width: 100px;
+                height: 70px;
+                background-color: green;
+                text-align: center;
+                color: white;
+                border-radius: 5px;
+                transition: all 2s linear;
+            }
+            .anim_transition:hover {
+                width: 150px;
+                height: 105px;
+                -webkit-transform: rotate(360deg);
+            }
+       
+            
+            </style>
+<body>
+    <div id="matrixBox" class="anim_transition">css3过度</div>
+   <h1>browsersync.cn</h1>
+   谢谢
+   <div class="mask_box2">
+    <div class="mask_cent2">
+        <span class="cuobtn"><i class="iconfont icon-cuo1"></i></span>
+        <span class="title">工商信息</span>
+        <ul class="mask_cent2_ul">
+            <li> <span>公司全称</span> <span>广州乙租信息科技有限公司</span> </li>
+            <li> <span>企业法人</span> <span>小佩骑猪</span> </li>
+            <li> <span>注册资本</span> <span>5000万</span> </li>
+            <li> <span>统一信用代码</span> <span>914414003980053966</span> </li>
+            <li> <span>注册地址</span> <span>广州市白云区广贸商业中心 C栋401</span> </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script>
+ $('.mask_cent2_ul').click(function(){
+            alert(666)
+        })
+</script>
+</html>

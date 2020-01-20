@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta   charset="utf-8"/>
+        <title></title>   
+        <style>
+            input { width:200px; }
+        </style>       
+    </head>
+    <body>
+        <select id="time">
+            <option value="0">请选择</option>
+            <option value="1">一周前</option>
+            <option value="2">一个月前</option>
+            <option value="3">三个月前</option>
+            <option value="4">半年前</option>
+            <option value="5">一年前</option>
+            <option value="6">一年后</option>
+        </select>
+        <input type="text" id="stime" value="选择的时间"/>
+        <input type="text" id="etime" value="当前时间"/>       
+        <script>
+            function $(el){
+                return typeof el == 'string' ? document.getElementById(el) : el;
+            }
+            var s = $('stime');
+            var e = $('etime');
+            $('time').onchange = function(){
+                var d = new Date();
+                e.value = d.toLocaleString().replace(/年|月/g, '-').replace('日', '');
+                switch( +this.value ){
+                    case 1:
+                        s.value = setTime(d, {type:'d', value: -7});
+                        break;
+                    case 2:
+                        s.value = setTime(d, {type:'M', value: -1});
+                        break;
+                    case 3:
+                        s.value = setTime(d, {type:'M', value: -3});
+                        break;
+                    case 4:
+                        s.value = setTime(d, {type:'M', value: -6});
+                        break;
+                    case 5:
+                        s.value = setTime(d, {type:'y', value: -1});
+                        break;
+                    case 6:
+                        s.value = setTime(d, {type:'y', value:1});
+                        break;
+                }
+            }
+             
+            function setTime(d, opts){
+                if(!d) return;
+                var t = opts.type || 'd',
+                    v = opts.value || 1;
+
+                switch( t ){
+                    case 'y':
+                        d.setFullYear( d.getFullYear() + v );
+                        break;
+                    case 'M':
+                        d.setMonth( d.getMonth() + v );
+                        break;                       
+                    case 'd':
+                        d.setDate( d.getDate() + v );
+                        break;
+                    case 'h':
+                        d.setHours( d.getHours() + v );
+                        break;
+                    case 'm':
+                        d.setMinutes( d.getMinutes() + v );
+                        break;
+                    case 's':
+                        d.setSeconds( d.getSeconds() + v );
+                        break;                       
+                }
+                return d.toLocaleString().replace(/年|月/g, '-').replace('日', '');
+            }
+             
+
+            //  饿了么
+        //  pickerOptions: {
+        //   shortcuts: [{
+        //     text: '未来半年',
+        //     onClick(picker) {
+        //       const start = new Date();
+        //       const d = new Date();
+        //       const end = d.setMonth( d.getMonth() + 6 ) - 3600 * 1000 * 24;
+        //       picker.$emit('pick', [start, end]);
+        //     }
+        //   }, {
+        //     text: '未来一年',
+        //     onClick(picker) {
+        //       const start = new Date();
+        //       const d = new Date();
+        //       const end = (d.setFullYear( d.getFullYear() + 1 ) - 3600 * 1000 * 24) ;
+        //       picker.$emit('pick', [start, end]);
+        //     }
+        //   }, {
+        //     text: '未来两年',
+        //     onClick(picker) {
+        //       const start = new Date();
+        //       const d = new Date();
+        //       const end = (d.setFullYear( d.getFullYear() + 2 ) - 3600 * 1000 * 24) ;
+        //       picker.$emit('pick', [start, end]);
+        //     }
+         
+         
+        //   }]
+        // }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>last.html</title>
+<style type="text/css">
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+ 
+td {
+    border: 1px solid black;
+}
+</style>
+        <script src="wechat/js/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+    jQuery (function ($)
+    {
+        $ (':button:first').click (function ()
+        {
+            var insert = $ ('table tr :radio:checked').closest ('tr');
+            console.log(insert)
+            var tr = insert.prev ('tr');
+            
+            tr.before (insert);
+        });
+         
+        $ (':button:last').click (function ()
+        {
+            var insert = $ ('table tr :radio:checked').closest ('tr');
+            var tr = insert.next ('tr');
+            tr.after (insert);
+        });
+    });
+    var NV = {};
+var UA = navigator.userAgent.toLowerCase();
+
+</script>
+</head>
+<body>
+    <TABLE>
+        <TR>
+            <TD><input type="radio" name="rdo" /></TD>
+            <TD>1</TD>
+        </TR>
+        <TR>
+            <TD><input type="radio" name="rdo" /></TD>
+            <TD>2</TD>
+        </TR>
+        <TR>
+            <TD><input type="radio" name="rdo" /></TD>
+            <TD>3</TD>
+        </TR>
+        <TR>
+            <TD><input type="radio" name="rdo" /></TD>
+            <TD>4</TD>
+        </TR>
+        <TR>
+            <TD><input type="radio" name="rdo" /></TD>
+            <TD>5</TD>
+        </TR>
+    </TABLE>
+    <input type="button" value="上移" />
+    <input type="button" value="下移" />
+</body>
+</html>

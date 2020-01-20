@@ -1,0 +1,165 @@
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
+<title>天气接口使用示例</title>  
+<style>  
+body {  
+    font-family: microsoft yahei;  
+}
+
+/*表格  */
+table {
+    text-align: center;
+    margin: 0 auto;
+}
+table tr td{
+    width:200px;
+    height:30px;
+}
+</style>  
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>  
+</head>  
+<body>  
+  <!-- 1.天气 -->
+<div id="output"></div>  
+<iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=55" width="770" height="70" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+<!-- 2.表格 -->
+<div>
+    <table border="1px" class="date" id="date">
+        <!-- <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr> -->
+    </table>
+</div>
+<script type="text/javascript" charset="utf-8">  
+// 接口请求格式如下： 
+// http://cdn.weather.hao.360.cn/sed_api_weather_info.php?app=360chrome&code=【地区编码】&_jsonp=【jsonp回调函数】   
+//     其中的 地区编码 与中国天气网的地区编码是一样的。如果不设置这个参数，则默认显示本地的天气状况。 101010100//北京 101281501 101010600
+
+    $.ajax({  
+        type: "GET",   
+        url: "http://cdn.weather.hao.360.cn/sed_api_weather_info.php?app=360chrome&code=101281501",  
+        dataType : "jsonp",  
+        jsonp: "_jsonp",//参数名  
+        success: function(jsonData){ 
+            console.log(jsonData) 
+            var html;  
+            html = '数据更新时间：' + jsonData.pubdate + ' ' + jsonData.pubtime + '<br>';  
+              
+            html += '地区：' + jsonData.area[0][0] + ' ' + jsonData.area[1][0] + ' ' + jsonData.area[2][0] + '<br>';  
+            html += '天气情况：<br>';  
+              
+            for(var i =0; i<jsonData.weather.length; i++) {  
+                html += jsonData.weather[i].date + '<br>';  
+                  
+                if(jsonData.weather[i].info.dawn !== undefined) {  
+                    html += '早晨天气：' + jsonData.weather[i].info.dawn[1] +   
+                    ' 气温：' + jsonData.weather[i].info.dawn[0] + '~' + jsonData.weather[i].info.dawn[2] + '℃ ' +  
+                    jsonData.weather[i].info.dawn[3] +' '+ jsonData.weather[i].info.dawn[4] + '<br>';  
+                }  
+                  
+                if(jsonData.weather[i].info.day !== undefined) {  
+                    html += '白天天气：' + jsonData.weather[i].info.day[1] +   
+                    ' 气温：' + jsonData.weather[i].info.day[0] + '~' + jsonData.weather[i].info.day[2] + '℃ ' +  
+                    jsonData.weather[i].info.day[3] +' '+ jsonData.weather[i].info.day[4] + '<br>';  
+                }  
+                  
+                if(jsonData.weather[i].info.night !== undefined) {  
+                    html += '夜间天气：' + jsonData.weather[i].info.night[1] +   
+                    ' 气温：' + jsonData.weather[i].info.night[0] + '~' + jsonData.weather[i].info.night[2] + '℃ ' +  
+                    jsonData.weather[i].info.night[3] +' '+ jsonData.weather[i].info.night[4] + '<br>';  
+                }  
+                html += '<br>';  
+            }  
+              
+            html += '穿衣：<br>';  
+            html += '【' + jsonData.life.info.chuanyi[0] + '】 ' + jsonData.life.info.chuanyi[1] + '<br><br>';  
+              
+            html += '感冒：<br>';  
+            html += '【' + jsonData.life.info.ganmao[0] + '】 ' + jsonData.life.info.ganmao[1] + '<br><br>';  
+              
+            html += '空调：<br>';  
+            html += '【' + jsonData.life.info.kongtiao[0] + '】 ' + jsonData.life.info.kongtiao[1] + '<br><br>';  
+              
+            html += '污染：<br>';  
+            html += '【' + jsonData.life.info.wuran[0] + '】 ' + jsonData.life.info.wuran[1] + '<br><br>';  
+              
+            html += '洗车：<br>';  
+            html += '【' + jsonData.life.info.xiche[0] + '】 ' + jsonData.life.info.xiche[1] + '<br><br>';  
+              
+            html += '运动：<br>';  
+            html += '【' + jsonData.life.info.yundong[0] + '】 ' + jsonData.life.info.yundong[1] + '<br><br>';  
+              
+            html += '紫外线：<br>';  
+            html += '【' + jsonData.life.info.ziwaixian[0] + '】 ' + jsonData.life.info.ziwaixian[1] + '<br><br>';  
+              
+            html += 'PM2.5： ' + jsonData.pm25.pm25[0];  
+              
+            $("#output").html(html);  
+        }  
+    });  
+
+    //     附：其它天气接口 
+    // http://www.tianqi.com/dingzhi/
+    //  	天气网的接口(只支持iframe方式调用，修改后面的数字可以展示为其它样式)
+    //  http://i.tianqi.com/index.php?c=code&id=55 
+
+    //  	2345天气(只支持iframe方式调用，支持自定义样式)
+    //  http://tianqi.2345.com/plugin/ 
+
+    //  	中国天气网(只支持iframe方式调用，支持自定义地区)
+    //  http://m.weather.com.cn/m/pn11/weather.htm 
+    $.ajax({
+        type: "GET",
+        url:'http://cdn.weather.hao.360.cn/sed_api_weather_info.php?app=360chrome&code=101281501' ,
+        jsonp: "_jsonp",
+        // data: ,
+        dataType: 'jsonp',//json
+        contentType: "application/x-www-form-urlencoded",
+        success: function (res) {
+            console.log(res)
+            
+        },
+        error: function(){
+        } 
+    })
+    //  2.表格
+    var dateTable = [{'start_time':'开始时间','end_time': "结束时间",'msg_content': "消息标题",'msg_id': 'ID'},
+                     {'start_time':'2019年11月21日','end_time': "2019年11月21日 09:37",'msg_content': "标题1",'msg_id': '001'},
+                     {'start_time':'2019年12月22日','end_time': "2019年12月22日 09:37",'msg_content': "标题2",'msg_id': '002'}];
+
+    var ajaxHtml =''
+    console.log(dateTable)
+    for(let i in dateTable) {
+        ajaxHtml += `<tr>
+            <td>${dateTable[i].msg_id}</td>
+            <td>${dateTable[i].msg_content}</td>
+            <td>${dateTable[i].start_time}</td>
+            <td>${dateTable[i].end_time}</td>
+        </tr>`
+    }
+    // var _table = document.getElementById('date');
+    // _table.innerHTML =ajaxHtml
+  // console.log(_table)
+    $('.date').html(ajaxHtml);
+
+</script>  
+  
+</body>  
+</html>  

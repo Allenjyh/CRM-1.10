@@ -1,0 +1,135 @@
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
+<title>document.getElement...使用和区别</title>  
+<style>  
+body {  
+    font-family: microsoft yahei;  
+}
+/*表格  */
+table {
+    text-align: center;
+    margin: 0 auto;
+}
+table tr td{
+    width:200px;
+    height:30px;
+}
+</style>  
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>  
+</head>  
+<body>  
+<!-- 2.表格 -->
+<div>
+    <table border="1px" class="date" id="date">
+        <!-- <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr> -->
+    </table>
+    <br>
+    <table border="1px" class="ajaxrequest"></table>
+</div>
+<script type="text/javascript" charset="utf-8">  
+    //  2.表格
+    var dateTable = [{'start_time':'开始时间','end_time': "结束时间",'msg_content': "消息标题",'msg_id': 'ID'},
+                     {'start_time':'2019年11月21日','end_time': "2019年11月21日 09:37",'msg_content': "标题1",'msg_id': '001'},
+                     {'start_time':'2019年12月22日','end_time': "2019年12月22日 09:37",'msg_content': "标题2",'msg_id': '002'}];
+
+    var ajaxHtml =''
+    console.log(dateTable)
+    for(let i in dateTable) {
+        ajaxHtml += `
+        <tr>
+            <td>${dateTable[i].msg_id}</td>
+            <td>${dateTable[i].msg_content}</td>
+            <td>${dateTable[i].start_time}</td>
+            <td>${dateTable[i].end_time}</td>
+        </tr>`
+    }
+//    console.log(_table)
+     $('.date').html(ajaxHtml);
+
+
+
+
+
+   $.ajax({
+        method: "GET",
+        url: "https://unidemo.dcloud.net.cn/api/news",
+        data: {
+            // id: (document.body.dataset.orderid ? document.body.dataset.orderid : ""),
+            // type_id:payType
+        },
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        success: function (res) {
+            // console.log(res)
+            ajaxrequest(res)
+        },
+       
+    })
+    function ajaxrequest(data){
+            console.log(data)
+            var ajax_html='';
+            for(let i in data){
+                ajax_html +=`
+                <tr>
+                    <td>${data[i].id}</td>
+                    <td>${data[i].author_name}</td>
+                    <td>${data[i].created_at}</td>
+                    <td>${data[i].published_at}</td>
+                </tr>
+                `
+            }
+    //  $('.ajaxrequest').html(ajax_html);
+     document.querySelector('.ajaxrequest').innerHTML =ajax_html
+    }
+
+
+    // 1.ID
+//     1)
+//     var _table = document.getElementById('date').innerHTML =ajaxHtml;
+
+//     2)
+//     document.querySelector('#date').innerHTML =ajaxHtml//里面参数是CSS选择器
+
+// 2.Class类
+// 1)  var _table = document.getElementsByClassName('date')[0].innerHTML =ajaxHtml;
+//  var _table = document.querySelector('.date').innerHTML =ajaxHtml; 
+//  var _table = document.querySelectorAll('.date')[0].innerHTML =ajaxHtml; 
+// 3. 标签
+//     var _table = document.querySelectorAll("table")[0].innerHTML =ajaxHtml;//ul标签集合
+
+//     var _table = document.getElementsByTagName("table");
+//     console.log(_table);//HTMLCollection类数组对象
+//     console.log(_table.length);//HTMLCollection长度
+//     _table[0].innerHTML =ajaxHtml;
+//     console.log(_table)
+//     $('.date').html(ajaxHtml);
+
+//  4.  name查询元素的 name 属性
+//     <input name="myInput" type="text" size="20" />
+//     getElementsByName('myInput')[1]; //方法可返回带有指定名称的对象的集合。
+
+    // obj.querySelector("")里面参数是CSS选择器
+   // obj.querySelectorAll("")、document.getElementsByTagName里面参数是HTML标签名称，返回的NodeList类数组对象
+</script>  
+  
+</body>  
+</html>  
