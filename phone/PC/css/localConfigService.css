@@ -1,0 +1,373 @@
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    * {
+      font-family: "Microsoft YaHei" ;
+    }
+    a{
+      text-decoration: none;
+     
+    }
+    /**头部样式**/
+    .clear:after {
+    content: "";
+    display: block;
+    clear: both;
+    }
+    p{
+    margin: 0;
+    }
+    ul, ol, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    } 
+    input, span ,button{
+        border: none;
+        outline: none;
+    }
+    body{
+        min-width: 1280px;
+        min-height: 680px; 
+    }
+    button{
+    border: none;
+    }
+    /* 滚动条 */
+    .select_info::-webkit-scrollbar{ /*滚动条整体样式*/
+      width: 5px; /*高宽分别对应横竖滚动条的尺寸*/
+      height: 0px;
+    }
+    .select_info::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+      border-radius: 5px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      background: #1A8CFF;
+    }
+    .select_info::-webkit-scrollbar-track { /*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      background: #EDEDED;
+    }
+    /* 滚动条end */
+
+    .localConfigService  {
+        height: 100vh;
+        width: 100vw;
+        background-image: url(http://ban.scrmmc.com/loadingbg.png);
+        background-size: 100vw 100vh;
+        background-repeat: no-repeat;
+        /* z-index: -1; */
+    }
+    .localConfigService .loginBox  {
+        position: fixed; 
+        min-width: 960px;
+        max-width: 1152px;
+        min-height: 608px;
+        max-height: 1014px;
+  
+        width: 60vw;
+        height: 74vh;
+        margin-left: 20vw;
+        margin-top: 13vh;
+        background: #fff;
+        border-radius: 8px;
+        padding: 24px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .localConfigService .localConfigTitle{
+       color: #1A8CFF; font-size: 24px; text-align: center; margin: 46px 0 40px 0;
+    }
+    .localConfigService .elSteps{
+         width:630px;
+         margin:0 auto 40px;
+    }
+  /* 本地配置 */
+    .localConfigService .localConfig .inputFirst,.localConfigService .createPark .inputFirst{
+        display: flex; justify-content: flex-end;
+    }
+    .localConfigService .divFirst{ 
+      margin-right:75px; 
+    }
+    .localConfigService .divSecond{
+        margin-left: 75px;
+    } 
+    .form_box1>li {
+        width: 50% ;
+        margin-bottom: 37px;
+        float: left; 
+    }
+    .form_box1>li input {
+        width:239px !important; 
+    }
+    .form_box1>li input:focus{
+        border: none;
+    }
+    input::placeholder{
+        color: rgba(0,0,0,0.45);
+    }
+    .form_box1 li div.divFirst,.form_box1 li div.divSecond {  
+        border-bottom: 1px solid rgba(0,0,0,0.12);
+        width: 370px;
+        position: relative;
+    }
+   .localConfigService .title{  
+        font-size:18px; 
+        font-weight:400;
+        color:rgba(0,0,0,0.85);
+        line-height:40px; 
+        display: inline-block;
+        width: 110px;
+    }
+  
+  .localConfigService .errorInfo {   
+      color: #F56C6C;
+      font-size: 14px;
+      line-height: 1;
+      padding-top: 4px;
+      position: absolute;
+      top: 100%;
+      right: 10px!important; 
+      left: auto;
+  }
+ 
+  .localConfigService input{  
+      border: none!important;
+      text-align: right;
+      font-size:18px; 
+      color:rgba(0,0,0,0.85); 
+  }
+  .localConfigService ul li div:focus-within { 
+     border-color: rgba(25, 140, 255, 1); 
+  } 
+  .select_box ul{
+        position: absolute; 
+        top: 46px; 
+        right: 0; 
+        width: 100%; 
+        background: #fff;
+        z-index: 9999;
+        padding: 4px 0;
+        border-top: 1px solid rgba(0,0,0,0.15);
+        box-shadow:0px 2px 8px 0px rgba(0,0,0,0.3);
+        display: none;
+        max-height: 171px; 
+        overflow-y: auto;
+    }
+    .select_box ul li{
+        padding-left: 8px;
+        height: 36px;
+        line-height: 36px;
+        cursor: pointer;
+    }
+    .select_box ul li:hover{
+        background: #198CFF;
+        color:#FFFFFF ;
+    }  
+    .select_cont{
+       color: rgba(0,0,0,0.85);
+    }                           
+    .pwd_show{
+        position: absolute; 
+          font-size: 20px;  
+          color: rgba(0,0,0,0.45);
+          right: 6px;top: 11px; 
+          display: none;
+          cursor: pointer;
+    }
+    .pwd_close{
+        position: absolute;   
+        font-size: 20px;  
+        color: rgba(0,0,0,0.45);
+        right: 6px; 
+        top: 13px;
+        cursor: pointer;
+    }
+  /* 本地配置end */
+  /* 创建账户 */
+    .localConfigService .createAccount, .form_box2 {
+        width: 100%;
+    }
+    .localConfigService .createAccount .inputFirst{
+        width: 100%;
+        display: flex; justify-content: center;
+        margin-bottom:50px;
+    }
+    .localConfigService .createAccount  .divFirst { 
+      width: 470px;
+      margin-right:0px;
+    }
+    .form_box2>li input {
+        width: 337px !important; 
+    } 
+
+  /* 创建账户end */
+     .localConfigService .stepButton{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+     .localConfigService .nextButton{
+      width:320px;
+      height:56px;
+      background:rgba(25,140,255,1);
+      border-radius:29px;
+      font-size:20px;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(255,255,255,1);
+      line-height:28px;
+    }
+     .localConfigService .upButton{
+      width:160px;
+      height:56px;
+      font-size:20px;
+      border-radius:28px;
+      border:1px solid rgba(25,140,255,1);
+      color:rgba(25,140,255,1);
+      background: #fff;
+      margin-right: 40px;
+    }
+    
+/* 步骤条end */
+    .localConfigService .step-line-box  .step-icon {
+        width: 32px;
+        height:32px;
+    } 
+    .localConfigService .step-finish-class .step-line-box .step-icon  {
+      border-radius: 50%;
+      border: 2px solid rgba(25,140,255,1)!important;
+      background: rgba(25,140,255,1); 
+    } 
+    .steps-horizontal  { 
+      flex-basis: 40%!important; 
+      margin-right: 80px;
+    }
+
+    .steps-horizontal .step-line { 
+      top: 15px;
+      width: calc(100% - 155px);
+      left: 137px;
+  
+    } 
+    .localConfigService .step-line-box{      
+      position: relative;
+      width: 100%;
+    } 
+
+     .localConfigService  .step-icon-number{
+      font-size:20px; 
+      font-weight:400; 
+      line-height:27px;
+    }
+     .localConfigService .step-finish-class .step-icon-number{ 
+      color:rgba(255,255,255,1); 
+    } 
+      .localConfigService .step-title{
+        position: absolute;
+        top: 0px;
+        left: 41px; 
+        text-align: left;
+        white-space: inherit;
+        font-size:20px;  
+        line-height:28px;
+        color:rgba(0,0,0,0.45);
+      } 
+    .localConfigService .step-finish-class .step-finish-line-bg{ 
+        background-color: rgba(25, 140, 255, 1)!important;
+    } 
+    .localConfigService .step-finish-class .step-title  {
+      color: rgba(0, 0, 0, 0.85);
+      font-size:20px; 
+      line-height: 28px;
+      font-weight: 600 
+    } 
+/* 步骤条end */
+
+@media (max-height: 850px){   /* //<=850的设备 */ 
+    .loginBox { 
+            min-height: 626px!important; 
+          }
+          .localConfigService .localConfigTitle{ 
+              margin: 45px 0 40px 0!important;
+          }
+          .localConfigService .elSteps{ 
+              margin:0 auto 30px!important;
+          }
+          .form_box1>li { 
+              margin-bottom:28px!important; 
+          }
+          .localConfigService .createAccount .inputFirst {
+              margin-bottom: 50px!important;
+          } 
+    }
+  @media (max-height: 780px){   /* //<=780的设备 */
+      .loginBox { 
+            min-height: 580px!important; 
+      }
+      .localConfigService .localConfigTitle{ 
+          margin: 30px 0 35px 0!important;
+      }
+      .localConfigService .elSteps{ 
+          margin:0 auto 20px!important;
+      }
+      .form_box1>li { 
+          margin-bottom:24px!important; 
+      }
+      .localConfigService .createAccount .inputFirst {
+          margin-bottom: 39px!important;
+      } 
+    }
+  @media (max-height: 668px){   /* //<=668的设备 */
+      .loginBox { 
+            min-height: 520px!important; 
+      }
+      .localConfigService .localConfigTitle{ 
+          margin: 15px 0 25px 0!important;
+      }
+      .localConfigService .elSteps{ 
+          margin:0 auto 15px!important;
+      }
+      .form_box1>li { 
+              margin-bottom:18px!important; 
+      }
+      .localConfigService .createAccount .inputFirst {
+          margin-bottom: 37px!important;
+      } 
+    }
+  @media (max-height: 620px){ /* //<=620的设备  */
+    .loginBox { 
+          margin-left: 160px!important;
+          margin-top: 60px!important; 
+          padding: 24px!important; 
+      }
+  }
+    
+   @media (max-width: 1680px){  
+    .localConfigService .divFirst{ 
+      margin-right:50px!important; 
+    }
+    .localConfigService .divSecond{
+        margin-left: 50px!important;
+    }
+  }
+ @media (max-width: 1440px){  
+    .localConfigService .divFirst{ 
+      margin-right:25px!important; 
+    }
+    .localConfigService .divSecond{
+        margin-left: 25px!important;
+    }
+  }
+  @media (max-width: 1366px){  
+    .localConfigService .divFirst{ 
+      margin-right:20px!important; 
+    }
+    .localConfigService .divSecond{
+        margin-left: 20px!important;
+    }
+  } 

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>本地配置服务</title> 
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+        <link rel="stylesheet" href="css/steps.css">
+        <link rel="stylesheet" href="css/alicdn.css">
+        <link rel="stylesheet" href="css/localConfigService.css">
+
+        <!-- <script src="http://www.fxss5201.cn/project/js/highlight.pack.js"></script> -->
+        <script src="js/steps.js"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/localConfigService.js"></script>
+        <style type="text/css">
+            .arrow{ 
+                display: inline-block;
+                vertical-align: middle;
+                text-align: center;
+                width: 20px;
+                height: 20px;
+                background-image: url("./image/arrow.png");
+                background-position: 0px 0px;
+                background-size: 20px;
+                background-repeat: no-repeat; 
+                transform: rotate(90deg)
+            }
+		</style>
+	</head>
+
+	<body>
+            <!-- 本地配置服务-->
+        <div class="localConfigService"> 
+            <div class="loginBox">
+                <p class="localConfigTitle"  >本地配置服务</p>
+                <div id="steps1"  class="elSteps"></div>
+                <div class="elSteps" >
+                    <el-steps :active="active"  finish-status="success" style="position:relative;" >
+                        <el-step title="本地配置"></el-step>
+                        <el-step title="创建账户"></el-step>
+                        <el-step title="创建园区"></el-step>
+                    </el-steps>
+                </div> 
+                
+                <form :model="setContactForm"   ref="setContactForm"  >
+                    <!-- 本地配置 -->
+                    <div class="localConfig">
+                        <ul   class="form_box1  clear ">
+                            <li class="inputFirst" > 
+                                <div class="divFirst " >
+                                    <span style="color: #F52230;">* </span> <span class="title">服务器地址 </span> 
+                                    <input class="serverAddress" type="text" maxlength="13" name=""  placeholder="请输入 " oninput="javascript:value=this.value.replace(/[^\0-9\.]/g,'');if(this.value.length>13) this.value=this.value.substring(0,13);"  >
+                                    <p class="errorInfo serverAddressP" style="color:red"></p>
+                                </div>
+                            </li>
+                            <li >
+                                <div class="divSecond">
+                                    <span style="color: #F52230;">* </span><span class="title">数据库地址</span>
+                                    <input class="databaseAddress" type="text"    placeholder="请输入 ">
+                                    <p class="errorInfo databaseAddressP" style="color:red;"></p>
+                                </div> 
+                            </li>
+                        </ul>
+                        <ul   class="form_box1  clear ">
+                            <li class="inputFirst" > 
+                                <div class="divFirst " >
+                                    <span style="color: #F52230;">* </span> <span class="title">数据库端口 </span> 
+                                        <input class="databasePort" type="text" maxlength="30" name=""  placeholder="请输入 ">
+                                        <p class="errorInfo databasePortP" style="color:red"></p>
+                                </div>
+                            </li>
+                            <li >
+                                <div class="divSecond">
+                                    <span style="color: #F52230;">* </span><span class="title">数据库用户名</span>
+                                    <input class="databaseName" type="text"    placeholder="请输入 ">
+                                    <p class="errorInfo databaseNameP" style="color:red;"></p>
+                                </div> 
+                            </li>
+                        </ul>
+                        <ul   class="form_box1  clear ">
+                            <li class="inputFirst" > 
+                                    <div class="divFirst " >
+                                        <span style="color: #F52230;">* </span> <span class="title">数据库密码 </span> 
+                                            <input class="databaseNamePwd pwd" type="password" maxlength="30" name="" style="width:210px!important;" placeholder="请输入 ">
+                                            <i class="iconfont icon-xiaoyanjing pwd_show" style="position: absolute;   font-size: 20px;  color: rgba(0,0,0,0.45);right: 6px;top: 11px; display: none;cursor: pointer;"></i>
+                                            <i class="iconfont icon-mimayanjingguanbi pwd_close" style="position: absolute;   font-size: 20px;  color: rgba(0,0,0,0.45);right: 6px; top: 13px;cursor: pointer;"></i>
+                                            <p class="errorInfo databaseNamePwdP" style="color:red"></p>
+                                    </div>
+                            </li>
+                            <li >
+                                <div class="select_box"> 
+                                    <div class="divSecond select_bt" style="position:relative">
+                                        <span style="color: #F52230;">*  </span><span  class="title">购买期限</span> 
+                                        <div style="float: right; font-size: 18px;line-height: 40px;">
+                                            <span class="select_cont " >终身免费</span>
+                                                <i class="iconfont icon-down"></i>  
+                                        </div> 
+                                        <ul class="select_info">
+                                            <li  value="1">终身免费</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="form_box1 clear ">
+                            <li class="inputFirst">
+                                <div class="divFirst " style="position:relative"> 
+                                    <span style="color: #F52230;">* </span><span class="title">项目保存至</span>
+                                    <div style="float: right; font-size: 18px;line-height: 40px;">
+                                        <input type="tel" class="projectPreserve" style="width: 210px !important;"    placeholder="请输入 "/>
+                                        <!-- <i class="arrow"></i>     -->
+                                        <i class="iconfont icon-down"></i>  
+                                    </div>
+                                    <p class="errorInfo projectPreserveP" style="color:red" ></p>
+                                </div>
+                            </li> 
+                        </ul> 
+                    </div>  
+                    
+                <!-- 创建账户 -->
+                    <div class="createAccount" style="display:none">  
+                        <ul   class="form_box1 form_box2 clear ">
+                            <li class="inputFirst">
+                                <div  class="divFirst ">
+                                    <span style="color: #F52230;">* </span><span class="title">登录手机号</span>
+                                    <input type="tel" class="loginPhone" oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);" placeholder="请输入 "/>
+                                    <p class="errorInfo loginPhoneP" style="color:red"></p>
+                                </div>
+                            </li>  
+                            <li  class="inputFirst">
+                                <div class="divFirst " >
+                                    <span style="color: #F52230;">* </span><span class="title">登录密码</span>
+                                    <input class="loginPwd " type="password" name=""  maxlength="12" style="width: 310px!important;" placeholder="请输入 " oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>16) this.value=this.value.substring(0,16);"   />
+                                    <i class="iconfont icon-xiaoyanjing loginPwd_show" style="position: absolute;   font-size: 20px;  color: rgba(0,0,0,0.45);right: 6px;top: 11px; display: none;cursor: pointer;"></i>
+                                    <i class="iconfont icon-mimayanjingguanbi loginPwd_close" style="position: absolute;   font-size: 20px;  color: rgba(0,0,0,0.45);right: 6px; top: 13px;cursor: pointer;"></i>
+                                    <p class="errorInfo loginPwdP" style="color:red;"></p>
+                                </div>
+                            </li> 
+                            <li class="inputFirst">
+                                <div class="divFirst ">
+                                    <span style="color: #F52230;">* </span><span class="title">再次输入密码</span>
+                                    <input type="password" class="loginPwd2" style="width: 310px!important;" oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>16) this.value=this.value.substring(0,16);"  placeholder="请输入 "/>
+                                        <i class="iconfont icon-xiaoyanjing loginPwd2_show" style="position: absolute;   font-size: 20px;  color: rgba(0,0,0,0.45);right: 6px;top: 11px; display: none;cursor: pointer;"></i>
+                                        <i class="iconfont icon-mimayanjingguanbi loginPwd2_close" style="position: absolute;   font-size: 20px;  color: rgba(0,0,0,0.45);right: 6px; top: 13px;cursor: pointer;"></i>
+                                    <p class="errorInfo loginPwd2P" style="color:red"></p>
+                                </div>
+                            </li> 
+                        </ul> 
+                    </div>  
+
+                <!-- 创建园区 -->
+                    <div class="createPark" style="display:none">
+                        <ul   class="form_box1  clear ">
+                            <li class="inputFirst" > 
+                                <div class="divFirst " >
+                                    <span style="color: #F52230;">* </span> <span class="title">园区名称 </span> 
+                                    <input id="park_name" type="text" maxlength="30" name=""  placeholder="请输入 ">
+                                    <p class="errorInfo park_nameP" style="color:red"></p>
+                                </div>
+                            </li>
+                            <li >
+                                <div class="divSecond">
+                                    <span style="color: #F52230;">* </span><span class="title"> 园区联系人</span> 
+                                    <input id='park_contacts' type="text" name="park_contacts" style="width: calc(100% - 60px);"
+                                        placeholder="请输入" maxlength="15" onkeyup="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')">
+                                    <p class="errorInfo park_contactsP" style="color:red;"></p> 
+                                </div> 
+                            </li>
+                        </ul>
+                        <ul   class="form_box1  clear ">
+                            <li class="inputFirst" > 
+                                <div class="divFirst" >
+                                    <span style="color: #F52230;">* </span> <span class="title">联系电话</span>  
+                                    <input id='phone_num' type="text"   placeholder="请输入 "  oninput="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this);if(this.value.length>12) this.value=this.value.substring(0,12);"   autocomplete="off" >
+                                        <p class="errorInfo phone_numP" style="color:red"></p>
+                                </div>
+                            </li> 
+                            <li >  
+                                <div class="select_box">
+                                    <div class="divSecond select_bt" style="position:relative">
+                                        <span style="color: #F52230;">*  </span><span  class="title">交租期</span> 
+                                        <div style="float: right; font-size: 18px;line-height: 40px;">
+                                            <span class="select_cont " > <span style=" color: rgba(0,0,0,0.45); ">请选择</span>  </span>
+                                                <!-- <i class="arrow"></i>  -->
+                                                <i class="iconfont icon-down"></i>  
+
+                                            <p class="errorInfo pay_timeP" style="color:red"></p>
+                                        </div> 
+                                        <ul class="select_info"> </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul   class="form_box1  clear ">
+                            <li class="inputFirst" > 
+                                <div class="divFirst " >
+                                    <span style="color: #F52230;">* </span> <span class="title" style="width: 130px;">水费单价(元/吨)</span>
+                                    <input id='or_waterRent'  type="text"   placeholder="请输入" style="width:213px !important" oninput="javascript:value=this.value.replace(/[^\0-9\.]/g,'');if(this.value.length>5) this.value=this.value.substring(0,5);"    >
+                                    <p class="errorInfo or_waterRentP" style="color:red"></p>
+                                </div>
+                            </li>
+                                <li >
+                                <div class="divSecond">
+                                    <span style="color: #F52230;">* </span><span class="title"  style="width: 130px;"> 电费单价(元/度)</span>
+                                    <input id='or_electricity'  type="text"   placeholder="请输入"  style="width:213px !important" oninput="javascript:value=this.value.replace(/[^\0-9\.]/g,'');if(this.value.length>5) this.value=this.value.substring(0,5);"  >
+                                    <p class="errorInfo or_electricityP" style="color:red;"></p> 
+                                </div> 
+                            </li>
+                        </ul>
+                        <ul class="form_box1 clear ">
+                            <li class="inputFirst">
+                                <div class="divFirst ">
+                                    <span style="color: #F52230;">* </span><span class="title"> 电损耗(%)</span>
+                                    <input style=" width:233px !important;" id='or_lossRate' type="text"   placeholder="请输入"   min="0"    oninput="javascript:value=this.value.replace(/[^\0-9\.]/g,'');if(this.value.length>5) this.value=this.value.substring(0,5);" > 
+                                    <p class="errorInfo or_lossRateP" style="color:red"></p>
+                                </div>
+                            </li> 
+                        </ul> 
+                    </div>  
+                </form>
+                
+
+            <!-- html代码： -->
+    <!-- // 1. -->
+
+    <input type="file"  name="uploadfile" onfocus="showRealPath(value);"> 
+            <input type="hidden" name="uploadfileRealPath">
+
+
+    <!-- // 2. -->
+    <input id="b" type="file" webkitdirectory>22222 
+     
+    
+                <div class="stepButton">
+                    <button id="next0" class="active0 nextButton">下一步</button> 
+                    <button style="display:none" class="active1 upButton" onclick="upper(1)">上一步</button> 
+                    <button id="next1" style=" width:160px;display:none" class="active1 nextButton">下一步</button>  
+                    <button style="display:none" class="active2 upButton" onclick="upper(2)">上一步</button> 
+                    <button id="complete" style=" width:160px;display:none" class="active2 nextButton">完成</button> 
+                </div> 
+            </div>
+        </div>
+	<script>
+            steps1(0)
+         next(1)
+            function steps1(active){
+                    steps({
+                            el: "#steps1",
+                            data: [
+                                { title: "本地配置", description: " " },
+                                { title: "创建账户", description: " " },
+                                { title: "创建园区", description: " " }
+                            ],
+                            active:active,
+                            dataOrder: [ "line","title", "description"]
+                    });
+            }
+
+//          var inputObj=document.createElement('input')
+//          inputObj.setAttribute('id','_ef');
+//          inputObj.setAttribute('type','file');
+//          inputObj.setAttribute("style",'visibility:hidden');
+//          document.body.appendChild(inputObj);
+//          inputObj.click();
+//          inputObj.value ;
+
+    // 1.
+//     function showRealPath(filePath){
+//         console.log(filePath)
+//         // document.getElementsByName("textfield")[0].value = filePath;
+//     }
+
+//     // 2.
+//   document.querySelector('#b').addEventListener('change', e => {
+//       for (let entry of e.target.files)
+//         console.log(entry.name, entry.webkitRelativePath);
+//     console.log(e)
+//     });   
+    
+        
+    </script>
+	</body>
+  
+                      
+</html>

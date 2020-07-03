@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>判断鼠标移入位置</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    
+        <style>
+            body {
+                padding: 20em;
+                text-align: center;
+            }
+            .block {
+                position: relative;
+                display: inline-block;
+                width: 10em;
+                height: 10em;
+                vertical-align: middle;
+            }
+
+            .block_content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                line-height: 10em;
+                background: #333;
+                color: #FFF;
+            }
+            
+                /* 2. */
+            .block_hoverer {
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+
+                transition: all 0.3s ease;
+            }
+            .block_hoverer:nth-child(1) {
+                background: red;
+                top: -90%;
+            }
+
+            .block_hoverer:nth-child(2) {
+            background: lime;
+            top: 90%;
+            }
+
+            .block_hoverer:nth-child(3) {
+            background: orange;
+            left: -90%;
+            }
+
+            .block_hoverer:nth-child(4) {
+            background: blue;
+            left: 90%;
+            }
+            .block_hoverer {
+                transition: all 0.3s ease;
+            }
+            .block_hoverer:hover { /*移中间*/
+                opacity: 1;
+                top: 0;
+                left: 0;
+            }
+
+
+            /* 3. */
+            .block {
+                position: relative;
+                display: inline-block;
+                overflow: hidden;
+                width: 10em;
+                height: 10em;
+                vertical-align: middle;
+            }
+            .block_hoverer {
+                opacity: 0;
+            }
+            .block_hoverer:hover {
+                opacity: 1;
+            }
+            </style>
+        <body>
+                <p class="text">从不同方向使鼠标指针移过下面的内容</p>
+                <p>↓</p>
+                <span>→ </span>
+                <div class="block">
+                    <div class="block_hoverer">上</div>
+                    <div class="block_hoverer">下</div>
+                    <div class="block_hoverer">左</div>
+                    <div class="block_hoverer">右</div>
+                    <div class="block_content">
+                        Hover me!
+                    </div>
+                </div>
+                <span> ←</span>
+                <p>↑</p>
+        
+        <script  >
+                var arry=[ {name: "A区", upper_id: 0, id: 598, area: 0, agreement_id: 0,},
+                 {name: "B区", upper_id: 0, id: 599, area: 0, agreement_id: 0,},
+                 {name: "C区", upper_id: 0, id: 600, area: 0, agreement_id: 0,},
+                  {name: "121", upper_id: 0, id: 1435, area: 0, agreement_id: 0,}]
+                  var optionsTung =[] ;//栋数组
+                  for(const {name} of arry){
+                    optionsTung.push({name:name})
+                  }
+                  console.log(optionsTung)
+
+   function returnWeekday(){
+    
+    let string ="今天是星期";
+        
+    let date =new Date().getDay();
+        
+    // 使用对象
+    dateObj ={
+        0:['天','休'],
+        1:["一",'工'], 
+        2:["二",'工'],
+        3:["三",'工'],
+ 
+        4:["四",'工'],
+ 
+        5: ["五",'工'],
+ 
+        6:["六",'休'],
+ 
+    }
+    
+   // 类型，这里也可以对应相关方法
+    dayType ={
+        
+        '休':function(){
+                    
+        // some code
+                    console.log('为休息日')
+        },
+        '工':function(){
+                    
+        // some code
+            console.log('为工作日')
+            }
+    
+        }
+    
+        let returnData ={       
+            string :string+ dateObj[date][0],
+            method :dayType[dateObj[date][1]],
+                    
+            
+        }
+    
+         return returnData
+ };
+    // console.log(returnWeekday().method.call(this) )
+    returnWeekday()
+        </script>
+        <style>
+                .wrap {
+                    position: relative;
+                    width: 200px;
+                    height: 600px;
+                    background-color: aqua;
+                }
+                .content {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 200px;
+                    height: 200px;
+                    background-color: blueviolet;
+                }
+            </style>
+            <body>
+                <div class="wrap">
+                    <div class="content"></div>
+                </div>
+            </body>
+    </body>
+</html>

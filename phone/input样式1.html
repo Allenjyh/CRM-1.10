@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>input</title>
+        <meta name="description" content="">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><!-- 手机端 -->
+
+        <link rel="stylesheet" href="">
+        <style>
+         input{
+            margin-top: 5px!important;
+            width: 200px;
+            /* outline: none; */
+            border: 1px solid black;
+            
+            /* width: 120px; */
+            height: 19px;
+            font-size: 12px;
+            font-weight: 400;
+            color: rgba(0,0,0,0.45);
+            line-height: 19px;
+            background-color: transparent;
+        }
+        p{
+            font-size: 12px;
+        }
+        </style>
+    </head>
+    
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div style="font-size:12px;">
+
+            <div >
+                autocomplete 属性 on----默认，启动自动完成自动完成允许浏览器对字段的输入，是基于之前输入过的值。
+                                  off-----禁用自动完成
+                                  
+                                  
+            </div>
+            <p>1.手机端默认在数字界面，但可以输入其他符号所以加oninput限制</p>
+            <div class="Input"> <input type="number" id="search" oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);"  placeholder="手机号" >
+            </div>
+            <p>2.手机端默认在数字界面，但手机键盘没有搜索按钮</p>
+            <div class="Input"> <input type="tel" id="search"   placeholder="搜索数字" >
+            </div>
+            
+            <p>1.联系电话 手机固话</p>
+            <input id="phone_num" type="text" v-model="numberValidateForm.phone_num" oninput="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this);if(this.value.length>12) this.value=this.value.substring(0,12);"
+                        autocomplete="off" placeholder="请输入联系电话"></input>
+
+            <p>2.联系人姓名  15位中引文</p>
+            <input id="park_contacts" type="text" v-model="numberValidateForm.contacts" autocomplete="off" maxlength="15" placeholder="请输入联系人姓名"
+            onkeyup="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')">
+
+            <p>3.水费单价</p>
+            <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                <span><i style="color: #F52230;">* </i>水费单价</span>
+                <input id='or-waterRent' type="number" class=" repairs_address phone-tel" placeholder="请输入" maxlength="13"
+                        style="padding-right: 40px;"
+                        value="{{ isset($park_info->field_json->water_ton) ? money_repair_zero($park_info->field_json->water_ton):'' }}"
+                        oninput="value=value.replace(/[^\0-9\.]/g,'');if(this.value.length>5) this.value=this.value.substring(0,5);"  oncontextmenu = "value=value.replace(/[^\0-9\.]/g,'')">
+                <span style="float: right;text-align: right;right:0!important;left: auto;width:40px">元/吨</span>
+            </div>
+            </div>
+           <p>4.验证码</p>
+            <input class="register_input9" autocomplete="off"
+            oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>6) this.value=this.value.substring(0,6);"
+            type="number" name="" placeholder="6位验证码" style="color: rgba(0,0,0,0.45);padding-right: 100px;">
+        
+            <!-- 更换银行卡号 -->
+            <div class="change_contacts" style="padding: 0 15px;">
+                <div class="addParkName-box" style="margin-top:0px;margin-bottom:0px;">
+                    <div class="search addParkName-bar">
+                        <span>开户行</span>
+                        <input class="or-input or-bank" type="text" placeholder="输入如（广州农村商业银行，白云支行）" style="width: 92%;"  maxlength="24"
+                            onchange="this.value=this.value.replace(/[^\w\u4E00-\u9FA5]/g, '')">
+                    </div>
+                </div>
+                <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+                    <div class=" addParkName-bar">
+                        <span>户名</span>
+                        <input class="or-input or-bankName" type="text" placeholder="请输入用户名"  maxlength="4"
+                           >
+                    </div>
+                </div>
+                <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+                    <div class="addParkName-bar">
+                        <span>账号</span>
+                        <input class="or-input or-bankAccount" type="text" placeholder="请输入银行账号" style="width: 92%;"
+                            maxlength="23">
+                    </div>
+                </div>
+                <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+                    <div class=" addParkName-bar clear">
+                        <span>电损耗</span>
+                        <input style="padding-right: 13px;" id='or_lossRate' type="number" class=" repairs_address phone-tel"  placeholder="请输入"   min="0" value="{{ $res_info['loss_fee'] }}"
+                                oninput="javascript:value=this.value.replace(/[^\0-9\.]/g,'');if(this.value.length>5) this.value=this.value.substring(0,5);">
+                        <span style="float: right;text-align: right;right:0!important;left: auto;width:10px">%</span>
+                    </div>
+                </div>
+                    <div id="bank_submit" class="display_btn bank_submit">保存</div>
+            </div>
+
+
+
+            <div style="margin-top:200px">
+                                    
+                2.HTML5调用手机的Datepicker(日期选择器)
+               <p> HTML5 拥有多个新的表单输入类型。这些新特性提供了更好的输入控制和验证，包含了如下新的输入类型：</p>
+                
+               <p>email</p>
+               <p>url</p>
+               <p> number</p>
+               <p> range</p>
+               <p> Date pickers (date, month, week, time, datetime, datetime-local)</p>
+              
+               <p>search手机端时间选择年月日</p>
+                <div class="Input"> <input type="date" id="search"   placeholder="搜索数字" >
+                </div>
+               <p>  color</p>
+               <p>  HTML5 拥有多个可供选取日期和时间的新输入类型：</p>
+                
+               <p> date – 选取日、月、年</p>
+               <div class="Input"> <input type="date" id="search"   placeholder="搜索数字" >
+               </div>
+               <p> month – 选取月、年</p>
+               <p> week – 选取周和年</p>
+               <div class="Input"> <input type="week" id="search"   placeholder="搜索数字" >
+               </div>
+               <p>  time – 选取时间（小时和分钟）</p>
+                <div class="Input"> <input type="time" id="search"   placeholder="搜索数字" >
+                </div>
+               <p>  datetime – 选取时间、日、月、年（UTC 时间）</p>
+               <p>  datetime-local – 选取时间、日、月、年（本地时间）</p>
+               <div class="Input"> <input type="datetime-local" id="search"   placeholder="搜索数字" >
+               </div>
+            </div>
+        </div>
+        
+       
+        
+      
+      
+      
+
+        
+        <script >   
+             $(".phone_num").blur(function(e){
+                var Uphone1 = $(".phone_num").val();
+                var Tphone1 = /^(0|86|17951)?(1[3-9])[0-9]{9}$/;
+                if( Uphone1 == '' || Tphone1.test(Uphone1) == false){
+                    return false;
+                }else if(Tphone1.test(Uphone1)==true){
+                    return true;
+                }
+            });
+            $('.dataform1').blur(function(){
+                if($('.dataform1').val().length == 0){
+                    $('.datap1').show();
+                    $('.datap1').text('联系人不能为空');
+                    layer.msg('请填写联系人姓名！', {icon: 6});
+                    
+                }else if(textchines('.dataform1') == true){
+                    $('.dataform1').css({'border': '1px solid #5FCC29'});
+                    $('.datap1').hide();
+                }
+            })
+
+    // 提交框填完变蓝色
+    var submitArry = [".or-bank",".or-bankName",".or-bankAccount"];
+    submitArrySet();
+    submitArry.forEach(function(index){
+        $(index).on("input",function(){
+            submitArrySet()
+        })
+    })
+    function submitArrySet(){
+        var _status = true;
+        submitArry.forEach(function(ele){
+            if($(ele).val() == ""){
+                _status = false;
+            }
+        })
+     
+            if(_status){
+                document.querySelector('.bank_submit').style.background ='linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%)';
+            } else {
+                document.querySelector('.bank_submit').style.background = 'rgba(0,0,0,0.25)';
+            }
+     
+    }
+        </script>
+        <style>
+             * {
+	box-sizing: border-box;
+}
+
+form { 
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+}
+
+input,
+span {
+	border: none;
+	outline: none;
+}
+
+input {
+	width: 100%;
+	height: 42px;
+	padding-left: 13px;
+}
+
+input::-ms-input-placeholder {
+	text-align: right;
+}
+
+input::-webkit-input-placeholder {
+	text-align: right;
+}
+
+.addParkName-bar span {
+	height: 42px;
+	width: 42px;
+	cursor: pointer;
+	position: absolute;
+	line-height: 42px;
+}
+
+.addParkName-box {
+	border-bottom: 1px solid #ddd;
+	position: relative;
+	width: calc(100vw - 60px);
+	height: 46px;
+	background: rgba(255, 255, 255, 1);
+	margin: 40px auto;
+}
+
+.addParkName-bar input {
+	display: inline-block;
+	width: calc(100% - 96px);
+	background: transparent;
+	top: 0;
+	right: 0;
+	float: right;
+	text-align: right;
+}
+
+.addParkName-bar span {
+	display: inline-block;
+	background: transparent;
+	font-size: 13px;
+	width: 96px;
+	top: 0;
+	left: 0;
+	text-align: left;
+}
+
+.set_addParkName-btn {
+	width: calc(100vw * 0.81)!important;
+	position: absolute;
+	background: rgba(0, 0, 0, 0.25);
+	color: #FFFFFF;
+	height: calc(100vw * 0.146);
+	text-align: center;
+	margin: 20px auto 31px auto;
+	line-height: calc(100vw * 0.146);
+	font-size: calc(100vw * 0.053);
+	bottom: calc(100vh * 0.008);
+	left: calc(100vw * 0.19 / 2);
+	z-index: -1;
+	
+}
+.addParkName-btn {
+	width: calc(100vw * 0.81)!important;
+    height: 55px;
+    /* position: absolute; */
+    display: block;
+	/* bottom: none; */
+	/* bottom: calc(100vh * 0.05); */
+	margin: calc(100vh - 500px) auto 30px   auto!important;
+	left: calc(100vw * 0.19 / 2);
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+    text-align: center;
+	line-height: 55px;
+	z-index: -1;
+}
+.or-arrow {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/arrow.png);
+    background-position: 0px -3px;
+    background-size: 20px;
+    background-repeat: no-repeat;
+}
+        </style>
+    </body>
+
+
+</html>

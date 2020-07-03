@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no,width=device-width, minimal-ui">
+    <title>html2canvas demo</title>
+    <script src="js/flexible.js"></script>
+    <script src="js/html2canvas.js"></script>
+    <script src="js/vue-2.4.2.min.js"></script>
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            overflow: hidden;
+            position: relative;
+            background-color: #f48a77;
+        }
+
+        .container {
+            width: 9.333333rem;
+            height: 5.5rem;
+            margin: 0.4rem auto 0 auto;
+            background-color: white;
+            border-radius: 0.4rem;
+        }
+
+        .avatar {
+            text-align: center;
+        }
+
+        .avatar img {
+            margin-top: 0.466666rem;
+            width: 2.666666rem;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .container .nickname {
+            margin-top: 0.2rem;
+            font-size: 0.48rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .container .wisdom {
+            font-size: 0.4rem;
+            line-height: 0.7rem;
+            text-align: center;
+            margin: 0.366666rem;
+        }
+
+        .toastTip {
+            position: fixed;
+            bottom: 0;
+            background-color: #ffffff;
+            width: 100%;
+            height: 1rem;
+            line-height: 1rem;
+            text-align: center;
+            font-size: 0.42rem;
+        }
+
+        .generatePicture {
+            z-index: 999;
+            width: 2rem;
+            height: 2rem;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background: #FFFDEF;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .generatePicture img {
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            width: 100%;
+        }
+
+        .generatePicture .optText {
+            text-align: center;
+            line-height: 2rem;
+            font-size: 0.4rem;
+        }
+
+        .qrcodeBox {
+            text-align: center;
+        }
+
+        .qrcodeBox .qrcode {
+            width: 3.2rem;
+            height: 3.2rem;
+            margin: 0.2rem;
+        }
+
+        .qrcodeBox .tip {
+            font-size: 0.4rem;
+            line-height: 1rem;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 0.45rem;
+            text-align: center;
+            margin-top: 0.2rem;
+        }
+
+        .text {
+            font-size: 0.4rem;
+            line-height: 0.7rem;
+            text-align: center;
+            margin: 0.366666rem;
+        }
+
+        .shareImg {
+            z-index: 6;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shareImg img {
+            width: 100%;
+            /*pointer-events: none;*/
+        }
+
+        * {
+                box-sizing: border-box;
+                font-size: 16px;
+                margin: 0;
+                padding: 0;
+                color: rgba(0,0,0,0.85);
+                font-family:PingFang-SC-Bold,PingFang-SC;
+            }
+            .box{
+                width:89.33%;
+                margin: 20px 5.333% 0;
+                height:450px;
+                background:#fff;
+                border-radius:4px;
+                box-shadow:0px 0px 16px 0px rgba(153,153,153,1);
+            }   
+            .top_box{
+                height:87px;
+                background:rgba(25,140,255,1);
+                text-align: center;
+                border-radius:4px;
+            }   
+            .top_box img{
+                width:144px;
+                padding-right: 10px;
+                /* height:73px; */
+                margin-top:30px ;
+            } 
+            .mid_box{
+                text-align: center;
+            }  
+            .mid_box p{
+                font-weight:bold;
+                line-height:53px;
+            }  
+            .mid_box img{
+                width:240px;
+            } 
+            .mid_box p:last-of-type{
+                font-size: 13px;
+                line-height:18px;
+                margin-top: 30px
+            }
+            .bottom_box {
+                position: fixed;
+                bottom: 25px;
+                width:89.33%;
+                margin: 0 5.333%;
+                display: flex;
+                justify-content: space-between;
+            }
+            .bottom_box .diveach{
+                width: calc((100vw - 14.666%)/2);
+                height:55px;
+                background:rgba(255,255,255,1);
+                box-shadow:0px 0px 16px 0px rgba(183,183,183,1);
+                border: none;
+                border-radius:4px;
+                display: flex;
+                /* text-align: center; */
+                justify-content: center;
+            }  
+            .bottom_box .diveach:first-of-type{
+                margin-right: 4%;
+            }  
+            .bottom_box .diveach img{
+                width: 25px;
+                height: 25px;
+            }
+            .bottom_box .diveach ._img{
+                line-height:65px;
+                padding-right: 5px; 
+            }
+            .bottom_box .diveach p{
+                font-family:PingFang-SC-Medium,PingFang-SC;
+                line-height:55px;
+            }
+    </style>
+</head>
+
+<body style="background:#F5F5F5;">
+    <div class="wrap-con1" >
+    <div class="box">
+        <div class="top_box">
+          <img src="wechat/images/punch_card/hlogo.png" >
+        </div>
+        <div class="mid_box">
+            <p>广州乙租信息科技有限公司</p>
+            <img src="wechat/images/punch_card/qr_code.jpg" >
+            <p >分享二维码给保安人员，可快速录入保安信息</p>
+        </div>
+        <div class="qrcodeBox">
+            <img class="qrcode" src="assets/jianshu_home.png">
+            <img class="qrcode" src="assets/myWxQrcode.jpg">
+            <p class="tip" data-html2canvas-ignore v-show="!afterCanvasImageHide">长按保存图片</p>
+            <p class="tip" style="opacity: 0;" id="scanText">如果你喜欢，扫码关注我哦</p>
+        </div>
+    </div>
+    <div class="bottom_box">
+        <div class="diveach">
+            <div class="_img">
+                <img src="wechat/images/punch_card/download.png" >
+            </div>
+            <p >长按图片保存</p>
+        </div>
+        <div class="diveach">
+            <div class="_img">
+                <img src="wechat/images/punch_card/share.png" >
+            </div>
+            <p>微信分享</p>
+        </div>
+    </div>
+    </div>
+
+
+    
+<!-- <div class="container" id="shareImg" style="width:100%;"></div> -->
+
+<div id="app" class="wrap-con2">
+    <div class="container">
+        <div class="avatar">
+            <!-- 本地的图片是可以绘画到canvas上的，且可以使用canvas.toDataURL API，但是其他服务器上的图片不行-->
+            <!--<img id="avatar" src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKVkoe7Viae4lreoZBybEywysxHlnlqplGTbaJLQI7pV8W5KMFK1DqBrNntO5O9wT0YYP9cgP6m4dA/132">-->
+            <img :src="avatar" alt="">
+        </div>
+        <h3 class="nickname">小丁猫</h3>
+        <p class="wisdom">奇迹是努力的另一个名字</p>
+    </div>
+
+    <h4 class="title">2019年的一些建议</h4>
+
+    <p class="text">$1. 关心自己的身体健康，没有什么比身体健康更重要的了，除了生死都是小事。</p>
+    <p class="text">$2. 养成早睡早起的好习惯，会受益终身。</p>
+    <p class="text">$3. 利用自己的业余时间，读一些书，学习一些技能，给自己充电，提高自己。</p>
+    <p class="text">$4. 把时间花在重要的人和事上面，不要去浪费精力在没必要的人与事上面。</p>
+    <p class="text">$5. 每周花点时间去跑步吧，这是投资最少，收益很多的事情。</p>
+    <p class="text">$6. 去交一些益友，和积极努力的人在一起，你会受到他们很多正能量的感染。</p>
+
+    <div class="qrcodeBox">
+        <!-- <img class="qrcode"  src="assets/jianshu_home.png">
+        <img class="qrcode" src="assets/myWxQrcode.jpg"> -->
+        <p class="tip" data-html2canvas-ignore v-show="!afterCanvasImageHide">长按保存图片</p>
+        <p class="tip" style="opacity: 0;" id="scanText">如果你喜欢，扫码关注我哦</p>
+    </div>
+
+    <div class="toastTip" data-html2canvas-ignore v-show="showToast">长按保存图片</div>
+
+    <!--生成图片按钮-->
+    <div class="generatePicture" data-html2canvas-ignore @click="generateImage" v-show="afterCanvasImageHide">
+        <p class="optText">生成图片</p>
+    </div>
+
+    <!--生成的图片的存放容器-->
+    <div class="shareImg" id="shareImg"   ></div>
+</div>
+
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: function() {
+      return {
+        afterCanvasImageHide: true,
+        showToast: false,
+        avatar: ''
+      };
+    },
+    mounted: function() {
+      // this.data1(),
+      this.$nextTick(function() {
+        var _this = this;
+
+        // 用base64展示html中要显示的图片（如果这个图片地址是服务端链接，图片链接需要服务端允许跨域，本地图片可以不用转base64）
+        // 因为直接使用服务端地址链接，canvas.toDataUrl API抛出异常：
+        // Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported. ==> 受污染的画布不能导出
+        // var imgUrl1 ="assets/jianshu_home.png"
+         var imgUrl1 = 'http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKVkoe7Viae4lreoZBybEywysxHlnlqplGTbaJLQI7pV8W5KMFK1DqBrNntO5O9wT0YYP9cgP6m4dA/132';
+        _this.img2base64(imgUrl1, 'Anonymous').then(function(res) {
+          _this.avatar = res;
+        });
+      });
+    },
+    methods: {
+      /**
+       * 根据 window.devicePixelRatio 获取像素比
+       * @returns {number}
+       * @constructor
+       */
+      getDpr: function() {
+
+        if (window.devicePixelRatio && window.devicePixelRatio > 1) {
+          return window.devicePixelRatio;
+        }
+        return 1;
+      },
+
+      /**
+       * 将传入值转为整数
+       * @param value
+       * @returns {number}
+       */
+      parseValue: function(value) {
+
+        return parseInt(value, 10);
+      },
+
+      // 将图片转为base64格式
+      img2base64: function(url, crossOrigin) {
+
+        return new Promise(resolve => {
+          const img = new Image();
+          img.onload = () => {
+            const c = document.createElement('canvas');
+
+            c.width = img.naturalWidth;
+            c.height = img.naturalHeight;
+
+            const cxt = c.getContext('2d');
+
+            cxt.drawImage(img, 0, 0);
+
+            // 得到图片的base64编码数据
+            resolve(c.toDataURL('image/png'));
+          };
+
+          // 结合合适的CORS响应头，实现在画布中使用跨域<img>元素的图像
+          crossOrigin && img.setAttribute('crossOrigin', crossOrigin);
+          img.src = url;
+          console.log(img.src )
+        });
+      },
+
+      /**
+       * 生成图片
+       */
+      generateImage: function() {
+          
+        var _this = this;
+ 
+        var scanTextElem = document.getElementById('scanText');
+        scanTextElem.style.opacity = '1';
+
+        // // 获取想要转换的dom节点
+        // var dom = document.querySelector('body');
+        var dom = document.getElementById('app');
+        var box = window.getComputedStyle(dom);
+
+        // dom节点计算后宽高
+        var width = _this.parseValue(box.width);
+        var height = _this.parseValue(box.height);
+
+      
+
+        // 获取像素比
+        var scaleBy = _this.getDpr();
+
+        // 创建自定义的canvas元素
+        var canvas = document.createElement('canvas');
+
+        // 设置canvas元素属性宽高为 DOM 节点宽高 * 像素比
+        canvas.width = width * scaleBy;
+        canvas.height = height * scaleBy;
+
+        // 设置canvas css 宽高为DOM节点宽高
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+
+        // 获取画笔
+        var context = canvas.getContext('2d');
+
+        // 将所有绘制内容放大像素比倍
+        // context.scale(scaleBy, scaleBy);
+
+        // 设置需要生成的图片的大小，不限于可视区域（即可保存长图）
+        var w = document.getElementById('app').style.width;
+        var h = document.getElementById('app').style.height;
+
+        html2canvas(document.querySelector('#app'), {
+          useCORS: true,//图片跨域
+          // allowTaint: true,
+          width: w,
+          height: h
+        }).then(function(canvas) {
+          // 将canvas转换成图片渲染到页面上
+        
+
+          var image = new Image();
+          image.crossOrigin='Anonymous';//需要放在图片赋值前，否则部分浏览器会报错
+          image.setAttribute("crossOrigin",'anonymous')
+          var url = canvas.toDataURL('image/png');// base64数据
+          
+          // console.log(url)
+          image.src = url;
+          document.getElementById('shareImg').appendChild(image);
+
+        //   var image = new Image();
+        //   // image.setAttribute("crossOrigin",'anonymous');//需要放在图片赋值前，否则部分浏览器会报错
+          
+        //   var url = canvas.toDataURL('image/png');// base64数据
+          
+        //   console.log(url)
+        //   image.src = url;
+        //   document.getElementById('shareImg').appendChild(image);
+        // downloadFile('测试.png', canvas.toDataURL());
+
+          _this.afterCanvasImageHide = false;
+          scanTextElem.style.opacity = '0';
+
+          _this.showToast = true;
+          setTimeout(function() {
+            _this.showToast = false;
+          }, 1000);
+        });
+      },
+      data1:function (){
+        
+        var canvas = document.createElement("canvas");
+    var _canvas = document.querySelector('.wrap-con1');
+    var w = parseInt(window.getComputedStyle(_canvas).width);
+    var h = parseInt(window.getComputedStyle(_canvas).height);
+    console.log(w)
+    console.log(h)
+    // canvas.width =750;
+    // canvas.height=1334;
+    var context = canvas.getContext("2d");
+    context.fillStyle="#F5F5F5;"
+    let scale = window.devicePixelRatio; // 获取设备像素比
+    console.log(scale)
+      html2canvas(document.querySelector('.wrap-con1'), {
+        useCORS: true,//图片跨域
+        scale: 1,
+        width: w,
+        height: h
+      }).then(canvas => {
+	  //生成成功后替换截图区域的内容 会出现闪动（微信内部有长按保存图片功能，所以替换你想避免这个闪动问题的话就需要自己手写保存图片功能）
+        // window.document.querySelector(".wrap-con1").remove();
+        // let elemImg = `<img src='${canvas.toDataURL( "image/png")}' id='canvas-img' style='height:${h}px;width:${w}px'/>`;
+        // window.document.querySelector("#shareImg").innerHTML = elemImg;
+        var scanTextElem = document.getElementById('scanText');
+        scanTextElem.style.opacity = '0';
+
+        var image = new Image();
+          image.setAttribute("crossOrigin",'anonymous');//需要放在图片赋值前，否则部分浏览器会报错
+          
+          var url = canvas.toDataURL('image/png');// base64数据
+          
+          console.log(url)
+          image.src = url;
+          document.getElementById('shareImg').appendChild(image);
+        // downloadFile('测试.png', canvas.toDataURL());
+
+      });
+      },
+    }
+  });
+  
+
+    //下载
+    function downloadFile(fileName, content) {
+        let aLink = document.createElement('a');
+        let blob = this.base64ToBlob(content); //new Blob([content]);
+
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("click", true, true);//initEvent 不加后两个参数在FF下会报错  事件类型，是否冒泡，是否阻止浏览器的默认行为
+        aLink.download = fileName;
+        aLink.href = URL.createObjectURL(blob);
+
+        // aLink.dispatchEvent(evt);
+        //aLink.click()
+        aLink.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));//兼容火狐
+    }
+    //base64转blob
+    function base64ToBlob(code) {
+        let parts = code.split(';base64,');
+        let contentType = parts[0].split(':')[1];
+        let raw = window.atob(parts[1]);
+        let rawLength = raw.length;
+
+        let uInt8Array = new Uint8Array(rawLength);
+
+        for (let i = 0; i < rawLength; ++i) {
+            uInt8Array[i] = raw.charCodeAt(i);
+        }
+        return new Blob([uInt8Array], {type: contentType});
+    }
+</script>
+</body>
+</html>

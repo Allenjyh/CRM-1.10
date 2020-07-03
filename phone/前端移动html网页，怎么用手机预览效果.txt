@@ -1,0 +1,14 @@
+如果仅仅是想预览直接使用chrome开发者工具就好。
+
+
+如果是想在手机端访问，可以在电脑端启动server服务。然后在手机上通过访问电脑端的 IP：端口  来访问。
+
+
+具体推荐下browsersync这个插仵安装  [官网链接](http://www.browsersync.cn/)
+
+
+（安装完成后简单做法
+
+1.把文件改为index.html
+
+2.命令行执行 browser-sync start --server --files "css/*.css, *.html"

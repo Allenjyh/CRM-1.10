@@ -322,27 +322,16 @@
 //1.2时间：起租期开始时间(只能填以前，最晚是当天) //1.3.yizuSilding.js  时间筛选 
 // 2.内容   2.1租金单提醒日(每月15-28日提醒) //2.2租赁期限 (6个月-19年11月)//2.3交租期 (每月1日- 10日) //2.4.报修类型 //2.5.故障类型
 //  B 内容筛选判定
-    var repTypes = {
+   
+   
+
+//2.4.报修类型
+var repTypes = {
         levelItem: [//1.报修类型
             {id:1,name:"公共报修"},
             {id:2,name:"公司报修"}
         ]
-    },
-    faultTypes = {//2.故障类型
-        levelItem: []
-    };
-
-    // var repair_faults = $("#repair_faults").val() ? JSON.parse($("#repair_faults").val()) : [];
-    // repair_faults.forEach(function(index){
-        //     faultTypes.levelItem.push({id:index.fault_id,name: eval("'" + index."fault_name" + "'") })
-        // });
-    var repair_faults = [{"fault_id":1,"fault_name":"防盗设施1"},{"fault_id":2,"fault_name":"防盗设施2"},{"fault_id":3,"fault_name":"防盗设施3"},{"fault_id":4,"fault_name":"防盗设施4"}];
-    // console.log(repair_faults)
-repair_faults.forEach(function(index){
-    faultTypes.levelItem.push({id:index.fault_id,name: eval("'" + index.fault_name + "'") })
-});
-
-//2.4.报修类型
+    }
 $("#repType").on("click",function(){
     $('body').css('overflow','hidden');//浮层出现时窗口不能滚动设置
     $("#repTitle").text("报修类型");
@@ -360,6 +349,23 @@ $("#repType").on("click",function(){
     })
 })
 //2.5.故障类型
+
+//  B 内容筛选判定
+   
+var faultTypes = {//2.故障类型
+        levelItem: []
+    };
+
+    // var repair_faults = $("#repair_faults").val() ? JSON.parse($("#repair_faults").val()) : [];
+    // repair_faults.forEach(function(index){
+        //     faultTypes.levelItem.push({id:index.fault_id,name: eval("'" + index."fault_name" + "'") })
+        // });
+    var repair_faults = [{"fault_id":1,"fault_name":"防盗设施1"},{"fault_id":2,"fault_name":"防盗设施2"},{"fault_id":3,"fault_name":"防盗设施3"},{"fault_id":4,"fault_name":"防盗设施4"}];
+    // console.log(repair_faults)
+repair_faults.forEach(function(index){
+    faultTypes.levelItem.push({id:index.fault_id,name: eval("'" + index.fault_name + "'") })
+});
+
 $("#faultType").on("click",function(){
     $('body').css('overflow','hidden');//浮层出现时窗口不能滚动设置
     $("#repTitle").text("故障类型");

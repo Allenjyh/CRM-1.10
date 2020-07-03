@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1，直接打开添加面板不用用户权限
+        void setshortCut() {
+        Intent addShortcut = new Intent();
+        // 设置快捷方式的名字
+        addShortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, "快捷方式练习");
+        // 构建快捷方式中专门的图标
+        Parcelable icon = Intent.ShortcutIconResource.fromContext(
+                ShortcutTest.this, R.drawable.icon);
+        // 添加快捷方式图标
+        addShortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, icon);
+        // 构建快捷方式执行的Intent
+        Intent mailto = new Intent(this, ShortcutTest.class);
+        // 添加快捷方式Intent
+        addShortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, mailto);
+        // 正常
+        setResult(RESULT_OK, addShortcut);
+    } 
+        // public void createDeskShortCut() {
+
+        //     // 创建快捷方式的Intent
+        //     Intent shortcutIntent = new Intent(
+        //             "com.android.launcher.action.INSTALL_SHORTCUT");
+        //     // 不允许重复创建
+        //     shortcutIntent.putExtra("duplicate", false);
+        //     // 需要现实的名称
+        //     shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME,
+        //             getString(R.string.app_name));
+
+        //     // 快捷图片
+        //     Parcelable icon = Intent.ShortcutIconResource.fromContext(
+        //             getApplicationContext(), R.drawable.logo);
+
+        //     shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, icon);
+
+        //     Intent intent = new Intent(getApplicationContext(),
+        //             LoadingActivity.class);
+        //     // 下面两个属性是为了当应用程序卸载时桌面 上的快捷方式会删除
+        //     intent.setAction("android.intent.action.MAIN");
+        //     intent.addCategory("android.intent.category.LAUNCHER");
+        //     // 点击快捷图片，运行的程序主入口
+        //     shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intent);
+        //     // 发送广播。OK
+        //     sendBroadcast(shortcutIntent);
+
+        //     Toast.makeText(getApplicationContext(), "创建桌面快捷方式测试", 0).show();
+        //     }
+
+
+
+        //     SharedPreferences sharedPrefe = getSharedPreferences(Constants.SP_NAME,
+		// 		Context.MODE_PRIVATE);
+		// boolean isCreateDesk = sharedPrefe.getBoolean("isCreateDesk", true);
+		// if (isCreateDesk) {
+		// 	createDeskShortCut();
+		// }
+		// SharedPreferences.Editor editor = sharedPrefe.edit();
+		// editor.putBoolean("isCreateDesk", false);
+		// editor.commit();
+
+</script>
+</html>

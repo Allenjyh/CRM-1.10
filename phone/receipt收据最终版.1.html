@@ -1,0 +1,227 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>收据</title>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.jqprint-0.3.js"></script>
+<style type="text/css">
+* {
+    box-sizing: border-box;
+    font-size: 12px;
+    margin: 0;
+		padding: 0;
+		color: rgba(0,0,0,0.85);
+		font-weight: bold;
+		font-family:STSongti-SC-Bold;
+	}
+i{
+  font-style:normal
+}
+.clear:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+ul,ol,li{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.form{
+	width:650px;
+	margin-left:15px  ;
+}
+/* .div_title1{
+	text-align: center;
+	margin:0 auto;
+	padding:9px 0 16px 0;
+	font-size: 16px;
+	line-height: 20px
+} */
+.form   td{
+   font-size: 13px!important;
+}
+.font12{
+	font-size: 12px!important;
+
+}
+ table
+  {
+  /* border-collapse:collapse; */
+  }
+</style>
+</head>
+<body>
+<div class="form" id="form">
+  
+			<div class="div_title1" style="text-align: center;	margin:0 auto;	padding:9px 0 16px 0;	font-size: 18px;line-height: 26px" > 
+				       广州市拓盈物业管理有限公司四联收据</div>
+			<div style="position: relative;font-size:13px">
+				<div>单元：<span>2011</span>
+					<span style="position: absolute;top: 0px;right: 31px;line-height:16px;">制单日期：2020/3/25</span>
+				</div>
+			</div>
+			<div style="position: relative;font-size:13px">
+				<div>客户名称/地址：<span>&nbsp;&nbsp;&nbsp;&nbsp;广州乙租信息科技有限公司</span>
+					<span style="position: absolute;top: 0px;right: 31px;line-height:16px;">（2020.4月份租金）</span>
+				</div>
+			</div>
+  
+	
+    <div class="bd clear">
+ 
+			<table border="1px"  cellpadding="px" cellspacing="0" width="700px"  style="text-align: center"    >
+				<tr  style="font-size:13px">
+				 <td style="width:140px;">收费项目</td>
+				 <td style="width:120px;">本期费用所属期间</td>
+				 <td style="width:90px;">单价</td>     
+				 <td style="width:100px;">本期应缴</td>
+				 <td style="width:76px;">上期已缴</td>
+				 <td style="width:70px;">前期未缴</td>     
+				 <td >累积应缴</td>     
+				</tr>
+				<tr style="font-size:13px">
+					<td >租金</td>
+					<td>2020年4月份</td>
+					<td>1.5</td>
+					<td>2223220.00</td>
+					<td></td>
+					<td></td>
+					<td >0</td>
+				</tr>
+				<tr style="font-size:13px">
+					<td >水费</td>
+					<td></td>
+					<td></td>
+					<td>2</td>
+					<td></td>
+					<td></td>
+					<td >0</td>
+				</tr>
+				<tr style="font-size:13px">
+					<td >电费</td>
+					<td></td>
+					<td></td>
+					<td>2</td>
+					<td> </td>
+					<td></td>
+					<td >0</td>
+				</tr>
+			  <tr style="font-size:13px">
+					<td >分摊</td>
+					<td></td>
+					<td></td>
+					<td>2</td>
+					<td></td>
+					<td></td>
+					<td >0</td>
+				</tr style="font-size:13px">
+				<tr style="font-size:13px">
+					<td >管理费</td>
+					<td></td>
+					<td></td>
+					<td>2</td>
+					<td></td>
+					<td></td>
+					<td >23220.00</td>
+				</tr>
+			
+				<tr style="font-size:13px">
+				<td >合计金额（大写）:</td>
+				<td colspan="5">RMB 零	万	贰	仟	零	佰	肆	拾	零	元	零	角	零	分 </td>
+				<td colspan="1">222150.00</td>
+			</tr>
+		 </table>
+    </div>
+ 
+  <div class="foot" style="background:#fff;font-size:13px ">
+    <span>注：1.单位盖章单位盖章单位盖章单位盖章单位盖章单位盖章单位盖章单位盖章单位盖章单位盖萨达萨达萨达撒
+			章</span>
+    <div style="line-height:30px;font-size:13px">2.租金请输入以下账户：</div>
+    <div style="font-size:13px">户名：<span>李先生</span>&nbsp;&nbsp;银行账号：<span>6234 8986 0917 9876 698</span>&nbsp;&nbsp;中国工商银行白云支行</div>
+		<table border="1px"  cellpadding="px" cellspacing="0" width="700px"  style="text-align: center"    >
+				<tr style="font-size:13px"  >
+				 <td style="width:140px;" class="font12">水电表项目名称及标号</td>
+				 <td style="width:120px;">本期行度</td>
+				 <td style="width:90px;">上期行度</td>     
+				 <td style="width:100px;">倍率</td>
+				 <td style="width:76px;">实用度数</td>
+				 <td style="width:70px;">单价</td>     
+				 <td >金额</td>     
+			</tr>
+				<tr style="font-size:13px">
+				<td >电表</td>
+				<td>5867.02</td>
+				<td>5322.71</td>
+				<td>1</td>
+				<td>544.31</td>
+				<td>1.5</td>
+				<td >816.47</td>
+			</tr>
+				<tr style="font-size:13px">
+				<td >水表</td>
+				<td>5867.02</td>
+				<td>5322.71</td>
+				<td>1</td>
+				<td>544.31</td>
+				<td>5.0</td>
+				<td >816.47</td>
+			</tr>
+		 </table>
+	</div>
+</div>
+<input type="button" onclick="aa()" value="打印"/>
+
+<script>
+	function aa(){
+			$("#form").jqprint();
+		}
+</script>
+<script>
+
+
+
+
+
+
+
+
+
+</script>
+<style>
+@media print{
+  * {
+    /* font-family: 'SimHei'!important; */
+    color: #000 !important;
+    /* font-family: 'serif'!important; */
+    font-family: 'SimSun'!important;
+    font-size: 14px;
+  }
+    .form  table,.form  table tr,.form  table tr td{
+         /* border-top: 1px solid #000000 !important;
+         border-right:1px solid #000000 !important; */
+         border-collapse:collapse !important;
+         border: 1px solid #000000 !important;
+          /* color: #000 !important;
+        font-family: 'serif'!important; */
+        font-family: 'SimSun'!important;
+      }
+}
+* {
+    /* font-family: 'SimHei'!important; */
+    color: #000 !important;
+    /* font-family: 'serif'!important; */
+    font-family: 'SimSun'!important;
+    font-size: 14px;
+  }
+
+      .form  table,.form  table tr,.form  table tr td{
+            border: 1px solid #000000 !important;
+           border-collapse:collapse !important;
+        }
+</style>
+</body>
+</html>

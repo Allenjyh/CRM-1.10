@@ -73,7 +73,8 @@
         公积金信息
     </a>
 </header>
-<div class="content">
+<div class="content" >
+        <a class="target-fix"></a>
     <div class="con" id="con1">
         基本信息
     </div>
@@ -109,23 +110,23 @@
 <script type="text/javascript">
 
 //    滚动导航栏字体颜色变化
-    var $navs = $('.nav'),          // 导航
-            $sections = $('.con'),       // 模块
-            $window = $(window),
-            navLength = $navs.length - 1;
+    // var $navs = $('.nav'),          // 导航
+    //         $sections = $('.con'),       // 模块
+    //         $window = $(window),
+    //         navLength = $navs.length - 1;
 
-    $window.on('scroll', function() {
-        var scrollTop = $window.scrollTop(),
-                len = navLength;
+    // $window.on('scroll', function() {
+    //     var scrollTop = $window.scrollTop(),
+    //             len = navLength;
 
-        for (; len > -1; len--) {
-            var that = $sections.eq(len);
-            if (scrollTop >= that.offset().top) {
-                $navs.removeClass('active').eq(len).addClass('active');
-                break;
-            }
-        }
-    });
+    //     for (; len > -1; len--) {
+    //         var that = $sections.eq(len);
+    //         if (scrollTop >= that.offset().top) {
+    //             $navs.removeClass('active').eq(len).addClass('active');
+    //             break;
+    //         }
+    //     }
+    // });
 
 //    点击导航栏字体颜色变化
     $(function(){
@@ -139,11 +140,20 @@
             console.log('每一块文字的宽度 '+blockWidth);
             var left = moveX-(pageX/2)+(blockWidth/2);
             console.log('中间显示需要移动的距离'+left);
-            $(this).addClass("active").siblings().removeClass("active");
             $("header").scrollLeft(left);//ul
+            $(this).addClass("active").siblings().removeClass("active");
 
         })
     });
 </script>
 </body>
+<style>
+.target-fix {
+    position: relative;
+    top: -60px;  /*// 偏移为nav被fixed元素的高度 */
+    display: block;
+    height: 0; /* //高度为0 */
+    overflow: hidden;
+  }
+</style>
 </html>

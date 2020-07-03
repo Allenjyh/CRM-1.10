@@ -1,0 +1,405 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>收据</title>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.jqprint-0.3.js"></script>
+<style type="text/css">
+* {
+    box-sizing: border-box;
+    font-size: 12px;
+    margin: 0;
+		padding: 0;
+		color: rgba(0,0,0,0.85);
+		font-weight: bold;
+		font-family:STSongti-SC-Bold;
+	}
+i{
+  font-style:normal
+}
+.clear:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+ul,ol,li{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.form{
+	width:650px;
+	margin-left:15px  ;
+}
+/* .div_title1{
+	text-align: center;
+	margin:0 auto;
+	padding:9px 0 16px 0;
+	font-size: 16px;
+	line-height: 20px
+} */
+.form   td{
+   font-size: 13px!important;
+}
+.font12{
+	font-size: 12px!important;
+
+}
+ table
+  {
+  /* border-collapse:collapse; */
+  }
+</style>
+</head>
+<body>
+
+<input type="button" onclick="aa()" value="打印"/>
+<div>
+
+
+</div>
+<script>
+
+	function aa(){
+			$("#form").jqprint();
+		}
+</script>
+<script>
+	function filter(arr,callback,context){
+		var ret=[];
+		var item='';
+		if(Array.isArray(arr)){
+		for(var i=0; item=arr[i];i++){
+
+			if(callback.call(context,item,i,arr)===true){
+				ret.push(item);
+			}
+		}
+		}
+		return ret;
+	}
+var json=[{
+	"ulog_id":5,
+	"ulog_time":2015,
+	"user_name":"ceshi123"
+	},{
+	"ulog_id":4,
+	"ulog_time":2018,
+	"user_name":"ceshi123"
+	},{
+	"ulog_id":3,
+	"ulog_time":2017,
+	"user_name":"ceshi123"
+	},{
+	"ulog_id":2,
+	"ulog_time":2015,
+	"user_name":"ceshi123"
+	},{
+	"ulog_id":1,
+	"ulog_time":2015,
+	"user_name":"ceshi123"
+	}];
+console.log(filter(json,function(n){return n.ulog_time===2015;}));
+	
+
+
+	var	all_rooms=[{
+			agreement_id: 0,
+							area: 0,
+							children: [
+								{
+									agreement_id: 0,
+									area: 700,
+									children: [
+										{
+											agreement_id: 324,
+											area: 100,
+											end_time: 1745251200,
+											id: 281,
+											name: "1001",
+											total: 0,
+											type: 1,
+											upper_id: 283,
+											},
+										{
+											agreement_id: 324,
+											area: 200,
+											end_time: 1745251200,
+											id: 282,
+											name: "1002",
+											total: 0,
+											type: 2,
+											upper_id: 283,
+											},
+										{
+											agreement_id: 324,
+											area: 300,
+											end_time: 1745251200,
+											id: 283,
+											name: "1003",
+											total: 0,
+											type: 3,
+											upper_id: 283,
+											},
+										{
+											agreement_id: 324,
+											area: 400,
+											end_time: 1745251200,
+											id: 284,
+											name: "1004",
+											total: 0,
+											type: 4,
+											upper_id: 283,
+											},
+									],
+									id: 283,
+									name: "1层",
+									total: 6,
+									type: 2,
+									upper_id: 282,
+						   	},
+								 {
+									agreement_id: 0,
+									area: 300,
+									children: [
+										{
+											agreement_id: 376,
+											area: 100,
+											end_time: 1603641600,
+											id: 368,
+											name: "2001",
+											total: 0,
+											type: 1,
+											upper_id: 340,
+										},
+										{
+											agreement_id: 377,
+											area: 100,
+											end_time: 1650902400,
+											id: 369,
+											name: "2002",
+											total: 0,
+											type: 1,
+											upper_id: 340,
+										},
+										{
+											agreement_id: 385,
+											area: 100,
+											end_time: 1603641600,
+											id: 370,
+											name: "2003",
+											total: 0,
+											type: 1,
+											upper_id: 340,
+										}
+									],
+									id: 340,
+									name: "2层",
+									total: 3,
+									type: 2,
+									upper_id: 282,
+								 }
+							],
+							id: 282,
+							name: "A栋",
+							total: 2,
+							type: 2,
+							upper_id: 0,
+	}]
+
+	var	childrens=[{
+							// children: [
+							// 	{
+									agreement_id: 0,
+									area: 700,
+									children: [
+										{
+											agreement_id: 324,
+											area: 100,
+											end_time: 1745251200,
+											id: 281,
+											name: "1001",
+											total: 0,
+											type: 1,
+											upper_id: 283,
+											},
+										{
+											agreement_id: 324,
+											area: 200,
+											end_time: 1745251200,
+											id: 282,
+											name: "1002",
+											total: 0,
+											type: 2,
+											upper_id: 283,
+											},
+										{
+											agreement_id: 324,
+											area: 300,
+											end_time: 1745251200,
+											id: 283,
+											name: "1003",
+											total: 0,
+											type: 3,
+											upper_id: 283,
+											},
+										{
+											agreement_id: 324,
+											area: 400,
+											end_time: 1745251200,
+											id: 284,
+											name: "1004",
+											total: 0,
+											type: 4,
+											upper_id: 283,
+											},
+									],
+									id: 283,
+									name: "1层",
+									total: 6,
+									type: 2,
+									upper_id: 282,
+						   	},
+								 {
+									agreement_id: 0,
+									area: 300,
+									children: [
+										{
+											agreement_id: 376,
+											area: 100,
+											end_time: 1603641600,
+											id: 368,
+											name: "2001",
+											total: 0,
+											type: 1,
+											upper_id: 340,
+										},
+										{
+											agreement_id: 377,
+											area: 100,
+											end_time: 1650902400,
+											id: 369,
+											name: "2002",
+											total: 0,
+											type: 1,
+											upper_id: 340,
+										},
+										{
+											agreement_id: 385,
+											area: 100,
+											end_time: 1603641600,
+											id: 370,
+											name: "2003",
+											total: 0,
+											type: 1,
+											upper_id: 340,
+										}
+									],
+									id: 340,
+									name: "2层",
+									total: 3,
+									type: 2,
+									upper_id: 282,
+								//  }
+							// ],
+						
+	}]
+// console.log(childrens)
+// console.log(childrens[0].children[3].area)
+function filter1(arr,callback,context){
+	// console.log(callback)
+
+		var ret=[];
+		var item='';
+		if(Array.isArray(arr)){
+		for(var i=0; item=arr[i];i++){
+
+			if(callback.call(context,item,i,arr)===true){
+				ret.push(item);
+			}
+		}
+		}
+		return ret;
+	}
+// function filter2(arr,callback,context){
+// 	// console.log(callback)
+
+// 			console.log(arr)
+// 		var ret=[];
+// 		var item='';
+// 		if(Array.isArray(arr)){
+// 		for(var i=0; item=arr[i];i++){
+
+// 			// if(callback.call(context,item,i,arr)===true){
+// 				ret.push(item);
+// 			console.log(ret)
+// 			// }
+// 		}
+// 		}
+// 		return ret;
+		
+// 	}
+
+		
+	function filter33(all_rooms,type,area){
+		console.log(all_rooms)
+		let childrens =all_rooms[0].children
+      let info=[]
+			for(let i=0;i<childrens.length;i++){
+        
+				// console.log(childrens[i].children)
+				var aaa=	filter1(childrens[i].children,function(item){
+						// console.log(item)
+						// console.log(item.area)
+						if(type || area){
+              if(!type){
+								console.log(1)
+								return   item.area >= area[0] &&   item.area <= area[1]
+							}else if(!area){
+								console.log(2)
+								return   item.type == type 
+							}else{
+								console.log(3)
+								return	item.type == type && item.area == area
+							}
+						}
+
+					});
+					console.log(childrens)
+				// aaa.length==0?  childrens[1].slice(1,1):	childrens[i].children=aaa;
+				// a.slice(0,3);
+				
+				if(aaa.length==0){
+					// childrens[i]=[]	
+					console.log(i)
+						childrens.splice(  i, 1 );
+						i= i-1;
+				} else{
+					childrens[i].children=aaa;
+				}
+					
+			// console.log(childrens[i].children)
+			}
+			// childrens.filter(function (s) {
+			// 		return s && s.trim(); // 注：IE9(不包含IE9)以下的版本没有trim()方法
+			// })
+			console.log(childrens)
+		return  childrens;
+		};
+console.log(filter33(all_rooms,0,[200,200]))
+		//
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

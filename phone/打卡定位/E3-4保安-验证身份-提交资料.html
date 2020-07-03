@@ -7,6 +7,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="wechat/css/iconfont.css">
+		 <!-- <link rel="icon" href="wechat/images/punch_card/close.png"> -->
 	    <link href="wechat/css/security.css" rel="stylesheet" />
 	    <link href="wechat/css/iconfont.css" rel="stylesheet" />
         <script src="wechat/js/jquery-3.3.1.min.js"></script>
@@ -50,7 +51,6 @@
 		<ul class="register_ul">
 			<li>
                <input class='contacts' name="contacts" maxlength="15" onkeyup="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" type="text"  placeholder="输入姓名">
-               
 			   <input class="register_input8" oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);" autocomplete="off" type="tel" name="" placeholder="手机号">
 				<div class="thisisyzm">
 					<input class="register_input9" autocomplete="off" oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>6) this.value=this.value.substring(0,6);" type="number" name="" placeholder="6位验证码">
@@ -66,13 +66,36 @@
 				</div>
 				<span class="submit" >提&nbsp;交&nbsp;资&nbsp;料</span>
 				<a href="E4-11保安-验证身份-等待审核.html">
-				<span class="submit" >提&nbsp;交&nbsp;资&nbsp;料</span>
-			  </a>
+				 <span class="submit" >提&nbsp;交&nbsp;资&nbsp;料</span>
+			    </a>
 			</li>
 		</ul>
 	</div>
         
 	</body>
 	<script>
+		let list = fs.readdirSync('./data')
+		let dataArr = []
+		list.forEach((item, index) => {
+			let path = `./data/${item}`
+			let obj = fs.readFileSync(path, 'utf-8')
+			let content = JSON.parse(obj)
+			let arr = [content.sheetArr]
+			content.list.forEach((contentItem) => {
+				arr.push([
+					contentItem.appName,
+					contentItem.companyName,
+					contentItem.appTime,
+					contentItem.usage,
+					contentItem.likenumInt,
+					contentItem.introduce
+				])
+			})
+			dataArr[index] = {
+				data: arr,
+				name: content.type//path.split('./data/')[1] // 名字不能包含 \ / ? * [ ]
+			}
+			console.log(dataArr)
+		})
     </script>
 </html>

@@ -1,0 +1,1633 @@
+<!DOCTYPE html>  
+<html  >  
+<head>  
+	<meta charset="UTF-8">
+	<!-- <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><!-- 手机端 -->
+    
+    <title>手机端租空图</title>  
+    <link href="js/css/jquery.range.css" rel="stylesheet" />
+    <link href="./home/phone/css/pickerStyle.css" rel="stylesheet"/>
+
+    <!-- 使用weui -->
+    <!-- <link href="node_modules/weui/dist/style/weui.min.css" rel="stylesheet"/> -->
+
+    <!-- <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+    <style>  
+       html, body {  
+            font-family: microsoft yahei;  
+            margin: 0;
+            padding: 0;
+            
+        }
+        ul,li{
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        input, span {
+          border: none;
+          outline: none;
+        }
+    /*表格  */
+
+    </style> 
+	 <script src="js/echarts.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>  
+    <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
+    
+	<script type="text/javascript" src="js/jquery.range-min.js"></script>
+  <script src="./home/phone/js/picker.js"></script><!--所有内容都是同一个js报修类型，故障类型-->
+
+</head>  
+<body>  
+    <div class="nav">
+        <span class="navTitle">广贸商务中心 </span> 
+        <span id="selectTung" data-id=""><span id="selectTungValue"></span>  <i class="dropDown"></i></span>
+    </div>
+    <div id="box" style="padding-top:64px;">
+    <!-- <div id="box" style="height:100vh;overflow:auto;transition: all 0s ease 0s; transform: translate3d(0px, 0px, 0px);padding-top:64px;"> -->
+        <div class="top">
+            <div  class="pieChart" style="height:288px"> 
+                <p>面积情况</p>
+                <div id="main" style="width: 100%;height:248px;"></div>
+            </div>
+        </div>
+    
+        <div> 
+            <div class="searchBox" > 
+                <div class="search"> 
+                    <i class="glyphicon glyphicon-search icon iconImg" id="searchIcon"  ></i>
+                    <i class="glyphicon del" ></i>
+                    <div class="Input"> <input type="number" id="search" oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);"  placeholder="搜索房间号" > </div>
+                </div>
+            </div>
+            <div style="position:relative; " >
+                <div class="select" >
+                    <span id="selectFloor" style="padding-right:15px;"><span id="selectFloorValue" data-id="">全部</span> <i class="dropDown"></i></span>
+                    <span id="screen" >筛选<i class="dropDown"></i></span>
+                </div>
+                <div class="screenInfo">
+                    <div class="slide-mask" style="position: absolute; left: 0px; top: 0px; z-index: 10; width: 100%; overflow: hidden; text-align: center; font-size: 14px; background-color: rgba(90, 99, 108, 0.4); display: block;"></div>
+                        <div class="screenShow">
+                            <div  style="padding-left:15px;">
+                                <div class="screenTitle">
+                                    <p>租赁面积</p>
+                                    <div class="areaShow" style="text-align: center;">
+                                        <span id="minArea"></span> - <span id="maxArea"></span>
+                                    </div>
+                                    <div style="margin:26px 0 30px calc(100vw/2 - 310px/2);">
+                                        <input type="hidden" value="0, 1100" id="range"  class="slider-input"/>
+                                    </div>
+                                </div>
+                                <div class="screenTitle">
+                                        <p>租赁状态</p>
+                                        <ul >
+                                            <li  data-id="1">出租中</li>
+                                            <li  data-id="2">空置中</li>
+                                            <li  data-id="3">即将到期</li>
+                                            <li  data-id="4">已到期</li>
+                                        </ul>
+                                </div>
+                            </div>
+                            <div >
+                                <table class="buttonBox" >
+                                    <tr>
+                                        <td style="width:33.33%;padding: 0;"> <div class="resetBtn">重置</div> </td>
+                                        <td style="width:66.66%;padding: 0;">  <div class="sureBtn">确定</div></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!--房间数据渲染  高度 -->
+        <!-- <div style="height:700px"> 3333333</div> -->
+        <div class="room" id="room" style="max-height:560px;overflow-y: auto;"></div>
+      
+          <!-- <div style="display: flex; flex-direction: column; align-items: center;margin:10px 0 25px 0">
+
+            <img src="/images/repair/nullRoom.png" style="width:66.66%;height:66.66%" alt="">
+             <p style="margin:5px 0;font-size:13px;font-weight:400;color:rgba(0,0,0,0.65);line-height:16px;">
+              <span>暂无对应的房间</span> 
+              <span>该房间不存在</span>
+            </p>
+          </div> -->
+        
+    </div>
+        <!--选择报修类型START-->
+        <div id="room-controller" class="room-controller" style="display: none;">
+            <div class="room-controller-all">
+                <div class="select-room-btnbox" style="border-bottom: 1px solid #ebebeb;">
+                    <table>
+                        <tr>
+                            <td id="roomClose" style="color: #A7A7A7;">取消</td>
+                            <td id="repTitle">报修类型</td>
+                            <td id="roomSure" style="color: #1A8CFF;">确定</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="select-cross"></div>
+                <div class="room-controller-content">
+                    <div class="room-package-top border-bottom"></div>
+                    <div class="room-package-bottom border-top"></div>
+                    <div class="room-package" id="boxId">
+                        <!--<div class="room">
+                            <ul class="room-list">
+                            </ul>
+                        </div>-->
+                    </div>
+                </div>
+                <div class="room-controller-bottom"></div>
+            </div>
+        </div>
+        <!--选择报修类型END-->
+</body>  
+<script>
+   $(function(){
+    
+    var optionsTung =[] ;//栋数组
+    var tungNum =0;//栋
+    var selectFloors = {//楼层数
+       levelItem: []
+    };
+    var title=true;
+
+    //  // 内容渲染
+    var	all_rooms=[
+      {
+        agreement_id: 0,
+        area: 0,
+        children: [
+            {
+                agreement_id: 0,
+                area: 700,
+                children: [
+                    {
+                        agreement_id: 324,
+                        area: 100,
+                        end_time: 1745251200,
+                        id: 281,
+                        name: "1001",
+                        total: 0,
+                        type: 1,
+                        upper_id: 283,
+                        },
+                    {
+                        agreement_id: 324,
+                        area: 200,
+                        end_time: 1745251200,
+                        id: 282,
+                        name: "1002",
+                        total: 0,
+                        type: 2,
+                        upper_id: 283,
+                        },
+                    {
+                        agreement_id: 324,
+                        area: 300,
+                        end_time: 1745251200,
+                        id: 283,
+                        name: "1003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 283,
+                        },
+                    {
+                        agreement_id: 324,
+                        area: 400,
+                        end_time: 1745251200,
+                        id: 284,
+                        name: "1004",
+                        total: 0,
+                        type: 4,
+                        upper_id: 283,
+                        },
+                ],
+                id: 283,
+                name: "1层",
+                total: 6,
+                type: 2,
+                upper_id: 282,
+        
+            },
+              {
+                agreement_id: 0,
+                area: 300,
+                children: [
+                    {
+                        agreement_id: 376,
+                        area: 100,
+                        end_time: 1603641600,
+                        id: 368,
+                        name: "2001",
+                        total: 0,
+                        type: 1,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 377,
+                        area: 100,
+                        end_time: 1650902400,
+                        id: 369,
+                        name: "2002",
+                        total: 0,
+                        type: 2,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    }
+                ],
+                id: 340,
+                name: "2层",
+                total: 3,
+                type: 2,
+                upper_id: 282,
+            },
+            {
+            agreement_id: 0,
+            area: 900,
+            children: [
+                {
+                    agreement_id: 324,
+                    area: 100,
+                    end_time: 1745251200,
+                    id: 281,
+                    name: "1001",
+                    total: 0,
+                    type: 1,
+                    upper_id: 283,
+                    },
+                {
+                    agreement_id: 324,
+                    area: 200,
+                    end_time: 1745251200,
+                    id: 282,
+                    name: "3002",
+                    total: 0,
+                    type: 2,
+                    upper_id: 283,
+                    },
+                {
+                    agreement_id: 324,
+                    area: 300,
+                    end_time: 1745251200,
+                    id: 283,
+                    name: "3003",
+                    total: 0,
+                    type: 3,
+                    upper_id: 283,
+                    },
+                {
+                    agreement_id: 324,
+                    area: 400,
+                    end_time: 1745251200,
+                    id: 284,
+                    name: "3004",
+                    total: 0,
+                    type: 4,
+                    upper_id: 283,
+                    },
+            ],
+            id: 283,
+            name: "3层",
+            total: 4,
+            type: 2,
+            upper_id: 282,
+            }
+        ],
+        id: 282,
+        name: "A栋",
+        total: 2,
+        type: 2,
+        upper_id: 0,
+      },
+      {
+        agreement_id: 0,
+        area: 0,
+        children: [
+            {
+                agreement_id: 0,
+                area: 0,
+                id: 283,
+                name: "1层",
+                total:0,
+                type: 2,
+                upper_id: 282,
+            },
+              {
+                agreement_id: 0,
+                area: 300,
+                children: [
+                    {
+                        agreement_id: 376,
+                        area: 100,
+                        end_time: 1603641600,
+                        id: 368,
+                        name: "2001",
+                        total: 0,
+                        type: 1,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 377,
+                        area: 100,
+                        end_time: 1650902400,
+                        id: 369,
+                        name: "2002",
+                        total: 0,
+                        type: 2,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    },
+                    {
+                        agreement_id: 385,
+                        area: 110,
+                        end_time: 1603641600,
+                        id: 370,
+                        name: "2003",
+                        total: 0,
+                        type: 3,
+                        upper_id: 340,
+                    }
+                ],
+                id: 340,
+                name: "2层",
+                total: 3,
+                type: 2,
+                upper_id: 282,
+              }
+        ],
+        id: 282,
+        name: "B栋",
+        total: 2,
+        type: 2,
+        upper_id: 0,
+      }
+      
+    ]
+
+
+    
+    // console.log(all_rooms1);
+    // var all_rooms =  $('body').data('all_room')
+    if(all_rooms.length==1){
+        $('#selectTung').html('')
+    }else if(all_rooms.length== 0 ){//空楼层数据
+        $('#selectTung').html('')
+   
+        showfloor()
+        return;
+    }else{
+      console.log(all_rooms );
+     
+     for(let i=0;i<all_rooms.length;i++){
+       optionsTung.push({label:all_rooms[i].name,value:i});//  栋数组
+     }
+     //  console.log(optionsTung)
+     document.getElementById("selectTungValue").innerHTML = all_rooms[0].name;
+     document.getElementById("selectTungValue").dataset.id =all_rooms[0].value;
+   }
+    floorInfo(0)
+    
+    var roomList = all_rooms;
+    // console.log(roomList)
+    roomList.floorInfo = {};
+          roomList.floorInfo.children = [];
+    roomList.floorInfo =roomList[tungNum].children ;
+    // console.log(roomList.floorInfo)
+    // console.log(tungNum)
+    showfloor(roomList.floorInfo)     
+
+
+
+    //1.栋
+    var selectTungs = {
+      levelItem: []
+    };
+    
+    optionsTung.forEach(function(index){
+        selectTungs.levelItem.push({id:index.value,name: eval("'" + index.label + "'") })
+    });
+
+
+
+    $("#selectTung").on("click",function(){
+        // $("#test").css("overflow","hidden")
+        // $('#box').css('overflow','hidden');//浮层出现时窗口不能滚动设置
+        $("#repTitle").text("选择栋");
+        document.getElementById("room-controller").style.display = "block";
+        var repTypePicker = new roomPicker({
+            data:selectTungs,
+            id:"boxId"
+        });
+        repTypePicker.init("selectTung",function(){
+            if($("#repTitle").text() == "选择栋"){
+            // console.log(123)
+            // console.log(getRoomItem)
+            document.getElementById("selectTungValue").innerHTML = getRoomItem.level1.name;
+            // console.log(document.getElementById("selectTungValue").innerHTML)
+                document.getElementById("selectTungValue").dataset.id = getRoomItem.level1.id;
+                // $('#box').css('overflow','auto');// 浮层关闭时滚动设置
+                // $('#box').css('overflow','auto');// 浮层关闭时滚动设置
+                $('#selectTung').css("color","#198CFF")
+                $('#selectTung > i').addClass('bluedrop')
+                floorInfo(getRoomItem.level1.id)
+                tungNum = getRoomItem.level1.id
+                // search(2,getRoomItem.level1.id)
+                // console.log(tungNum)
+                cleanInfo()
+                delIcon()
+                $('#search').val(' ');
+                showfloor(roomList[tungNum].children)
+
+           
+            }
+            
+        })
+        // $('body,#box').css('overflow','auto');// 浮层关闭时滚动设置
+    })
+
+     //2.楼
+     
+     function floorInfo(tungNum){
+        var optionsFloor =[] ;
+        selectFloors = {//楼层数
+            levelItem: []
+         };
+        optionsFloor=[{"label":'全部','value':""}];
+
+         if(all_rooms[Number(tungNum)].children == undefined){
+            title=true;
+            return;
+        }
+        for(let i=0;i<all_rooms[Number(tungNum)].children.length;i++){
+            optionsFloor.push({label:all_rooms[Number(tungNum)].children[i].name,value:i});//  楼层数
+          }
+       console.log(optionsFloor)
+        optionsFloor.forEach(function(index){
+            selectFloors.levelItem.push({id:index.value,name: eval("'" + index.label + "'") })
+        });
+    }
+
+    $("#selectFloor").on("click",function(){
+        // $("#test").css("overflow","hidden")
+        // $('#box').css('overflow','hidden');//浮层出现时窗口不能滚动设置
+        $("#repTitle").text("选择楼层");
+        document.getElementById("room-controller").style.display = "block";
+        var repTypePicker = new roomPicker({
+            data:selectFloors,
+            id:"boxId"
+        });
+        repTypePicker.init("selectFloor",function(){
+            if($("#repTitle").text() == "选择楼层"){
+            
+            // console.log(getRoomItem)
+            document.getElementById("selectFloorValue").innerHTML = getRoomItem.level1.name;
+            // console.log(document.getElementById("selectFloorValue").innerHTML)
+                document.getElementById("selectFloorValue").dataset.id = getRoomItem.level1.id;
+                // $('#box').css('overflow','auto');// 浮层关闭时滚动设置
+                // $('#box').css('overflow','auto');// 浮层关闭时滚动设置
+                $('#selectFloor').css("color","#198CFF")
+                $('#selectFloor > i').addClass('bluedrop')
+
+                search(2,getRoomItem.level1.id)
+            }
+            
+        })
+        // $('body,#box').css('overflow','auto');// 浮层关闭时滚动设置
+    })
+
+            //筛选
+            var winH = $(window).height();
+              var slide_mask = winH - 64 - 64 ;//nav+offseTheight  
+              $('#room').css('max-height', slide_mask);
+              $('.slide-mask').css('height', slide_mask);
+            $("#screen,.slide-mask").on("click",function(){
+                  // var slide_mask = winH - $('.searchBox').offset().top - 63;
+                  console.log(slide_mask)
+                  // console.log($('.searchBox').offset().top)
+                      // $('#room').css('height', slide_mask);
+                 
+                    if ($(".screenInfo").css('display') == 'block' ){
+                      // $('html,body').animate({scrollTop: '318px'}, 1000);//  顶部部分高度362 -nav44
+                      $(".screenInfo").css('display','none')
+                    } else {
+                      $(".screenInfo").css('display','block')
+                        // $('html,body').animate({scrollTop: '200px'}, 1000);//  顶部部分高度362 -nav44 
+                  }
+                })
+             /* 面积滑动条 */
+                $('.slider-input').jRange({
+                        from: 0,   				//滑块范围的初始值
+                        to: 1100,    				//滑块范围的终止值
+                        step: 50,   				//设置步长
+                        scale: [0,'250m²',"500m²",'750m²',''], //滑动条下方的尺度变标签
+                        format: '%s',  			//数值格式
+                        width: 280, 			//进度条的宽度
+                        showLabels: false,  		//是否显示滑动条下方的尺寸标签
+                        showScale: false,  		//是否显示滑块上方的数值标签
+                        isRange: true,     		//是否为选取范围
+                        // ondragend: function(e){    //鼠标拖拽后执行触发的方法
+                        onstatechange: function(e){    //滑块范围改变时触发的方法
+                            // console.log(e);
+                            let area = e.split(',')
+                            $("#minArea").text(Number(area[0])+'m²');
+                            $("#maxArea").text(Number(area[1]) == 1100?'无限大':area[1]+'m²');
+                           
+                        }
+                    });
+                   
+                    $('.screenInfo .screenTitle ul li').click(function(){
+                      // console.log($(this).data('id'))
+                      $(this).addClass('Active').siblings().removeClass("Active")
+                     })
+                    $('.sureBtn').click(function(){
+                      // console.log($('.screenInfo .screenTitle ul li.Active').data('id'))
+                      $('#screen > i').addClass('bluedrop')
+                      $('#screen ').css('color',"#198CFF")
+                      // console.log($(".slider-input").val())
+                      $(".screenInfo").css('display','none')
+                      search(3)          
+                     })
+                    $('.resetBtn').click(function(){
+                      // $('#screen > i').removeClass('bluedrop')
+                      //   $('#screen ').css('color',"rgba(0,0,0,0.45)")
+                      // $('.screenInfo .screenTitle ul li').removeClass("Active")
+                      // $('.slider-input').jRange('setValue', '0, 1100');  //滑块赋值
+                        cleanInfo()
+                        delIcon()
+                        showfloor(all_rooms[tungNum].children)
+                    })
+                     //筛选end
+  
+        function search(searchType,floorNum){
+            // console.log(arguments)
+            var roomNum = '';
+    
+            var slider_input = '';
+            var type = ''; 
+            let all_rooms2 = all_rooms[tungNum];
+    
+            roomList.floorInfo = {};
+            roomList.floorInfo.children = [];
+            if(1 == searchType ){//搜索房间号
+                roomNum = $.trim($('#search').val());
+                if(roomNum){
+                    cleanInfo();
+                    title=false;
+
+                }else {
+                    return;
+                }
+            }else if(2 == searchType ){
+                delIcon()
+                $('#screen ').css('color',"rgba(0,0,0,0.45)")
+                $('#screen > i').removeClass('bluedrop')
+                $('.screenInfo .screenTitle ul li').removeClass("Active")
+                $('.slider-input').jRange('setValue', '0, 1100');  //滑块赋值
+                $('#search').val(' ');
+                 
+                    if(typeof( floorNum) == 'number'){
+                        roomList.floorInfo.children =all_rooms[tungNum].children[floorNum]
+                  
+                            showfloor([roomList.floorInfo.children])
+                    }else{//全部房间
+                        roomList.floorInfo.children =all_rooms[tungNum].children;
+                        showfloor(roomList.floorInfo.children)
+                    }
+                    return;
+
+            }else{
+                slider_input = $(".slider-input").val().split(',');
+                if(Number(slider_input[1]) == 1100){
+                    slider_input[1] = Number.POSITIVE_INFINITY;
+                }
+                type = $('.screenInfo .screenTitle ul li.Active').data('id');
+                delIcon() 
+                $('#search').val(' ');
+                $('#selectFloor ').css('color',"rgba(0,0,0,0.45)")
+                $('#selectFloor > i').removeClass('bluedrop')
+                $("#selectFloorValue").html("全部") 
+                $("#selectFloorValue").attr("data-id",""); 
+            }
+    
+            filter(all_rooms2.children,Number(type?type:0),[Number(slider_input[0]),Number(slider_input[1])],Number(roomNum))
+            console.log(roomList.floorInfo.children)
+            showfloor(roomList.floorInfo.children)
+        }
+        function filter(child,type,area,name){
+            console.log(arguments)
+            
+            if(child){
+               
+                child.forEach(function(index){
+                    if(index.total > 0 && index.children){
+                        var totalData = {};
+                            totalData.name = index.name;
+                            //  totalData.total = index.total
+                            totalData.children = []; 
+                
+                            var a = 0,b=0;
+                            index.children.forEach(function(item){
+                               
+                                if(name == item.name ){
+                                a += parseInt(item.area);
+                                b += 1;
+                                totalData.children.push(item)
+                                console.log(totalData)
+                                }
+                                // console.log('type'+type)
+                                // console.log('area'+area)
+                                if(type == item.type && item.area >= area[0] &&   item.area <= area[1] ){
+                                console.log(item)
+                                console.log(1)
+                                    a += parseInt(item.area);
+                                    b += 1;
+                                    totalData.children.push(item)
+                                
+                                }else  if(item.area >= area[0]  && type ==0 && item.area <= area[1]){
+                                        console.log(item)
+                                    console.log(3)
+
+                                        a += parseInt(item.area);
+                                        b += 1;
+                                    totalData.children.push(item)
+                                    // }
+                                }  
+                            })
+                
+                            totalData.area = a;
+                            totalData.total = b;
+                            
+                            console.log(totalData)
+                            if(totalData.children.length != 0){
+                                roomList.floorInfo.children.push(totalData)
+                            
+                            }
+                        
+                            //  console.log(totalData.area)
+                            //  console.log(totalData.total)
+                            // floorInfo12.children.push(totalData)
+                            // console.log(floorInfo12)
+                        
+                        console.log(roomList.floorInfo)
+                        
+                         filter(index.children);
+        
+                    }else{
+                         return;
+                    }
+                })
+                }else{
+                    return;
+                }
+        }
+        function showfloor(floorInfo){
+
+            var html='';
+            console.log(floorInfo)
+            if(floorInfo?floorInfo.length>0:''){
+               
+                for(let i in floorInfo){
+                        html += `<div  class="floor"  id="${'floor'+(Number(i)+1)}" >
+                        <div class="floorTop">
+                        <div>${floorInfo[i].name}</div>
+                        <div>${floorInfo[i].area}m²</div> 
+                        <div>${floorInfo[i].total}间</div>
+                        </div>`
+                    if(floorInfo[i].children?floorInfo[i].children.length>0 :'' ){
+                        html +=  '<div class="cardInfo"><ul>'
+                            for(let ii in floorInfo[i].children){
+                                html +=  `<li class="${floorInfo[i].children[ii].type ==1? 'LeasingBorder':floorInfo[i].children[ii].type == 4? 'expiredBorder':floorInfo[i].children[ii].type == 3?'expireBorder':' vacantBorder'  }">
+                                            <div class="top_card ${floorInfo[i].children[ii].type ==1? 'LeasingBg':floorInfo[i].children[ii].type == 4? 'expiredBg':floorInfo[i].children[ii].type == 3?'expireBg':' vacantBg'  }">
+                                                <div > 
+                                                <span class="title oneline">${floorInfo[i].children[ii].name}</span>
+                                                <span class="type ${floorInfo[i].children[ii].type ==1? 'Leasing':floorInfo[i].children[ii].type == 4? 'expired':floorInfo[i].children[ii].type == 3?'expire':' vacant'  }">
+                                                    ${floorInfo[i].children[ii].type ==1? "出租中":floorInfo[i].children[ii].type == 4? "已到期":floorInfo[i].children[ii].type == 3?"即将到期":'空置中'}
+                                                </span>
+                                                </div>
+                                                <div></div>
+                                            </div>
+                                            <div class="bottom_card">
+                                                <span>${floorInfo[i].children[ii].area}m²</span>
+                                            </div>
+                                        </li>`
+                            }
+                        html +=' </ul> </div></div>';
+                    }else{//楼层没数据
+                        html +=  '<div class="cardInfo"><ul>'
+                            html +=  `<li class=" " style="width:96vw;border:1px solid rgba(153,153,153,1);">
+                                        <div class="top_card " style="background:rgba(153,153,153,0.08);">
+                                            <div > 
+                                            <span style="font-size:12px;font-weight:400;color:rgba(0,0,0,0.65);line-height:41px;display: block;text-align: center;">已创建楼层,暂未创房间</span>
+                                            
+                                            </div>
+                                            <div></div>
+                                        </div>
+                                        <div class="bottom_card">
+                                            <span style="display: flex;justify-content: center;">可去PC端创建房间信息</span>
+                                        </div>
+                                    </li>`
+                        html +=' </ul> </div></div>';
+                    }
+    
+                }
+            }else{//栋筛选没数据
+             html += `<div style="display: flex; flex-direction: column; align-items: center;margin:10px 0 25px 0">
+
+                <img src="/images/repair/nullRoom.png" style="width:66.66%;height:66.66%" alt="">
+                <p style="margin:5px 0;font-size:13px;font-weight:400;color:rgba(0,0,0,0.65);line-height:16px;">
+                  <span>${title?'暂无对应的房间':'该房间不存在'}</span> 
+                </p>
+              </div>`
+                // html +=  '<div  class="floor"><div class="cardInfo"><ul>'
+                //     html +=  `<li class=" " style="width:96vw;border:1px solid rgba(153,153,153,1);height: 150px;margin-top: 30px;">
+                //                 <div class="top_card " style="background:rgba(153,153,153,0.08);height: 120px;">
+                //                     <div > 
+                //                     <span style="font-size:12px;font-weight:400;color:rgba(0,0,0,0.65);line-height:120px;display: block;text-align: center;">该筛选状态没有房间</span>
+                                    
+                //                     </div>
+                //                     <div></div>
+                //                 </div>
+                //                 <div class="bottom_card">
+                //                     <span style="display: flex;justify-content: center;line-height:28px">可去PC端编辑房间情况</span>
+                //                 </div>
+                //             </li>`
+                // html +=' </ul> </div></div>';
+            }
+
+            $("#room").html(html);
+        }
+        // 搜索框 
+        $(".search input").keypress(function(e){
+            var key = $.trim($(this).val());
+            if(e.keyCode === 13) {
+                //  搜索工作
+                search(1)
+                // getValue(key)
+                // that.search(key);
+                document.activeElement.blur();//软键盘收起
+            }
+        })
+        $('#searchIcon').click(function(){
+            search(1)
+        })
+        
+
+        $('.del').click(function(){
+          delIcon()
+          showfloor(roomList[tungNum].children)
+        })
+    })        
+            function cleanInfo(){
+                addIcon();
+                $('#screen,#selectFloor ').css('color',"rgba(0,0,0,0.45)")
+                $('#screen > i,#selectFloor > i').removeClass('bluedrop')
+                $('.screenInfo .screenTitle ul li').removeClass("Active")
+                $('.slider-input').jRange('setValue', '0, 1100');  //滑块赋值
+                $("#selectFloorValue").html("全部") 
+                $("#selectFloorValue").attr("data-id",""); 
+            }
+
+            function addIcon(){   
+                var text = document.getElementById("search").value;
+                if(text!=""){
+                    document.getElementsByClassName("del")[0].setAttribute("class","delImg del");
+                }
+                else{
+                     document.getElementsByClassName("del")[0].setAttribute("class","delImg del");
+                }
+            }
+
+            function delIcon(){
+                document.getElementById("search").value = "";
+                document.getElementsByClassName("del")[0].setAttribute("class","del");
+
+                // roomList.floorInfo =roomList[tungNum].children ;
+                // console.log(roomList.floorInfo)
+                // // console.log(tungNum)
+                // // cleanInfo()
+                // // delIcon()
+                // // $('#search').val(' ');
+                // showfloor(roomList.floorInfo)
+            }
+          pie(10000,3000)
+            //饼状图
+            function pie(lease_no_count,lease_yes_count){
+              // var lease_yes_count = (Number( $('#lease_yes_count').text()) < 0 ? 0 :Number( $('#lease_yes_count').text()));//已入驻
+              // var lease_no_count = (Number( $('#lease_no_count').text()) < 0 ? 0 :Number( $('#lease_no_count').text())) ;//未入驻
+    
+              //top_box饼状图
+              var labels=[];//图例
+              var occupancy;//入驻率
+              var data = [{
+                  "name": "未使用",
+                  "value": lease_no_count  ,
+                  type : 0,
+              }, {
+                  "name": "已使用",
+                  "value": lease_yes_count == 0 ? '': lease_yes_count,
+                  type : 1,
+              }, {
+                  "name": "总面积",
+                  "value": '',
+                  type : 2,
+              }, ]
+              let total=0;//总间数
+              for(let i=0;i<data.length;i++){
+                  labels.push({
+                      name:data[i].name,
+                      icon:'circle' //设置为圆形
+                  });
+                  total = lease_yes_count + lease_no_count;
+              }
+    
+              if(data[1].value == 0  ){
+                  occupancy= "  0";
+              }else{
+                  occupancy=((data[1].value/total*100).toFixed(1) > 100 ? ' 0 ' : (data[1].value/total*100).toFixed(1))
+              }
+              // 基于准备好的dom，初始化echarts实例
+              var myChart = echarts.init(document.getElementById('main'));
+              var app = {};
+              option = null;
+              // 指定图表的配置项和数据
+              app.title = '环形图';
+              option = {
+                  color:['#FF3758','#0A88EC','#FFB31A'],   //环形颜色
+                  title: {//图形中间文字
+                      text: '使用率',
+                      subtext:' '+occupancy+'%',
+                      textStyle: {
+                          color: 'rgba(0,0,0,0.85)',
+                          fontSize: 16,
+                          // align: 'center'
+                      },
+                      subtextStyle: {
+                          fontSize: 16,
+                          color: ['rgba(0,0,0,1)']
+                      },
+                      x: '41.5%',
+                      y: '39.5%',
+                  },
+                  //    tooltip: {//hover
+                  //        trigger: 'item',
+                  //        formatter: "{b}: {c}间 ({d}%)"
+                  //    },
+                  legend: {//图例
+                    bottom: 0,
+                    left: 'center',
+                      selectedMode:false,//取消图例上的点击事件
+                      // orient: 'vertical',
+                      // x: 'left',
+                      itemGap : 12,//图例每项之间的间隔
+                      itemWidth: 8,   // 设置图例图形的宽
+                      itemHeight: 10,  // 设置图例图形的高
+                      formatter:  function(name){
+                          var total = 0;
+                          var target;
+                          var arr=[];
+                          for (var i = 0, l = data.length; i < l; i++) {
+                              total = lease_yes_count +lease_no_count;
+                              target = data[i].value;
+                              if (data[i].name == name &&  i ==0) {
+                                  target = data[0].value;
+                                  arr = ['{a|'+name+' : '+(target == "" ? 0 +"m²" : target+"m²")+'}', ]
+                              }else if(data[i].name == name && i ==1){
+                                  target = data[1].value;
+                                    arr = ['{a|'+name+' : '+(target == "" ? 0+"m²" : target+"m²")+'}', ]
+                              }else if(data[i].name == name && i ==2){
+                                  // target = data[i].value;
+                                  arr = ['{a|'+name+' : '+total+"m²"+'}', ]
+                              }
+                              /*switch(data[i].type){
+                                  case 0 :
+                                      arr = ['{a|'+name+' : '+(target == 100 ? 0 : target)+'}', ];
+                                      break;
+                                  case 1 :
+                                      arr = ['{a|'+name+' : '+target+'}', ];
+                                      break;
+                                  case 2 :
+                                      arr = ['{a|'+name+' : '+total+'}', ];
+                                      break;
+                              }*/
+                          }
+                          // return name + ' ' + ((target/total)*100) + '%';
+                          return arr.join('\n')
+                      },
+                      textStyle: {
+                          color: 'rgba(0,0,0,0.65)' , // 图例文字颜色
+                          rich:{
+                              a:{
+                                  // fontSize:16,
+                                  // color:'#333'
+                                  // verticalAlign:'top',
+                                  //align:'center',
+                                  lineHeight:8,
+                                  //   padding:[0,0,-1,0]
+                              },
+                          }
+                      },
+                      data:labels,//['已入驻 ' ,'未入驻 ','总间数 ']//b
+                  },
+                  series: [
+                      {
+                          name:'入驻情况',//a
+                          type:'pie',//饼状图
+                          radius: ['35%', '65%'],
+                          center: ['50%', '48%'],
+                          labelLine: {    //图形外文字线
+                              normal: {
+                                  length: (((lease_yes_count != 0 && lease_yes_count == (lease_yes_count+lease_no_count)) || lease_yes_count == 0) ? 20 :10),
+                                  length2:(((lease_yes_count != 0 && lease_yes_count == (lease_yes_count+lease_no_count))|| lease_yes_count == 0) ? 65 :40)
+                              }
+                          },
+                          label: {//图形外文字
+                              normal: {
+                                  formatter:function(data){
+    
+                                      if(data.data.value == 0 && data.data.type == 0){
+                                          if(lease_yes_count != 0 && lease_yes_count == (lease_yes_count+lease_no_count)){
+                                              return "\n\n"+data.name+"0%"
+                                          }else {
+                                              return data.name+"100%\n\n";
+                                          }
+    
+    
+                                      }else {
+                                          return data.name+parseInt(data.percent.toFixed(1)*10)/10+"%\n\n";
+                                      }
+                                  } , // '{b}'+'{d}'+'% \n\n',
+                                  padding: [0, -38],          //文字和图的边距
+                                  // borderWidth: 60,
+                                  // borderRadius: 14,
+                                  rich: {
+                                  },
+                              },
+                          },
+                          // itemStyle 设置饼状图扇形区域样式
+                          itemStyle: {
+                              // emphasis：英文意思是 强调;着重;（轮廓、图形等的）鲜明;突出，重读
+                              // emphasis：设置鼠标放到哪一块扇形上面的时候，扇形样式、阴影
+                              emphasis: {
+                                  shadowBlur: 10,
+                                  shadowOffsetX: 0,
+                                  shadowColor: 'rgba(255, 85, 255，0.5)',
+                              }
+                          },
+                          itemStyle:{//板块之间有间隔
+                              borderWidth:2, //设置border的宽度有多大
+                              borderColor:'#fff',
+                          },
+                          data:data,
+                          // [//   c       //b
+                          //  {value:20, name:'未入驻 '},{value:60, name:'已入驻 ' }, {value:'', name:'总间数 '},]
+                      }
+                  ]
+              };
+              // 使用刚指定的配置项和数据显示图表。
+              if (option && typeof option === "object") {
+                  myChart.setOption(option, true);
+              }
+            }
+</script>  
+
+  <style> 
+    
+  
+    /* input, span {
+      border: none;
+      outline: none;
+    }
+    ul,li{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    } */
+    /* 饼状图 */
+    .nav  {
+      position: fixed;
+      width: 100vw;
+      z-index: 9;
+      height:64px;
+      padding-left: 15px;
+      background:rgba(255,255,255,1);
+    }
+    .nav  .navTitle{
+      height:24px;
+      font-size:20px;
+      color:rgba(25,140,255,0.85);
+      line-height:64px;
+    }
+    .nav  #selectTung{
+      float: right;
+      margin: 24px 30px 0 0;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(0,0,0,0.85);
+      line-height: 17px;
+    }
+    .top .pieChart p{
+      margin: 0px 0 0px 15px;
+      height: 20px;
+      font-size: 16px;
+      font-weight: 700;
+      color: rgba(0,0,0,0.65);
+      line-height: 20px;
+    }
+  /* 面积滑动条 */
+    .areaShow span{
+    font-size:12px;
+    /* font-family:PingFang-SC-Regular,PingFang-SC; */ 
+    font-weight:400;
+    color:rgba(0,0,0,0.65);
+    line-height:17px;
+    }
+
+    .theme-green .back-bar {
+      height: 3px;
+      background: rgba(0, 0, 0, 0.12)
+    }
+    .theme-green .back-bar .selected-bar {
+    border-radius: 3px;
+    background-image: linear-gradient(to bottom, #198CFF, #198CFF)!important;
+    /* background-color: rgba(25,140,255,1)!important; */
+  }
+  .slider-container .back-bar .pointer {
+    position: absolute;
+    width: 24px!important;
+    height: 24px!important;
+    /* background-color: red!important; */
+    cursor: col-resize;
+    top: -10px!important;
+    border-radius: 12px!important;
+    opacity: 1;
+    z-index: 2;
+    background-image: linear-gradient(to bottom, #eeeeee, #fff)!important;
+    /* background: #198CFF; */
+    border: 4px solid rgba(25,140,255,1)!important;
+  }
+  .slider-container .back-bar .pointer-label {
+      top: -30px;
+      left: 46px;
+  }
+  /* 面积滑动条end */
+ 
+
+  </style>
+ <style>/* 搜索框 筛选*/
+   .searchBox{
+    position:relative;
+    background:rgba(255,255,255,1); 
+    box-shadow:0px 3px 5px 0px rgba(0,0,0,0.12);
+    border-radius:0px 0px 4px 4px;
+    height: 30px;
+    padding: 16px 0 16px 15px;border-bottom: 1px solid rgba(0,0,0,0.1);
+   }
+ .search{
+    position: relative;
+    color: gray;
+    border-radius: 4px;
+    height: 30px;
+    width: 53%;
+    /* margin: 10px 10px 10px 0px;        */
+    overflow: hidden;
+    background:rgba(204,213,221,0.25);
+    /* box-shadow:0px 3px 5px 0px rgba(0,0,0,0.2); */
+    border-radius:15px;
+  }
+  .search div{
+   margin-left:30px;
+   margin-right:30px;
+  }
+  .searchBox input{
+    margin-top: 5px!important;
+    width: 100%;
+    outline: none;
+    border: none;
+    /* width: 120px; */
+    height: 19px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(0,0,0,0.45);
+    line-height: 19px;
+    background-color: transparent;
+  }
+  .icon{
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    width: 20px;
+    color: currentcolor;
+    float: left;
+  }
+  .iconImg {
+    width: 20px;
+    height: 20px;
+    background-image: url(./images/repair/search.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    /* margin-top: -2px; */
+  }
+  .delImg {
+    width: 20px;
+    height: 20px;
+    background-image: url(./images/repair/close.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    /* margin-top: -2px; */
+  }
+  .del{
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: currentcolor;
+    float: right;
+  }
+  /* 搜索框end */
+  /* 筛选 */
+  .select{
+    position: absolute;
+     top: -38px; 
+     right:40px;
+     /* right:30px; */
+     /* left: 220px; */
+    font-size:12px;
+    font-weight:400;
+    color:rgba(0,0,0,0.45);
+    line-height:17px;
+    /* text-shadow:0px 3px 5px rgba(0,0,0,0.2); */
+  }
+  .dropDown,.bluedrop{
+    width: 14px;
+    height: 8px;
+    background-image: url(./images/repair/drop-down.png);
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+  }
+  .bluedrop{
+    background-image: url(./images/repair/bluedrop.png);
+  }
+  .selectInfo{
+    font-size: 12px;
+    /* font-family: PingFang-SC-Regular,PingFang-SC; */
+    font-weight: 400;
+    color: rgba(0,0,0,0.45);
+    line-height: 17px;
+    text-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+    border:none;
+  }
+  /* 筛选下拉数据 */
+  .screenShow{
+    position:absolute;
+    /* left: -15px; */
+    top:0px;
+    width: 100vw;
+    /* height:295px; */
+    background:rgba(255,255,255,1);
+    border-radius:0px 0px 4px 4px;
+    /* display: none; */
+    /* border: rgba(0, 0, 0, 0.12) 1px solid; */
+    box-sizing: border-box;
+    z-index: 11;
+  }
+  .screenInfo {
+    display: none;
+  }
+  .screenInfo .screenTitle p{
+    font-size:14px;
+    color:rgba(0,0,0,0.65);
+    line-height:20px;
+    margin: 17px 0 15px 0;
+  }
+  .screenInfo .screenTitle ul{
+    padding-right: 15px;
+    padding-bottom: 7px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between
+  }
+  .screenInfo .screenTitle ul li{
+    width:calc(28.5vw);
+    height:30px;
+    border-radius:2px;
+    border:1px solid rgba(0,0,0,0.25);
+    margin-bottom: 12px;
+    font-size:12px;
+    font-weight:400;
+    color:rgba(0,0,0,0.45);
+    line-height:28px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .screenInfo .screenTitle ul li.Active{
+    background:rgba(231,243,255,0.74);
+    border:1px solid rgba(25,140,255,1);
+    color: #198CFF;
+  }
+  .buttonBox{
+    width:100%;    
+    border-collapse: separate;
+    border-spacing: 0px; 
+    margin: 0 auto;
+    box-shadow: 0px -3px 5px 0px rgba(25,140,255,0.2);
+  }
+  .sureBtn,.resetBtn{
+    /* width:248px; */
+    height:35px;
+    background:rgba(255,255,255,1);
+    font-size:12px;
+    font-weight:400;
+    color:rgba(0,0,0,.65);
+    line-height:33px;
+    text-align: center;
+  }
+  .resetBtn{
+    border-radius:0px 0px 0px 4px;
+    /* border-bottom: 1px solid rgba(25,140,255,0.2); */
+  }
+  .sureBtn{
+    color: #fff;
+    background: #198CFF;
+    border-radius:0px 0px 4px 0px;
+  }
+  /* 筛选end */
+ </style>
+ <style>/* 房间*/
+
+.room .floor{
+    margin: 10px 0px 10px 4vw;
+  }
+  .room .floorTop{
+    height: 20px;
+    margin-bottom: 12px;
+    line-height: 20px;
+  }
+  .room .floorTop div{
+    color:rgba(0,0,0,0.65);
+    margin: 0 12px 0 0;
+    float:left;
+  }
+  .room .floorTop div:nth-child(2){
+    margin: 0 7px 0 0;
+  }
+  .room .floorTop div:nth-child(1){
+    color:rgba(0,0,0,0.85);
+     font-size:16px;
+  }
+  .room .floorTop div:nth-child(2){
+     font-size:13px;
+  }
+  .room .floorTop div:nth-child(3){
+     /* font-size:12px; */
+     float: left;
+    font-size: 14px;
+    transform: scale(0.7);
+  }
+  .room .cardInfo  ul{
+      display: flex;
+      flex-flow: wrap;
+      /* justify-content: space-between; */
+  }
+  .room .cardInfo  ul li{
+    position: relative;
+    width: 28.5vw;
+    height:64px;
+    margin-bottom: 12px;
+    border-radius:2.5px;  
+    box-sizing: border-box; 
+    margin-right:3.5vw; 
+  }
+  .room .cardInfo  ul li .top_card{
+    height:41px;
+    box-sizing: border-box;
+    border-radius:2.5px 2.5px 0px 0px;
+  }
+  .room .cardInfo  ul li .top_card .title{
+    font-size:17px;
+    color:rgba(0,0,0,0.85);
+    line-height:41px;
+    padding-left: 5px;
+    display: inline-block;
+    width: 71px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .room .cardInfo  ul li .top_card .type{
+    transform: scale(0.6);
+    font-size: 12px;
+    border-radius: 5.6px 1px 5.6px 1px;
+    float: right;
+    box-sizing: border-box;
+    text-align: center;
+    width: 56px;
+    height: 24px;
+    padding: 2px;
+    position: absolute;
+    top: 0px;
+    right: -6px;
+  }
+  .room .cardInfo  ul li .bottom_card span{
+    /* width: 60px; */
+    /* height:22px; */
+    /* float: left; */
+    padding-left: 5px;
+    transform: scale(0.7);
+    font-size: 12px;
+    font-weight:400;
+    color:rgba(0,0,0,.65);
+    line-height:22px;
+  }
+
+
+  /* 颜色公共样式 */
+/* // 1 Leasing  出租中 2 vacant 空置中  3 expire 即将到期  4 expired 已到期 */
+.Leasing{
+  color: #198CFF;
+  background: rgba(25,140,255,0.12);
+}
+.LeasingBg{
+  background: rgba(25, 140, 255, 0.08);
+  background: #198CFF14;
+}
+.LeasingBorder{
+  border: 1px solid rgba(25,140,255,1);
+}
+.vacant{
+  color: #333333;
+  background:rgba(51,51,51,0.12);
+}
+.vacantBg{
+  background: rgba(255, 255, 255, 0.08);
+  background: #FFFFFF14;
+}
+.vacantBorder{
+  border: 1px solid rgba(153,153,153,1);
+}
+.expire{
+  color: #ED9A09;
+  background:rgba(237,154,9,0.12);
+}
+.expireBg{
+  background: rgba(237, 154, 9, 0.08);
+  background: #ED9A0914;
+}
+.expireBorder{
+  border: 1px solid rgba(237,154,9,1);
+}
+.expired{
+  color: #FF3758;
+  background:rgba(255,55,88,0.12);
+  /* background:#FF375812; */
+}
+.expiredBg{
+  background: rgba(255, 55, 88, 0.08);
+  background: #FF375814;
+}
+.expiredBorder{
+  border: 1px solid rgba(255,55,88,1);
+}
+/* 颜色公共样式end */
+ </style>
+</html>  

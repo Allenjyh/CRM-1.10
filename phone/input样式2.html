@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+ 
+        <title>更换联系方式 更换绑定电话 银行账户 园区设置</title>
+   
+    <link href="home/phone/css/wechat_style.css" rel="stylesheet"/>
+    <link href="wechat/css/user.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="wechat/css/addParkName.css"/>
+    <link href="home/phone/css/pickerStyle.css" rel="stylesheet"/>
+    <style>
+        .list_qb_l img {
+            width: 24px;
+            height: 24px;
+        }
+        .list_each {
+            height: 44px;
+        }
+        .list_each p {
+            color: rgba(0, 0, 0, 0.65);
+            line-height: 25px;
+        }
+        .addParkName-bar span, .addParkName-bar input {
+            color: rgba(0, 0, 0, 0.65);
+        }
+        svg {
+            top:30%;
+            left:44%;
+        }
+    </style>
+<body style="background:#fff" data-bind_type ="{{$bind_type}}">
+ <!-- 更换联系人 -->
+    <div class="change_contacts type1" style="padding: 0 15px;">
+        <div class="addParkName-box" style="margin-top:0px;margin-bottom:0px;">
+            <div class="search addParkName-bar">
+                <span>公司联系人</span>
+                <input id='company_contacts'  type="text" name="contacts" value=" "
+                       style="width: calc(100% - 60px);color: rgba(0,0,0,0.45);" placeholder="请输入公司联系人姓名" maxlength="15"
+                       onkeyup="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')"
+                       >
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                <span>联系人电话</span>
+                <input id='phone_num1' type="tel" name="phone_num1" class=" repairs_address phone-tel phone_num1" placeholder=" 请输入联系人电话"
+                    style="width: calc(100% - 60px);color: rgba(0,0,0,0.45);" value=" "
+                    oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);"
+                    autocomplete="off">
+            </div>
+        </div>
+        <div id="companyContacts_submit" class="display_btn companyContacts_submit">确认</div>
+    </div>
+<!-- 绑定联系电话 -->
+    <div class="change_phone type2" style="padding: 0 15px;">
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                <span>新手机号</span>
+                <input id='new_phone_num' type="tel" class=" repairs_address phone-tel" placeholder="请输入新手机号"
+                       style="width: calc(100% - 60px);color: rgba(0,0,0,0.45);"
+                       oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);"
+                       autocomplete="off">
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class="addParkName-bar">
+                <span>验证码</span>
+                <input class="register_input9" autocomplete="off"
+                       oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>6) this.value=this.value.substring(0,6);"
+                       type="number" name="" placeholder="6位验证码" style="color: rgba(0,0,0,0.45);padding-right: 100px;">
+                <div class="thisYZM1 cursor">获取验证码</div>
+            </div>
+        </div>
+        <div id="change_phone_submit" class="display_btn change_phone_submit">确认</div>
+    </div>
+<!-- 更换银行卡号 -->
+    <div class="change_contacts type3" style="padding: 0 15px;">
+        <div class="addParkName-box" style="margin-top:0px;margin-bottom:0px;">
+            <div class="search addParkName-bar">
+                <span>开户行</span>
+                <input class="or-input or-bank" type="text" placeholder="输入如（广州农村商业银行，白云支行）" style="width: 92%;"  maxlength="24"
+                       onchange="this.value=this.value.replace(/[^\w\u4E00-\u9FA5]/g, '')"
+                       >
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                <span>户名</span>
+                <input class="or-input or-bankName" type="text" placeholder="请输入用户名"  maxlength="4"
+                       >
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class="addParkName-bar">
+                <span>账号</span>
+                <input class="or-input or-bankAccount" type="text" placeholder="请输入银行账号" style="width: 92%;"
+                        maxlength="23">
+            </div>
+        </div>
+            <div id="bank_submit" class="display_btn bank_submit">保存</div>
+    </div>
+<!-- 园区设置 -->
+    <div id="data-park_id " class="type4" data-park_id="">
+        <div class="addParkName-box" style="margin-top:0px;margin-bottom:0px;">
+            <div class="search addParkName-bar">
+                    <span>园区联系人</span>
+                    <input id='park_contacts' type="text" name="park_contacts" style="width: calc(100% - 60px);"
+                           placeholder="请输入园区联系人姓名" maxlength="15" onkeyup="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z\u4E00-\u9FA5\ ]/g,'')"
+                             >
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                <span>联系电话</span>
+                <input id='phone_num' type="number" class=" repairs_address phone-tel" placeholder="请输入联系人电话"
+                    oninput="javascript:value=this.value.replace(/[^\d]/g,'');if(this.value.length>11) this.value=this.value.substring(0,11);"
+                    autocomplete="off" >
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                <span>交租期</span>
+                <input id='TheLeaseBtn' type="text" class=" repairs_address phone-tel" placeholder="输入交租期" style="padding-right: 20px;" readonly
+                       
+                       data-value="{{$res_info['pay_time']}}">
+                <span style="float: right;text-align: right;right:0!important;left: auto;width:10px"><i class="or-arrow"></i></span>
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                <span>水费单价</span>
+                <input id='or-waterRent' type="number" class=" repairs_address phone-tel" placeholder="请输入"  style="padding-right: 40px;" value="{{ $res_info['water_ton'] }}">
+                <span style="float: right;text-align: right;right:0!important;left: auto;width:40px">元/吨</span>
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar">
+                <span>电费单价</span>
+                <input id='or-electricity' type="number" class=" repairs_address phone-tel" placeholder="请输入"  style="padding-right: 40px;" value="{{ $res_info['electric_degree'] }}">
+                <span style="float: right;text-align: right;right:0!important;left: auto;width:40px">元/度</span>
+            </div>
+        </div>
+        <div class="addParkName-box" style="margin-top: 0px;margin-bottom: 0px;">
+            <div class=" addParkName-bar clear">
+                <span>电损耗</span>
+                <input style="padding-right: 13px;" id='or_lossRate' type="number" class=" repairs_address phone-tel"  placeholder="请输入"   min="0" value="{{ $res_info['loss_fee'] }}"
+                        oninput="javascript:value=this.value.replace(/[^\0-9\.]/g,'');if(this.value.length>5) this.value=this.value.substring(0,5);">
+                <span style="float: right;text-align: right;right:0!important;left: auto;width:10px">%</span>
+            </div>
+        </div>
+        <div class="set_addParkName-btn ">
+            确 定
+        </div>
+        
+        <div id="room-controller" class="room-controller" style="display: none;">
+                <div class="room-controller-all">
+                    <div class="select-room-btnbox" style="border-bottom: 1px solid #ebebeb;">
+                        <table>
+                            <tr>
+                                <td id="roomClose" style="color: #A7A7A7;">取消</td>
+                                <td id="repTitle">报修类型</td>
+                                <td id="roomSure" style="color: #1A8CFF;">确定</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="select-cross"></div>
+                    <div class="room-controller-content">
+                        <div class="room-package-top border-bottom"></div>
+                        <div class="room-package-bottom border-top"></div>
+                        <div class="room-package" id="boxId">
+                        </div>
+                    </div>
+                    <div class="room-controller-bottom"></div>
+                </div>
+        </div>
+    </div>
+</body>
+<!-- <script src="wechat/js/jquery-3.3.1.min.js"></script> -->
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>  
+
+<!-- if($type == 4) -->
+<!-- <script src="/wechat/js/add_park.js"></script>
+<script src="/wechat/rentalInfo/tool/picker.js"></script> -->
+<!-- endif -->
+<script src="wechat/js/set_info_show.js"></script>
+<script src="wechat/rentalInfo/tool/checkInfo.js"></script>
+<script type="text/javascript" src="wechat/js/winAlert.js"></script>
+<script type="text/javascript" src="wechat/js/loading.js"></script>
+<script>
+
+//   更改type显示
+    var type = 4;
+
+    typeShow(type)
+    function typeShow(num){
+        $(".type"+num).css('display','block').siblings().css("display","none")
+    }
+    var submitArry = ["#company_contacts",".phone_num1",".register_input9","#new_phone_num",".or-bank",".or-bankName",".or-bankAccount","#park_contacts","#phone_num","#or-waterRent","#or-electricity","#or_lossRate","#TheLeaseBtn"];
+    
+    submitArrySet();
+    submitArry.forEach(function(index){
+        $(index).on("input",function(){
+            submitArrySet()
+        })
+    })
+    function submitArrySet(){
+        var _status = true;
+        submitArry.forEach(function(ele){
+            if($(ele).val() == " "){
+                _status = false;
+            }
+        })
+
+        if(type == 1){//联系方式
+            if(_status){
+                console.log(2)
+
+            document.querySelector('.companyContacts_submit').style.background = 'linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%)';
+            } else {
+                document.querySelector('.companyContacts_submit').style.background = 'rgba(0,0,0,0.25)';
+            }
+        }else if(type == 2){//手机
+            if(_status){
+            document.querySelector('.change_phone_submit').style.background = 'linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%)';
+            } else {
+                document.querySelector('.change_phone_submit').style.background = 'rgba(0,0,0,0.25)';
+            }
+        }else if(type == 3){//银行卡
+
+                if(_status){
+                document.querySelector('.bank_submit').style.background ='linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%)';
+            } else {
+                document.querySelector('.bank_submit').style.background = 'rgba(0,0,0,0.25)';
+            }
+        }else if(type == 4){//园区设置
+            if(_status){
+                document.querySelector('.set_addParkName-btn').style.background='linear-gradient(180deg, rgba(24, 189, 247, 1) 0%, rgba(10, 136, 236, 1) 100%)';
+
+            }else{
+                document.querySelector('.set_addParkName-btn').style.background='rgba(0,0,0,0.25)';
+            }
+        }
+        // endif
+    }
+</script>
+<style>
+   /* wechat_style */
+   
+   /* wechat_style */
+
+</style>
+</html>

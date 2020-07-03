@@ -1,0 +1,421 @@
+<!DOCTYPE html>  
+<html  >  
+<head>  
+	<meta charset="UTF-8">
+	<!-- <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><!-- 手机端 -->
+    
+    <title>手机端range即可开启范围选择</title>  
+    <link href="js/css/jquery.range.css" rel="stylesheet" />
+    <!-- <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+    <style>  
+    body {  
+        font-family: microsoft yahei;  
+    }
+
+    /*表格  */
+
+    </style>  
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>  
+    <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
+	<script type="text/javascript" src="js/jquery.range-min.js"></script>
+
+</head>  
+<body>  
+    
+    <div style="padding-left:15px">
+      <div>
+        <div class="areaShow" style="text-align: center;">
+          <span id="minArea"></span> - <span id="maxArea"></span>
+        </div>
+        <div style="margin:26px 0 30px 6%">
+            <input type="hidden" value="50, 1100" id="range"  class="slider-input"/>
+        </div>
+        <button class="click" >1点击</button>  
+        
+      </div>
+      <div> 
+        <div class="search"> 
+            <i class="glyphicon glyphicon-search icon iconImg"  onclick='getValue()'></i>
+            <i class="glyphicon del" onclick="delValue()"></i>
+            <div class="Input">
+              <input type="text" id="q" placeholder="搜索房间号" >
+              
+            </div>
+            
+        </div>
+        <!-- <div style="position:relative;">
+          <div class="select" >
+            
+            <span style="padding-right:5px;">12楼<i class="dropDown"></i></span>
+            <span>筛选<i class="dropDown"></i></span>
+          </div>
+        </div> -->
+        <div style="position:relative;">
+          <div class="select" >
+              <ul >
+                  <li>
+                      <div >
+                          <span class="select-head"><span class="select-head-cont"></span><i class="dropDown"></i></span>
+                          <span>筛选<i class="dropDown"></i></span>
+                      </div>
+                      <ul class="option" onclick="setSecond1(this.value)">
+                        <li  value="0">132楼</li>
+                        <li  value="1">全部</li>
+                        <li  value="2">101栋</li>
+                        <li  value="3">12楼</li>
+                        <li >1楼</li>
+                        <li >ie8</li>
+                        <li >ie8</li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+
+      <select id="first" class="selectInfo" onclick="setSecond(this.value)">
+          <option value="1">全部</option>
+          <option value="2">广西</option>
+          <option value="3">广东</option>
+      </select>
+      <select id="second">
+        </select>
+
+      
+    </div>
+
+  
+</body>  
+
+<script>
+// 下拉列表
+  //int
+  var selectHead = document.getElementsByClassName('select-head')[0];
+    var selectHeadCont = document.getElementsByClassName('select-head-cont');
+    var Option = document.getElementsByClassName('option')[0];
+    var optionItem = document.getElementsByClassName('option-item');
+
+    /*默认是第一个选项*/
+    selectHeadCont[0].innerHTML = optionItem[0].innerHTML;
+
+    /*点击后出现下拉框*/
+    selectHead.addEventListener('click',function(){
+        Option.style.display = 'block';
+    },false);
+    /*点击选项后出现在下拉框*/
+    var len = optionItem.length;
+    for(var i=0;i<len;i++){
+        optionItem[i].index = i;
+        optionItem[i].addEventListener('click',function(){
+            selectHeadCont[0].innerHTML = optionItem[this.index].innerHTML;
+            selectHeadCont[0].dataset.id = optionItem[this.index].value;
+            Option.style.display = 'none';
+            console.log(this.value)
+        },false);
+    }
+    /*点击其他地方时，select会收起来*/
+    // document.body.addEventListener('click',function(){
+    //     Option.style.display = 'none';
+    // },false);
+</script>
+<script>
+
+$(".search input").keypress(function(e){
+        var key = $.trim($(this).val());
+        if(e.keyCode === 13) {
+            //  搜索工作
+            // alert(11)
+            getValue(key)
+            // that.search(key);
+            document.activeElement.blur();//软键盘收起
+
+        }
+    })
+    function setSecond1(value){
+      console.log(value)
+
+     
+    }
+
+
+    function setSecond(value){
+      console.log(value)
+
+      var val = value;
+      // if(val == 1){
+      //   var sec = document.getElementById('second');
+      //   sec.options.length=0; //清空二级菜单项
+      //   sec.options[0] = new Option("南宁","nanning");
+      //   sec.options[1] = new Option("梧州","wuzhou");
+      //   sec.options[2] = new Option("柳州","liuzhou");
+      // }else {
+      //   var sec = document.getElementById('second');
+      //   sec.options.length=0; //清空二级菜单项
+      //   sec.options[0] = new Option("广州","guangzhou");
+      //   sec.options[1] = new Option("深圳","shenzhen");
+      //   sec.options[2] = new Option("中山","zhongshan");
+      // }
+    }
+    
+// document.getElementById('search_from').onsubmit = function(e){
+  
+//   getValue()
+   
+//     document.activeElement.blur();//软键盘收起
+// }
+
+  // browser-sync start --server --files "css/*.css, *.html"
+function getValue(){   
+    var text = document.getElementById("q").value;
+    if(text!=""){
+      document.getElementsByClassName("del")[0].setAttribute("class","delImg del");
+    }
+    else{
+      document.getElementsByClassName("del")[0].setAttribute("class","delImg del");
+    }
+  }
+  function delValue(){
+    document.getElementById("q").value = "";
+    document.getElementsByClassName("del")[0].setAttribute("class","del");
+  }
+</script>
+<script type="text/javascript" charset="utf-8">  
+
+    $('.slider-input').jRange({
+            from: 0,   				//滑块范围的初始值
+            to: 1100,    				//滑块范围的终止值
+            step: 50,   				//设置步长
+            scale: [0,'250m²',"500m²",'750m²',''], //滑动条下方的尺度变标签
+            format: '%s',  			//数值格式
+            width: 280, 			//进度条的宽度
+            showLabels: false,  		//是否显示滑动条下方的尺寸标签
+            showScale: false,  		//是否显示滑块上方的数值标签
+            isRange: true,     		//是否为选取范围
+            // ondragend: function(e){    //鼠标拖拽后执行触发的方法
+            onstatechange: function(e){    //滑块范围改变时触发的方法
+                console.log(e);
+                let area = e.split(',')
+                $("#minArea").text(Number(area[0])+'m²');
+                $("#maxArea").text(Number(area[1]) == 1100?'无限大':area[1]+'m²');
+               
+            }
+        });
+       
+       $('.click').click(function(){
+        console.log($(".slider-input").val())
+       })
+    // $('.slider-input').jRange('setValue', '200, 500');  //滑块赋值
+</script>  
+
+  <style>
+    /* 面积滑动条 */
+    .areaShow span{
+    font-size:12px;
+    /* font-family:PingFang-SC-Regular,PingFang-SC; */ 
+    font-weight:400;
+    color:rgba(0,0,0,0.65);
+    line-height:17px;
+    }
+
+    .theme-green .back-bar {
+      height: 3px;
+      background: rgba(0, 0, 0, 0.12)
+    }
+    .theme-green .back-bar .selected-bar {
+    border-radius: 3px;
+    background-image: linear-gradient(to bottom, #198CFF, #198CFF)!important;
+    /* background-color: rgba(25,140,255,1)!important; */
+  }
+  .slider-container .back-bar .pointer {
+    position: absolute;
+    width: 24px!important;
+    height: 24px!important;
+    /* background-color: red!important; */
+    cursor: col-resize;
+    top: -10px!important;
+    border-radius: 12px!important;
+    opacity: 1;
+    z-index: 2;
+    background-image: linear-gradient(to bottom, #eeeeee, #fff)!important;
+    /* background: #198CFF; */
+    border: 4px solid rgba(25,140,255,1)!important;
+}
+.slider-container .back-bar .pointer-label {
+    top: -30px;
+    left: 46px;
+}
+/* 面积滑动条end */
+input, span {
+    border: none;
+    outline: none;
+}
+
+  </style>
+ <style>
+   /* 搜索框 */
+ .search{
+    position: relative;
+    color: gray;
+    border-radius: 4px;
+    height: 30px;
+    width: 65%;
+    margin: 10px 10px 10px 0px;       
+    overflow: hidden;
+    background:rgba(204,213,221,0.25);
+    box-shadow:0px 3px 5px 0px rgba(0,0,0,0.2);
+    border-radius:15px;
+  }
+  .search div{
+   margin-left:30px;
+   margin-right:30px;
+  }
+  Input{
+    margin-top: 5px;
+    width: 100%;
+    outline: none;
+    border: none;
+    /* width: 120px; */
+    height: 18px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(0,0,0,0.45);
+    line-height: 18px;
+    background-color: transparent;
+  }
+  .icon{
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 6px;
+    width: 20px;
+    color: currentcolor;
+    float: left;
+  }
+  .iconImg {
+    width: 20px;
+    height: 20px;
+    background-image: url(./images/repair/search.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    /* margin-top: -2px; */
+  }
+  .delImg {
+    width: 14px;
+    height: 14px;
+    background-image: url(./images/repair/close.png);
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    /* margin-top: -2px; */
+  }
+  .del{
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: currentcolor;
+    float: right;
+  }
+  /* 搜索框end */
+  /* 筛选 */
+  .select{
+    position: absolute;
+     top: -32px; 
+     right:8px;
+    font-size:12px;
+    /* font-family:PingFang-SC-Regular,PingFang-SC; */
+    font-weight:400;
+    color:rgba(0,0,0,0.45);
+    line-height:17px;
+    text-shadow:0px 3px 5px rgba(0,0,0,0.2);
+  }
+  .dropDown{
+    width: 20px;
+    height: 8px;
+    background-image: url(./images/repair/drop-down.png);
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+   
+  }
+
+  .selectInfo{
+    font-size: 12px;
+    /* font-family: PingFang-SC-Regular,PingFang-SC; */
+    font-weight: 400;
+    color: rgba(0,0,0,0.45);
+    line-height: 17px;
+    text-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+    border:none;
+  }
+  /* 筛选end */
+ </style>
+ <style>
+      /*css*/
+      /*通用样式*/
+      body{
+          /* background: #FFBD1E; */
+      }
+      ul,li{
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      }
+      /*下拉框样式*/
+      /* #select{
+          margin:100px;
+          background: rgba(0,0,0,0);
+          width: 249px;
+          height: 40px;
+          font-family: "微软雅黑";
+          font-size: 18px;
+          color: rgb(105, 80, 80);
+          border: 1px #1a1a1a solid;
+          border-radius: 5px;
+      } */
+      .select-head{
+        overflow: hidden;
+        /* width: 52px; */
+        /* padding: 0 10px; */
+        font-size: 12px;
+        font-weight: 400;
+        color: rgba(0,0,0,0.45);
+        line-height: 17px;
+        text-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+
+      }
+      /* .select-head .select-head-cont{
+          float: left;
+      } */
+      /* .select-head .select-icon{
+          float: left;
+      } */
+      .option{
+          text-indent: 10px;
+          margin-top: 1px;
+          width: 80px;
+          color: #606266;
+          background: rgba(236,111,111,0.1);
+          line-height: 25px;
+          border: 1px #cfcfcf solid;
+          display: none;
+          box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+          background: #fff;
+          height: 142px;
+          overflow: scroll;
+          /* overflow: hidden; */
+      }
+      .option-item{
+          border-bottom:1px solid #cfcfcf;
+      }
+      .option-item:hover{
+          background: #198CFF;
+      }
+  </style>
+</html>  

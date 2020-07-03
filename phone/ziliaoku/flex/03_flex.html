@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0}
+        .wrap{
+            border:1px solid red;
+            width:750px;
+            height:1000px;
+            margin: 0 auto;
+        }
+        .nav{
+            display: flex; /*弹性布局*/
+            flex-wrap:wrap;/*拆分布局  只有拆分才分两列，要不10个子元素会显示一列*/
+        }
+        .item{
+            width:20%;height:100px; border:1px solid blue;box-sizing: border-box
+        }
+    </style>
+</head>
+<body>
+    <h3>商品列表</h3>
+    <div class="wrap">
+       <div class="nav">
+          <div class="item">分类</div>
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+          <div class="item">4</div>
+          <div class="item">5</div>
+          <div class="item">6</div>
+          <div class="item">7</div>
+          <div class="item">8</div>
+          <div class="item">9</div>
+          
+       </div>
+    </div>
+
+  
+</body>
+<script>
+var num = 1; //这是值
+    switch(num){
+    case 1:
+    case 2:
+    case 4:
+       console.log("执行方法1");
+        break;
+    case 3:
+    case 5:
+        console.log("执行方法2");
+        break;
+    default:
+        console.log("没有可执行的方法.");
+}
+
+</script>
+</html>
